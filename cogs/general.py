@@ -8,7 +8,7 @@ import time
 class Fairy:
     def __init__(self):
         self.word = 'Watch Out!'
-    
+
     def state(self):
         if self.word == 'Hey!':
             self.word = 'Listen!'
@@ -23,14 +23,13 @@ class General:
         self.bot = bot
         self.pokeEntities = {}
         self.git = self.bot.settings['git']
+        self.doc = self.bot.settings['doc']
 
-    #If poked on a server, responds with the appropriate poker
+    #Links the github page
     @commands.command()
-    async def poke(self, ctx):
-        """Pokes the bot, mostly for checking if it's online. Use ping to get a response time."""
-        if not(ctx.channel.id in self.pokeEntities):
-            self.pokeEntities[ctx.channel.id] = Fairy()
-        await ctx.send(self.pokeEntities[ctx.channel.id].state())
+    async def docs(self, ctx):
+        """Sends the documentation link to the channel"""
+        await ctx.send(self.doc)
 
     #Links the github page
     @commands.command()
@@ -46,8 +45,15 @@ class General:
         await ctx.trigger_typing()  # tell Discord that the bot is "typing", which is a very simple request
         t_2 = time.perf_counter()
         time_delta = round((t_2-t_1)*1000)  # calculate the time needed to trigger typing
-        await ctx.send("Pong.\nTime: {}ms".format(time_delta))  # send a message telling the user the calculated 
+        await ctx.send("Pong.\nTime: {}ms".format(time_delta))  # send a message telling the user the calculated
 
+    #If poked on a server, responds with the appropriate poker
+    @commands.command()
+    async def poke(self, ctx):
+        """Pokes the bot, mostly for checking if it's online. Use ping to get a response time."""
+        if not(ctx.channel.id in self.pokeEntities):
+            self.pokeEntities[ctx.channel.id] = Fairy()
+        await ctx.send(self.pokeEntities[ctx.channel.id].state())
 
 def setup(bot):
     bot.add_cog(General(bot))

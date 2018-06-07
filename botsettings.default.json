@@ -1,6 +1,7 @@
 {
     "token": "INSERT TOKEN HERE (it'll be a string, so keep the quotes)",
-    "git":"https://github.com/cwstra/rpdiscordbot",
+    "doc":"https://rpdiscordbot.readthedocs.io/en/latest/",
+    "git":"https://github.com/cwstra/rpdiscordrewrite",
     "sql":["POSTGRES USER NAME","POSTGRES ADDRESS","POSTGRES USER PASSWORD"],
     "haskellport": 4935,
     "serverSettingsDB": "ServerSettings",

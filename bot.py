@@ -50,7 +50,7 @@ class RPBot(commands.Bot):
 
     # Prevent bot from replying to other bots
     async def on_message(self, message):
-        if not message.author.bot:    
+        if not message.author.bot:
             #Response commands. Format is (prefix, funlist yes, funlist no, funlist invalid)
             #funlist is list of two-tuples, ((function, type), arguments), where type is either 'inline' or 'async', and arguments are themselves a tuple
             if message.channel.id in self.waiting and message.author.id in self.waiting[message.channel.id] and message.content.startswith(self.waiting[message.channel.id][message.author.id]['prefix']):
