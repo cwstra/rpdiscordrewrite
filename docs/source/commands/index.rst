@@ -15,6 +15,7 @@ Welcome to RPDiscordRewrite's documentation!
    character
    general
    ref
+   roll
    server_settings
 
 

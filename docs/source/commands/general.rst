@@ -10,18 +10,18 @@ Character
 
 These commands have general utility uses.
 
-.. _poke:
+.. _docs:
 
-``poke``
+``docs``
 ------------------
 
-``poke`` pokes the bot for a response. If you need the response time, use ``ping``.
+``docs`` returns a link to the root of this very documentation!.
 
 Syntax
 
 ::
 
-	poke
+	docs
 
 .. _github:
 
@@ -49,3 +49,16 @@ Syntax
 ::
 
 	ping
+
+.. _poke:
+
+``poke``
+------------------
+
+``poke`` pokes the bot for a response. If you need the response time, use ``ping``.
+
+Syntax
+
+::
+
+	poke
