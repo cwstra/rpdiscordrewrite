@@ -3,22 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. _root:
+.. _command_functions:
 
-Welcome to RPDiscordRewrite's documentation!
+Command Functions
 ============================================
 
-.. toctree::
-   :maxdepth: 4
-   :caption: Contents:
-
-   commands/index
-   dice_reference/index
-
-
-Indices and tables
-============================================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+Below is the large list of command functions available for use in the dice parser. (Well, there will be, soon enough. :P)

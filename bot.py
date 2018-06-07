@@ -65,7 +65,7 @@ class RPBot(commands.Bot):
             else:
                 ctx = await self.get_context(message)
                 await self.invoke(ctx)
-                #await self.inline_roller(ctx)
+                await self.inline_roller(ctx)
 
     @staticmethod
     async def smartSend(ctx,prefix,message,begin='', end=''):
@@ -81,19 +81,15 @@ class RPBot(commands.Bot):
             if not(message[:m].endswith(endStr)):
                 m -= len(endStr)
                 endStr = end
-            print(m)
             pos = message[:m].rfind('\n')
-            print(pos)
             if pos==-1:
                 await ctx.send(message[:m]+endStr)
                 message = message[m:]
             else:
                 await ctx.send(beginStr+message[:pos]+endStr)
                 message = message[pos+1:]
-            print(message)
             if not(message.startswith(begin)):
                 message = begin + message
-            print(message)
             message = message.lstrip()
         await ctx.send(message+end)
 

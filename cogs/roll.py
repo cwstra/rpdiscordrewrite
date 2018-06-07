@@ -11,7 +11,6 @@ from collections import OrderedDict
 from urllib.parse import quote as urlEscape
 
 def specialstart(message, tup, ind):
-    print(tup)
     if message.startswith(tup, ind):
         for i in tup:
             if message.startswith(i, ind):
@@ -88,8 +87,6 @@ async def parseChars(ctx, message, charsigns, chardata, getInfo):
     data = getKeys(message, charsigns, chardata, str(ctx.author.id))
     res = await getInfo(ctx, data)
     out = message
-    print(data)
-    print(res)
     for i in reversed(data):
         if i in res:
             out = out[:data[i][1]] + res[i] + out[data[i][2]:]
@@ -116,8 +113,8 @@ class Roll:
             charsigns = ['$']
         chardata = await self.bot.charserver.getServerInfo(ctx)
         chardata = {i['id'].split(u"\uFEFF",1)[1]:i['attributes'] for i in chardata}
-        message = await parseChars(ctx, ctx.content.message, charsigns, chardata, self.bot.charserver.getBatchInfo)
-        diceP.basicRoll(ctx, message)
+        message = await parseChars(ctx, ctx.message.content, charsigns, chardata, self.bot.charserver.getBatchInfo)
+        await self.rollParse['basic'].roll(ctx, message)
 
     #Command-invoked roller
     @commands.command(aliases = ['r'])
@@ -135,10 +132,8 @@ class Roll:
                 prefix += '=' + message
             prefix += '\n'
             seed = random.randint(0,18446744073709551615)
-            print("Awaiting Roll...")
             message = await self.rollParse['adv'].get('http://localhost:'+self.rollPort+'/roll?roll='+urlEscape(message,safe='')+'&seed='+str(seed))
             message = await message.text()
-            print("Roll Received!")
             if message.startswith('Roll Statistics:'):
                 message = message.split('\n',3)
                 #if message[1] != '{}':

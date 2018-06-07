@@ -14,7 +14,7 @@ def is_allowed(ctx):
             permObject = {"guildID":ctx.channel.id,"roles":[],"admin":true}
             permissions.append(permObject)
             self.bot.setData("permissions", permissions)
-        #self.is_owner(ctx.author) or 
+        #self.is_owner(ctx.author) or
         test = (permObject['admin'] and ctx.author.permissions_in(ctx.channel))
         test = test or (ctx.author.roles and any(i.id in permObject['roles'] for i in ctx.author.roles))
         return test
@@ -47,7 +47,6 @@ def parseMarkedArgs(ctx, args, privstr, namecheck=False):
 def parseAttrArgs(ctx, args):
     out = {}
     while len(args) > 0:
-        print(args)
         if args[0].endswith('=') and not(args[0].endswith('\=')) and len(args)>1:
             out[args[0][:-1]], args = args[1], args[2:]
         elif args[0].count('=') > args[0].count('\='):
@@ -73,7 +72,6 @@ def parseAttrArgs(ctx, args):
                 out[args[0]], args = args[1][1:], args[2:]
             else:
                 out[args[0]], args = None, args[1:]
-    print(out)
     return out
 
 class Character:
@@ -87,7 +85,7 @@ class Character:
     @commands.command()
     async def newchar(self, ctx, *, args):
         """Creates a new stored character for this server.
-            Syntax: 
+            Syntax:
                 newchar <--a author_ping/author_id> <--p True/False> [character name] <list of attr = value>
             Required Fields
                 [character name]: The character's name. If the name contains spaces, quotation marks are necessary. If the name contains quotation marks, they must be escaped with \.
@@ -132,7 +130,7 @@ class Character:
     @commands.command()
     async def viewchar(self, ctx, *, args):
         """Gets information about an existing character. If the command has no attribute fields, it will return a list of attributes the character has. Otherwise, it will return the values of the requested attributes.
-            Syntax: 
+            Syntax:
                 viewchar <--a author_ping> <--p True/False> [character name] <attributes>
             Required Fields
                 [character name]: The character's name. If the name contains spaces, quotation marks are necessary. If the name contains quotation marks, they must be escaped with \.
@@ -183,7 +181,7 @@ class Character:
     @commands.command()
     async def editchar(self, ctx, *, args):
         """Edits an existing character's attributes.
-            Syntax: 
+            Syntax:
                 editchar <--a author_ping> <--n new_name> <--p True/False> [character name] [list of attr = value]
             Required Fields
                 [character name]: The character's name. If the name contains spaces, quotation marks are necessary. If the name contains quotation marks, they must be escaped with \.
@@ -210,13 +208,10 @@ class Character:
             character, args = args[0], []
         else:
             character, args = args[0], args[1:]
-        print(args)
         attrdict = parseAttrArgs(ctx, args)
-        print(attrdict)
         if not(attrdict) and argdict['name'] == None:
             await ctx.send("You'll need to give me some attributes to change.")
             return
-        print(argdict)
         try:
             if argdict['name'] == None:
                 argdict.pop('name')
@@ -237,7 +232,7 @@ class Character:
     @commands.command()
     async def delchar(self, ctx, *, args):
         """Deletes an existing character.
-            Syntax: 
+            Syntax:
                 delchar <--a author_ping> <--p True/False> [character name]
                 Required Fields
                     [character name]: The character's name. If the name contains spaces, quotation marks are necessary. If the name contains quotation marks, they must be escaped with \.

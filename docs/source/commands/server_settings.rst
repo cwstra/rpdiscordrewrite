@@ -56,6 +56,17 @@ Syntax
 
 	codex
 
+``inline_toggle``
+------------------
+
+``inline_toggle`` allows the user to toggle inline rolling on the server. The command does not take arguments, instead providing a toggle dialogue. By default, the inline roller is disabled.
+
+Syntax
+
+::
+
+	inline_toggle
+
 ``prefix``
 ------------------
 

@@ -3,22 +3,16 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. _root:
+.. _dice_reference:
 
-Welcome to RPDiscordRewrite's documentation!
+Dice Reference
 ============================================
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 3
    :caption: Contents:
 
-   commands/index
-   dice_reference/index
-
-
-Indices and tables
-============================================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   roll_types
+   inline_syntax
+   command_syntax
+   command_functions

@@ -56,6 +56,11 @@ def generalParse(s,n=1,markerDict={'-':-1,'+':1,None:1}):
         output[1].append(numResult)
     return output
 
+def plusTrim(string):
+    if string[0]=='+':
+        return string[1:]
+    return string
+
 class BasicRoll:
     def single_match(self,roll,dicereg):
         output = ""
@@ -65,24 +70,24 @@ class BasicRoll:
         else:
             roll = [1,roll]
         result = generalParse(roll[1],roll[0])
-        string = ','.join([result[0][i]+"="+str(result[1][i]) for i in range(len(result[0]))])
-        if string[0]=='+':
-            string = string[1:]
+        string = ','.join([plusTrim(result[0][i])+"="+str(result[1][i]) for i in range(len(result[0]))])
         output += '`'+string+'`'
         return output
 
-    async def roll(self,ctx, message):
-        regexTest = r"(([1-9]\d*#)?([1-9]\d*)?d[1-9]\d*((\+|-)(([1-9]\d*)?d)?[1-9]\d*)*"
+    async def roll(self, ctx, message):
+        regexTest = r"([1-9]\d*#)?([1-9]\d*)?d[1-9]\d*((\+|-)(([1-9]\d*)?d)?[1-9]\d*)*"
         work = message
-        test = re.search(regexTest,message)
-        roll = message[test.start():test.end()]
+        test = re.search(regexTest,work)
+        if not(test):
+            return
+        roll = work[test.start():test.end()]
+        work = work[test.end():]
         output = ctx.author.display_name+":\n" + roll + ':'
         while test != None:
-            output += single_match(roll,characters,regexTest)
-            test = re.search(dicereg,work)
+            output += self.single_match(roll,regexTest)
+            test = re.search(regexTest,work)
             if test != None:
+                roll = work[test.start():test.end()]
                 work = work[test.end():]
-                test = re.search(regexTest,work)
-                roll = message[test.start():test.end()]
                 output += '\n' + roll + ':'
         await ctx.send(output)

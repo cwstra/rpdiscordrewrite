@@ -144,7 +144,6 @@ class Server:
         for i, val in dataDict.items():
             key = str(ctx.guild.id) + u"\uFEFF" + i + u"\uFEFF" + val[0]
             entry = await conn.fetchrow(self.commands['attributes']['getentry'], key)
-            print(i, key, entry)
             if entry != None:
                 out[i] = entry['value']
         return out

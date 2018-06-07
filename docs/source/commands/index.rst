@@ -5,7 +5,7 @@
 
 .. _commands:
 
-Welcome to RPDiscordRewrite's documentation!
+Command Pages
 ============================================
 
 .. toctree::
@@ -17,11 +17,3 @@ Welcome to RPDiscordRewrite's documentation!
    ref
    roll
    server_settings
-
-
-Indices and tables
-============================================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

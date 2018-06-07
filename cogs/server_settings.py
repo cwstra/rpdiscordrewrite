@@ -87,16 +87,16 @@ class Settings:
 
     @commands.command()
     async def prefix(self,ctx,*,arg=''):
-        """Changes the server prefix. Only available to admins. Will prompt for confirmation before changing the prefix."""
-        if self.is_allowed(ctx):
+        """Changes the server prefix. Only available to admins or allowed roles. Will prompt for confirmation before changing the prefix."""
+        if await self.is_allowed(ctx):
             await self.symbol_list_change(ctx, arg, 'prefix', 'prefixes', ['<@'+str(self.bot.user.id)+'>', '<@'+str(self.bot.user.id)+'>'])
         else:
             await ctx.send('To use this command, you have to either have admin permissions on this server, or have a role permitted to modify this bot.')
 
     @commands.command()
     async def charsign(self,ctx,*,arg=''):
-        """Changes the server charsign. Only available to admins. Will prompt for confirmation before changing the charsign."""
-        if self.is_allowed(ctx):
+        """Changes the server charsign. Only available to admins or allowed roles. Will prompt for confirmation before changing the charsign."""
+        if await self.is_allowed(ctx):
             if '@' in arg:
                 await ctx.send('Sorry, '+ctx.author.display_name+", but charsigns can't contain @.")
                 return
@@ -106,8 +106,8 @@ class Settings:
 
     @commands.command()
     async def codex(self,ctx):
-        """Changes the server codex. Takes no arguments, instead giving a selection. Only available to admins."""
-        if self.is_allowed(ctx):
+        """Changes the server codex. Takes no arguments, instead giving a selection. Only available to admins or allowed roles."""
+        if await self.is_allowed(ctx):
             async def setcodex(name):
                 if name:
                     await self.bot.upsert_entry(ctx.guild.id, {'codex':name})
@@ -118,7 +118,6 @@ class Settings:
             initial = "{author}:"
             initial += "The current codex for this server is {current}.\nYou can change it to any of the following:" if currentInfo else "This server does not currently have a codex. \nIf you would like to change that, you have the following options."
             systems = await self.bot.systemlist()
-            print(systems)
             initial += '\n'+'\n'.join(systems)
             initial += "\nTo do so, type "+ctx.prefix+'<codex name>'
             await self.general_dialogue(ctx, initial, currentInfo, systems, setcodex)
@@ -126,15 +125,32 @@ class Settings:
             await ctx.send('To use this command, you have to either have admin permissions on this server, or have a role permitted to modify this bot.')
 
     @commands.command()
+    async def inline_toggle(self,ctx):
+        """Toggles inline rolling. Only available to admins or allowed roles."""
+        if await self.is_allowed(ctx):
+            currentInfo = await self.bot.serverdata(ctx.guild.id, 'inline')
+            async def toggle(test):
+                if test == "Yes":
+                    await self.bot.upsert_entry(ctx.guild.id, {'inline':not(currentInfo)})
+                    await ctx.send('Inline roll set to '+str(not(currentInfo))+'!')
+                else:
+                    await ctx.send('Inline roll toggle cancelled.')
+            initial = "{author}:"
+            initial += "Currently, inline rolls are "+("enabled" if currentInfo else "disabled")+" on this server.\n"
+            initial += "If you would like to toggle it, type `"+ctx.prefix+"Yes`. Otherwise, type `"+ctx.prefix+"No`."
+            await self.general_dialogue(ctx, initial, bool(currentInfo), ["Yes", "No"], toggle)
+        else:
+            await ctx.send('To use this command, you have to either have admin permissions on this server, or have a role permitted to modify this bot.')
+
+    @commands.command()
     async def botmodroles(self, ctx, role=None):
         """Allows or disables a given role from altering this bot's settings on this server. Users with admin privileges will always be able to change the settings."""
-        if self.is_allowed(ctx):
+        if await self.is_allowed(ctx):
             roles = await self.bot.serverdata(ctx.guild.id, 'permissionroles')
             if not(roles):
                 roles = []
             initial = "{author}: "
             if role:
-                print(role)
                 role = int(role[3:-1])
                 rolename = discord.utils.get(ctx.guild.roles, id=role).name
                 if role in roles:
@@ -172,7 +188,6 @@ class Settings:
                         r = ', '.join(l[:-1]) + ', and ' +l[-1]
                     r = '```'+r+'```'
                     initial += r+'\nIf you want to add another role, or remove one of the above roles, issue this command followed by a ping of that role.'
-                print(dir(ctx))
                 await ctx.send(initial.format(author=ctx.author.display_name))
         else:
             await ctx.send('To use this command, you have to either have admin permissions on this server, or have a role permitted to modify this bot.')

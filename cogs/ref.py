@@ -3,7 +3,7 @@ from discord.ext import commands
 
 import json
 import cogs.specialized.ref as db
-            
+
 def test_int(i):
     try:
         int(i)
@@ -27,7 +27,6 @@ class Ref:
         if codex:
             info = await self.bot.refserver.ref(codex, args)
             if type(info)==str:
-                print(info)
                 await ctx.send(info.format(ctx.author.display_name))
             else:
                 minifo = {i:j for i, j in info.items() if i!='fields'}
@@ -71,7 +70,7 @@ class Ref:
                 mess = args
             info = await self.bot.refserver.top(codex, n, mess)
             if n > 5:
-                await self.bot.smartSend(ctx.author,"Top "+str(n)+" results for "+args+":", info,'```')               
+                await self.bot.smartSend(ctx.author,"Top "+str(n)+" results for "+args+":", info,'```')
                 await ctx.send("Results sent via PM.")
             else:
                 await self.bot.smartSend(ctx,"Top "+str(n)+" results for "+args+":", info,'```')

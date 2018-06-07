@@ -5,7 +5,7 @@
 
 .. _general:
 
-Character
+General
 ============================================
 
 These commands have general utility uses.

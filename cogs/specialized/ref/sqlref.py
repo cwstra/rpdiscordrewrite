@@ -37,7 +37,7 @@ class Server:
             return process.extractOne(message,keys)
         else:
             return Server.limited_words(int(json.loads(schema[name])[0]), message, keys,
-                lambda test, singlekey, minikeys, wordLength: test.append(process.extractOne(singlekey, minikeys)), 
+                lambda test, singlekey, minikeys, wordLength: test.append(process.extractOne(singlekey, minikeys)),
                 lambda test: max(test, key=lambda y:y[1]))
 
     @staticmethod
@@ -51,8 +51,8 @@ class Server:
         message = oMessage
         for i in schema:
             if all(j in '1234567890' for j in i):
-                test = self.limited_words(int(i), message, keys, 
-                    lambda test, singlekey, keylist, wordLength: test.append((process.extractOne(singlekey, keylist), wordLength)), 
+                test = self.limited_words(int(i), message, keys,
+                    lambda test, singlekey, keylist, wordLength: test.append((process.extractOne(singlekey, keylist), wordLength)),
                     lambda x: max(x, key=lambda y:y[0][1]))
                 if test[0][1] > 80:
                     table = await conn.fetchval(self.commands['get_specific_row'].format(table, 'id', test[0][0]), column=1)
@@ -86,7 +86,7 @@ class Server:
                 extra = []
                 for k in test:
                     if k[0] in data['extra_fields']:
-                        extra.append(data['extra_fields'][k[0]]) 
+                        extra.append(data['extra_fields'][k[0]])
                     elif type(j[k[0]]) != str:
                         for l in j[k[0]]:
                             extra.append(data['extra_fields'][l])
@@ -154,7 +154,6 @@ class Server:
             if result[0][1] <= 80:
                 return "Sorry {}, I couldn't find a good match."
             if schema[result[1]] == 'flat':
-                print(names[result[1]], result[0][0])
                 result = await conn.fetchrow(self.commands['get_specific_row'].format(names[result[1]], 'id', result[0][0]))
                 await self.pool.release(conn)
                 return json.loads(result['embed'])
@@ -291,7 +290,7 @@ class Server:
                 return process.extract(mess, keys, limit=num)
             else:
                 parsed = json.loads(schema_entry)
-                return self.limited_words(int(json.loads(schema_entry)[0]),message, keys, 
+                return self.limited_words(int(json.loads(schema_entry)[0]),message, keys,
                     lambda test, singlekey, minikeys, wordLength: test.extend(process.extract(singlekey, minikeys, limit=num)),
                     lambda test: sorted(test, key=lambda x: x[1], reverse=True)[:num])
         conn = await self.pool.acquire()

@@ -39,8 +39,6 @@ async def serverdata(guild_id=None, entry=None):
 async def systemlist():
     conn = await pool.acquire()
     res = await conn.fetch(commands['codex_list']['get_all'])
-    print('Here')
-    print(res)
     res = [i['id'] for i in res]
     await pool.release(conn)
     return res
@@ -49,8 +47,6 @@ async def upsert_entry(guild_id, entryDict=None):
     conn = await pool.acquire()
     if entryDict:
         for i, j in entryDict.items():
-            print(guild_id,i,j)
-            print(commands['servers']['upsert'].format(i, '$1', '$2'), guild_id, j)
             await conn.execute(commands['servers']['upsert'].format(i, '$1', '$2'), guild_id, j)
         await conn.execute(commands['servers']['clear_empty_rows'])
     await pool.release(conn)

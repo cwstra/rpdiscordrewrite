@@ -129,12 +129,12 @@ nextToken string index lastToken
   |Just (x, xs) <- res, isSpace x                           = nextToken xs (index+1) lastToken
   |Just (x, xs) <- res, isDigit x || x=='.' || x=='j'       = getNumber string index lastToken
   |Just bool <- startsWithBool string, num <- T.length bool = Just $ Left (T.drop num string, index + fromIntegral num, StackToken {tokenIndex = Just index, tokenType = StackTokenBool, tokenRep = bool})
-  |Just (x, xs) <- res, x `elem` lparen                       = leftParen string index lastToken
-  |Just (x, xs) <- res, x `elem` rparen                       = rightParen string index lastToken
-  |Just (x, xs) <- res, x `elem` separa                       = separator string index lastToken
+  |Just (x, xs) <- res, x `elem` lparen                     = leftParen string index lastToken
+  |Just (x, xs) <- res, x `elem` rparen                     = rightParen string index lastToken
+  |Just (x, xs) <- res, x `elem` separa                     = separator string index lastToken
   |Just (x, xs) <- res, Just fun <- startsWithFun string    = funParse string index lastToken fun
   |Just (x, xs) <- res                                      = Just $ Right $ ParseException (T.singleton x) index
-  |otherwise                                                     = Just $ Right $ ParseException (T.singleton ' ') index
+  |otherwise                                                = Just $ Right $ ParseException (T.singleton ' ') index
   where
     res = T.uncons string
 
