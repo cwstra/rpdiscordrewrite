@@ -1,0 +1,429 @@
+(ql:quickload "str")
+(ql:quickload :cl21)
+
+;defvar to define something as a variable and give initial value, setf to change value
+
+(defun curry (function &rest initial-args)
+  "Returns a function which will call FUNCTION passing it
+  INITIAL-ARGS and then any other args.
+
+ (funcall (curry #'list 1) 2) ==> (list 1 2)"
+  (lambda (&rest args)
+    (apply function (append initial-args args))))
+
+(defmacro cons-to-list (var new)
+  `(setf ,var (cons ,new ,var)))
+
+(defun identity (x) x)
+
+(defun build-sort (el list key &key ((:reverse reverse) NIL))
+  (flet ((f (r) 
+            (if r #'> #'<)))
+    (cond 
+      ((or (endp list) (funcall (f reverse) (funcall key el) (funcall key (first list)))) 
+       (cons el list))
+      (T 
+       (cons (first list) (build-sort el (rest list) key :reverse reverse))))))
+
+(defun filter-on-pred (fun l) 
+  (cond 
+    ((endp l) NIL)
+    ((funcall fun (first l)) (cons (first l) (filter-on-pred fun l)))
+    (T (filter-on-pred fun l))))
+
+(defun range (a b)
+  (if (< a b)
+    (cons a (range (1+ a) b))
+    NIL))
+
+(defmacro append-to-str (var new)
+  `(setf ,var (str:concat ,var ,new)))
+
+(defclass roll-function ()
+  ((fname :initarg :fname)
+   (symbol :initarg :symbol)
+   (type :initarg :type)
+   (assoc :initarg :assoc)
+   (args :initarg :args)
+   (prec :initarg :prec)))
+
+(defclass dice ()
+  ((number-of-dice :initarg :number-of-dice)
+   (face :initarg :face)
+   face-display
+   exploding
+   (reroll :initform '())
+   (keep-drop :initform #'identity)
+   success
+   successSuffix
+   suffix))
+
+(defmethod initialize-die :after ((newdie dice) &key)
+  (let ((face (slot-value newdie 'face)))
+    (cond 
+      ((and (stringp face) (string= face "F") 
+        (progn (setf (slot-value newdie 'face) '(-1 0 1)) 
+             (setf (slot-value newdie 'face-display) "F"))))
+      (t 
+        (setf (slot-value newdie 'face-display) (write-to-string face))))))
+
+(defun dice-create (x y)
+  (make-instance 'dice :number-of-dice x :face y))
+
+(defun dice-drop (a n l)
+  (subseq (sort l a) n))
+
+(defun dice-keep (a n l) 
+  (subseq (sort l a) 0 n))
+
+(defmethod dice-drop-low ((die dice) arg)
+  (setf (slot-value die 'keep-drop) (curry #'dice-drop #'< arg)))
+
+(defmethod dice-keep-low ((die dice) arg)
+  (setf (slot-value die 'keep-drop) (curry #'dice-keep #'< arg)))
+
+(defmethod dice-drop-high ((die dice) arg)
+  (setf (slot-value die 'keep-drop) (curry #'dice-drop #'> arg)))
+
+(defmethod dice-keep-high ((die dice) arg)
+  (setf (slot-value die 'keep-drop) (curry #'dice-keep #'> arg)))
+
+(defmethod dice-reroll ((die dice) arg)
+  (setf (slot-value die 'reroll) (adjoin arg (slot-value die 'reroll))))
+
+(defmethod dice-<-reroll ((die dice) arg)
+  (let ((matchlist (filter-on-pred (lambda (x) (< x arg)) (range 1 (1+ (* (slot-value die 'number-of-dice) (slot-value die 'face)))))))
+    (setf (slot-value die 'reroll) (union matchlist (slot-value die 'reroll)))))
+
+(defmethod dice-<=-reroll ((die dice) arg)
+  (let ((matchlist (filter-on-pred (lambda (x) (<= x arg)) (range 1 (1+ (* (slot-value die 'number-of-dice) (slot-value die 'face)))))))
+    (setf (slot-value die 'reroll) (union matchlist (slot-value die 'reroll)))))
+
+(defmethod dice->-reroll ((die dice) arg)
+  (let ((matchlist (filter-on-pred (lambda (x) (> x arg)) (range 1 (1+ (* (slot-value die 'number-of-dice) (slot-value die 'face)))))))
+    (setf (slot-value die 'reroll) (union matchlist (slot-value die 'reroll)))))
+
+(defmethod dice->=-reroll ((die dice) arg)
+  (let ((matchlist (filter-on-pred (lambda (x) (>= x arg)) (range 1 (1+ (* (slot-value die 'number-of-dice) (slot-value die 'face)))))))
+    (setf (slot-value die 'reroll) (union matchlist (slot-value die 'reroll)))))
+
+(defun generic-d (x y) 
+  (if (typep x 'dice) 
+    (dice-drop-low x y)
+    (dice-create x y)))
+
+(defun duplicate (n e)
+  (if (eq n 0)
+    NIL
+    (cons e (duplicate (- n 1) e))))
+
+(defun dice-create-fudge (x)
+  (dice-create x "F"))
+
+;defining function-list
+(defvar function-hash (make-hash-table))
+
+(defvar function-symbol-list NIL)
+
+(defmacro fl-fun (fname symbol type assoc args prec)
+  `(let ((entry (make-instance 'roll-function 
+                    :fname ,fname
+                    :symbol ,symbol
+                    :type ,type
+                    :assoc ,assoc
+                    :args ,args
+                    :prec ,prec)))
+    (progn
+      (build-sort ,symbol function-symbol-list (lambda (x) (length (slot-value x symbol))) :reverse T) 
+      (setf (gethash ,symbol function-hash) entry))))
+
+(progn 
+  ;       fname             symbol  type               assoc            args                prec
+  (fl-fun 'generic-d         "d"     '("in")            "left"           '("diceB" "number") 12)
+  (fl-fun 'duplicate         "#"     '("in")            "right"          '("number" "nodeB") 11)
+  (fl-fun 'dice-create-fudge "dF"    '("post")          "none"           '("number")         10)
+  (fl-fun 'dice-keep-high    "k"     '("in")            "none"           '("dice" "number")  10)
+  (fl-fun 'dice-drop-high    "dh"    '("in")            "none"           '("dice" "number")  11)
+  (fl-fun 'dice-keep-high    "kh"    '("in")            "none"           '("dice" "number")  11)
+  (fl-fun 'dice-drop-low     "dl"    '("in")            "none"           '("dice" "number")  10)
+  (fl-fun 'dice-keep-low     "kl"    '("in")            "none"           '("dice" "number")  10)
+  (fl-fun 'dice-reroll       "r"     '("in")            "none"           '("dice" "number")  10)
+  (fl-fun 'dice-<-reroll     "r<"    '("in")            "none"           '("dice" "number")  10)
+  (fl-fun 'dice-<=-reroll    "r<="   '("in")            "none"           '("dice" "number")  10)
+  (fl-fun 'dice->-reroll     "r>"    '("in")            "none"           '("dice" "number")  10)
+  (fl-fun 'dice->=-reroll    "r>="   '("in")            "none"           '("dice" "number")  10)
+  (fl-fun 'dice-<-explode    "!<"    '("in")            "none"           '("dice" "number")  10)
+  (fl-fun 'dice->-explode    "!>"    '("in")            "none"           '("dice" "number")  10)
+  (fl-fun 'dice-<=-explode   "!<="   '("in")            "none"           '("dice" "number")  10)
+  (fl-fun 'dice->=-explode   "!>="   '("in")            "none"           '("dice" "number")  10)
+  (fl-fun 'not               "~"     '("pre")           "none"           '("number")         6)
+  (fl-fun 'exclamation       "!"     '(("in") ("post")) '("left" "none") '(("dice" "number") "diceB")  10)
+  (fl-fun 'expt              "^"     '("in")            "right"          '("number" "number") 4)
+  (fl-fun 'expt              "**"    '("in")            "right"          '("number" "number") 4)
+  (fl-fun '*                 "*"     '("in")            "left"           '("number" "number") 3)
+  (fl-fun 'div               "/"     '("in")            "left"           '("number" "number") 3)
+  (fl-fun 'mod               "%"     '("in")            "left"           '("number" "number") 3)
+  (fl-fun '+                 "+"     '("in")            "left"           '("number" "number") 2)
+  (fl-fun '-                 "-"     '(("in") ("pre"))  '("left" "none") '(("number" "number") ("number")) 6)
+  (fl-fun 'greaterthan       ">"     '("in")            "none"           '("dieB" "number")   1)
+  (fl-fun 'lessthan          "<"     '("in")            "none"           '("dieB" "number")   1)
+  (fl-fun 'equalto           "=="    '("in")            "none"           '("dieB" "number")   1)
+  (fl-fun 'notequalto        "!="    '("in")            "none"           '("dieB" "number")   1)
+  (fl-fun 'greaterthaneq     ">="    '("in")            "none"           '("dieB" "number")   1)
+  (fl-fun 'lessthaneq        "<="    '("in")            "none"           '("dieB" "number")   1)
+  (fl-fun 'inlineif          "<="    '("func" 3)        "none"           '("number" "number" "number") 0)
+  (fl-fun 'ceiling           "ceil"  '("func" 1)        "none"           '("number") 0)
+  (fl-fun 'round             "round" '("func" 1)        "none"           '("number" "number" "number") 0)
+  (fl-fun 'floor             "floor" '("func" 1)        "none"           '("number") 0)
+  (fl-fun 'max               "max"   '("func" 1)        "none"           '("number") 0)
+  (fl-fun 'min               "min"   '("func" 1)        "none"           '("number") 0)
+  (fl-fun '+                 "sum"   '("func" 1)        "none"           '("number") 0)
+  (fl-fun '*                 "prod"  '("func" 1)        "none"           '("number") 0))
+
+(defun starts-with-one-of (l s)
+  (cond
+    ((endp l)
+     NIL)
+    ((str:starts-with? (first l) s)
+     (first l))
+    (T
+      (starts-with-one-of (rest l) s))))
+
+(defun char-in-range (c b e)
+  (let* (
+         (x (char-code c))
+         (test (<= x e))
+         (x (>= x b))
+         (x (and x test))) 
+    x))
+
+(defun is-digit (c)
+  (char-in-range c 48 57))
+
+(defun starts-with-digit (str)
+  (is-digit (char str 0)))
+
+(defun digit-parse (str ind)
+  (if (is-digit (char str ind))
+    (digit-parse str (+ ind 1))
+    ind))
+
+(defun str-in (str list)
+  (cond 
+    ((endp list) NIL)
+    ((string= str (first list)))
+    (T (str-in str (rest list)))))
+
+(defun number-parse (str lasttoken)
+  (if (string= (second lasttoken) "rparen")
+    '("*" "in" 0) 
+    (let* 
+      ((ind (digit-parse str 0))
+       (ind
+         (+ ind (if (= 46 (char-code (char str 0))) 1 0)))
+       (ind
+         (+ ind (digit-parse str 0)))
+       (ind
+         (+ ind (if (= 106 (char-code (char str 0))) 1 0))))
+      (list (str:substring 0 ind str) '("number") ind))))
+
+(defun fun-parse-indef (str fun lasttoken entry)
+  (if (string= (first (second (slot-value entry 'type))) "pre")
+     (list fun (list (if (str-in (first (second lasttoken)) '("number" "rparen")) "in" "pre")) (length fun)) 
+     (list fun (list (if (starts-with-digit (str:trim-left (str:substring 0 (length fun) str))) "in" "post")) (length fun))))
+
+(defun fun-parse (str fun lasttoken)
+  (let ((entry (gethash fun function-hash)))
+    (if (eq (type-of (slot-value entry 'assoc)) 'cons)
+      (fun-parse-indef str fun lasttoken entry)
+      (list fun (slot-value entry 'type) (length fun)))))
+
+(defvar lparen-tokens '("(" "["))
+
+(defvar rparen-tokens '(")" "]"))
+
+(defvar sep-tokens '(","))
+
+(defvar gen-tokens (append lparen-tokens rparen-tokens sep-tokens))
+
+(defun gen-parse (str sym lasttoken) 
+  (cond 
+    ((str-in sym lparen-tokens) 
+     (if (str-in (first (second lasttoken)) '("number" "rparen"))
+       (list "*" '("in") 0) 
+       (list sym '("lparen") (length sym))))
+    ((str-in sym rparen-tokens)
+     (list sym '("rparen") (length sym)))
+    (T 
+     (list sym '("sep") (length sym)))))
+
+(define-condition unknown-token (error)
+   ((message :initarg :message :reader message)))
+
+(defun next-token (str lasttoken)
+  (let 
+    ((curstr (str:trim-left str)))
+    (if (or (starts-with-digit curstr) (starts-with-one-of '("j" ".") curstr))
+      (number-parse curstr lasttoken)
+      (let ((funtest (starts-with-one-of function-symbol-list curstr))) 
+        (if funtest 
+          (fun-parse curstr funtest lasttoken)
+          (let ((gentest (starts-with-one-of gen-tokens curstr)))
+            (if gentest 
+              (gen-parse curstr gentest lasttoken) 
+              (error 'unknown-token :message (str:concat "Unknown Token at start of:" curstr)))))))))
+
+(defun token-type-name (token) 
+  (first (second token)))
+
+(defun infix-to-postfix-rparen-stack-rec (token str output stack flatcommas stackcommas lasttoken) 
+  (if (or (endp stack) (not (string= (token-type-name (first stack))) "lparen"))
+    (list token str output stack flatcommas stackcommas lasttoken)
+    (infix-to-postfix-rparen-stack token str (cons (first stack) output) (rest stack) flatcommas stackcommas lasttoken)))
+
+(defun infix-to-postfix-rparen-getcommas (token str output stack flatcommas stackcommas lasttoken)
+  (if (endp stack)
+    (list token flatcommas          str output stack        0          stackcommas        lasttoken)
+    (list token (first stackcommas) str output (rest stack) flatcommas (rest stackcommas) lasttoken)))
+
+(defun infix-to-postfix-rparen-with-commas (token comma-count str output stack flatcommas stackcommas lasttoken)
+  (let (v (+ comma-count (if (string= (token-type-name lastoken) "sep") 0 1)))
+    (if (string= (first token) "]") 
+      (list token comma-count str (cons `(,(str:concat "res" (write-to-string v)) ("resolvector" ,v) 0) output) stack flatcommas stackcommas lasttoken)
+      (list token comma-count str (cons `(,(str:concat "vec" (write-to-string v)) ("vector" ,v) 0) output) stack flatcommas stackcommas lasttoken))))
+
+(defun infix-to-postfix-rparen-penult (token comma-count str output stack flatcommas stackcommas lasttoken)
+  (if (or (> comma-count 0) (string= (first token) "]"))
+     (infix-to-postfix-rparen-with-commas token comma-count str output stack flatcommas stackcommas lasttoken)
+     (list token comma-count str output stack flatcommas stackcommas lasttoken)))
+
+(defun infix-to-postfix-rparen-finalize (token comma-count str output stack flatcommas stackcommas lasttoken)
+  (if (or (endp stack) (not (str-in (token-type-name (first stack)) '("func" "resolvector"))))
+    (list str output stack flatcommas stackcommas token)
+    (list str (cons (first stack) output) (rest stack) flatcommas stackcommas token)))
+
+(defun infix-to-postfix-rparen (token str output stack flatcommas stackcommas lasttoken) 
+  (apply #'infix-to-postfix-rparen-finalize
+    (apply #'infix-to-postfix-rparen-penult
+      (apply #'infix-to-postfix-rparen-getcommas
+        (infix-to-postfix-rparen-stack-rec token str output stack flatcommas stackcommas lasttoken)))))
+
+(defun infix-to-postfix-separ-rec (token str output stack flatcommas stackcommas lasttoken)
+  (if (or (endp stack) (str-in (first (first stack)) lparen-tokens))
+    (list str output stack flatcommas stackcommas token)
+    (infix-to-postfix-separ-rec token str (cons (first stack) output) (rest stack) flatcommas stackcommas lasttoken)))
+
+(defun infix-to-postfix-separ (token str output stack flatcommas stackcommas lasttoken)
+  (if (endp stackcommas)
+    (infix-to-postfix-separ-rec token str output stack (1+ flatcommas) stackcommas lasttoken)
+    (infix-to-postfix-separ-rec token str output stack flatcommas (cons (1+ (first stackcommas)) (rest stackcommas)) lasttoken)))
+
+(defun small-fun (fname symbol type assoc args prec)
+  (make-instance 'roll-function 
+                    :fname fname
+                    :symbol symbol
+                    :type type
+                    :assoc assoc
+                    :args args
+                    :prec prec))
+
+(defun infix-to-postfix-infix-get-full-entry (entry)
+   (if (eq (type-of (slot-value entry 'assoc)) 'cons)
+      (small-fun (slot-value entry 'fname) (slot-value entry 'symbol) (first (slot-value entry 'type)) (first (slot-value entry 'assoc)) (first (slot-value entry 'args)) (slot-value entry 'prec))
+      entry))
+
+(define-condition indefinite-prec (error)
+   ((message :initarg :message :reader message)))
+
+(defun infix-to-postfix-infix-entry-compare (entry token str output stack flatcommas stackcommas lasttoken)
+  (let ((otherentry (gethash (first (first (stack))) function-hash))
+        (otherentry (infix-to-postfix-infix-get-full-entry otherentry))
+        (origassoc  (slot-value entry      'assoc))
+        (otherassoc (slot-value otherentry 'assoc))
+        (origprec  (slot-value entry      'prec))
+        (otherprec (slot-value otherentry 'prec)))
+    (case 
+      ((and (string= origassoc "none") (string= otherassoc "none") (eq origprec otherprec))
+       (error 'unknown-token :message (str:concat "Indefinite Precedence in string:" (first (first (stack))) (first token))))
+      ((or (< origprec otherprec) (and (string= origassoc "left") (eq origprec otherprec))) 
+       (list T (list token str (cons (first stack) output) (rest stack) flatcommas stackcommas lasttoken)))
+      (T 
+       (list NIL (list token str output stack flatcommas stackcommas lasttoken))))))
+        
+(defun infix-to-postfix-infix-rec (entry token str output stack flatcommas stackcommas lasttoken)
+  (if (or (endp stack) (not (str-in (token-type-name (first stack)) '("in" "pre" "post"))))
+    (list token str output stack flatcommas stackcommas lasttoken)
+    (let ((compare (infix-to-postfix-infix-entry-compare entry token str output stack flatcommas stackcommas lasttoken)))
+     (if (first compare)
+       (apply #'infix-to-postfix-infix-rec (rest compare)) 
+       (list (third compare) (fourth compare) (cons (second compare) (fifth compare)) (sixth compare) (seventh compare) (second compare))))))
+
+(defun infix-to-postfix-infix (token str output stack flatcommas stackcommas lasttoken)
+  (infix-to-postfix-infix-rec (infix-to-postfix-infix-get-full-entry token (gethash (first token) function-hash)) token str output stack flatcommas stackcommas lasttoken))
+
+(defun infix-to-postfix-unary-get-full-entry (entry)
+   (if (eq (type-of (slot-value entry 'assoc)) 'cons)
+      (small-fun (slot-value entry 'fname) (slot-value entry 'symbol) (second (slot-value entry 'type)) (second (slot-value entry 'assoc)) (second (slot-value entry 'args)) (slot-value entry 'prec))
+      entry))
+
+(defun infix-to-postfix-unary-entry-compare (entry token str output stack flatcommas stackcommas lasttoken)
+  (let ((otherentry (gethash (first (first (stack))) function-hash))
+        (otherentry (infix-to-postfix-unary-get-full-entry otherentry))
+        (origprec  (slot-value entry      'prec))
+        (otherprec (slot-value otherentry 'prec)))
+    (if (< origprec otherprec)
+      (list T (list entry token str (cons (first stack) output) (rest stack) flatcommas stackcommas lasttoken))
+      (list NIL (list entry token str output stack flatcommas stackcommas lasttoken)))))
+
+(defun infix-to-postfix-unary-post (entry token str output stack flatcommas stackcommas lasttoken)
+  (if (or (endp stack) (not (str-in (slot-value (first stack)) '("in" "pre" "post"))))
+    (list str (cons token output) stack flatcommas stackcommas token)
+    (let ((compare (infix-to-postfix-unary-entry-compare entry token str output stack flatcommas stackcommas lasttoken)))
+      (if (first compare)
+        (apply #'infix-to-postfix-unary-post (rest compare))
+        (list str (cons token (fourth compare)) (fifth compare) flatcommas stackcommas token)))))
+
+(defun infix-to-postfix-unary (token str output stack flatcommas stackcommas lasttoken) 
+  (let ((entry (infix-to-postfix-unary-get-full-entry (gethash (first token) function-hash)))) 
+    (if (string= (slot-value entry 'type) "post")
+      (infix-to-postfix-unary-post entry token str output stack flatcommas stackcommas lasttoken)
+      (list str output (cons token stack) flatcommas stackcommas token))))
+
+(defun infix-to-postfix-step (str output stack flatcommas stackcommas lasttoken) 
+  (if (string= str "")
+    (infix-to-postfix-last output stack flatcommas stackcommas lasttoken) 
+    (let* 
+      ((token (next-token str lasttoken))) 
+      (cond
+        ((string= (token-type-name token) "number")
+         (infix-to-postfix-step 
+           (str:substring 0 (third token)) 
+           (cons token output) 
+           stack 
+           flatcommas
+           stackcommas
+           token))
+        ((string= (token-type-name token) "func")
+         (infix-to-postfix-step 
+           (str:substring 0 (third token)) 
+           output 
+           (cons token stack) 
+           flatcommas
+           stackcommas
+           token))
+        ((string= (token-type-name token) "lparen")
+         (infix-to-postfix-step 
+           (str:substring 0 (third token))
+           output
+           (cons token stack)
+           flatcommas
+           (cons 0 stackcommas)
+           token))
+        ((string= (token-type-name token) "rparen")
+         (apply #'infix-to-postfix-step (infix-to-postfix-rparen token str output stack flatcommas stackcommas lasttoken)))
+        ((string= (token-type-name token) "sep")
+         (apply #'infix-to-postfix-step (infix-to-postfix-separ token str output stack flatcommas stackcommas lasttoken)))
+        ((string= (token-type-name token) "in")
+         (apply #'infix-to-postfix-step (infix-to-postfix-infix token str output stack flatcommas stackcommas lasttoken)))
+        (T
+         (apply #'infix-to-postfix-step (infix-to-postfix-unary token str output stack flatcommas stackcommas lasttoken)))))))
