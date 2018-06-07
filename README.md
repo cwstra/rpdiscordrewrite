@@ -1,8 +1,10 @@
 # Discord Bot for Tabletop RPG Systems
 
+Hi again! I'm rewriting the [old discord bot](https://github.com/cwstra/rpdiscordbot) for a wider release! The source code is still open-source, so you can peruse it al your leisure, but I'll write up how to install a copy of your own when I actually do that myself. For now, you can look at the documentation for the end-user [located here](https://rpdiscordbot.readthedocs.io/en/latest/).
+<!---
 ## Intro
 
-Hello folks! I've recently started GMing a *very* small system ([located here, for those interested](http://forums.pokemontabletop.com/topic/30120503/1/)), and, for a change of pace, the brunt of the gameplay is taking place in Discord. 
+Hello folks! I've recently started GMing a *very* small system ([located here, for those interested](http://forums.pokemontabletop.com/topic/30120503/1/)), and, for a change of pace, the brunt of the gameplay is taking place in Discord.
 
 Naturally, I wanted a bot to handle rolling and such. While there were a few existing bots for these purposes, there weren't any that had all of the features I wanted. So I made my own.
 
@@ -48,4 +50,5 @@ You will also need your own Discord bot set up, with token. Instructions for tha
 
 By default, the bot's prefix is a forward slash (/). This can be changed in the settings.json, or by using the prefix command while interacting with the bot.
 
-The bot itself has a "help" command, which *should* provide enough help for basic use. The bot was mostly made for my personal use, and I'm not terribly good at writeup, so please, ask as many questions and give as much feedback as you want. 
+The bot itself has a "help" command, which *should* provide enough help for basic use. The bot was mostly made for my personal use, and I'm not terribly good at writeup, so please, ask as many questions and give as much feedback as you want.
+-->
