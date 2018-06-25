@@ -20,7 +20,7 @@ extra-source-files:
 description:         Please see the README on GitHub at <https://github.com/githubuser/diceparser#readme>
 
 dependencies:
-- base >= 4.7 && < 5
+- base
 - text
 - arithmoi
 - unordered-containers
@@ -28,10 +28,11 @@ dependencies:
 - primitive
 - extra
 - scotty
+- timeit
+- aeson
+- cassava
 - Chart
 - Chart-cairo
-- aeson
-- timeit
 
 library:
   source-dirs: src

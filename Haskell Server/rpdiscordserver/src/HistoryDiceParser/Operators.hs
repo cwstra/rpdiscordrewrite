@@ -1,10 +1,10 @@
 module HistoryDiceParser.Operators
 (KeepDrop(..)
-,IntTest(..)
-,TestInput(..)
 ,smartIntegerToInt
+,NumTest(..)
 ,Dice(..)
 ,createDie
+,showDieSuffix
 ,addExplode
 ,addReroll
 ,addKeepDrop
@@ -30,6 +30,7 @@ module HistoryDiceParser.Operators
 import qualified Data.Text.Lazy as T
 import qualified Data.HashMap.Strict as Map
 import Data.List
+import Data.Maybe
 
 import Debug.Trace
 
@@ -38,10 +39,9 @@ import General.UserNumber
 data KeepDrop = KeepHigh | DropHigh | KeepLow | DropLow
   deriving (Eq)
 
-data IntTest = IntTest {testLes :: Maybe Int, testEq :: Maybe [Int], testGre :: Maybe Int}
+data NumTest = TestNone | TestLeq GeneralRealNumber | TestLes GeneralRealNumber | TestGeq GeneralRealNumber | TestGre GeneralRealNumber
+                 | TestEq [GeneralNumber] | TestNeq [GeneralNumber] | TestIn GeneralRealNumber GeneralRealNumber | TestOut GeneralRealNumber GeneralRealNumber
   deriving (Show, Eq)
-data TestInput = TestLeq Int | TestLes Int | TestGeq Int | TestGre Int | TestEq Int
-  deriving (Show)
 
 smartIntegerToInt :: Integer -> Int
 smartIntegerToInt n
@@ -49,40 +49,15 @@ smartIntegerToInt n
   |n < fromIntegral (minBound::Int) = minBound::Int
   |otherwise = fromInteger n
 
-inputParse :: Either Int [GeneralNumber] -> (TestInput, Either GeneralNumber (GeneralNumber -> Bool)) -> Either IntTest [GeneralNumber] -> (Either IntTest [GeneralNumber], Bool)
-inputParse (Left n) (input, _) (Left intTest@IntTest {testLes=les, testEq=eq, testGre=gre})
-  |TestLeq m <- input, Nothing   <- les               = (Left $ intTest {testLes=Just $ m + 1}, True)
-  |TestLeq m <- input, Just oldM <- les, m + 1> oldM  = (Left $ intTest {testLes=Just $ m + 1}, True)
-  |TestLeq m <- input, Just oldM <- les               = (Left intTest, False)
-  |TestLes m <- input, Nothing   <- les               = (Left $ intTest {testLes=Just m}, True)
-  |TestLes m <- input, Just oldM <- les, m > oldM     = (Left $ intTest {testLes=Just m}, True)
-  |TestLes m <- input, Just oldM <- les               = (Left intTest, False)
-  |TestEq  m <- input, Nothing   <- eq                = (Left $ intTest {testEq = Just [m]}, True)
-  |TestEq  m <- input, Just list <- eq, m `elem` list = (Left intTest, False)
-  |TestEq  m <- input, Just list <- eq                = (Left $ intTest {testEq = Just (m:list)}, True)
-  |TestGre m <- input, Nothing   <- gre               = (Left $ intTest {testGre=Just m}, True)
-  |TestGre m <- input, Just oldM <- gre, m > oldM     = (Left $ intTest {testGre=Just m}, True)
-  |TestGre m <- input, Just oldM <- gre               = (Left intTest, False)
-  |TestGeq m <- input, Nothing   <- gre               = (Left $ intTest {testGre=Just $ m - 1}, True)
-  |TestGeq m <- input, Just oldM <- gre, m - 1< oldM  = (Left $ intTest {testGre=Just $ m - 1}, True)
-  |TestGeq m <- input, Just oldM <- gre               = (Left intTest, False)
-inputParse (Right nums) (_, Left number) (Right list)
-  |number `elem` list = (Right list, False)
-  |otherwise = (Right (number:list), True)
-inputParse (Right nums) (_, Right predicate) (Right list) = (Right $ union list newInfo, not(null newInfo))
-  where
-    newInfo = [n | n <- nums, n `notElem` list && predicate n]
-
 data Dice = Die {poolSize::      Int,
                  poolDis::       String,
                  face::          Either Int [GeneralNumber],
                  faceDis::       String,
-                 exploding::     Either IntTest [GeneralNumber],
-                 reroll::        Either IntTest [GeneralNumber],
+                 exploding::     (NumTest, Bool), -- If True, display number, else hide it
+                 reroll::        NumTest,
                  keep_drop::     Maybe Int,
                  keep_drop_type::Maybe KeepDrop,
-                 success::       Either IntTest [GeneralNumber],
-                 suffix::        String}
+                 success::       NumTest}
   deriving (Eq)
 
 createDie :: Int -> String -> Either Int [GeneralNumber] -> String -> Dice
@@ -91,44 +66,59 @@ createDie poolnum poolstr facerep facestring =
               poolDis=poolstr,
               face=facerep,
               faceDis=facestring,
-              exploding=emptytest,
-              reroll=emptytest,
+              exploding=(TestNone, False),
+              reroll=TestNone,
               keep_drop=Nothing,
               keep_drop_type=Nothing,
-              success=emptytest,
-              suffix=""}
-  where
-    makeempty :: Either Int [GeneralNumber] -> Either IntTest [GeneralNumber]
-    makeempty (Left n) = Left IntTest {testLes=Nothing, testGre=Nothing, testEq=Nothing}
-    makeempty (Right n) = Right []
-    emptytest = makeempty facerep
+              success=TestNone}
 
-addExplode :: Dice -> (TestInput, Either GeneralNumber (GeneralNumber -> Bool)) -> String -> Dice
-addExplode die@Die {face=faceposs, exploding=explodlist, suffix=suff} testTup string = die {exploding = res, suffix = suff ++ (if test then string else "")}
-  where
-    (res, test) = inputParse faceposs testTup explodlist
+addExplode :: Dice -> NumTest -> Bool -> Dice
+addExplode die@Die {face=faceposs} numTest bool = die {exploding = (numTest, bool)}
 
-addReroll :: Dice -> (TestInput, Either GeneralNumber (GeneralNumber -> Bool)) -> String -> Dice
-addReroll die@Die {face=faceposs, reroll=rerolllist, suffix=suff} testTup string = die {reroll = res, suffix = suff ++ (if test then string else "")}
-  where
-    (res, test) = inputParse faceposs testTup rerolllist
+addReroll :: Dice -> NumTest -> Dice
+addReroll die@Die {face=faceposs} numTest = die {reroll = numTest}
 
 addKeepDrop :: Dice -> KeepDrop -> Int -> Dice
-addKeepDrop die@Die {suffix=suff} kdt num = die {keep_drop=Just num, keep_drop_type=Just kdt, suffix = suff ++ dis kdt ++ show num}
+addKeepDrop die kdt num = die {keep_drop=Just num, keep_drop_type=Just kdt}
   where
     dis :: KeepDrop -> String
-    dis KeepHigh = "k"
+    dis KeepHigh = "kh"
     dis KeepLow = "kl"
     dis DropHigh = "dh"
-    dis DropLow = "d"
+    dis DropLow = "dl"
 
-addSuccess :: Dice -> (TestInput, Either GeneralNumber (GeneralNumber -> Bool)) -> String -> Dice
-addSuccess die@Die {face=faceposs, success=successlist, suffix=suff} testTup string = die {success = res, suffix = suff ++ (if test then string else "")}
+addSuccess :: Dice -> NumTest -> Dice
+addSuccess die@Die {face=faceposs} numTest = die {success = numTest}
+
+showDieSuffix :: Dice -> String
+showDieSuffix Die {exploding = (explodingTest, explodingBool), reroll = rerollTest, keep_drop=kd, keep_drop_type=kdt, success=successTest} = suffix
   where
-    (res, test) = inputParse faceposs testTup successlist
+    fancyListShow :: [GeneralNumber] -> String
+    fancyListShow [] = "()"
+    fancyListShow [x] = show x
+    fancyListShow list = "(" ++ intercalate ", " (map show list) ++ ")"
+    parseGenericTest :: String -> NumTest -> String
+    parseGenericTest pre TestNone = ""
+    parseGenericTest pre (TestLeq n) = pre ++ "<=" ++ show (GReal n)
+    parseGenericTest pre (TestLes n) = pre ++ "<" ++ show (GReal n)
+    parseGenericTest pre (TestGeq n) = pre ++ ">=" ++ show (GReal n)
+    parseGenericTest pre (TestGre n) = pre ++ ">" ++ show (GReal n)
+    parseGenericTest pre (TestEq n)  = (if pre == "" then "==" else pre) ++ fancyListShow n
+    parseGenericTest pre (TestNeq n) = pre ++ "/=" ++ fancyListShow n
+    parseGenericTest pre (TestIn m n) = pre ++ "In(" ++ show (GReal m) ++ "," ++ show (GReal n) ++ ")"
+    parseGenericTest pre (TestOut m n) = pre ++ "Out(" ++ show (GReal m) ++ "," ++ show (GReal n) ++ ")"
+    parseKeepDrop :: Maybe Int -> Maybe KeepDrop -> String
+    parseKeepDrop Nothing Nothing = ""
+    parseKeepDrop (Just n) (Just KeepHigh) = "kh" ++ show n
+    parseKeepDrop (Just n) (Just DropHigh) = "dh" ++ show n
+    parseKeepDrop (Just n) (Just KeepLow)  = "kl" ++ show n
+    parseKeepDrop (Just n) (Just DropLow)  = "dl" ++ show n
+    suffix = concat $ filter ("" /=) [if explodingBool then parseGenericTest "!" explodingTest else (if explodingTest /= TestNone then "!" else ""),
+                                      parseGenericTest "r" rerollTest, parseKeepDrop kd kdt,
+                                      parseGenericTest "" successTest]
 
 instance Show Dice where
-  show Die {poolDis=pool, faceDis=fac, suffix=suff} = pool ++ "d" ++ fac ++ suff
+  show d@Die {poolDis=pool, faceDis=fac} = pool ++ "d" ++ fac ++ showDieSuffix d
 
 newtype OpVector = OpVector [OpStatic]
   deriving (Eq)
@@ -196,35 +186,49 @@ maybeCons :: a -> Maybe [a] -> Maybe [a]
 maybeCons a Nothing = Nothing
 maybeCons a (Just as) = Just (a:as)
 
-vecIntTest :: OpVector -> Maybe [Integer]
-vecIntTest (OpVector list) = res
+baseVecTest :: (OpStatic -> Maybe a) -> OpVector -> Maybe [a]
+baseVecTest matcher (OpVector list) = baseVecTestH matcher list
   where
-    vecIntTestH :: [OpStatic] -> Maybe [Integer]
-    vecIntTestH [] = Just []
-    vecIntTestH (x:xs)
-      |StaticNum (GReal (GSimp (GInt n))) <- x = maybeCons n (vecIntTestH xs)
+    baseVecTestH :: (OpStatic -> Maybe a) -> [OpStatic] -> Maybe [a]
+    baseVecTestH matcher [] = Just []
+    baseVecTestH matcher (x:xs)
+      |Just e <- matcher x = maybeCons e (baseVecTestH matcher xs)
       |otherwise = Nothing
-    res = vecIntTestH list
 
 vecPosIntTest :: OpVector -> Maybe [Integer]
-vecPosIntTest (OpVector list) = res
+vecPosIntTest = baseVecTest posIntTest
   where
-    vecIntTestH :: [OpStatic] -> Maybe [Integer]
-    vecIntTestH [] = Just []
-    vecIntTestH (x:xs)
-      |StaticNum (GReal (GSimp (GInt n))) <- x, n >= 0 = maybeCons n (vecIntTestH xs)
-      |otherwise = Nothing
-    res = vecIntTestH list
+    posIntTest :: OpStatic -> Maybe Integer
+    posIntTest (StaticNum (GReal (GSimp (GInt n)))) = if n >=0 then Just n else Nothing
+    posIntTest _ = Nothing
+
+vecIntTest :: OpVector -> Maybe [Integer]
+vecIntTest = baseVecTest intTest
+  where
+    intTest :: OpStatic -> Maybe Integer
+    intTest (StaticNum (GReal (GSimp (GInt n)))) = Just n
+    intTest _ = Nothing
 
 vecNumTest :: OpVector -> Maybe [GeneralNumber]
-vecNumTest (OpVector list) = res
+vecNumTest = baseVecTest numTest
   where
-    vecNumTestH :: [OpStatic] -> Maybe [GeneralNumber]
-    vecNumTestH [] = Just []
-    vecNumTestH (x:xs)
-      |StaticNum num <- x = maybeCons num (vecNumTestH xs)
+    numTest :: OpStatic -> Maybe GeneralNumber
+    numTest (StaticNum n) = Just n
+    numTest _ = Nothing
+
+vecRealNumOrDieTest :: OpVector -> Maybe [OpStatic]
+vecRealNumOrDieTest = baseVecTest realNumOrDieTest
+  where
+    realNumOrDieTest :: OpStatic -> Maybe OpStatic
+    realNumOrDieTest n@(StaticNum (GReal _)) = Just n
+    realNumOrDieTest d@(StaticDie Die {face = facePoss})
+      |Left _ <- facePoss = Just d
+      |Right list <- facePoss, all realTest list = Just d
       |otherwise = Nothing
-    res = vecNumTestH list
+    realNumOrDieTest _ = Nothing
+    realTest :: GeneralNumber -> Bool
+    realTest (GReal _) = True
+    realTest _ = False
 
 childIntTest :: [OpType] -> Maybe [Integer]
 childIntTest [] = Just []
@@ -251,14 +255,29 @@ childStaticTest (x:xs)
   |TypeStatic ele <- x = maybeCons ele $ childStaticTest xs
   |otherwise = Nothing
 
-dFunction :: OpType -> OpType -> FunRes
-dFunction (TypeStatic (StaticNum num)) op2
+realDieTest :: Dice -> Maybe (Either Int [GeneralRealNumber])
+realDieTest Die {face=Left n} = Just $ Left n
+realDieTest Die {face=Right facelist} = isreal facelist
+  where
+    maybeEither :: GeneralRealNumber -> Maybe (Either Int [GeneralRealNumber]) -> Maybe (Either Int [GeneralRealNumber])
+    maybeEither x Nothing = Nothing
+    maybeEither x (Just (Right xs)) = Just $ Right $ x:xs
+    isreal :: [GeneralNumber] -> Maybe (Either Int [GeneralRealNumber])
+    isreal [] = Just $ Right []
+    isreal (GReal x:xs) = maybeEither x $ isreal xs
+    isreal list = Nothing
+
+feedThrough :: (Show a) => (String -> a -> b) -> (a -> b)
+feedThrough fun a = fun (show a) a
+
+dFunction :: String -> OpType -> OpType -> FunRes
+dFunction string (TypeStatic (StaticNum num)) op2
   |GReal (GSimp (GInt m)) <- num, m>0, TypeStatic (StaticNum (GReal (GSimp (GInt n)))) <- op2, n > 0
-    = moldres $ Left $ createDie (smartIntegerToInt m) (show $ smartIntegerToInt m) (Left $ smartIntegerToInt n) (show $ smartIntegerToInt n)
+    = moldres $ Left $ createDie (smartIntegerToInt m) string (Left $ smartIntegerToInt n) (show $ smartIntegerToInt n)
   |GReal (GSimp (GInt m)) <- num, m>0, TypeStatic (StaticNum n) <- op2 = Errored $ ResolveException $ T.pack "Non-positive number passed as right argument to d."
   |GReal (GSimp (GInt m)) <- num, m>0, TypeStatic (StaticVec (OpVector [])) <- op2 = Errored $ ResolveException $ T.pack "Empty list passed as right argument to d."
   |GReal (GSimp (GInt m)) <- num, m>0, TypeStatic (StaticVec vec) <- op2, Just v <- vecNumTest vec
-    = moldres $ Left $ createDie (smartIntegerToInt m) (show $ smartIntegerToInt m) (Right v) (show vec)
+    = moldres $ Left $ createDie (smartIntegerToInt m) string (Right v) (show vec)
   |GReal (GSimp (GInt m)) <- num, m>0 = NeedsRolls
   |GReal (GSimp (GInt m)) <- num = Errored $ ResolveException $ T.pack "Non-positive number passed as left argument to d."
   |otherwise = Errored $ ResolveException $ T.pack "Non-integer number passed as left argument to d."
@@ -266,14 +285,10 @@ dFunction (TypeStatic (StaticNum num)) op2
     moldres :: Either Dice ResolveException -> FunRes
     moldres (Left x) = Resolved $ TypeStatic $ StaticDie x
     moldres (Right y) = Errored y
-dFunction (TypeStatic (StaticDie d)) op2
-  |TypeStatic (StaticNum (GReal (GSimp (GInt n)))) <- op2
-    = Resolved $ TypeStatic $ StaticDie $ addKeepDrop d DropLow $ smartIntegerToInt n
-  |TypeStatic (StaticNum n) <- op2 = Errored $ ResolveException $ T.pack "Die passed as left argument, invalid (i.e. non-integer) number as right argument to d."
-  |TypeStatic (StaticVec v) <- op2 = Errored $ ResolveException $ T.pack "Die passed as left argument, vector passed as right argument to d."
-dFunction (TypeStatic (StaticVec vec)) op2 = Errored $ ResolveException $ T.pack "Vector passed as left argument to d."
-dFunction (TypeStatic (StaticBool b)) op2 = Errored $ ResolveException $ T.pack "Boolean passed as left argument to d."
-dFunction op1 op2 = NeedsRolls
+
+dFunction _ (TypeStatic (StaticVec vec)) op2 = Errored $ ResolveException $ T.pack "Vector passed as left argument to d."
+dFunction _ (TypeStatic (StaticBool b)) op2 = Errored $ ResolveException $ T.pack "Boolean passed as left argument to d."
+dFunction _ _ _ = NeedsRolls
 
 vectorify :: [OpType] -> FunRes
 vectorify list
@@ -325,7 +340,7 @@ fudgeDie (TypeStatic (StaticNum num))
   |GReal (GSimp (GInt n)) <- num = Errored $ ResolveException $ T.pack "Non-positive integer passed to dF."
   |otherwise = Errored $ ResolveException $ T.pack "Non-integer passed to dF."
   where
-    fudgelist = [GReal (GSimp (GInt (-1))), GReal (GSimp (GInt 0)), GReal (GSimp (GInt 1))]
+    fudgelist = [-1, 0, 1]
     moldres :: Either Dice ResolveException -> FunRes
     moldres (Left x) = Resolved $ TypeStatic $ StaticDie x
     moldres (Right y) = Errored y
@@ -343,52 +358,77 @@ keepdropFun kd op1 op2
   |TypeStatic x <- op1 = Errored $ ResolveException $ T.pack "Non-die passed as left argument to keep/drop function."
   |otherwise = NeedsRolls
 
-rerollFun :: (Int -> TestInput, Maybe (GeneralNumber -> GeneralNumber -> Bool), String) -> OpType -> OpType -> FunRes
-rerollFun (testInput, testPred, string) op1 op2
-  |TypeStatic (StaticDie d) <- op1, TypeStatic (StaticNum (GReal x)) <- op2 = Resolved $ TypeStatic $ StaticDie $ addReroll d (testInput $ floor x, parseTest testPred $ GReal x) string
-  |TypeStatic (StaticDie d) <- op1, TypeStatic (StaticVec (OpVector list)) <- op2, Nothing <- testPred = rerollOneOfList d list
-  |TypeStatic (StaticDie d) <- op1, TypeStatic (StaticVec v) <- op2 = Errored $ ResolveException $ T.pack "Vector passed as right argument to ordered reroll function."
+parseNumTestToken :: NumTest -> OpStatic -> Either NumTest (Either () ResolveException)
+parseNumTestToken TestNone _ = Left TestNone
+parseNumTestToken (TestLeq _) arg
+  |StaticNum (GReal n) <- arg = Left $ TestLeq n
+  |StaticNum n <- arg = Right $ Right $ ResolveException $ T.pack "Unordered number passed to less than or equal to dice comparison."
+  |StaticDie d <- arg = Right $ Left ()
+  |otherwise = Right $ Right $ ResolveException $ T.pack "Non-number passed to less than or equal to dice comparison"
+parseNumTestToken (TestLes _) arg
+  |StaticNum (GReal n) <- arg = Left $ TestLes n
+  |StaticNum n <- arg = Right $ Right $ ResolveException $ T.pack "Unordered number passed to less than dice comparison."
+  |StaticDie d <- arg = Right $ Left ()
+  |otherwise = Right $ Right $ ResolveException $ T.pack "Non-number passed to less than dice comparison"
+parseNumTestToken (TestGeq _) arg
+  |StaticNum (GReal n) <- arg = Left $ TestGeq n
+  |StaticNum n <- arg = Right $ Right $ ResolveException $ T.pack "Unordered number passed to greater than or equal to dice comparison."
+  |StaticDie d <- arg = Right $ Left ()
+  |otherwise = Right $ Right $ ResolveException $ T.pack "Non-number passed to greater than or equal to dice comparison"
+parseNumTestToken (TestGre _) arg
+  |StaticNum (GReal n) <- arg = Left $ TestGre n
+  |StaticNum n <- arg = Right $ Right $ ResolveException $ T.pack "Unordered number passed to greater than dice comparison."
+  |StaticDie d <- arg = Right $ Left ()
+  |otherwise = Right $ Right $ ResolveException $ T.pack "Non-number passed to greater than dice comparison"
+parseNumTestToken (TestEq _) arg
+  |StaticNum n <- arg = Left $ TestEq [n]
+  |StaticDie d <- arg = Right $ Left ()
+  |StaticVec v <- arg, Just l <- vecNumTest v = Left $ TestNeq l
+  |StaticVec v <- arg, Just _ <- vecRealNumOrDieTest v = Right $ Left ()
+  |otherwise = Right $ Right $ ResolveException $ T.pack "Non-number/numeric vector passed to equal to dice comparison"
+parseNumTestToken (TestNeq _) arg
+  |StaticNum n <- arg = Left $ TestNeq [n]
+  |StaticDie d <- arg = Right $ Left ()
+  |StaticVec v <- arg, Just l <- vecNumTest v = Left $ TestNeq l
+  |StaticVec v <- arg, Just _ <- vecRealNumOrDieTest v = Right $ Left ()
+  |otherwise = Right $ Right $ ResolveException $ T.pack "Non-number/numeric vector passed to not equal to dice comparison"
+parseNumTestToken (TestIn _ _) arg
+  |StaticVec (OpVector [StaticNum (GReal m), StaticNum (GReal n)]) <- arg = Left $ TestIn m n
+  |StaticVec (OpVector [StaticNum _, StaticNum _]) <- arg = Right $ Right $ ResolveException $ T.pack "Vector with non-ordered elements passed to dice range comparison."
+  |StaticVec (OpVector [StaticDie _, StaticDie _]) <- arg = Right $ Left ()
+  |StaticVec vec@(OpVector _) <- arg, Just l <- vecNumTest vec = Right $ Right $ ResolveException $ T.pack "Vector of incorrect length passed to dice range comparison."
+  |StaticVec (OpVector _) <- arg = Right $ Right $ ResolveException $ T.pack "Non-numeric vector passed to dice range comparison."
+  |otherwise = Right $ Right $ ResolveException $ T.pack "Non-vector passed to dice range comparison"
+parseNumTestToken (TestOut _ _) arg
+  |StaticVec (OpVector [StaticNum (GReal m), StaticNum (GReal n)]) <- arg = Left $ TestOut m n
+  |StaticVec (OpVector [StaticNum _, StaticNum _]) <- arg = Right $ Right $ ResolveException $ T.pack "Vector with non-ordered elements passed to dice range comparison."
+  |StaticVec (OpVector [StaticDie _, StaticDie _]) <- arg = Right $ Left ()
+  |StaticVec vec@(OpVector _) <- arg, Just l <- vecNumTest vec = Right $ Right $ ResolveException $ T.pack "Vector of incorrect length passed to dice range comparison."
+  |StaticVec (OpVector _) <- arg = Right $ Right $ ResolveException $ T.pack "Non-numeric vector passed to dice range comparison."
+  |otherwise = Right $ Right $ ResolveException $ T.pack "Non-vector passed to dice range comparison"
+
+rerollFun :: NumTest -> OpType -> OpType -> FunRes
+rerollFun numTest op1 op2
+  |TypeStatic (StaticDie d) <- op1, TypeStatic x <- op2 = resParse d x
   |TypeStatic (StaticDie d) <- op1 = Errored $ ResolveException $ T.pack "Non-number passed as right argument to reroll function."
   |TypeStatic x <- op1 = Errored $ ResolveException $ T.pack "Non-die passed as left argument to reroll function."
   |otherwise = NeedsRolls
   where
-    parseTest :: Maybe (GeneralNumber -> GeneralNumber -> Bool) -> GeneralNumber -> Either GeneralNumber (GeneralNumber -> Bool)
-    parseTest Nothing num = Left num
-    parseTest (Just fun) num = Right $ fun num
-    makesure :: [OpStatic] -> FunRes
-    makesure [] = NeedsRolls
-    makesure (StaticVec v:xs) = Errored $ ResolveException $ T.pack "Nested vector passed as right argument to reroll function"
-    makesure (x:xs) = makesure xs
-    smartTest :: GeneralNumber -> TestInput
-    smartTest (GReal (GSimp (GInt n))) = TestEq $ smartIntegerToInt n
-    smartTest n = TestEq 0
-    rerollOneOfList :: Dice -> [OpStatic] -> FunRes
-    rerollOneOfList d [] = Resolved $ TypeStatic $ StaticDie d
-    rerollOneOfList d (x:xs)
-      |StaticVec v <- x = Errored $ ResolveException $ T.pack "Nested vector passed as right argument to reroll function"
-      |StaticVec v <- x = Errored $ ResolveException $ T.pack "Vector containing boolean(s) passed as right argument to reroll function"
-      |StaticDie d <- x = makesure xs
-      |StaticNum n <- x = rerollOneOfList (addReroll d (smartTest n, parseTest testPred n) string) xs
-
-realDieTest :: Dice -> Maybe (Either Int [GeneralRealNumber])
-realDieTest Die {face=Left n} = Just $ Left n
-realDieTest Die {face=Right facelist} = isreal facelist
-  where
-    maybeEither :: GeneralRealNumber -> Maybe (Either Int [GeneralRealNumber]) -> Maybe (Either Int [GeneralRealNumber])
-    maybeEither x Nothing = Nothing
-    maybeEither x (Just (Right xs)) = Just $ Right $ x:xs
-    isreal :: [GeneralNumber] -> Maybe (Either Int [GeneralRealNumber])
-    isreal [] = Just $ Right []
-    isreal (GReal x:xs) = maybeEither x $ isreal xs
-    isreal list = Nothing
+    resParse :: Dice -> OpStatic -> FunRes
+    resParse d x
+      |Left test <- res = Resolved $ TypeStatic $ StaticDie $ addReroll d test
+      |Right (Left _) <- res = NeedsRolls
+      |Right (Right e) <- res = Errored e
+      where
+        res = parseNumTestToken numTest x
 
 exclamationpoint :: OpType -> FunRes
 exclamationpoint (TypeStatic (StaticDie d)) = maxExplode d
   where
     maxExplode :: Dice -> FunRes
     maxExplode d
-      |Just (Left faceint) <- res = Resolved $ TypeStatic $ StaticDie $ addExplode d (TestEq faceint, Left $ GReal $ GSimp $ GInt $ fromIntegral faceint) "!"
-      |Just (Right facelist) <- res = Resolved $ TypeStatic $ StaticDie $ addExplode d (TestEq 0, Left $ GReal $ maximum facelist) "!"
+      |Just (Left faceint) <- res = Resolved $ TypeStatic $ StaticDie $ addExplode d (TestEq [fromIntegral faceint]) False
+      |Just (Right facelist) <- res = Resolved $ TypeStatic $ StaticDie $ addExplode d (TestEq [GReal $ maximum facelist]) False
       |otherwise = Errored $ ResolveException $ T.pack "Die with non-ordered faces passed to exploding function."
       where
         res = realDieTest d
@@ -406,29 +446,22 @@ exclamationpoint (TypeStatic (StaticVec n)) = Errored $ ResolveException $ T.pac
 exclamationpoint (TypeStatic (StaticBool b)) = Errored $ ResolveException $ T.pack "Boolean passed to !."
 exclamationpoint x = NeedsRolls
 
---Maybe (Either Integer [GeneralRealNumber])
-
-explodingFun :: (Int -> TestInput) -> (GeneralNumber -> GeneralNumber -> Bool) -> String -> OpType -> OpType -> FunRes
-explodingFun testInput fun string (TypeStatic (StaticDie d)) (TypeStatic (StaticNum x))
-  |Just (Left faceint) <- res, GReal n <- x = traceShow n $ Resolved $ TypeStatic $ StaticDie $ addExplode d (testInput $ floor n, Left $ GReal $ GSimp $ GInt $ fromIntegral faceint) (string ++ show x)
-  |Just (Right facelist) <- res, GReal n <- x = Resolved $ TypeStatic $ StaticDie $ addExplode d (TestEq 0, Right $ fun x) (string ++ show x)
-  |Just facelist <- res = Errored $ ResolveException $ T.pack "Complex number passed on right side of ordered exploding function."
-  |otherwise = Errored $ ResolveException $ T.pack "Die with non-ordered faces passed to left of exploding function."
+explodingFun :: NumTest -> OpType -> OpType -> FunRes
+explodingFun numTest (TypeStatic (StaticDie d)) (TypeStatic x) = resParse d x
   where
-    res = realDieTest d
-explodingFun _ _ _ (TypeStatic x) op2 = Errored $ ResolveException $ T.pack "Non-die passed to left of exploding function."
-explodingFun _ _ _ _ _ = NeedsRolls
-
---data OpVector = OpVector [OpStatic]
---data OpStatic = StaticDie Dice | StaticNum GeneralNumber | StaticVec OpVector
---data OpType = TypeStatic OpStatic | TypeNode OpNode
---data FunType = FUnary (OpType -> FunRes) | FInfix (OpType -> OpType -> FunRes) | FFunct ([OpType] -> FunRes)
---data FunRes = NeedsRolls | Resolved OpType | Errored ResolveException
---data OpNode = OpNode {nodeDisplay::Either String (String, String, String), nodeFunction::FunType, nodeChildren::[OpType]}
+    resParse :: Dice -> OpStatic -> FunRes
+    resParse d x
+      |Left test <- res = Resolved $ TypeStatic $ StaticDie $ addExplode d test True
+      |Right (Left _) <- res = NeedsRolls
+      |Right (Right e) <- res = Errored e
+      where
+        res = parseNumTestToken numTest x
+explodingFun _ (TypeStatic x) _ = Errored $ ResolveException $ T.pack "Non-die passed to left of exploding function."
+explodingFun _ _ _ = NeedsRolls
 
 toBool :: OpStatic -> Bool
 toBool (StaticBool x) = x
-toBool (StaticNum (GReal (GSimp (GInt 0)))) = False
+toBool (StaticNum 0) = False
 toBool (StaticNum x) = True
 toBool (StaticVec (OpVector [])) = False
 toBool (StaticVec x) = True
@@ -437,6 +470,9 @@ opNot :: OpType -> FunRes
 opNot (TypeStatic (StaticDie x)) = NeedsRolls
 opNot (TypeStatic x) = Resolved $ TypeStatic $ StaticBool $ not $ toBool x
 opNot a = NeedsRolls
+
+opNotFun :: [OpType] -> FunRes
+opNotFun [x] = opNot x
 
 opExp :: OpType -> OpType -> FunRes
 opExp (TypeStatic (StaticNum x)) (TypeStatic (StaticNum y)) = Resolved $ TypeStatic $ StaticNum $ genExp x y
@@ -518,7 +554,7 @@ opDiv (TypeStatic (StaticBool x)) b = Errored $ ResolveException $ T.pack "Boole
 opDiv a (TypeStatic (StaticBool y)) = Errored $ ResolveException $ T.pack "Boolean passed as right argument to division."
 opDiv (TypeStatic (StaticVec x)) b = Errored $ ResolveException $ T.pack "Vector passed as left argument to division."
 opDiv a (TypeStatic (StaticVec y)) = Errored $ ResolveException $ T.pack "Vector passed as right argument to division."
-opDiv (TypeStatic (StaticNum x)) (TypeStatic (StaticNum (GReal (GSimp (GInt 0))))) = Errored $ ResolveException $ T.pack "Division by Zero."
+opDiv (TypeStatic (StaticNum x)) (TypeStatic (StaticNum 0)) = Errored $ ResolveException $ T.pack "Division by Zero Error."
 opDiv (TypeStatic (StaticNum x)) (TypeStatic (StaticNum y)) = Resolved $ TypeStatic $ StaticNum $ x / y
 opDiv a b = NeedsRolls
 
@@ -672,12 +708,18 @@ vecComp (TypeStatic (StaticVec (OpVector x))) (OpVector y) fun = listComp x y fu
       |otherwise = Errored $ ResolveException $ T.pack "Vectors of different lengths passed to comparison."
 vecComp x y fun= NeedsRolls
 
---addSuccess :: Dice -> (TestInput, Either GeneralNumber (GeneralNumber -> Bool)) -> String -> Dice
-{-addSuccess die@Die {face=faceposs, reroll=rerolllist, suffix=suff} testTup string = die {exploding = res, suffix = suff ++ (if test then string else "")}
+successFun :: NumTest -> Dice -> OpType -> FunRes
+successFun numTest d op2
+  |TypeStatic x <- op2 = resParse d x
+  |otherwise = Errored $ ResolveException $ T.pack "Non-number passed as right argument to reroll function."
   where
-    (res, test) = inputParse faceposs testTup rerolllist-}
---data TestInput = TestLeq Int | TestLes Int | TestGeq Int | TestGre Int | TestEq Int
---safeComp :: (GeneralRealNumber -> GeneralRealNumber -> Bool) -> GeneralNumber -> GeneralNumber -> Bool
+    resParse :: Dice -> OpStatic -> FunRes
+    resParse d x
+      |Left test <- res = Resolved $ TypeStatic $ StaticDie $ addSuccess d test
+      |Right (Left _) <- res = NeedsRolls
+      |Right (Right e) <- res = Errored e
+      where
+        res = parseNumTestToken numTest x
 
 opGre :: OpType -> OpType -> FunRes
 opGre (TypeStatic (StaticBool x)) b = Errored $ ResolveException $ T.pack "Boolean passed to greater than."
@@ -685,8 +727,7 @@ opGre a (TypeStatic (StaticBool y)) = Errored $ ResolveException $ T.pack "Boole
 opGre (TypeStatic (StaticNum (GReal n))) (TypeStatic (StaticNum (GReal m))) = Resolved $ TypeStatic $ StaticBool $ n > m
 opGre (TypeStatic (StaticNum x)) (TypeStatic (StaticNum y)) = Errored $ ResolveException $ T.pack "Unordered number passed to greater than."
 opGre a (TypeStatic (StaticVec y)) = vecComp a y (>)
-opGre (TypeStatic (StaticDie d)) (TypeStatic (StaticNum n@(GReal m))) = Resolved $ TypeStatic $ StaticDie $ addSuccess d (TestGre $ floor m, Right $ safeComp (<) n) (">" ++ show n)
-opGre (TypeStatic (StaticDie d)) (TypeStatic (StaticNum _)) = Errored $ ResolveException $ T.pack "Unordered number passed to greater than."
+opGre (TypeStatic (StaticDie d)) op2 = successFun (TestGre 0) d op2
 opGre a b = NeedsRolls
 
 opLess :: OpType -> OpType -> FunRes
@@ -695,8 +736,7 @@ opLess a (TypeStatic (StaticBool y)) = Errored $ ResolveException $ T.pack "Bool
 opLess (TypeStatic (StaticNum (GReal n))) (TypeStatic (StaticNum (GReal m))) = Resolved $ TypeStatic $ StaticBool $ n < m
 opLess (TypeStatic (StaticNum x)) (TypeStatic (StaticNum y)) = Errored $ ResolveException $ T.pack "Unordered number passed to less than."
 opLess a (TypeStatic (StaticVec y)) = vecComp a y (<)
-opLess (TypeStatic (StaticDie d)) (TypeStatic (StaticNum n@(GReal m))) = Resolved $ TypeStatic $ StaticDie $ addSuccess d (TestLes $ ceiling m, Right $ safeComp (>) n) ("<" ++ show n)
-opLess (TypeStatic (StaticDie d)) (TypeStatic (StaticNum _)) = Errored $ ResolveException $ T.pack "Unordered number passed to less than."
+opLess (TypeStatic (StaticDie d)) op2 = successFun (TestLes 0) d op2
 opLess a b = NeedsRolls
 
 opGeq :: OpType -> OpType -> FunRes
@@ -705,8 +745,7 @@ opGeq a (TypeStatic (StaticBool y)) = Errored $ ResolveException $ T.pack "Boole
 opGeq (TypeStatic (StaticNum (GReal n))) (TypeStatic (StaticNum (GReal m))) = Resolved $ TypeStatic $ StaticBool $ n >= m
 opGeq (TypeStatic (StaticNum x)) (TypeStatic (StaticNum y)) = Errored $ ResolveException $ T.pack "Unordered number passed to greater than."
 opGeq a (TypeStatic (StaticVec y)) = vecComp a y (>=)
-opGeq (TypeStatic (StaticDie d)) (TypeStatic (StaticNum n@(GReal m))) = Resolved $ TypeStatic $ StaticDie $ addSuccess d (TestGeq $ floor m, Right $ safeComp (<=) n) (">=" ++ show n)
-opGeq (TypeStatic (StaticDie d)) (TypeStatic (StaticNum _)) = Errored $ ResolveException $ T.pack "Unordered number passed to greater than or equal to."
+opGeq (TypeStatic (StaticDie d)) op2 = successFun (TestGeq 0) d op2
 opGeq a b = NeedsRolls
 
 opLeq :: OpType -> OpType -> FunRes
@@ -715,34 +754,63 @@ opLeq a (TypeStatic (StaticBool y)) = Errored $ ResolveException $ T.pack "Boole
 opLeq (TypeStatic (StaticNum (GReal n))) (TypeStatic (StaticNum (GReal m))) = Resolved $ TypeStatic $ StaticBool $ n <= m
 opLeq (TypeStatic (StaticNum x)) (TypeStatic (StaticNum y)) = Errored $ ResolveException $ T.pack "Unordered number passed to less than or equal to."
 opLeq a (TypeStatic (StaticVec y)) = vecComp a y (<=)
-opLeq (TypeStatic (StaticDie d)) (TypeStatic (StaticNum n@(GReal m))) = Resolved $ TypeStatic $ StaticDie $ addSuccess d (TestLeq $ ceiling m, Right $ safeComp (>=) n) ("<=" ++ show n)
-opLeq (TypeStatic (StaticDie d)) (TypeStatic (StaticNum _)) = Errored $ ResolveException $ T.pack "Unordered number passed to less than or equal to."
+opLeq (TypeStatic (StaticDie d)) op2 = successFun (TestLeq 0) d op2
 opLeq a b = NeedsRolls
 
 opEq :: OpType -> OpType -> FunRes
---opEq (TypeStatic (StaticDie d)) (TypeStatic (StaticNum n)) = Resolved $ TypeStatic $ StaticDie $ addSuccess d (TestEq $ floor n, Right $ safeComp (>=) (GReal n)) "<="
-opEq x y = Resolved $ TypeStatic $ StaticBool $ x == y
+opEq (TypeStatic (StaticDie d)) op2 = successFun (TestEq []) d op2
+opEq (TypeStatic x) (TypeStatic y) = Resolved $ TypeStatic $ StaticBool $ x == y
+opEq x y = NeedsRolls
 
 opNeq :: OpType -> OpType -> FunRes
-opNeq x y = Resolved $ TypeStatic $ StaticBool $ x /= y
+opNeq (TypeStatic (StaticDie d)) op2 = successFun (TestNeq []) d op2
+opNeq (TypeStatic x) (TypeStatic y) = Resolved $ TypeStatic $ StaticBool $ x /= y
+opNeq x y = NeedsRolls
 
-opIf :: [OpType] -> FunRes
+opInRange :: OpType -> OpType -> FunRes
+opInRange (TypeStatic (StaticDie d)) op2 = successFun (TestIn 0 0) d op2
+opInRange (TypeStatic _) _ = Errored $ ResolveException $ T.pack "Non-die passed as left argument to In."
+opInRange _ _ = NeedsRolls
+
+opOutRange :: OpType -> OpType -> FunRes
+opOutRange (TypeStatic (StaticDie d)) op2 = successFun (TestOut 0 0) d op2
+opOutRange (TypeStatic _) _ = Errored $ ResolveException $ T.pack "Non-die passed as left argument to Out."
+opOutRange _ _ = NeedsRolls
+
+{-opIf :: [OpType] -> FunRes
 opIf [] = Errored $ ResolveException $ T.pack "If called with no arguments."
 opIf [x] = Errored $ ResolveException $ T.pack "If called with one argument."
 opIf [x,y]
   |TypeStatic (StaticBool False) <- x = Resolved x
-  |TypeStatic (StaticNum (GReal (GSimp (GInt 0)))) <- x = Resolved $ TypeStatic $ StaticBool False
+  |TypeStatic (StaticNum 0) <- x = Resolved $ TypeStatic $ StaticBool False
   |TypeStatic (StaticVec (OpVector [])) <- x = Resolved $ TypeStatic $ StaticBool False
   |TypeStatic (StaticDie d) <- x = NeedsRolls
   |TypeStatic a <- x = Resolved y
   |otherwise = NeedsRolls
 opIf (x:y:z:rest)
   |TypeStatic (StaticBool False) <- x = Resolved z
-  |TypeStatic (StaticNum (GReal (GSimp (GInt 0)))) <- x = Resolved z
+  |TypeStatic (StaticNum 0) <- x = Resolved z
   |TypeStatic (StaticVec (OpVector [])) <- x = Resolved z
   |TypeStatic (StaticDie d) <- x = NeedsRolls
   |TypeStatic a <- x = Resolved y
-  |otherwise = NeedsRolls
+  |otherwise = NeedsRolls-}
+
+opIf :: [OpType] -> FunRes
+opIf [] = Errored $ ResolveException $ T.pack "If called with no arguments."
+opIf [TypeStatic (StaticVec (OpVector [x,y]))]
+  |StaticBool False <- x = Resolved $ TypeStatic x
+  |StaticNum 0 <- x = Resolved $ TypeStatic $ StaticBool False
+  |StaticVec (OpVector []) <- x = Resolved $ TypeStatic $ StaticBool False
+  |StaticDie d <- x = NeedsRolls
+  |otherwise = Resolved $ TypeStatic y
+opIf [TypeStatic (StaticVec (OpVector (x:y:z:rest)))]
+  |StaticBool False <- x = Resolved $ TypeStatic z
+  |StaticNum 0 <- x = Resolved $ TypeStatic z
+  |StaticVec (OpVector []) <- x = Resolved $ TypeStatic z
+  |StaticDie d <- x = NeedsRolls
+  |otherwise = Resolved $ TypeStatic y
+opIf [TypeStatic x] = Errored $ ResolveException $ T.pack "If called with one argument."
+opIf [_] = NeedsRolls
 
 opCeil :: [OpType] -> FunRes
 opCeil [] = Errored $ ResolveException $ T.pack "Ceil called with no arguments."
@@ -802,13 +870,14 @@ opMin (x:rest)
   |TypeStatic (StaticBool b) <- x = Errored $ ResolveException $ T.pack "Min called on non-number."
   |otherwise = NeedsRolls
 
-vecMerge :: [OpStatic] -> (GeneralNumber -> GeneralNumber -> GeneralNumber) -> FunRes
-vecMerge list fun = finisher $ listMerge list
+vecMerge :: GeneralNumber -> [OpStatic] -> (GeneralNumber -> GeneralNumber -> GeneralNumber) -> FunRes
+vecMerge identity list fun = finisher $ listMerge list
   where
     smartFun :: GeneralNumber -> Either GeneralNumber (Maybe ResolveException) -> Either GeneralNumber (Maybe ResolveException)
     smartFun n (Left m) = Left $ fun n m
     smartFun n (Right e) = Right e
     listMerge :: [OpStatic] -> Either GeneralNumber (Maybe ResolveException)
+    listMerge [] = Left identity
     listMerge (x:xs)
       |StaticBool b <- x = Right $ Just $ ResolveException $ T.pack "Non-numeric argument passed to number-based function."
       |StaticVec v <- x = Right $ Just $ ResolveException $ T.pack "Non-numeric argument passed to number-based function."
@@ -820,18 +889,18 @@ vecMerge list fun = finisher $ listMerge list
     finisher (Right (Just e)) = Errored e
 
 opSum :: [OpType] -> FunRes
-opSum [] = Resolved $ TypeStatic $ StaticNum $ GReal $ GSimp $ GInt 0
+opSum [] = Resolved $ TypeStatic $ StaticNum 0
 opSum (x:rest)
   |TypeStatic (StaticNum n) <- x = Resolved x
-  |TypeStatic (StaticVec (OpVector v)) <- x = vecMerge v (+)
+  |TypeStatic (StaticVec (OpVector v)) <- x = vecMerge 0 v (+)
   |TypeStatic (StaticBool b) <- x = Errored $ ResolveException $ T.pack "Non-numeric argument passed to sum."
   |otherwise = NeedsRolls
 
 opProd :: [OpType] -> FunRes
-opProd [] = Resolved $ TypeStatic $ StaticNum $ GReal $ GSimp $ GInt 1
+opProd [] = Resolved $ TypeStatic $ StaticNum 1
 opProd (x:rest)
   |TypeStatic (StaticNum n) <- x = Resolved x
-  |TypeStatic (StaticVec (OpVector v)) <- x = vecMerge v (*)
+  |TypeStatic (StaticVec (OpVector v)) <- x = vecMerge 1 v (*)
   |TypeStatic (StaticBool b) <- x = Errored $ ResolveException $ T.pack "Non-numeric argument passed to sum."
   |otherwise = NeedsRolls
 
@@ -864,6 +933,11 @@ opResVector list
   |Just statics <- resTest list = Resolved $ TypeStatic $ StaticVec $ OpVector statics
   |otherwise = NeedsRolls
 
+opBool :: [OpType] -> FunRes
+opBool [TypeStatic (StaticDie _)] = NeedsRolls
+opBool [TypeStatic x] = Resolved $ TypeStatic $ StaticBool $ toBool x
+opBool _ = NeedsRolls
+
 data Assoc = AssocLeft | AssocRight | AssocNone deriving (Eq, Show)
 --Argument to In/Pre/Post is prec, argument to Fun is number of args
 data OpTokenType = OpTokenIn Integer | OpTokenPre Integer | OpTokenPost Integer | OpTokenFun Integer | OpTokenInOrPre Integer Integer | OpTokenInOrPost Integer Integer
@@ -880,55 +954,62 @@ safeComp fun n m = False
 getType :: OpToken -> OpTokenType
 getType OpToken {optype=t}=t
 
---rerollFun :: (Integer -> TestInput, Maybe (GeneralNumber -> GeneralNumber -> Bool), String) -> OpType -> OpType -> FunRes
+--rerollFun :: NumTest -> OpType -> OpType -> FunRes
+--explodingFun :: NumTest -> OpType -> OpType -> FunRes
 
 operatorDict = Map.fromList
-  [(T.pack "d",   OpToken {optype=OpTokenIn 12,        resolveOrder = OpResolveRight, assoc = AssocLeft,  function = FInfix dFunction 12}),
-   (T.pack "#",   OpToken {optype=OpTokenIn 11,        resolveOrder = OpResolveLeftFirst,  assoc = AssocRight, function = FInfix dupFunction 11}),
-   (T.pack "dF",  OpToken {optype=OpTokenPost 11,      resolveOrder = OpResolveAll,   assoc = AssocNone,  function = FUnary fudgeDie 11 Suffix}),
-   (T.pack "k",   OpToken {optype=OpTokenIn 10,        resolveOrder = OpResolveRight, assoc = AssocNone,  function = FInfix (keepdropFun KeepHigh) 10}),
-   (T.pack "kh",  OpToken {optype=OpTokenIn 10,        resolveOrder = OpResolveRight, assoc = AssocNone,  function = FInfix (keepdropFun KeepHigh) 10}),
-   (T.pack "kl",  OpToken {optype=OpTokenIn 10,        resolveOrder = OpResolveRight, assoc = AssocNone,  function = FInfix (keepdropFun KeepLow) 10}),
-   (T.pack "dh",  OpToken {optype=OpTokenIn 10,        resolveOrder = OpResolveRight, assoc = AssocNone,  function = FInfix (keepdropFun DropHigh) 10}),
-   (T.pack "dl",  OpToken {optype=OpTokenIn 10,        resolveOrder = OpResolveRight, assoc = AssocNone,  function = FInfix (keepdropFun DropLow) 10}),
-   (T.pack "dl",  OpToken {optype=OpTokenIn 10,        resolveOrder = OpResolveRight, assoc = AssocNone,  function = FInfix (keepdropFun DropLow) 10}),
-   (T.pack "r",   OpToken {optype=OpTokenIn 10,        resolveOrder = OpResolveRight, assoc = AssocNone,  function = FInfix (rerollFun (TestEq, Nothing, "r")) 10}),
-   (T.pack "r<",  OpToken {optype=OpTokenIn 10,        resolveOrder = OpResolveRight, assoc = AssocNone,  function = FInfix (rerollFun (TestLeq, Just $ safeComp (<), "r<")) 10}),
-   (T.pack "r<=", OpToken {optype=OpTokenIn 10,        resolveOrder = OpResolveRight, assoc = AssocNone,  function = FInfix (rerollFun (TestLeq, Just $ safeComp (<=), "r<=")) 10}),
-   (T.pack "r>",  OpToken {optype=OpTokenIn 10,        resolveOrder = OpResolveRight, assoc = AssocNone,  function = FInfix (rerollFun (TestLeq, Just $ safeComp (>), "r>")) 10}),
-   (T.pack "r>=", OpToken {optype=OpTokenIn 10,        resolveOrder = OpResolveRight, assoc = AssocNone,  function = FInfix (rerollFun (TestLeq, Just $ safeComp (>=), "r<=")) 10}),
-   (T.pack "!",   OpToken {optype=OpTokenInOrPost 8 8, resolveOrder = OpResolveRight, assoc = AssocNone,  function = FPossUn (explodingFun TestEq (==) "!") 8 exclamationpoint 8 Suffix}),
-   (T.pack "!<",  OpToken {optype=OpTokenIn 10,        resolveOrder = OpResolveRight, assoc = AssocNone,  function = FInfix (explodingFun TestLes (safeComp (<)) "!<") 10}),
-   (T.pack "!<=", OpToken {optype=OpTokenIn 10,        resolveOrder = OpResolveRight, assoc = AssocNone,  function = FInfix (explodingFun TestLeq (safeComp (<=)) "!<=") 10}),
-   (T.pack "!>",  OpToken {optype=OpTokenIn 10,        resolveOrder = OpResolveRight, assoc = AssocNone,  function = FInfix (explodingFun TestGre (safeComp (>)) "!>") 10}),
-   (T.pack "!>=", OpToken {optype=OpTokenIn 10,        resolveOrder = OpResolveRight, assoc = AssocNone,  function = FInfix (explodingFun TestGeq (safeComp (>=)) "!>=") 10}),
-   (T.pack "~",   OpToken {optype=OpTokenPre 6,        resolveOrder = OpResolveAll,   assoc = AssocNone,  function = FUnary opNot 6 Prefix}),
-   (T.pack "not", OpToken {optype=OpTokenPre 6,        resolveOrder = OpResolveAll,   assoc = AssocNone,  function = FUnary opNot 6 Prefix}),
-   (T.pack "^",   OpToken {optype=OpTokenIn 4,         resolveOrder = OpResolveAll,   assoc = AssocRight, function = FInfix opExp 4}),
-   (T.pack "**",  OpToken {optype=OpTokenIn 4,         resolveOrder = OpResolveAll,   assoc = AssocRight, function = FInfix opExp 4}),
-   (T.pack "&&",  OpToken {optype=OpTokenIn 3,         resolveOrder = OpResolveAll,   assoc = AssocLeft,  function = FInfix opAdd 2}),
-   (T.pack "and", OpToken {optype=OpTokenIn 3,         resolveOrder = OpResolveAll,   assoc = AssocLeft,  function = FInfix opAdd 2}),
-   (T.pack "*",   OpToken {optype=OpTokenIn 3,         resolveOrder = OpResolveAll,   assoc = AssocLeft,  function = FInfix opMult 3}),
-   (T.pack "/",   OpToken {optype=OpTokenIn 3,         resolveOrder = OpResolveAll,   assoc = AssocLeft,  function = FInfix opDiv 3}),
-   (T.pack "%",   OpToken {optype=OpTokenIn 3,         resolveOrder = OpResolveAll,   assoc = AssocLeft,  function = FInfix opMod 3}),
-   (T.pack "||",  OpToken {optype=OpTokenIn 2,         resolveOrder = OpResolveAll,   assoc = AssocLeft,  function = FInfix opOr 2}),
-   (T.pack "or",  OpToken {optype=OpTokenIn 2,         resolveOrder = OpResolveAll,   assoc = AssocLeft,  function = FInfix opOr 2}),
-   (T.pack "+",   OpToken {optype=OpTokenIn 2,         resolveOrder = OpResolveAll,   assoc = AssocLeft,  function = FInfix opAdd 2}),
-   (T.pack "-",   OpToken {optype=OpTokenInOrPre 2 6,  resolveOrder = OpResolveAll,   assoc = AssocLeft,  function = FPossUn opMinus 2 opNeg 6 Prefix}),
-   (T.pack ">",   OpToken {optype=OpTokenIn 1,         resolveOrder = OpResolveRightFirst,   assoc = AssocLeft,  function = FInfix opGre 1}),
-   (T.pack "<",   OpToken {optype=OpTokenIn 1,         resolveOrder = OpResolveRightFirst,   assoc = AssocLeft,  function = FInfix opLess 1}),
-   (T.pack ">=",  OpToken {optype=OpTokenIn 1,         resolveOrder = OpResolveRightFirst,   assoc = AssocLeft,  function = FInfix opGeq 1}),
-   (T.pack "<=",  OpToken {optype=OpTokenIn 1,         resolveOrder = OpResolveRightFirst,   assoc = AssocLeft,  function = FInfix opLeq 1}),
-   (T.pack "==",  OpToken {optype=OpTokenIn 1,         resolveOrder = OpResolveRightFirst,   assoc = AssocLeft,  function = FInfix opEq 1}),
-   (T.pack "!=",  OpToken {optype=OpTokenIn 1,         resolveOrder = OpResolveRightFirst,   assoc = AssocLeft,  function = FInfix opNeq 1}),
-   (T.pack "if",  OpToken {optype=OpTokenFun 3,        resolveOrder = OpResolveLeft,  assoc = AssocNone,  function = FFunct opIf}),
-   (T.pack "ceil", OpToken {optype=OpTokenFun 1,       resolveOrder = OpResolveAll,   assoc = AssocNone,  function = FFunct opCeil}),
-   (T.pack "round", OpToken {optype=OpTokenFun 1,      resolveOrder = OpResolveAll,   assoc = AssocNone,  function = FFunct opRound}),
-   (T.pack "floor", OpToken {optype=OpTokenFun 1,      resolveOrder = OpResolveAll,   assoc = AssocNone,  function = FFunct opFloor}),
-   (T.pack "max",   OpToken {optype=OpTokenFun 1,      resolveOrder = OpResolveAll,   assoc = AssocNone,  function = FFunct opMax}),
-   (T.pack "min",   OpToken {optype=OpTokenFun 1,      resolveOrder = OpResolveAll,   assoc = AssocNone,  function = FFunct opMin}),
-   (T.pack "sum",   OpToken {optype=OpTokenFun 1,      resolveOrder = OpResolveAll,   assoc = AssocNone,  function = FFunct opSum}),
-   (T.pack "prod",  OpToken {optype=OpTokenFun 1,      resolveOrder = OpResolveAll,   assoc = AssocNone,  function = FFunct opProd})]
+  [(T.pack "d",     OpToken {optype=OpTokenInOrPre 12 12,   resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FPossUn (feedThrough dFunction) 12 (dFunction "" $ TypeStatic $ StaticNum 1) 12 Prefix                            }),
+   (T.pack "#",     OpToken {optype=OpTokenIn 11,           resolveOrder = OpResolveLeftFirst,  assoc = AssocRight, function = FInfix  dupFunction 11                                             }),
+   (T.pack "dF",    OpToken {optype=OpTokenPost 11,         resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FUnary  fudgeDie 11 Suffix                                         }),
+   --(T.pack "k",   OpToken {optype=OpTokenIn 10,         resolveOrder = OpResolveRight, assoc = AssocNone,  function = FInfix (keepdropFun KeepHigh) 10}),
+   (T.pack "kh",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (keepdropFun KeepHigh) 10                                  }),
+   (T.pack "kl",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (keepdropFun KeepLow) 10                                   }),
+   (T.pack "dh",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (keepdropFun DropHigh) 10                                  }),
+   (T.pack "dl",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (keepdropFun DropLow) 10                                   }),
+   (T.pack "r",     OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (rerollFun (TestEq [0])) 10                                }),
+   (T.pack "r<",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (rerollFun (TestLes 0)) 10                                 }),
+   (T.pack "r<=",   OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (rerollFun (TestLeq 0)) 10                                 }),
+   (T.pack "r>",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (rerollFun (TestGre 0)) 10                                 }),
+   (T.pack "r>=",   OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (rerollFun (TestGeq 0)) 10                                 }),
+   (T.pack "rIn",   OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (rerollFun (TestIn 0 0)) 10                                }),
+   (T.pack "rOut",  OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (rerollFun (TestOut 0 0)) 10                               }),
+   (T.pack "!",     OpToken {optype=OpTokenInOrPost 10 10,  resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FPossUn (explodingFun (TestEq [0])) 8 exclamationpoint 8 Suffix    }),
+   (T.pack "!<",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (explodingFun (TestLes 0)) 10                              }),
+   (T.pack "!<=",   OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (explodingFun (TestLeq 0)) 10                              }),
+   (T.pack "!>",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (explodingFun (TestGre 0)) 10                              }),
+   (T.pack "!>=",   OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (explodingFun (TestGeq 0)) 10                              }),
+   (T.pack "!In",   OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (explodingFun (TestIn 0 0)) 10                             }),
+   (T.pack "!Out",  OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (explodingFun (TestOut 0 0)) 10                            }),
+   (T.pack "~",     OpToken {optype=OpTokenPre 6,           resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FUnary  opNot 6 Prefix                                             }),
+   (T.pack "not",   OpToken {optype=OpTokenFun 1,           resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FFunct  opNotFun                                                   }),
+   (T.pack "^",     OpToken {optype=OpTokenIn 4,            resolveOrder = OpResolveAll,        assoc = AssocRight, function = FInfix  opExp 4                                                    }),
+   (T.pack "**",    OpToken {optype=OpTokenIn 4,            resolveOrder = OpResolveAll,        assoc = AssocRight, function = FInfix  opExp 4                                                    }),
+   (T.pack "&&",    OpToken {optype=OpTokenIn 3,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opAdd 2                                                    }),
+   (T.pack "and",   OpToken {optype=OpTokenIn 3,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opAdd 2                                                    }),
+   (T.pack "*",     OpToken {optype=OpTokenIn 3,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opMult 3                                                   }),
+   (T.pack "/",     OpToken {optype=OpTokenIn 3,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opDiv 3                                                    }),
+   (T.pack "%",     OpToken {optype=OpTokenIn 3,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opMod 3                                                    }),
+   (T.pack "||",    OpToken {optype=OpTokenIn 2,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opOr 2                                                     }),
+   (T.pack "or",    OpToken {optype=OpTokenIn 2,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opOr 2                                                     }),
+   (T.pack "+",     OpToken {optype=OpTokenIn 2,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opAdd 2                                                    }),
+   (T.pack "-",     OpToken {optype=OpTokenInOrPre 2 6,     resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FPossUn opMinus 2 opNeg 6 Prefix                                  }),
+   (T.pack ">",     OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opGre 1                                                    }),
+   (T.pack "<",     OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opLess 1                                                   }),
+   (T.pack ">=",    OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opGeq 1                                                    }),
+   (T.pack "<=",    OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opLeq 1                                                    }),
+   (T.pack "==",    OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opEq 1                                                     }),
+   (T.pack "/=",    OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opNeq 1                                                    }),
+   (T.pack "In",    OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opInRange 1                                                }),
+   (T.pack "Out",   OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opOutRange 1                                               }),
+   (T.pack "if",    OpToken {optype=OpTokenFun 3,           resolveOrder = OpResolveLeft,       assoc = AssocNone,  function = FFunct  opIf                                                       }),
+   (T.pack "ceil",  OpToken {optype=OpTokenFun 1,           resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FFunct  opCeil                                                     }),
+   (T.pack "round", OpToken {optype=OpTokenFun 1,           resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FFunct  opRound                                                    }),
+   (T.pack "floor", OpToken {optype=OpTokenFun 1,           resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FFunct  opFloor                                                    }),
+   (T.pack "max",   OpToken {optype=OpTokenFun 1,           resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FFunct  opMax                                                      }),
+   (T.pack "min",   OpToken {optype=OpTokenFun 1,           resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FFunct  opMin                                                      }),
+   (T.pack "sum",   OpToken {optype=OpTokenFun 1,           resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FFunct  opSum                                                      }),
+   (T.pack "prod",  OpToken {optype=OpTokenFun 1,           resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FFunct  opProd                                                     }),
+   (T.pack "bool",  OpToken {optype=OpTokenFun 1,           resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FFunct  opBool                                                     })]
 
 operatorKeys = lensort $ Map.keys operatorDict
   where

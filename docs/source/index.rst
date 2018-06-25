@@ -14,6 +14,7 @@ Welcome to RPDiscordRewrite's documentation!
 
    commands/index
    dice_reference/index
+   privacy
 
 
 Indices and tables

@@ -16,7 +16,7 @@ import           HistoryDiceParser.ResolutionTree
 
 numParse :: T.Text -> GeneralNumber
 numParse str
-  |Just n <- res = GComp $ GC (GSimp $ GInt 0) (toNum $ intOrDec n)
+  |Just n <- res = GComp $ GC 0 (toNum $ intOrDec n)
   |Nothing <- res = GReal $ toNum $ intOrDec str
   where
     res = T.stripSuffix (T.singleton 'j') str
@@ -56,6 +56,7 @@ getFun OpToken {function = f, resolveOrder = ord} = (f, ord)
 postFixToTreesS :: StackToken -> [OpType] -> [OpType]
 postFixToTreesS StackToken {tokenType = StackTokenNum, tokenRep = numStr} stack = (TypeStatic $ StaticNum $ numParse numStr):stack
 postFixToTreesS StackToken {tokenType = StackTokenBool, tokenRep = boolStr} stack = (TypeStatic $ StaticBool $ boolParse boolStr):stack
+postFixToTreesS StackToken {tokenType = StackTokenVec 0}                    stack = (TypeStatic $ StaticVec $ OpVector []):stack
 postFixToTreesS StackToken {tokenType = StackTokenIn t n, tokenRep = funStr} stack@(x:y:z) = TypeNode node:z
   where
     (fun, ord) = getFun $ fromJust $ Map.lookup funStr operatorDict

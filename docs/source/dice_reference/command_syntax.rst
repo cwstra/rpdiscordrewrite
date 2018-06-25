@@ -11,6 +11,72 @@ Command Syntax
 
 The command-based dice roller is designed to be easy to use, but powerful. The basic syntax of the parser is outlined below; the functions that compose most of the usefulness of the parser are listed under the :ref:`command_functions` section.
 
+.. _terminology:
+
+Terminology
+============================================
+
+Potentially unfamiliar terms that are used throughout the command documentation are defined here.
+
+..  _overloaded:
+
+Overloaded
+--------------------------------------------
+
+An *overloaded* operator is an operator that does different things on different operands.
+
+For example, the `d` function:
+
+*When given a number `X` on the left and a number `Y` on the right, the `d` function will create a new dice pool with `X` `Y`-sided dice.
+
+*When the `d` function is given a die `D` on the left and a number `Z` on the right, it will instead modify `D` to drop the `Z` lowest results from the dice pool.
+
+..  _truthy_falsey:
+
+Truthy and Falsey Values
+--------------------------------------------
+
+Certain functions which usually would expect boolean values, such as ``if``, will instead coerce unexpected values to ``True`` or ``False``:
+
+* There are two values will be converted to False: ``0`` and the empty vector ``()``. These, along with ``False`` itself, are called "Falsey" values.
+* Unrolled dice will be evaluated prior to being coerced into being ``True`` or ``False``.
+* All other values will be converted to ``True``, and are thus called "Truthy"".
+
+
+..  _exploding_dice:
+
+Exploding Dice
+--------------------------------------------
+
+Dice pools can *explode* on certain values.
+
+
+If a dice pool *explodes* on a value ``N``, for each die whose result is ``N``, one rolls an additional die, which could, in turn explode, and so on.
+
+For example, say we roll ``10d6!``, a pool of ten six-sided dice that explode on a result of 6, and get:
+
+::
+
+  5, 4, 1, 4, 6, 2, 4, 3, 6, 6
+
+We rolled three sixes in this pool. Since these dice explode on the six, we roll an additional ``3d6!``
+
+::
+
+  6, 2, 5
+
+We managed another six, so we get to roll another ``1d6!``
+
+::
+
+  5
+
+No more sixes there, so we're done rolling; now we add up the results and get our end total:
+
+::
+
+  (5+4+1+4+6+2+4+3+6+6)+(6+2+5)+(5) = 59
+
 .. _constants:
 
 Constants
@@ -33,14 +99,14 @@ A `literal` is a constant term in a dice expression. The dice parser supports th
 Rational Numbers
 --------------------------------------------
 
-The dice parser also supports rational numbers. If two integer values are divided with `/`, the result will be internally turned into a rational number, rather than a float. All basic arithemetic involving only rationals or integers will be carried out exactly, rather than using a floating-point approximation. While exact, this is a bit slower than floating-point arithemetic, so if a calculation involving division seems to be rather slow, consider turning one of the integers involved into a float, which should speed up the processing.
+The dice parser also supports rational numbers. If two integer values are divided with `/`, the result will be internally turned into a rational number, rather than a float. All basic arithmetic involving only rationals or integers will be carried out exactly, rather than using a floating-point approximation. While exact, this is a bit slower than floating-point arithmetic, so if a calculation involving division seems to be rather slow, consider turning one of the integers involved into a float, which should speed up the processing.
 
 .. _complex_numbers:
 
 Complex Numbers
 --------------------------------------------
 
-The dice parser can even work with imaginary and complex numbers. In keeping with python convention, the imaginary unit, writen as `i` in most mathematics, is instead represented with a `j`. The real and imaginary parts of complex numbers can be composed of reals, floats, or rationals, and, where possible, calculations are done exactly.
+The dice parser can even work with imaginary and complex numbers. In keeping with python convention, the imaginary unit, written as `i` in most mathematics, is instead represented with a `j`. The real and imaginary parts of complex numbers can be composed of reals, floats, or rationals, and, where possible, calculations are done exactly.
 
 .. _grouping:
 
@@ -54,7 +120,7 @@ The following sections cover the two grouping mechanisms: parentheses and bracke
 Parentheses
 --------------------------------------------
 
-As-is typical, the dice parser uses parentheses `()` for grouping expresions. If a parenthetical expression contains no non-nested commas, the parentheses simply say to perform a given operation first, ignoring any normal order of operatons. However, if a parenthetical expression contains commas, the result will instead be a :ref:`vector`, whose elements are the parts of the expression that are separated by commas.
+As-is typical, the dice parser uses parentheses `()` for grouping expressions. If a parenthetical expression contains no non-nested commas, the parentheses simply say to perform a given operation first, ignoring any normal order of operations. However, if a parenthetical expression contains commas, the result will instead be a :ref:`vector`, whose elements are the parts of the expression that are separated by commas.
 
 .. _brackets::
 
@@ -68,4 +134,4 @@ It may seem as though brackets should behave identically to parentheses. However
 Vectors
 ============================================
 
-The term 'vector' is used rather loosely when it comes to the dice parser. Fundamentally, they are simply lists of values, which could potentially include other vectors. However, they also have some additional arithemetic operations available; one can, for example, add two vectors of numbers together in the natural way, or multiply a vector of numbers by a scalar.
+The term 'vector' is used rather loosely when it comes to the dice parser. Fundamentally, they are simply lists of values, which could potentially include other vectors. However, they also have some additional arithmetic operations available; one can, for example, add two vectors of numbers together in the natural way, or multiply a vector of numbers by a scalar.

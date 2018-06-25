@@ -57,23 +57,56 @@ poolRoll n (Right list) generator = randomListSelect (fromIntegral n) generator 
 dStatsAdd :: HM.HashMap (Word, Word) (HM.HashMap Word Word) -> HM.HashMap (Word, Word) (HM.HashMap Word Word) -> HM.HashMap (Word, Word) (HM.HashMap Word Word)
 dStatsAdd = HM.unionWith $ HM.unionWith (+)
 
---face::          Either Integer [GeneralNumber],
+{-data NumTest = TestNone | TestLeq GeneralRealNumber | TestLes GeneralRealNumber | TestGeq GeneralRealNumber | TestGre GeneralRealNumber
+                 | TestEq [GeneralNumber] | TestNeq [GeneralNumber] | TestIn GeneralRealNumber GeneralRealNumber | TestOut GeneralRealNumber GeneralRealNumber
+data Dice = Die {poolSize::      Int,
+                 poolDis::       String,
+                 face::          Either Int [GeneralNumber],
+                 faceDis::       String,
+                 exploding::     (NumTest, Bool), -- If True, display number, else hide it
+                 reroll::        NumTest,
+                 keep_drop::     Maybe Int,
+                 keep_drop_type::Maybe KeepDrop,
+                 success::       NumTest}-}
 
 diceRoll :: Dice -> PureMT -> HM.HashMap (Word, Word) (HM.HashMap Word Word) -> Either ((T.Text, GeneralNumber), PureMT, HM.HashMap (Word, Word) (HM.HashMap Word Word)) ResolveException
-diceRoll Die {poolSize=pool, face=faceposs, exploding=explodposs, reroll=rerollposs, keep_drop=maybekd, keep_drop_type=maybekdt, success=successposs, faceDis=facestring, suffix=suff} generator diceMap
-  |Left faceint <- faceposs, Left testobj <- explodposs, intInf faceint testobj = Right $ ResolveException $ T.pack "Infinitely exploding roll detected. Roll aborted."
-  |Left faceint <- faceposs, Left testobj <- rerollposs, intInf faceint testobj = Right $ ResolveException $ T.pack "Infinitely rerolling roll detected. Roll aborted."
-  |Right facelist <- faceposs, Right testlist <- explodposs, length facelist == length testlist = Right $ ResolveException $ T.pack "Infinitely exploding roll detected. Roll aborted."
-  |Right facelist <- faceposs, Right testlist <- rerollposs, length facelist == length testlist = Right $ ResolveException $ T.pack "Infinitely rerolling roll detected. Roll aborted."
-  |otherwise = traceShow (explodposs) $ Left $ (endTotal . resKD . resReroll) (resSplode res resMap)
+diceRoll d@Die {poolSize=pool, face=faceposs, exploding=explodtest, reroll=rerolltest, keep_drop=maybekd, keep_drop_type=maybekdt, success=successtest, faceDis=facestring} generator diceMap
+  |infTest faceposs $ fst explodtest = Right $ ResolveException $ T.pack "Infinitely exploding roll detected. Roll aborted."
+  |infTest faceposs rerolltest = Right $ ResolveException $ T.pack "Infinitely rerolling roll detected. Roll aborted."
+  |otherwise = traceShow rerolltest Left $ (endTotal . resKD . resReroll) (resSplode res resMap)
   where
-    intInf :: Int -> IntTest -> Bool
-    intInf facei IntTest {testLes = tles, testEq = teq, testGre = tgre}
-      |Just n <- tles, Just m <- tgre, n>m = True
-      |Just n <- tles, n>facei = True
-      |Just m <- tgre, m<1 = True
-      |Just l <- teq, length l >= facei = True
+    inRange :: GeneralRealNumber -> GeneralRealNumber -> GeneralRealNumber -> Bool
+    inRange mini maxi x = mini <= x && x <= maxi
+    filterSides :: Int -> [GeneralNumber] -> [GeneralNumber]
+    filterSides _ [] = []
+    filterSides facei (x:xs)
+      |GReal n <- x, x `notElem` xs && 1 <= n && n <= fromIntegral facei = x:filterSides facei xs
+      |otherwise = filterSides facei xs
+    orderedTest :: (GeneralRealNumber -> Bool) -> GeneralNumber -> Bool
+    orderedTest test x
+      |GReal n <- x = test n
       |otherwise = False
+    infTest :: Either Int [GeneralNumber] -> NumTest -> Bool
+    infTest (Left facei) numTest
+      |TestNone <- numTest     = False
+      |TestLeq n <- numTest    = n >= fromIntegral facei
+      |TestLes n <- numTest    = n > fromIntegral facei
+      |TestGeq n <- numTest    = n <= 1
+      |TestGre n <- numTest    = n < 1
+      |TestEq list <- numTest  = length (filterSides facei list) >= facei
+      |TestNeq list <- numTest = not $ null (filterSides facei list)
+      |TestIn m n <- numTest   = m <= 1 && fromIntegral facei <= n
+      |TestOut m n <- numTest  = m > fromIntegral facei || 1 > n
+    infTest (Right numList) numTest
+      |TestNone <- numTest     = False
+      |TestLeq n <- numTest    = any (orderedTest $ (>=) n) numList
+      |TestLes n <- numTest    = any (orderedTest $ (>) n)  numList
+      |TestGeq n <- numTest    = any (orderedTest $ (<=) n) numList
+      |TestGre n <- numTest    = any (orderedTest $ (<) n) numList
+      |TestEq list <- numTest  = any (`notElem` list) numList
+      |TestNeq list <- numTest = any (`elem` list) numList
+      |TestIn m n <- numTest   = not $ all (orderedTest $ inRange m n) numList
+      |TestOut m n <- numTest  = any (orderedTest $ inRange m n) numList
     res = poolRoll pool faceposs generator
     resMap = checkMap pool facestring (fst res) diceMap
     smartInc :: Maybe Word -> Maybe Word
@@ -88,23 +121,34 @@ diceRoll Die {poolSize=pool, face=faceposs, exploding=explodposs, reroll=rerollp
       |otherwise = miniMap
       where
         intsum = sum numbers
-    emptyTestPred :: Either IntTest [GeneralNumber] -> Bool
-    emptyTestPred (Left IntTest {testLes = Nothing, testEq = Nothing, testGre = Nothing}) = True
-    emptyTestPred (Left t) = False
-    emptyTestPred (Right list) = null list
-    testOrListEl :: Either IntTest [GeneralNumber] -> GeneralNumber -> Int
-    testOrListEl intTest@(Left IntTest {testLes = testL, testEq = testE, testGre = testG}) x
-      |Just list <- testE, GReal (GSimp (GInt n)) <- x, smartIntegerToInt n `elem` list = 1
-      |Just maxi <- testL, GReal (GSimp (GInt n)) <- x, smartIntegerToInt n < maxi    = 1
-      |Just mini <- testG, GReal (GSimp (GInt n)) <- x, smartIntegerToInt n > mini    = 1
-      |otherwise = 0
-    testOrListEl intTest@(Right intList) x = if x `elem` intList then 1 else 0
+    emptyTestPred :: NumTest -> Bool
+    emptyTestPred TestNone = True
+    emptyTestPred _ = False
+    testOrListEl :: NumTest -> GeneralNumber -> Int
+    testOrListEl numTest x
+      |TestNone <- numTest                               = 0
+      |TestLeq m <- numTest, GReal n <- x, n <= m        = 1
+      |TestLeq m <- numTest                              = 0
+      |TestLes m <- numTest, GReal n <- x, n <  m        = 1
+      |TestLes m <- numTest                              = 0
+      |TestGeq m <- numTest, GReal n <- x, n >= m        = 1
+      |TestGeq m <- numTest                              = 0
+      |TestGre m <- numTest, GReal n <- x, n >  m        = 1
+      |TestGre m <- numTest                              = 0
+      |TestEq list <- numTest, x `elem` list             = 1
+      |TestEq list <- numTest                            = 0
+      |TestNeq list <- numTest, x `notElem` list         = 1
+      |TestNeq list <- numTest                           = 0
+      |TestIn m n <- numTest, GReal p <- x, m<=p && p<=n = 1
+      |TestIn m n <- numTest                             = 0
+      |TestOut m n <- numTest, GReal p <- x, m>p || p>n  = 1
+      |TestOut m n <- numTest                            = 0
     resSplode :: ([GeneralNumber], PureMT) -> HM.HashMap (Word, Word) (HM.HashMap Word Word) -> ([GeneralNumber], PureMT, HM.HashMap (Word, Word) (HM.HashMap Word Word))
     resSplode (results, gen) miniMap
       |explodeNum == 0 = (results, gen, miniMap)
       |(newRes, nGen) <- poolRoll explodeNum faceposs gen, (restRes, lGen, _) <- resSplode (newRes, nGen) miniMap = (results ++ restRes, lGen, miniMap)
       where
-        explodeNum = foldl (\a b -> a + testOrListEl explodposs b) 0 results  --length (filter (\x -> elem x explodlist) results)
+        explodeNum = foldl (\a b -> a + testOrListEl (fst $ traceShowId explodtest) b) 0 results  --length (filter (\x -> elem x explodlist) results)
     resReroll :: ([GeneralNumber], PureMT, HM.HashMap (Word, Word) (HM.HashMap Word Word)) -> ([PossNumber], PureMT, HM.HashMap (Word, Word) (HM.HashMap Word Word))
     resReroll (results, gen, miniMap)
       |count == 0 = (posslist, gen, miniMap)
@@ -113,7 +157,7 @@ diceRoll Die {poolSize=pool, face=faceposs, exploding=explodposs, reroll=rerollp
         ignoreRes :: [GeneralNumber] -> ([PossNumber], Integer)
         ignoreRes [] = ([], 0)
         ignoreRes (r:rs)
-          |testOrListEl rerollposs r == 1 = (Dropped r:poss, count + 1)
+          |testOrListEl rerolltest r == 1 = (Dropped r:poss, count + 1)
           |otherwise = (Kept r:poss, count)
           where
             (poss, count) = ignoreRes rs
@@ -150,25 +194,31 @@ diceRoll Die {poolSize=pool, face=faceposs, exploding=explodposs, reroll=rerollp
             endList = eleSelect indexedPossList keptInd
     endTotal :: ([PossNumber], PureMT, HM.HashMap (Word, Word) (HM.HashMap Word Word)) -> ((T.Text, GeneralNumber), PureMT, HM.HashMap (Word, Word) (HM.HashMap Word Word))
     endTotal (results, gen, miniMap)
-      |emptyTestPred successposs = (smartSum results, gen, miniMap)
+      |emptyTestPred successtest = (smartSum results, gen, miniMap)
       |otherwise = (smartSuccess results, gen, miniMap)
       where
         stringify :: [PossNumber] -> T.Text
-        stringify numList = T.intercalate (T.pack "+") $ map (T.pack . show) numList
+        stringify numList = T.concat $ head strList : map plusForPos (tail strList)
+          where
+            strList = map (T.pack . show) numList
+            plusForPos :: T.Text -> T.Text
+            plusForPos numStr
+              |T.singleton '-' `T.isPrefixOf` numStr = numStr
+              |otherwise = T.cons '+' numStr
         sumNumsH :: PossNumber -> GeneralNumber
         sumNumsH (Kept n) = n
-        sumNumsH x        = GReal $ GSimp $ GInt 0
+        sumNumsH x        = 0
         sumNums :: [PossNumber] -> GeneralNumber
         sumNums list = sum $ map sumNumsH list
         smartSum :: [PossNumber] -> (T.Text, GeneralNumber)
-        smartSum list = (T.concat [T.singleton '(', stringify list, T.singleton ')', T.pack suff], sumNums list)
+        smartSum list = (T.concat [T.singleton '(', stringify list, T.singleton ')', T.pack $ showDieSuffix d], sumNums list)
         succNumsH :: PossNumber -> GeneralNumber
-        succNumsH (Kept n) = GReal $ GSimp $ GInt $ fromIntegral $ testOrListEl successposs n
-        succNumsH x = GReal $ GSimp $ GInt 0
+        succNumsH (Kept n) = GReal $ GSimp $ GInt $ fromIntegral $ testOrListEl successtest n
+        succNumsH x = 0
         succNums :: [PossNumber] -> GeneralNumber
         succNums list = sum $ map succNumsH list
         smartSuccess :: [PossNumber] -> (T.Text, GeneralNumber)
-        smartSuccess list = (T.concat [T.singleton '(', stringify list, T.singleton ')', T.pack suff], traceShowId $ succNums list)
+        smartSuccess list = (T.concat [T.singleton '(', T.intercalate (T.singleton ',') (map (T.pack . show) list), T.singleton ')', T.pack $ showDieSuffix d], traceShowId $ succNums list)
 
 data VecText = Flat T.Text | Deep [VecText]
 vecTextShow :: VecText -> T.Text
@@ -482,7 +532,7 @@ nodeResolve (baseNode@OpNode {nodeFunction = fun, nodeChildren = children, nodeR
             restRes = childThreadRoll xs ncGen diceMap
         resolveAgain :: FunType -> [(OpType, [(T.Text, T.Text)])] -> HM.HashMap (Word, Word) (HM.HashMap Word Word) -> (FunRes, [(T.Text, T.Text)], HM.HashMap (Word, Word) (HM.HashMap Word Word))
         resolveAgain resFun rollChildren diceMap
-          |NeedsRolls <- sndRes              = (Errored $ ResolveException $ T.pack "Double Roll at one node detected, which shouldn't happen. Further investigation is needed.", [], diceMap)
+          |NeedsRolls <- sndRes              = traceShow rollChildren (Errored $ ResolveException $ T.pack "Double Roll at one node detected, which shouldn't happen. Further investigation is needed.", [], diceMap)
           |Errored e <- sndRes               = (sndRes, [], diceMap)
           |Resolved (TypeStatic r) <- sndRes = (sndRes, makeMyList rollChildren $ T.pack $ show r, diceMap)
           where

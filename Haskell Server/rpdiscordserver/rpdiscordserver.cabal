@@ -1,8 +1,8 @@
--- This file has been generated from package.yaml by hpack version 0.20.0.
+-- This file has been generated from package.yaml by hpack version 0.28.2.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 294af368c19849d90aa1b2df8442c5bd6c8c436f6556c1d07a72dd6a532c465a
+-- hash: 4eddb2d17071951dd45bf3db0e3c3949bfa594f33bf9139bdf6c097e88f01269
 
 name:           rpdiscordserver
 version:        1.0.0.0
@@ -16,7 +16,6 @@ license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
 cabal-version:  >= 1.10
-
 extra-source-files:
     ChangeLog.md
     README.md
@@ -33,7 +32,8 @@ library
     , Chart-cairo
     , aeson
     , arithmoi
-    , base >=4.7 && <5
+    , base
+    , cassava
     , extra
     , mersenne-random-pure64
     , primitive
@@ -42,7 +42,6 @@ library
     , timeit
     , unordered-containers
   exposed-modules:
-      DiceChart.ChartMaker
       General.UserNumber
       HistoryDiceParser.InfixToPostfix
       HistoryDiceParser.Operators
@@ -62,7 +61,8 @@ executable rpdiscordserver
     , Chart-cairo
     , aeson
     , arithmoi
-    , base >=4.7 && <5
+    , base
+    , cassava
     , extra
     , mersenne-random-pure64
     , primitive
@@ -86,7 +86,8 @@ test-suite rpdiscordserver-test
     , Chart-cairo
     , aeson
     , arithmoi
-    , base >=4.7 && <5
+    , base
+    , cassava
     , extra
     , mersenne-random-pure64
     , primitive

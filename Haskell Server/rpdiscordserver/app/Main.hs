@@ -29,11 +29,11 @@ roller :: ActionM ()
 roller = do
   input <- param "roll"
   seed <- param $ trace ("input: "++ show input) "seed"
-  --{-
+  {-
   result <- liftAndCatchIO $ timeout 10000000 $ return $! (resShow . treeResolve . seededPostFixToTrees . seededInfixToPostfix) (input, pureMT seed)
   text $ failedRoll $ trace ("result: " ++ show result) result
   ---}
-  {-
+  --{-
   e0 <- timeItNamed "e0" $ return $ traceShowId $! seededInfixToPostfix (input, pureMT seed)
   e1 <- timeItNamed "e1" $ return $ traceShowId $! seededPostFixToTrees e0
   e2 <- timeItNamed "e2" $ return $ traceShowId $! treeResolve e1

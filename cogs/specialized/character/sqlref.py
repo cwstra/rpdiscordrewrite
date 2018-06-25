@@ -9,187 +9,87 @@ class CharDoesNotExistException(Exception):
 class AttrDoesNotExistException(Exception):
     pass
 
+class EditNotAllowedException(Exception):
+    pass
+
+async def hstoreSetup(conn):
+    await conn.set_builtin_type_codec('hstore', codec_name='pg_contrib.hstore')
+
+def mergeAttrs(olddict, newdict):
+    return {i:j for i, j in {**olddict, **newdict}.items() if j != None}
+
 class Server:
     @classmethod
     async def create(cls, settings):
         self = Server()
-        credentials = {"user": settings['sql'][0], "password": settings['sql'][2], "database":  settings['characterDB'], "host": settings['sql'][1]}
+        credentials = {"user": settings['sql'][0], "password": settings['sql'][2], "database":  settings['characterDB'], "host": settings['sql'][1], "init":hstoreSetup}
         self.commands = {}
         self.commands['characters'] = {}
-        self.commands['characters']['newchar'] = "INSERT INTO characters (id, author, attributes) VALUES ($1, $2, $3);"
-        self.commands['characters']['getchar'] = "SELECT * FROM characters WHERE id = $1"
-        self.commands['characters']['getid'] = "SELECT id FROM characters WHERE id = $1"
-        self.commands['characters']['getallidsfromserver'] = "SELECT * FROM characters WHERE POSITION($1 in id) = 1"
-        self.commands['characters']['update'] = "UPDATE characters SET attributes = $2 WHERE ID = $1;"
-        self.commands['characters']['rename'] = "UPDATE characters SET ID = $2 WHERE ID = $1;"
-        self.commands['characters']['delete'] = "DELETE FROM characters WHERE ID = $1;"
-        self.commands['attributes'] = {}
-        self.commands['attributes']['newattr'] = "INSERT INTO attributes (id, value) VALUES ($1, $2);"
-        self.commands['attributes']['upsert'] = 'INSERT INTO attributes (id, value) VALUES ($1, $2) ON CONFLICT (id) DO UPDATE SET value=$2;'
-        self.commands['attributes']['getentry'] = 'SELECT value FROM attributes WHERE id = $1;'
-        self.commands['attributes']['rename'] = "UPDATE attributes SET ID = $2 WHERE ID = $1;"
-        self.commands['attributes']['remove'] = 'DELETE FROM attributes WHERE id = $1'
+        self.commands['characters']['newchar'] = "INSERT INTO characters (server_id, member_id, character_name, attributes) VALUES ($1, $2, $3, $4);"
+        self.commands['characters']['getchar'] = "SELECT * FROM characters WHERE server_id = $1 AND character_name  = $2"
+        self.commands['characters']['checkchar'] = "SELECT TRUE FROM characters WHERE server_id = $1 AND character_name = $2"
+        self.commands['characters']['update'] = "UPDATE characters SET attributes = $3 WHERE server_id = $1 AND character_name = $2"
+        self.commands['characters']['updatewithname'] = "UPDATE characters SET character_name = $3, attributes = $4 WHERE server_id = $1 AND character_name = $2"
+        self.commands['characters']['delete'] = "DELETE FROM characters WHERE server_id = $1 AND character_name = $2;"
         self.pool = await asyncpg.create_pool(**credentials)
         return self
 
-    async def newInfo(self, ctx, charactername, attrdict = None, private = False, author = None):
-        conn = await self.pool.acquire()
-        if not(author):
+    async def newInfo(self, ctx, charactername, attrdict = None):
+        async with self.pool.acquire() as conn:
             author = ctx.author.id
-        if private:
-            charkey = str(ctx.guild.id) + u"\uFEFF" + str(author) + u"\uFEFF" + charactername
-        else:
-            charkey = str(ctx.guild.id) + u"\uFEFF" + charactername
-        charentry = await conn.fetchrow(self.commands['characters']['getid'], charkey)
-        if charentry:
-            await self.pool.release(conn)
-            raise CharExistsException(charactername)
-        if attrdict:
-            attrkeys = list(attrdict.keys())
-        else:
-            attrkeys = []
-        await conn.execute(self.commands['characters']['newchar'], charkey, author, attrkeys)
-        for i in attrdict:
-            await conn.execute(self.commands['attributes']['newattr'], charkey + u"\uFEFF" + i, attrdict[i])
-        await self.pool.release(conn)
+            charentry = await conn.fetchrow(self.commands['characters']['checkchar'], ctx.guild.id, charactername)
+            if charentry:
+                raise CharExistsException(charactername)
+            if not(attrdict):
+                attrdict = {}
+            await conn.execute(self.commands['characters']['newchar'], ctx.guild.id, author, charactername, attrdict)
 
-    async def renameInfo(self, ctx, charactername, newname, private = False, author = None):
-        conn = await self.pool.acquire()
-        if not(author):
+    async def getInfo(self, ctx, charactername, attrs=None):
+        async with self.pool.acquire() as conn:
             author = ctx.author.id
-        if not(private):
-            newcharkey = str(ctx.guild.id) + u"\uFEFF"
-            oldcharkey = newcharkey + charactername
-            newcharkey += newname
-            oldcharentry = await conn.fetchrow(self.commands['characters']['getchar'], oldcharkey)
-        else:
-            newcharkey = str(ctx.guild.id) + u"\uFEFF"
-            oldcharkey = newcharkey + str(author) + u"\uFEFF" + charactername
-            oldcharentry = await conn.fetchrow(self.commands['characters']['getchar'], oldcharkey)
-            if oldcharentry:
-                newcharkey += str(author) + u"\uFEFF" + newname
+            charentry = await conn.fetchrow(self.commands['characters']['getchar'], ctx.guild.id, charactername)
+            if not(charentry):
+                raise CharDoesNotExistException(charactername)
+            if attrs:
+                l = {i:j for i,j in charentry['attributes'].items() if i in attrs} 
+                if len(l) == 0:
+                    raise AttrDoesNotExistException(charactername, attrs, charentry['attributes'])
+                return l
             else:
-                oldcharkey = newcharkey + charactername
-                newcharkey += newname
-                oldcharentry = await conn.fetchrow(self.commands['characters']['getchar'], oldcharkey)
-        if not(oldcharentry):
-            await self.pool.release(conn)
-            raise CharDoesNotExistException(charactername)
-        for i in oldcharentry['attributes']:
-            await conn.execute(self.commands['attributes']['rename'], oldcharkey + u"\uFEFF" + i, newcharkey + u"\uFEFF" + i)
-        await conn.execute(self.commands['characters']['rename'], oldcharkey, newcharkey)
-        await self.pool.release(conn)
+                return (charentry['member_id'], charentry['attributes'])
 
-    async def editInfo(self, ctx, charactername, attrdict, private = False, author = None):
-        conn = await self.pool.acquire()
-        if not(author):
+    async def editInfo(self, ctx, charactername, predicate, newattrdict, newname=None):
+        async with self.pool.acquire() as conn:
             author = ctx.author.id
-        if not(private):
-            charkey = str(ctx.guild.id) + u"\uFEFF" + charactername
-            charentry = await conn.fetchrow(self.commands['characters']['getchar'], charkey)
-        else:
-            charkey = str(ctx.guild.id) + u"\uFEFF" + str(author) + u"\uFEFF" + charactername
-            charentry = await conn.fetchrow(self.commands['characters']['getchar'], charkey)
+            charentry = await conn.fetchrow(self.commands['characters']['getchar'], ctx.guild.id, charactername)
             if not(charentry):
-                charkey = str(ctx.guild.id) + u"\uFEFF" + charactername
-                charentry = await conn.fetchrow(self.commands['characters']['getchar'], charkey)
-        if not(charentry):
-            await self.pool.release(conn)
-            raise CharDoesNotExistException(charactername)
-        attrkeys = set(charentry['attributes'])
-        for i in attrdict:
-            if attrdict[i] == None:
-                if i in attrkeys:
-                    attrkeys.remove(i)
-                    await conn.execute(self.commands['attributes']['remove'], charkey + u"\uFEFF" + i)
+                raise CharDoesNotExistException(charactername)
+            elif not(predicate(charentry['member_id'])):
+                raise EditNotAllowedException(charactername, charentry['member_id'])
+            mergedattrdict = mergeAttrs(charentry['attributes'], newattrdict)
+            if newname:
+                await conn.execute(self.commands['characters']['updatewithname'], ctx.guild.id, charactername, newname, mergedattrdict)
             else:
-                attrkeys.add(i)
-                await conn.execute(self.commands['attributes']['upsert'], charkey + u"\uFEFF" + i, attrdict[i])
-        await conn.execute(self.commands['characters']['update'], charkey, list(attrkeys))
-        await self.pool.release(conn)
+                await conn.execute(self.commands['characters']['update'], ctx.guild.id, charactername, mergedattrdict)
 
-    async def getInfo(self, ctx, charactername, attrs=None, private = False, author = None):
-        conn = await self.pool.acquire()
-        if not(author):
-            author = ctx.author.id
-        if not(private):
-            charkey = str(ctx.guild.id) + u"\uFEFF" + charactername
-            charentry = await conn.fetchrow(self.commands['characters']['getchar'], charkey)
-        else:
-            charkey = str(ctx.guild.id) + u"\uFEFF" + str(author) + u"\uFEFF" + charactername
-            charentry = await conn.fetchrow(self.commands['characters']['getchar'], charkey)
+    async def delInfo(self, ctx, charactername):
+        async with self.pool.acquire() as conn:
+            charentry = await conn.fetchrow(self.commands['characters']['checkchar'], ctx.guild.id, charactername)
             if not(charentry):
-                charkey = str(ctx.guild.id)+u"\uFEFF"+charactername
-                charentry = await conn.fetchrow(self.commands['characters']['getchar'], charkey)
-        if not(charentry):
-            await self.pool.release(conn)
-            raise CharDoesNotExistException(charactername)
-        if attrs:
-            l = {}
-            for i in attrs:
-                if i in charentry['attributes']:
-                    attrentry = await conn.fetchrow(self.commands['attributes']['getentry'], charkey + u"\uFEFF" + i)
-                    l[i] = attrentry['value']
-            if len(l) == 0:
-                raise AttrDoesNotExistException(charactername, attrs, charentry['attributes'])
-            await self.pool.release(conn)
-            return l
-        else:
-            await self.pool.release(conn)
-            return (charentry['author'], charentry['attributes'])
+                raise CharDoesNotExistException(charactername)
+            await conn.execute(self.commands['characters']['delete'], ctx.guild.id, charactername)
 
-    async def getBatchInfo(self, ctx, dataDict):
-        conn = await self.pool.acquire()
-        out = {}
-        for i, val in dataDict.items():
-            key = str(ctx.guild.id) + u"\uFEFF" + i + u"\uFEFF" + val[0]
-            entry = await conn.fetchrow(self.commands['attributes']['getentry'], key)
-            if entry != None:
-                out[i] = entry['value']
-        return out
+    async def getBatchInfo(self, ctx, dataIter):
+        async with self.pool.acquire() as conn:
+            out = {}
+            for char, attr in dataIter:
+                entry = await conn.fetchrow(self.commands['characters']['getchar'], ctx.guild.id, char)
+                if entry != None and attr in entry['attributes']:
+                    out[(char, attr)] = entry['attributes'][attr]
+            return out
 
-    async def getServerInfo(self, ctx):
-        conn = await self.pool.acquire()
-        key = str(ctx.guild.id)+u"\uFEFF"
-        out = await conn.fetch(self.commands['characters']['getallidsfromserver'], str(ctx.guild.id)+u"\uFEFF")
-        return out
-
-    async def delInfo(self, ctx, charactername, private = False, author = None):
-        conn = await self.pool.acquire()
-        if not(author):
+    async def checkInfo(self, ctx, charactername):
+        async with self.pool.acquire() as conn:
             author = ctx.author.id
-        if not(private):
-            charkey = str(ctx.guild.id) + u"\uFEFF" + charactername
-            charentry = await conn.fetchrow(self.commands['characters']['getchar'], charkey)
-        else:
-            charkey = str(ctx.guild.id) + u"\uFEFF" + str(author) + u"\uFEFF" + charactername
-            charentry = await conn.fetchrow(self.commands['characters']['getchar'], charkey)
-            if not(charentry):
-                charkey = str(ctx.guild.id)+u"\uFEFF"+charactername
-                charentry = await conn.fetchrow(self.commands['characters']['getchar'], charkey)
-        if not(charentry):
-            await self.pool.release(conn)
-            raise CharDoesNotExistException(charactername)
-        for i in charentry['attributes']:
-            await conn.execute(self.commands['attributes']['remove'], charkey + u"\uFEFF" + i)
-        await conn.execute(self.commands['characters']['delete'], charkey)
-        await self.pool.release(conn)
-
-    async def checkInfo(self, ctx, charactername, private = False, author = None):
-        conn = await self.pool.acquire()
-        if not(author):
-            author = ctx.author.id
-        if not(private):
-            private = False
-            charkey = str(ctx.guild.id) + u"\uFEFF" + charactername
-            charentry = await conn.fetchrow(self.commands['characters']['getid'], charkey)
-        else:
-            private = True
-            charkey = str(ctx.guild.id) + u"\uFEFF" + str(author) + u"\uFEFF" + charactername
-            charentry = await conn.fetchrow(self.commands['characters']['getid'], charkey)
-            if not(charentry):
-                private = False
-                charkey = str(ctx.guild.id)+u"\uFEFF"+charactername
-                charentry = await conn.fetchrow(self.commands['characters']['getid'], charkey)
-        await self.pool.release(conn)
-        return (charentry, private)
+            charentry = await conn.fetchrow(self.commands['characters']['checkchar'], ctx.guild.id, charactername)
+            return (charentry, private)

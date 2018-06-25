@@ -1,5 +1,6 @@
-import json
+import json 
 import asyncio
+import asyncpg
 
 import discord
 from discord.ext import commands
@@ -8,7 +9,7 @@ import serverfetcher
 # Get the prefixes for the bot
 async def command_prefix(bot, message):
     if message.guild:
-        extras = await serverfetcher.prefixes_for(message.guild.id, bot.user.id)
+        extras = await bot.serverfetcher.prefixes_for(message.guild.id, bot.user.id)
     else:
         extras = ['', '<@'+str(bot.user.id)+'> ', '<@'+str(bot.user.id)+'>']
     return commands.when_mentioned_or(*extras)(bot, message)
@@ -19,18 +20,23 @@ startup_extensions = [
     'cogs.general',
     'cogs.ref',
     'cogs.roll',
-    'cogs.server_settings'
+    'cogs.server_settings',
+    'cogs.initialize'
 ]
 
 class RPBot(commands.Bot):
-    def __init__(self):
+    def __init__(self, sf):
         super().__init__(command_prefix=command_prefix, case_insensitive=True, pm_help=None)
-        self.serverdata = serverfetcher.serverdata
-        self.systemlist = serverfetcher.systemlist
-        self.upsert_entry = serverfetcher.upsert_entry
         with open("botsettings.json") as data_file:
             self.settings = json.load(data_file)
         self.waiting = {}
+        self.serverfetcher = sf
+
+        self.botdataserver = {}
+        self.botdataserver['credentials'] = {"user": self.settings['sql'][0], "password": self.settings['sql'][2], "database": self.settings['botDataServer'], "host": self.settings['sql'][1]}
+        self.botdataserver['commands'] = {}
+        self.botdataserver['commands']['increment_command'] = 'INSERT INTO command_usage (name, uses) VALUES ($1, 1) ON CONFLICT (name) DO UPDATE SET uses = command_usage.uses + 1;'
+        self.botdataserver['commands']['upsert'] = lambda x: 'INSERT INTO '+x+ '(id) VALUES ($1) ON CONFLICT DO NOTHING;'  #unique_guilds, unique_users
 
         for extension in startup_extensions:
             try:
@@ -46,6 +52,13 @@ class RPBot(commands.Bot):
     async def on_ready(self):
         print('Username: ' + str(self.user.name))
         print('Client ID: ' + str(self.user.id))
+        self.check_for_server = self.serverfetcher.check_for_server        
+        self.serverdata = self.serverfetcher.serverdata
+        self.systemlist = self.serverfetcher.systemlist
+        self.upsert_entry = self.serverfetcher.upsert_entry
+        self.botdataserver['pool'] = await asyncpg.create_pool(**self.botdataserver['credentials'])
+        activity = discord.Activity(name='"<@bot_ping> init" to help newcomers.', type = discord.ActivityType.listening)
+        await self.change_presence(activity=activity)
         await self.redefine()
 
     # Prevent bot from replying to other bots
@@ -66,6 +79,12 @@ class RPBot(commands.Bot):
                 ctx = await self.get_context(message)
                 await self.invoke(ctx)
                 await self.inline_roller(ctx)
+
+    async def on_command_completion(self, ctx):
+        async with self.botdataserver['pool'].acquire() as conn:
+            await conn.execute(self.botdataserver['commands']['upsert']('unique_guilds'), ctx.guild.id)
+            await conn.execute(self.botdataserver['commands']['upsert']('unique_users') , ctx.author.id)
+            await conn.execute(self.botdataserver['commands']['increment_command']      , ctx.command.name)
 
     @staticmethod
     async def smartSend(ctx,prefix,message,begin='', end=''):
@@ -132,13 +151,14 @@ class RPBot(commands.Bot):
         return ret
 
 async def run():
-    bot = RPBot()
+    sf = serverfetcher.ServerFetcher()
+    bot = RPBot(sf)
     try:
-        await serverfetcher.init_pool(bot.settings)
+        await sf.init_pool(bot.settings)
         await bot.start(bot.settings['token'])
     except KeyboardInterrupt:
         await bot.refserver.close()
-        await serverfetcher.serverDB.close()
+        await sf.pool.close()
         await bot.logout()
 
 loop = asyncio.get_event_loop()

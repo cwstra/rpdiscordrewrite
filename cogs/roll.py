@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-import json
+import io
 import random
 import aiohttp
 import re
@@ -9,6 +9,9 @@ import shlex
 import cogs.specialized.dice as rollP
 from collections import OrderedDict
 from urllib.parse import quote as urlEscape
+import ahocorasick
+import os
+import ujson as json
 
 def specialstart(message, tup, ind):
     if message.startswith(tup, ind):
@@ -18,85 +21,58 @@ def specialstart(message, tup, ind):
     else:
         return False
 
-def getKeys(message, charsigns, chardata, authorstr):
-    ind = 0
-    begin = -1
-    outbegin = -1
-    data = OrderedDict()
-    key = ''
-    private = False
+def getKeys(message, charsigns, charseps):
+    print(charseps)
     signtup = tuple(i for i in sorted(charsigns, key=len, reverse=True))
-    chartup = tuple(i for i in sorted(chardata, key=len, reverse=True))
+    septup = tuple(i for i in sorted(charseps, key=len, reverse=True))
+    ind = 0
+    outdata = OrderedDict()  
     while ind < len(message):
         signtest = specialstart(message, signtup, ind)
         if signtest:
             outbegin = ind
             ind += len(signtest)
-            chartest = specialstart(message, chartup, ind)
-            tempdict = None
-            if message.startswith('p',ind) and not(chartest):
-                opt = message.find('>', ind)
-                if message.startswith('<@', ind+1) and message[ind+1].isdigit() and opt>-1:
-                    opt = message[2:opt]
-                    lopt = len(opt)
-                    try:
-                        int(opt)
-                        ind += 3+lopt
-                    except ValueError:
-                        opt = authorstr
+            begin = ind
+            nextentry = False
+            while ind < len(message):
+                septest = specialstart(message, septup, ind)
+                if septest:
+                    nextentry = message[begin:ind]
+                    ind += len(septest)
+                    begin = ind
+                    break
                 else:
-                    opt = authorstr
-                signtest = specialstart(message, signtup, ind+1)
-                if signtest:
-                    lsigntest = len(signtest)
-                    signtest = specialstart(message, signtup, ind+1+lsigntest)
-                    if signtest:
-                        ind += 1+lsigntest+len(signtest)
-                elif message.startswith('::', ind+1):
-                    ind += 1+2
-                tempkeys = ([i for i in chardata if not(u"\uFEFF" in i)], [i.split(u"\uFEFF",1) for i in chardata if (i.find(u"\uFEFF")>-1 and i.split(u"\uFEFF",1)[0]==opt)])
-                tempdict = {**{i:i for i in tempkeys[0] if not(i in tempkeys[1])}, **{i[1]:i[0] for i in tempkeys[1]}}
-                temptup = tuple(i for i in sorted(tempdict, key=len, reverse=True))
-                chartest = specialstart(message, temptup, ind)
-            if chartest:
-                key = chartest
-                ind += len(chartest)
-                if message.startswith(':', ind):
                     ind += 1
-                else:
-                    signtest = specialstart(message, signtup, ind)
-                    if signtest:
-                        ind += len(signtest)
-                    else:
-                        continue
-                chartest = specialstart(message, tuple(chardata[key]), ind)
-                if chartest:
-                    value = chartest
-                    ind += len(chartest)
+            if not(nextentry):
+                break
+            while ind < len(message):
                 signtest = specialstart(message, signtup, ind)
                 if signtest:
-                    if tempdict:
-                        key = tempdict[key]+u"\uFEFF"+key
+                    nextentry = (nextentry, message[begin:ind])
                     ind += len(signtest)
-                    data[key]=(value, outbegin, ind)
+                    break
+                else:
+                    ind += 1
+            if type(nextentry) == str:
+                break
+            outdata[nextentry] = (outbegin, ind)
         else:
             ind += 1
-    return data
+    return outdata
 
-async def parseChars(ctx, message, charsigns, chardata, getInfo):
-    data = getKeys(message, charsigns, chardata, str(ctx.author.id))
+async def parseChars(ctx, message, charsigns, charseps, getInfo):
+    data = getKeys(message, charsigns, charseps)
     res = await getInfo(ctx, data)
-    out = message
-    for i in reversed(data):
-        if i in res:
-            out = out[:data[i][1]] + res[i] + out[data[i][2]:]
-    return out
+    for i,j in reversed(data):
+        if (i, j) in res:
+            message = message[:data[(i,j)][0]] + res[(i, j)] + message[data[(i,j)][1]:]
+    return message 
 
 class Roll:
     def __init__(self, bot):
         self.bot = bot
         self.bot.inline_roller = self.inline_roller
-        self.rollParse = {'basic':rollP.BasicRoll(), 'adv':aiohttp.ClientSession()}
+        self.rollParse = rollP.BasicRoll()
         self.rollPort = str(self.bot.settings['haskellport'])
         self.bot.loop.create_task(self.server_start())
 
@@ -111,67 +87,127 @@ class Roll:
         charsigns = await self.bot.serverdata(ctx.guild.id, 'charsigns')
         if not(charsigns):
             charsigns = ['$']
-        chardata = await self.bot.charserver.getServerInfo(ctx)
-        chardata = {i['id'].split(u"\uFEFF",1)[1]:i['attributes'] for i in chardata}
-        message = await parseChars(ctx, ctx.message.content, charsigns, chardata, self.bot.charserver.getBatchInfo)
-        await self.rollParse['basic'].roll(ctx, message)
+        charseps = await self.bot.serverdata(ctx.guild.id, 'charseps')
+        if not(charseps):
+            charseps = [':']
+        message = await parseChars(ctx, ctx.message.content, charsigns, charseps, self.bot.charserver.getBatchInfo)
+        await self.rollParse.roll(ctx, message)
 
     #Command-invoked roller
     @commands.command(aliases = ['r'])
     async def roll(self, ctx, *, args):
         """Command-invoked dice roller."""
         async with ctx.typing():
+            print('roll: awaiting charsigns')
             charsigns = await self.bot.serverdata(ctx.guild.id, 'charsigns')
             if not(charsigns):
                 charsign = ['$']
             prefix = str(ctx.author.display_name)+':\n'+args
-            chardata = await self.bot.charserver.getServerInfo(ctx)
-            chardata = {i['id'].split(u"\uFEFF",1)[1]:i['attributes'] for i in chardata}
-            message = await parseChars(ctx, args, charsigns, chardata, self.bot.charserver.getBatchInfo)
+            print('roll: awaiting chardata')
+            charseps = await self.bot.serverdata(ctx.guild.id, 'charseps')
+            if not(charseps):
+                charseps = [':']
+            print('roll: awaiting parseChars')
+            message = await parseChars(ctx, args, charsigns, charseps, self.bot.charserver.getBatchInfo)
             if message != args:
                 prefix += '=' + message
             prefix += '\n'
             seed = random.randint(0,18446744073709551615)
-            message = await self.rollParse['adv'].get('http://localhost:'+self.rollPort+'/roll?roll='+urlEscape(message,safe='')+'&seed='+str(seed))
-            message = await message.text()
+            url = 'http://localhost:'+self.rollPort+'/roll?roll='+urlEscape(message,safe='')+'&seed='+str(seed)
+            print('roll: awaiting server')
+            async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=20)) as client:
+                message = await client.get(url)
+                message = await message.text()
             if message.startswith('Roll Statistics:'):
                 message = message.split('\n',3)
-                #if message[1] != '{}':
-                #    await self.bot.statserver.editStats(message[1])
+                if message[1] != '{}':
+                    await self.bot.statserver.editStats(ctx, message[1])
                 message = message[-1]
+            print('roll: awaiting send')
             await self.bot.smartSend(ctx,prefix.replace('*','\*'), message,'```')
 
 
     #Displays roll statistics
-    #@commands.command()
-    #async def statistics(self, ctx, *, args=''):
-        """Displays roll statistics for a given user in this channel. Can be called with arguments to only see results for certain dice."""
-        """async with ctx.typing():
+    @commands.command(aliases = ['stats'])
+    async def statistics(self, ctx, *, args=''):
+        """Displays roll statistics from this server. Can be called with arguments to only see results for certain dice or users."""
+        async with ctx.typing():
+            servername = ctx.guild.name
             if args == '':
                 res = await self.bot.statserver.viewStats(ctx)
+                titlename = "All"
             else:
-                if args.startswith('myself'):
+                parsedargs = shlex.split(args)
+                test = ctx.guild.get_member_named(parsedargs[0])
+                if test:
+                    rejoined = ' '.join(parsedargs[1:])
+                    if rejoined.strip():
+                        res = await self.bot.statserver.viewStats(ctx, test.id, map(lambda x: x.strip(), rejoined.split(',')))
+                    else:
+                        res = await self.bot.statserver.viewStats(ctx, test.id)
+                    titlename = test.display_name + "'s"
+                elif args.startswith('myself'): 
                     args = args[6:].strip()
                     if args == '':
-                        res = await self.bot.statserver.viewStats(ctx, ctx.author)
+                        res = await self.bot.statserver.viewStats(ctx, ctx.author.id)
                     else:
-                        res = await self.bot.statserver.viewStats(ctx, ctx.author, map(lambda x: x.strip(), args.split(',')))
+                        res = await self.bot.statserver.viewStats(ctx, ctx.author.id, map(lambda x: x.strip(), args.split(',')))
+                    titlename = ctx.author.display_name + "'s"
                 else:
-                    parsedargs = shlex.split(args)
-                    test = ctx.guild.get_member_named(parsedargs[0])
-                    if test:
-                        rejoined = ' '.join(parsedargs[1:])
-                        res = await self.bot.statserver.viewStats(ctx, test, map(lambda x: x.strip(), rejoined.split(',')))
-                    else:
-                        res = await self.bot.statserver.viewStats(ctx, dice=map(lambda x: x.strip(), args.split(',')))
+                    res = await self.bot.statserver.viewStats(ctx, dice=map(lambda x: x.strip(), args.split(',')))
+                    titlename = 'All'
             if type(res) == str:
                 await ctx.send(res)
             else:
+                if len(res) <= 1:
+                    send = ctx.send
+                else:
+                    send = ctx.author.send
                 for i in res:
                     if type(res[i]) == str:
-                        await ctx.send(res[i])
+                        await send(res[i])
                     else:
-                        await ctx.send()"""
+                        graphname = await self.bot.statserver.plot(self.bot.loop, titlename, servername, i, res[i])
+                        await send(file = discord.File(graphname))
+                        os.remove(graphname)
+                if len(res) > 1:
+                    await ctx.send('Information sent via PM.')
+
+    #Displays roll statistics
+    @commands.command()
+    async def text_stats(self, ctx, *, args=''):
+        """DMs a JSON of dice statistics from this server. Can be called with arguments to only see results for certain dice or users."""
+        async with ctx.typing():
+            servername = ctx.guild.name
+            if args == '':
+                res = await self.bot.statserver.viewStats(ctx)
+            else:
+                parsedargs = shlex.split(args)
+                test = ctx.guild.get_member_named(parsedargs[0])
+                if test:
+                    rejoined = ' '.join(parsedargs[1:])
+                    if rejoined.strip():
+                        res = await self.bot.statserver.viewStats(ctx, test.id, map(lambda x: x.strip(), rejoined.split(',')))
+                    else:
+                        res = await self.bot.statserver.viewStats(ctx, test.id)
+                elif args.startswith('myself'): 
+                    args = args[6:].strip()
+                    if args == '':
+                        res = await self.bot.statserver.viewStats(ctx, ctx.author.id)
+                    else:
+                        res = await self.bot.statserver.viewStats(ctx, ctx.author.id, map(lambda x: x.strip(), args.split(',')))
+                else:
+                    res = await self.bot.statserver.viewStats(ctx, dice=map(lambda x: x.strip(), args.split(',')))
+            if type(res) == str:
+                await ctx.author.send(res)
+            else:
+                for i in res:
+                    if type(res[i]) == str:
+                        await ctx.author.send(res)
+                    else:
+                        await ctx.author.send(json.dumps(res))
+                await ctx.send('Information sent via PM.')
+
 
 def setup(bot):
     bot.add_cog(Roll(bot))

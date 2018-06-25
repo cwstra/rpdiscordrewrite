@@ -28,7 +28,7 @@ Syntax
 ``github``
 ------------------
 
-``github`` returns a link to the bot's github page.
+``github`` returns a link to the bot's Github page.
 
 Syntax
 

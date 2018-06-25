@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="056ae144-8fcd-41be-a51c-1af5f8c8287a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/Haskell Server/Test.hs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haskell Server/rpdiscordserver/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/Haskell Server/rpdiscordserver/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haskell Server/rpdiscordserver/app/Main.hs" beforeDir="false" afterPath="$PROJECT_DIR$/Haskell Server/rpdiscordserver/app/Main.hs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haskell Server/rpdiscordserver/package.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Haskell Server/rpdiscordserver/package.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haskell Server/rpdiscordserver/rpdiscordserver.cabal" beforeDir="false" afterPath="$PROJECT_DIR$/Haskell Server/rpdiscordserver/rpdiscordserver.cabal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haskell Server/rpdiscordserver/src/DiceChart/ChartMaker.hs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haskell Server/rpdiscordserver/src/HistoryDiceParser/InfixToPostfix.hs" beforeDir="false" afterPath="$PROJECT_DIR$/Haskell Server/rpdiscordserver/src/HistoryDiceParser/InfixToPostfix.hs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haskell Server/rpdiscordserver/src/HistoryDiceParser/Operators.hs" beforeDir="false" afterPath="$PROJECT_DIR$/Haskell Server/rpdiscordserver/src/HistoryDiceParser/Operators.hs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haskell Server/rpdiscordserver/src/HistoryDiceParser/PostfixToTree.hs" beforeDir="false" afterPath="$PROJECT_DIR$/Haskell Server/rpdiscordserver/src/HistoryDiceParser/PostfixToTree.hs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haskell Server/rpdiscordserver/src/HistoryDiceParser/ResolutionTree.hs" beforeDir="false" afterPath="$PROJECT_DIR$/Haskell Server/rpdiscordserver/src/HistoryDiceParser/ResolutionTree.hs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haskell Server/rpdiscordserver/stack.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Haskell Server/rpdiscordserver/stack.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cogs/roll.py" beforeDir="false" afterPath="$PROJECT_DIR$/cogs/roll.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cogs/specialized/character/sqlref.py" beforeDir="false" afterPath="$PROJECT_DIR$/cogs/specialized/character/sqlref.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cogs/specialized/dice/statserver.py" beforeDir="false" afterPath="$PROJECT_DIR$/cogs/specialized/dice/statserver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/source/commands/character.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/commands/character.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/source/commands/general.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/commands/general.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/source/commands/roll.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/commands/roll.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/source/commands/server_settings.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/commands/server_settings.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/source/dice_reference/command_functions.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/dice_reference/command_functions.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/source/dice_reference/command_syntax.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/dice_reference/command_syntax.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/source/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/index.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/serverfetcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/serverfetcher.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="bot.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bot.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="rpdiscordrewrite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rpdiscordrewrite" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="056ae144-8fcd-41be-a51c-1af5f8c8287a" name="Default" comment="" />
+      <created>1529039313839</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1529039313839</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18229167" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Python Console" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/bot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

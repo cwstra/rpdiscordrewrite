@@ -1,1 +1,1 @@
-from .sqlref import Server, CharExistsException, CharDoesNotExistException, AttrDoesNotExistException
+from .sqlref import Server, CharExistsException, CharDoesNotExistException, AttrDoesNotExistException, EditNotAllowedException

@@ -21,7 +21,7 @@ Syntax
 
 ::
 
-	newchar [--a author_ping/author_id] [--p True/False] <character_name> [list of attr = value]
+	newchar <character_name> [list of attr = value]
 
 Required Fields:
     ``<character_name>``:
@@ -31,21 +31,15 @@ Optional Fields:
     ``[attr = value]``:
     	Zero or more Name=Value pairs. If Name or Value contains spaces, quotation marks are necessary. If the name contains quotation marks, they must be escaped with `\\`.
 
-Options:
-    ``[--a author_ping/author_id]``:
-    	Tell the bot to treat you as author for the sake of private characters. Only users authorized to edit the bot on this server can make use of this option.
-    ``[--p True/False]``:
-    	Create a private character. This character will be invisible to anyone but you, or users pretending to be you. Defaults to False.
-
-Exammples:
+Examples:
 	Empty character creation:
 		``newchar Steve``
 	Character creation with attributes:
 		``newchar Steve Strength=2d6``
 	Empty character creation with spaces in name:
 		``newchar "Jim the Test Muffin"``
-	Private character creation with multiple attributes:
-		``newchar --p True "Jim the Test Muffin" Flavor=Blueberry "Star Rating"=5``
+	Character creation with multiple initial attributes:
+		``newchar "Jim the Test Muffin" Flavor=Blueberry "Star Rating"=5``
 
 .. _editchar:
 
@@ -58,7 +52,7 @@ Syntax
 
 ::
 
-	editchar [--a author_ping] [--n new_name] [--p True/False] <character_name> <list of attr [= value]>
+	editchar [--n new_name] <character_name> <list of attr [= value]>
 
 Required Fields:
     ``<character_name>``:
@@ -69,12 +63,8 @@ Required Fields:
 
 
 Options:
-    ``[--a author_ping/author_id]``:
-    	Tell the bot to treat you as author for the sake of private characters. Only users authorized to edit the bot on this server can make use of this option.
     ``[--n new_name]``:
     	Tell the bot to rename your character. If the name contains spaces, quotation marks are necessary. If the name contains quotation marks, they must be escaped with `\\`.
-    ``[--p True/False]``:
-    	Attempt to search for a private character belonging to you under character_name. If that fails, will search the public characters for this server. If False, only searches the server's public characters. Defaults to False.
 
 Examples:
 	Example character creation:
@@ -100,7 +90,7 @@ Syntax
 
 ::
 
-	viewchar [--a author_ping] [--p True/False] <character_name> [attributes]
+	viewchar <character_name> [attributes]
 
 Required Fields:
     ``<character_name>``:
@@ -109,12 +99,6 @@ Required Fields:
 Optional Fields:
 	``[attributes``:
 		A space-separated list of attribute names. If a name contains spaces, quotation marks are necessary. If a name contains quotation marks, they must be escaped with `\\`.
-
-Options:
-    ``[--a author_ping/author_id]``:
-    	Tell the bot to treat you as author for the sake of private characters. Only users authorized to edit the bot on this server can make use of this option.
-    ``[--p True/False]``:
-    	Attempt to search for a private character belonging to you under character_name. If that fails, will search the public characters for this server. If False, only searches the server's public characters. Defaults to False.
 
 Examples:
 	Example character creation:
@@ -137,7 +121,7 @@ Syntax
 
 ::
 
-	delchar [--a author_ping] [--p True/False] <character name>
+	delchar <character name>
 
 Required Fields:
     ``<character_name>``:
@@ -146,12 +130,6 @@ Required Fields:
 Optional Fields:
 	``[attributes``:
 		A space-separated list of attribute names. If a name contains spaces, quotation marks are necessary. If a name contains quotation marks, they must be escaped with `\\`.
-
-Options:
-    ``[--a author_ping/author_id]``:
-    	Tell the bot to treat you as author for the sake of private characters. Only users authorized to edit the bot on this server can make use of this option.
-    ``[--p True/False]``:
-    	Attempt to search for a private character belonging to you under character_name. If that fails, will search the public characters for this server. If False, only searches the server's public characters. Defaults to False.
 
 Examples:
 	Example character creation:

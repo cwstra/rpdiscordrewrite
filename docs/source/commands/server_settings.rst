@@ -44,6 +44,23 @@ Optional Fields:
 
 		If no argument is provided to ``charsign``, it will list the current charsigns for this server.
 
+``charsep``
+------------------
+
+``charsep`` allows the user to change the server's charsep, which is used to reference character attributes in dice rolls. See the Dice Reference for further information.
+
+Syntax
+
+::
+
+	charsep [new_sep]
+
+Optional Fields:
+	``[new_sep]``:
+		Character(s) that could be used as a charsign. The only symbol that is not allowed in a charsep is the @ symbol. If the symbol is not currently a charsep for the server, and the server has less than 10 charseps, a dialogue to add the charsep to the list will be presented. If the symbol is currently a charsep for the server, and it is not the last charsep for the server, a dialogue to remove the charsep will be presented.
+
+		If no argument is provided to ``charsep``, it will list the current charseps for this server.
+
 
 ``codex``
 ------------------
@@ -70,7 +87,7 @@ Syntax
 ``prefix``
 ------------------
 
-``prefix`` allows the user to change the server's charsign, which is the text used prior to each command.
+``prefix`` allows the user to change the server's prefix, which is the text used prior to each command.
 
 Syntax
 

@@ -15,7 +15,9 @@
 # resolver:
 #  name: custom-snapshot
 #  location: "./custom-snapshot.yaml"
+
 resolver: lts-11.8
+# resolver: nightly-2018-06-07
 
 # User packages to be built.
 # Various formats can be used as shown in the example below.
@@ -69,4 +71,4 @@ extra-deps:
 - liquid-fixpoint-0.7.0.7
 - located-base-0.1.1.1
 - dotgen-0.4.2
-- fgl-visualize-0.1.0.1
+- Chart-1.8.3

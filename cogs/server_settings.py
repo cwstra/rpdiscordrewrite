@@ -4,9 +4,6 @@ from discord.ext import commands
 import json
 import asyncio
 
-with open("cogs/serverdata/permissions.json") as data_file:
-    permissions = json.load(data_file)
-
 class Settings:
     def __init__(self, bot):
         self.bot = bot
@@ -37,16 +34,16 @@ class Settings:
         if not(currentInfo):
             initial += "This server's current "
             if len(default) == 1:
-                initial += singtype +" is "+ default[0] +". "
+                initial += singtype +" is `"+ default[0] +"`. "
             else:
-                multi = ', and '.join(', '.join(default).rsplit(', ',1)) if len(default)>2 else ' and '.join(default)
-                initial += plurtype +" are "+ multi +". "
+                multi = ',` and `'.join(', '.join(default).rsplit(', ',1)) if len(default)>2 else '` and `'.join(default)
+                initial += plurtype +" are `"+ multi +"`. "
             emptyTest = True
         elif len(currentInfo) == 1:
-            initial += "This server's current "+ singtype +" is " + currentInfo[0] + ". "
+            initial += "This server's current "+ singtype +" is `" + currentInfo[0] + "`. "
         else:
-            multi = ', and '.join(', '.join(currentInfo).rsplit(', ',1)) if len(currentInfo)>2 else ' and '.join(currentInfo)
-            initial += "This server's current "+ plurtype +" are " + multi + ". "
+            multi = ',` and `'.join(', '.join(currentInfo).rsplit(', ',1)) if len(currentInfo)>2 else '` and `'.join(currentInfo)
+            initial += "This server's current "+ plurtype +" are `" + multi + "`. "
         posslist = [i for i in currentInfo]
         if len(arg)==0:
             pre = ('@'+self.bot.user.display_name if ctx.prefix[2:-1]==str(self.bot.user.id) else ctx.prefix)
@@ -62,7 +59,7 @@ class Settings:
             initial += "Would you like to remove `"+ arg +"` from your "+ singtype +" list? Type `"+ ctx.prefix +"Yes` or `"+ ctx.prefix +"No` to confirm."
             for i, v in enumerate(currentInfo):
                 if v == arg:
-                    currentInfo.pop(i)
+                    posslist.pop(i)
                     break
         elif len(currentInfo)>10:
             initial += "A given server can only have 10 "+plurtype+". You'll have to remove some "+plurtype+" before you can add a new one."
@@ -101,6 +98,17 @@ class Settings:
                 await ctx.send('Sorry, '+ctx.author.display_name+", but charsigns can't contain @.")
                 return
             await self.symbol_list_change(ctx, arg, 'charsign', 'charsigns', ['$'])
+        else:
+            await ctx.send('To use this command, you have to either have admin permissions on this server, or have a role permitted to modify this bot.')
+    
+    @commands.command()
+    async def charsep(self,ctx,*,arg=''):
+        """Changes the server charsep. Only available to admins or allowed roles. Will prompt for confirmation before changing the charsign."""
+        if await self.is_allowed(ctx):
+            if '@' in arg:
+                await ctx.send('Sorry, '+ctx.author.display_name+", but charseps can't contain @.")
+                return
+            await self.symbol_list_change(ctx, arg, 'charsep', 'charseps', [':'])
         else:
             await ctx.send('To use this command, you have to either have admin permissions on this server, or have a role permitted to modify this bot.')
 

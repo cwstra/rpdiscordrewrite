@@ -6,6 +6,8 @@ import           Data.Maybe
 import qualified Data.Text.Lazy                as T
 import           System.Random.Mersenne.Pure64
 
+import           Debug.Trace
+
 import           General.UserNumber
 import           HistoryDiceParser.Operators
 
@@ -47,6 +49,9 @@ startsWithFun = startsWithOneOf operatorKeys
 
 startsWithBool :: T.Text -> Maybe T.Text
 startsWithBool = startsWithOneOf [T.pack "True", T.pack "False"]
+
+startsWithEmpty :: T.Text -> Maybe T.Text
+startsWithEmpty = startsWithOneOf [T.pack "()"]
 
 getNumber :: T.Text -> Integer -> Maybe StackToken -> Maybe (Either (T.Text, Integer, StackToken) ParseException)
 getNumber string index lastToken
@@ -95,8 +100,8 @@ separator string index lastToken
 
 funParse :: T.Text -> Integer -> Maybe StackToken -> T.Text -> Maybe (Either (T.Text, Integer, StackToken) ParseException)
 funParse string index lastToken funName
-  |OpToken {optype = OpTokenInOrPre n m} <- entry = inOrPre string index lastToken funName n m
-  |OpToken {optype = OpTokenInOrPost n m} <- entry = inOrPost string index funName n m
+  |OpToken {optype = OpTokenInOrPre n m}  <- entry = inOrPre string index lastToken funName n m
+  |OpToken {optype = OpTokenInOrPost n m} <- entry = inOrPost newstr index funName n m
   |otherwise = general string index funName
   where
     entry = fromJust $ Map.lookup funName operatorDict
@@ -106,13 +111,13 @@ funParse string index lastToken funName
     inOrPre string index lastToken funName precIn precPre
       |Just StackToken {tokenType=StackTokenNum} <- lastToken      = Just $ Left (newstr, newind, StackToken {tokenIndex = Just index, tokenType = StackTokenIn  funName precIn, tokenRep = funName})
       |Just StackToken {tokenType=StackTokenRParen c} <- lastToken = Just $ Left (newstr, newind, StackToken {tokenIndex = Just index, tokenType = StackTokenIn  funName precIn, tokenRep = funName})
-      |otherwise                                                = Just $ Left (newstr, newind, StackToken {tokenIndex = Just index, tokenType = StackTokenPre funName precPre, tokenRep = funName})
+      |otherwise                                                   = Just $ Left (newstr, newind, StackToken {tokenIndex = Just index, tokenType = StackTokenPre funName precPre, tokenRep = funName})
     inOrPost :: T.Text -> Integer -> T.Text -> Integer -> Integer -> Maybe (Either (T.Text, Integer, StackToken) ParseException)
-    inOrPost string index funName precIn precPost
-      |Just (x, xs) <- res, isDigit x = Just $ Left (newstr, newind, StackToken {tokenIndex = Just index, tokenType = StackTokenIn   funName precIn, tokenRep = funName})
+    inOrPost newstr index funName precIn precPost
+      |Just (x, xs) <- res, isDigit x      = Just $ Left (newstr, newind, StackToken {tokenIndex = Just index, tokenType = StackTokenIn   funName precIn, tokenRep = funName})
       |otherwise                           = Just $ Left (newstr, newind, StackToken {tokenIndex = Just index, tokenType = StackTokenPost funName precPost, tokenRep = funName})
       where
-        res = (T.uncons . T.strip) string
+        res = traceShowId $ (T.uncons . T.strip) newstr
     general :: T.Text -> Integer -> T.Text -> Maybe (Either (T.Text, Integer, StackToken) ParseException)
     general string index funName = Just $ Left (newstr, newind, StackToken {tokenIndex = Just index, tokenType = res, tokenRep = funName})
       where
@@ -128,6 +133,7 @@ nextToken string index lastToken
   |T.length string == 0 = Nothing
   |Just (x, xs) <- res, isSpace x                           = nextToken xs (index+1) lastToken
   |Just (x, xs) <- res, isDigit x || x=='.' || x=='j'       = getNumber string index lastToken
+  |Just _ <- startsWithBool string                          = Just $ Left (T.drop 2 string,   index + 2,                StackToken {tokenIndex = Just index, tokenType = StackTokenVec 0, tokenRep = T.pack "()"})
   |Just bool <- startsWithBool string, num <- T.length bool = Just $ Left (T.drop num string, index + fromIntegral num, StackToken {tokenIndex = Just index, tokenType = StackTokenBool, tokenRep = bool})
   |Just (x, xs) <- res, x `elem` lparen                     = leftParen string index lastToken
   |Just (x, xs) <- res, x `elem` rparen                     = rightParen string index lastToken
@@ -155,6 +161,7 @@ infixToPostfix string = finisher $ infixToPostfixR string 0 [] [] (0, []) Nothin
     infixToPostfixRH string index stack output commas lastToken (newString, newIndex, newToken)
       |StackToken {tokenType = StackTokenNum} <- newToken = infixToPostfixR newString newIndex stack (newToken:output) commas (Just newToken)
       |StackToken {tokenType = StackTokenBool} <- newToken = infixToPostfixR newString newIndex stack (newToken:output) commas (Just newToken)
+      |StackToken {tokenType = StackTokenVec 0} <- newToken = infixToPostfixR newString newIndex stack (newToken:output) commas (Just newToken)
       |StackToken {tokenType = StackTokenFun funName prec} <- newToken = infixToPostfixR newString newIndex (newToken:stack) output commas (Just newToken)
       |StackToken {tokenType = StackTokenLParen c} <- newToken = infixToPostfixR newString newIndex (newToken:stack) output (fst commas, 0:snd commas) (Just newToken)
       |StackToken {tokenType = StackTokenRParen c} <- newToken = rParenProcess string index stack output commas lastToken (newString, newIndex, newToken)
