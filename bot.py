@@ -1,4 +1,4 @@
-import json 
+import ujson as json 
 print('json imported')
 import asyncio
 print('asyncio imported')
@@ -135,7 +135,7 @@ class RPBot(commands.Bot):
             elements that aren't None, or the prefix string is
             empty.
         Returns
-        --------
+        --------s
         Union[List[str], str]
             A list of prefixes or a single prefix that the bot is
             listening for.

@@ -116,19 +116,25 @@ class Settings:
     async def codex(self,ctx):
         """Changes the server codex. Takes no arguments, instead giving a selection. Only available to admins or allowed roles."""
         if await self.is_allowed(ctx):
-            async def setcodex(name):
-                if name:
-                    await self.bot.upsert_entry(ctx.guild.id, {'codex':name})
-                    await ctx.send('Codex changed to '+name+'!')
-                else:
-                    await ctx.send('Codex change cancelled.')
             currentInfo = await self.bot.serverdata(ctx.guild.id, 'codex')
             initial = "{author}:"
             initial += "The current codex for this server is {current}.\nYou can change it to any of the following:" if currentInfo else "This server does not currently have a codex. \nIf you would like to change that, you have the following options."
             systems = await self.bot.systemlist()
-            initial += '\n'+'\n'.join(systems)
+            systemdict = {}
+            for i in systems:
+                if currentInfo:
+                    if i['id'] == currentInfo:
+                        currrentInfo = i['display_name']
+                systemsdict[systems['display_name']] = systems['idi']
+            async def setcodex(name):
+                if name:
+                    await self.bot.upsert_entry(ctx.guild.id, {'codex':systemsdict[name]})
+                    await ctx.send('Codex changed to '+name+'!')
+                else:
+                    await ctx.send('Codex change cancelled.')
+            initial += '\n'+'\n'.join(systemsdict)
             initial += "\nTo do so, type "+ctx.prefix+'<codex name>'
-            await self.general_dialogue(ctx, initial, currentInfo, systems, setcodex)
+            await self.general_dialogue(ctx, initial, currentInfo, list(systemdict.keys()), setcodex)
         else:
             await ctx.send('To use this command, you have to either have admin permissions on this server, or have a role permitted to modify this bot.')
 
