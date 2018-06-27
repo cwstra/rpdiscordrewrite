@@ -37,6 +37,11 @@ class General:
         await ctx.send(self.git)
 
     @commands.command()
+    async def invite(self, ctx):
+        """Returns a link to invite the bot to a server you have the permissions to invite it to."""
+        await ctx.send(discord.utils.oauth_url(self.bot.user.id))
+
+    @commands.command()
     async def ping(self, ctx):
         """Calculates the ping time."""
         # [p]ping

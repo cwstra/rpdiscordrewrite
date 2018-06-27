@@ -28,4 +28,4 @@ class Initialize:
         await ctx.send(msg)
 
 def setup(bot):
-    bot.add_cog(General(bot))
+    bot.add_cog(Initialize(bot))

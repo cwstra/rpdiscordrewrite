@@ -9,7 +9,6 @@ import shlex
 import cogs.specialized.dice as rollP
 from collections import OrderedDict
 from urllib.parse import quote as urlEscape
-import ahocorasick
 import os
 import ujson as json
 
@@ -101,7 +100,7 @@ class Roll:
             print('roll: awaiting charsigns')
             charsigns = await self.bot.serverdata(ctx.guild.id, 'charsigns')
             if not(charsigns):
-                charsign = ['$']
+                charsigns = ['$']
             prefix = str(ctx.author.display_name)+':\n'+args
             print('roll: awaiting chardata')
             charseps = await self.bot.serverdata(ctx.guild.id, 'charseps')

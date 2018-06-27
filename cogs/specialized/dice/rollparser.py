@@ -47,7 +47,7 @@ def generalParse(s,n=1,markerDict={'-':-1,'+':1,None:1}):
             else:
                 try:
                     strResult += ('-' if j[0]<0 else '+')+j[1]
-                    numResult += j[0]*simplifyNumber(complex(j[1]))
+                    numResult += j[0]*int(j[1])
                 except:
                     pass
         if strResult[0]=='+':

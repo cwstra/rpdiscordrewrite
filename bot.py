@@ -1,4 +1,4 @@
-import json 
+import ujson as json 
 import asyncio
 import asyncpg
 
@@ -21,7 +21,7 @@ startup_extensions = [
     'cogs.ref',
     'cogs.roll',
     'cogs.server_settings',
-    'cogs.initialize'
+    'cogs.init'
 ]
 
 class RPBot(commands.Bot):
@@ -130,7 +130,7 @@ class RPBot(commands.Bot):
             elements that aren't None, or the prefix string is
             empty.
         Returns
-        --------
+        --------s
         Union[List[str], str]
             A list of prefixes or a single prefix that the bot is
             listening for.
