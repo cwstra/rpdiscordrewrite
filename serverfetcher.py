@@ -38,7 +38,6 @@ class ServerFetcher:
     async def systemlist(self):
         async with self.pool.acquire() as conn:
             res = await conn.fetch(self.commands['codex_list']['get_all'])
-            res = [i['id'] for i in res]
             return res
 
     async def upsert_entry(self, guild_id, entryDict=None):
