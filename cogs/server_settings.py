@@ -75,12 +75,12 @@ class Settings:
         posslist.sort(key = lambda x:len(x))
         print(posslist)
         async def change(name):
-            if name == 'Yes':
+            if type(name) == str and name.lower() == 'yes':
                 await self.bot.upsert_entry(ctx.guild.id, {plurtype:posslist})
                 await ctx.send(singtype.title()+' list changed!')
             else:
                 await ctx.send(singtype.title()+' list change cancelled.')
-        await self.general_dialogue(ctx, initial, currentInfo, ['Yes', 'No'], change)
+        await self.general_dialogue(ctx, initial, currentInfo, ['YES', 'YEs', 'YeS', 'yES', 'yeS', 'yEs', 'Yes', 'yes', 'NO', 'No', 'nO', 'no'], change)
 
     @commands.command()
     async def prefix(self,ctx,*,arg=''):

@@ -9,7 +9,6 @@ import math
 import random
 import sys
 import time
-import progressbar
 
 def gBinom(n,k):
     if n<0:
@@ -77,6 +76,7 @@ def dualChart(prefix, servername, die_str, resdict):
     return filename 
 
 if __name__ == "__main__":
+    import progressbar
     number_of_dice = 4
     dice_face = 1000
     filename = 'out.png'

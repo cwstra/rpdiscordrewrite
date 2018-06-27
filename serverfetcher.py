@@ -35,7 +35,7 @@ class ServerFetcher:
                 res = {i['id']:{j:k for j,k in i.items() if j!='id'} for i in res}
             return res
 
-    async def systemlist():
+    async def systemlist(self):
         async with self.pool.acquire() as conn:
             res = await conn.fetch(self.commands['codex_list']['get_all'])
             res = [i['id'] for i in res]
