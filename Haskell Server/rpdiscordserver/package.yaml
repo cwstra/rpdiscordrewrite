@@ -31,8 +31,6 @@ dependencies:
 - timeit
 - aeson
 - cassava
-- Chart
-- Chart-cairo
 
 library:
   source-dirs: src

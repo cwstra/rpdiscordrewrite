@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 4eddb2d17071951dd45bf3db0e3c3949bfa594f33bf9139bdf6c097e88f01269
+-- hash: 2829a2f7245a28e9e8a2b449b685c180356dcf54f0ea3d8145275fa5d42510a0
 
 name:           rpdiscordserver
 version:        1.0.0.0
@@ -28,9 +28,7 @@ library
   hs-source-dirs:
       src
   build-depends:
-      Chart
-    , Chart-cairo
-    , aeson
+      aeson
     , arithmoi
     , base
     , cassava
@@ -57,9 +55,7 @@ executable rpdiscordserver
       app
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      Chart
-    , Chart-cairo
-    , aeson
+      aeson
     , arithmoi
     , base
     , cassava
@@ -82,9 +78,7 @@ test-suite rpdiscordserver-test
       test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      Chart
-    , Chart-cairo
-    , aeson
+      aeson
     , arithmoi
     , base
     , cassava

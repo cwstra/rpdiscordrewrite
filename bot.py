@@ -1,9 +1,14 @@
 import ujson as json 
+print('json imported')
 import asyncio
+print('asyncio imported')
 import asyncpg
+print('asyncpg imported')
 
 import discord
+print('discord imported')
 from discord.ext import commands
+print('commands imported')
 
 import serverfetcher
 # Get the prefixes for the bot
@@ -151,10 +156,14 @@ class RPBot(commands.Bot):
         return ret
 
 async def run():
+    print('starting fetcher')
     sf = serverfetcher.ServerFetcher()
+    print('making bot')
     bot = RPBot(sf)
     try:
+        print('connecting fetcher')
         await sf.init_pool(bot.settings)
+        print('starting bot')
         await bot.start(bot.settings['token'])
     except KeyboardInterrupt:
         await bot.refserver.close()
