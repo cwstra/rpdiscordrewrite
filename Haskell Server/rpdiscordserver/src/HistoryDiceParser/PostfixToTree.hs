@@ -1,5 +1,4 @@
 module HistoryDiceParser.PostfixToTree(postFixToTrees, seededPostFixToTrees) where
-
 import qualified Data.HashMap.Strict              as Map
 import           Data.List
 import           Data.Maybe
@@ -16,10 +15,15 @@ import           HistoryDiceParser.ResolutionTree
 
 numParse :: T.Text -> GeneralNumber
 numParse str
-  |Just n <- res = GComp $ GC 0 (toNum $ intOrDec n)
+  |Just n <- res = GComp $ GC 0 (toNum $ intOrDec $ safeImag n)
   |Nothing <- res = GReal $ toNum $ intOrDec str
   where
     res = T.stripSuffix (T.singleton 'j') str
+    safeImag :: T.Text -> T.Text
+    safeImag t
+      |t == T.empty() = T.singleton("1")
+      |t == T.singleton('-') = T.pack("-1")
+      |otherwise = t
     intOrDec :: T.Text -> Either Integer Float
     intOrDec num
       |Just c <- hasP,  Right (n, rest) <- TR.rational num, rest == T.empty = Right n

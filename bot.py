@@ -78,7 +78,8 @@ class RPBot(commands.Bot):
             else:
                 ctx = await self.get_context(message)
                 await self.invoke(ctx)
-                await self.inline_roller(ctx)
+                if ctx.me.permissions_in(ctx.channel).send_messages:
+                    await self.inline_roller(ctx)
 
     async def on_command_completion(self, ctx):
         async with self.botdataserver['pool'].acquire() as conn:
