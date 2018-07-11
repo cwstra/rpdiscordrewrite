@@ -99,11 +99,7 @@ class RPBot(commands.Bot):
             else:
                 ctx = await self.get_context(message)
                 await self.invoke(ctx)
-<<<<<<< HEAD
-                if ctx.me.permissions_in(ctx.channel).send_messages:
-=======
                 if ctx.me.permissions_in(ctx.channel).send_messages: 
->>>>>>> 907a3555012c433fb68842c3de87ebd369a1f162
                     await self.inline_roller(ctx)
 
     async def on_command_completion(self, ctx):
