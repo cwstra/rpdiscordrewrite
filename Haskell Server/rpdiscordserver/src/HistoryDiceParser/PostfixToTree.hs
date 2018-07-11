@@ -1,5 +1,4 @@
 module HistoryDiceParser.PostfixToTree(postFixToTrees, seededPostFixToTrees) where
-
 import qualified Data.HashMap.Strict              as Map
 import           Data.List
 import           Data.Maybe
