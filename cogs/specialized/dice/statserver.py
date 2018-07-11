@@ -61,7 +61,6 @@ class StatServer:
                     oldDice = await conn.fetchrow(self.commands['server']['checkrolls'], guild, i)
                     oldDice = oldDice['stats'] if oldDice else {} 
                     newDice = mergeDice(oldDice, newStats[i])
-                    print(type(guild), type(i), newDice)
                     await conn.execute(self.commands['server']['updaterollpools'], guild, i, newDice)
                     if i in oldMemberStats:
                         oldDice = await conn.fetchrow(self.commands['member']['checkrolls'], guild, author, i)

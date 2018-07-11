@@ -21,7 +21,6 @@ def specialstart(message, tup, ind):
         return False
 
 def getKeys(message, charsigns, charseps):
-    print(charseps)
     signtup = tuple(i for i in sorted(charsigns, key=len, reverse=True))
     septup = tuple(i for i in sorted(charseps, key=len, reverse=True))
     ind = 0
@@ -67,6 +66,15 @@ async def parseChars(ctx, message, charsigns, charseps, getInfo):
             message = message[:data[(i,j)][0]] + res[(i, j)] + message[data[(i,j)][1]:]
     return message 
 
+urlRegex = re.compile(r'https?:\/\/[^\s]*\.[^\s]*')
+
+def purgeURLs(message):
+    test = urlRegex.search(message)
+    while test:
+        message = message[:test.start()] + message[test.end():]
+        test = urlRegex.search(message)
+    return message
+
 class Roll:
     def __init__(self, bot):
         self.bot = bot
@@ -89,7 +97,7 @@ class Roll:
         charseps = await self.bot.serverdata(ctx.guild.id, 'charseps')
         if not(charseps):
             charseps = [':']
-        message = await parseChars(ctx, ctx.message.content, charsigns, charseps, self.bot.charserver.getBatchInfo)
+        message = await parseChars(ctx, purgeURLs(ctx.message.content), charsigns, charseps, self.bot.charserver.getBatchInfo)
         await self.rollParse.roll(ctx, message)
 
     #Command-invoked roller
@@ -97,23 +105,19 @@ class Roll:
     async def roll(self, ctx, *, args):
         """Command-invoked dice roller."""
         async with ctx.typing():
-            print('roll: awaiting charsigns')
             charsigns = await self.bot.serverdata(ctx.guild.id, 'charsigns')
             if not(charsigns):
                 charsigns = ['$']
             prefix = str(ctx.author.display_name)+':\n'+args
-            print('roll: awaiting chardata')
             charseps = await self.bot.serverdata(ctx.guild.id, 'charseps')
             if not(charseps):
                 charseps = [':']
-            print('roll: awaiting parseChars')
             message = await parseChars(ctx, args, charsigns, charseps, self.bot.charserver.getBatchInfo)
             if message != args:
                 prefix += '=' + message
             prefix += '\n'
             seed = random.randint(0,18446744073709551615)
             url = 'http://localhost:'+self.rollPort+'/roll?roll='+urlEscape(message,safe='')+'&seed='+str(seed)
-            print('roll: awaiting server')
             async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=20)) as client:
                 message = await client.get(url)
                 message = await message.text()
@@ -122,7 +126,6 @@ class Roll:
                 if message[1] != '{}':
                     await self.bot.statserver.editStats(ctx, message[1])
                 message = message[-1]
-            print('roll: awaiting send')
             await self.bot.smartSend(ctx,prefix.replace('*','\*'), message,'```')
 
 

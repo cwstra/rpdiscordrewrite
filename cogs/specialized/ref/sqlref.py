@@ -10,7 +10,7 @@ class Server:
         credentials = {"user": settings['sql'][0], "password": settings['sql'][2], "database": settings['codexDB'], "host": settings['sql'][1]}
         self.pool = await asyncpg.create_pool(**credentials)
         self.commands = {}
-        self.commands['get_specific_row'] = "SELECT * FROM {} WHERE {} = '{}';"
+        self.commands['get_specific_row'] = lambda x,y:  "SELECT * FROM "+x+" WHERE "+y+" = $1;"
         self.commands['get_all_of_entry'] = 'SELECT {} FROM {};'
         self.commands['get_all'] = 'SELECT * FROM {};'
         return self
@@ -32,7 +32,6 @@ class Server:
 
     @staticmethod
     def indTest(keys, schema, name, message):
-        #print(schema)
         if schema[name] == 'flat':
             return process.extractOne(message,keys)
         else:
@@ -55,15 +54,15 @@ class Server:
                     lambda test, singlekey, keylist, wordLength: test.append((process.extractOne(singlekey, keylist), wordLength)),
                     lambda x: max(x, key=lambda y:y[0][1]))
                 if test[0][1] > 80:
-                    table = await conn.fetchval(self.commands['get_specific_row'].format(table, 'id', test[0][0]), column=1)
+                    table = await conn.fetchval(self.commands['get_specific_row'](table, 'id'), test[0][0], column=1)
                     message = message.split(' ', test[1])[test[1]]
                 else:
                     return "Sorry {}, I couldn't find a good match."
             elif i.startswith('<') and i.endswith('>'):
-                newTable, default = i[1:-1].split('-')
+                newTable, default = i[1:-1].split('-', 1)
                 mapping = self.array_to_dict(table)
                 if len(message) == 0:
-                    data = await conn.fetchval(self.commands['get_specific_row'].format(codex+'_'+newTable,'id',mapping[default]), column=1)
+                    data = await conn.fetchval(self.commands['get_specific_row'](codex+'_'+newTable,'id'), mapping[default], column=1)
                 else:
                     data = await conn.fetch(self.commands['get_all_of_entry'].format('id', codex+'_'+newTable))
                     data = [i['id'] for i in data]
@@ -73,17 +72,18 @@ class Server:
                         k, rest = message, ''
                     test = process.extractOne(k, mapping.keys())
                     if test[1] > 80:
-                        data = await conn.fetchval(self.commands['get_specific_row'].format(codex+'_'+newTable,'id',mapping[test[0]]), column=1)
+                        data = await conn.fetchval(self.commands['get_specific_row'](codex+'_'+newTable,'id'), mapping[test[0]], column=1)
                         message = rest
                     else:
-                        data = await conn.fetchval(self.commands['get_specific_row'].format(codex+'_'+newTable,'id',mapping[default]), column=1)
+                        data = await conn.fetchval(self.commands['get_specific_row'](codex+'_'+newTable,'id'), mapping[default], column=1)
                 data = json.loads(data)
             elif i.startswith('{') and i.endswith('}'):
                 j = json.loads(i)
                 keys = list(data['extra_fields'].keys())+list(j.keys())
+                print(keys)
                 searches = [k.strip() for m in message.split(',') for k in m.split()]
-                test = [k for k in [process.extractOne(k, keys) for k in searches] if k[1]>80]
-                extra = []
+                test = {k for k in [process.extractOne(k, keys) for k in searches] if k[1]>80}
+                extra = [] 
                 for k in test:
                     if k[0] in data['extra_fields']:
                         extra.append(data['extra_fields'][k[0]])
@@ -92,7 +92,7 @@ class Server:
                             extra.append(data['extra_fields'][l])
                 d = data['init']
                 if len(extra) > 0:
-                    d['fields'] = extra
+                    d['fields'] = list(extra)
                 else:
                     d['fields'] = []
                     for k in data['extra_fields']:
@@ -118,7 +118,7 @@ class Server:
     async def lookup(self, codex, message):
         async with self.pool.acquire() as conn:
             #Get list of tables for codex.
-            collections = await conn.fetchval(self.commands['get_specific_row'].format('system_data', 'Name', codex), column=1)
+            collections = await conn.fetchval(self.commands['get_specific_row']('system_data', 'Name'), codex, column=1)
             #Get schema for codex
             schema = await conn.fetch(self.commands['get_all'].format(codex+'_schema'))
             #Parse initial data
@@ -134,7 +134,7 @@ class Server:
                     #Get one key
                     result = process.extractOne(rest, keys)
                     if result[1] > 80:
-                        result = await conn.fetchrow(self.commands['get_specific_row'].format(names[coll], 'id', result[0]))
+                        result = await conn.fetchrow(self.commands['get_specific_row'](names[coll], 'id'), result[0])
                         return json.loads(result['embed'])
                     return "Sorry {}, I couldn't find a good match."
                 #Otherwise, start the dive.
@@ -146,15 +146,21 @@ class Server:
                     if i != 'schema':
                         keys = await conn.fetch(self.commands['get_all_of_entry'].format('id',names[i]))
                         keys = [i['id'] for i in keys]
-                        test += [(self.indTest(keys, schema, i, message),i)]
+                        val = self.indTest(keys, schema, i, message) 
+                        if val != None:
+                            test += [(val,i)]
                 result = max(test, key=lambda x:x[0][1])
                 if result[0][1] <= 80:
                     return "Sorry {}, I couldn't find a good match."
                 if schema[result[1]] == 'flat':
-                    result = await conn.fetchrow(self.commands['get_specific_row'].format(names[result[1]], 'id', result[0][0]))
+                    result = await conn.fetchrow(self.commands['get_specific_row'](names[result[1]], 'id'), result[0][0])
                     return json.loads(result['embed'])
-                message = message.split(' ', result[0][0].count(' ')+1)[-1]
-                table = await conn.fetchrow(self.commands['get_specific_row'].format(names[result[1]], 'id', result[0][0]))
+                message = message.split(' ', result[0][0].count(' ')+1)
+                if len(message) > result[0][0].count(' ')+1:
+                    message = message[-1]
+                else:
+                    message = ''
+                table = await conn.fetchrow(self.commands['get_specific_row'](names[result[1]], 'id'), result[0][0])
                 result = await self.dive(conn, message, codex, table['alias_assoc'], None, json.loads(schema[result[1]])[1:])
                 return result
 
@@ -174,7 +180,7 @@ class Server:
             message = oMessage.strip()
             schema = await conn.fetch(self.commands['get_all'].format(codex+'_schema'))
             if message != '':
-                collections = await conn.fetchval(self.commands['get_specific_row'].format('system_data', 'Name', codex), column=1)
+                collections = await conn.fetchval(self.commands['get_specific_row']('system_data', 'Name'), codex, column=1)
                 schema, names, category, rest = self.initial_data(codex, message, collections, schema)
                 if rest == '':
                     res = category + '\n'
@@ -194,7 +200,7 @@ class Server:
                     testRes = []
                     for i in collections:
                         if i!='schema':
-                            keys = await conn.fetch(self.commands['get_all_of_entry'].format('id',names[i]))
+                            keys = map(lambda x: x['id'], await conn.fetch(self.commands['get_all_of_entry'].format('id',names[i])))
                             testRes += [(self.indTest(keys, schema, i, message),i)]
                     entryKey, category = max(testRes, key=lambda x:x[0][1])
                 if schema[category] == 'flat':
@@ -202,7 +208,7 @@ class Server:
                 schema[category] = deque(json.loads(schema[category]))
                 if entryKey[1] > 80:
                     entryKey = entryKey[0]
-                    table = await conn.fetchval(self.commands['get_specific_row'].format(codex+'_'+category, 'id', entryKey), column=1)
+                    table = await conn.fetchval(self.commands['get_specific_row'](codex+'_'+category, 'id'), entryKey, column=1)
                     message = message.split(' ', entryKey.count(' ')+1)
                     if len(message)<=entryKey.count(' ')+1:
                         message = ''
@@ -222,7 +228,7 @@ class Server:
                             minitest = process.extractOne(k, mapping.keys())
                             if minitest[1] > 80:
                                 nextTest += ' -> '+minitest[0]
-                                table = await conn.fetchval(self.commands['get_specific_row'].format(codex+'_'+s[0], 'id', mapping[minitest[0]]), column=1)
+                                table = await conn.fetchval(self.commands['get_specific_row'](codex+'_'+s[0], 'id'), mapping[minitest[0]], column=1)
                                 schema[category].popleft()
                             else:
                                 break
@@ -237,7 +243,7 @@ class Server:
                             for j in ra:
                                 res += '\t\t'+j+' with aliases '+', '.join([k for k in ra[j] if k!=j])+'\n'
                             res += '\tDetails for default entry '+s[1]+':\n'
-                            table = await (conn.fetchval(self.commands['get_specific_row'].format(codex+'_'+s[0], 'id', ar[s[1]]), column=1))
+                            table = await (conn.fetchval(self.commands['get_specific_row'](codex+'_'+s[0], 'id'), ar[s[1]], column=1))
                         elif i.startswith('{') and i.endswith('}'):
                             s = json.loads(i)
                             res += '\tSubfields:\n'
@@ -271,7 +277,7 @@ class Server:
                             res += '\t\tDefault Key: '+s[1]+'\n'
                         elif j.startswith('{') and j.endswith('}'):
                             res += '\tPartial Fields:\n'
-                            res += '\t\tCheck individual entries for a list of relevant subfields.'
+                            res += '\t\tCheck individual entries for a list of relevant subfields.\n'
             return res
 
     async def top(self, codex, number, message):
@@ -284,7 +290,7 @@ class Server:
                     lambda test, singlekey, minikeys, wordLength: test.extend(process.extract(singlekey, minikeys, limit=num)),
                     lambda test: sorted(test, key=lambda x: x[1], reverse=True)[:num])
         async with self.pool.acquire() as conn:
-            collections = await conn.fetchval(self.commands['get_specific_row'].format('system_data', 'Name', codex), column=1)
+            collections = await conn.fetchval(self.commands['get_specific_row']('system_data', 'Name'), codex, column=1)
             schema = await conn.fetch(self.commands['get_all'].format(codex+'_schema'))
             schema, names, coll, rest = self.initial_data(codex, message, collections, schema)
             if coll in collections:
