@@ -209,6 +209,16 @@ vecIntTest = baseVecTest intTest
     intTest (StaticNum (GReal (GSimp (GInt n)))) = Just n
     intTest _ = Nothing
 
+
+vecRealNumTest :: OpVector -> Maybe [GeneralRealNumber]
+vecRealNumTest = baseVecTest numTest
+  where
+    numTest :: OpStatic -> Maybe GeneralRealNumber
+    numTest (StaticNum n)
+      |GReal m <- n = Just m
+      |otherwise = Nothing
+    numTest _ = Nothing
+
 vecNumTest :: OpVector -> Maybe [GeneralNumber]
 vecNumTest = baseVecTest numTest
   where
@@ -348,13 +358,38 @@ fudgeDie (TypeStatic (StaticVec vec)) = Errored $ ResolveException $ T.pack "Vec
 fudgeDie (TypeStatic (StaticBool b)) = Errored $ ResolveException $ T.pack "Boolean passed as argument to dF."
 fudgeDie op = NeedsRolls
 
+--vecNumTest :: OpVector -> Maybe [GeneralNumber]
+--vecRealNumOrDieTest :: OpVector -> Maybe [OpStatic]
+--data KeepDrop = KeepHigh | DropHigh | KeepLow | DropLow
+--data OpVector = OpVector [OpStatic]
+--vecRealNumOrDieTest :: OpVector -> Maybe [OpStatic]
+--vecRealNumTest :: OpVector -> Maybe [GeneralNumber]
+
+smartGet :: KeepDrop -> Int -> [GeneralRealNumber] -> OpStatic
+smartGet kd n list
+  |kd == KeepHigh = generalComp (\(_, a) (_, b) -> compare b a) take
+  |kd == DropHigh = generalComp (\(_, a) (_, b) -> compare b a) drop 
+  |kd == KeepLow = generalComp (\(_, a) (_, b) -> compare a b) take
+  |kd == DropLow = generalComp (\(_, a) (_, b) -> compare a b) drop 
+  where
+    generalComp :: ((Int, GeneralRealNumber) -> (Int, GeneralRealNumber) -> Ordering) -> (Int -> [(Int, GeneralRealNumber)] -> [(Int, GeneralRealNumber)]) -> OpStatic 
+    generalComp sortingFun siftFun = StaticVec $ OpVector $ map (\a -> StaticNum $ GReal a) $ map (\(_, a) -> a) $ sortBy (\(a, _) (b, _) -> compare a b) $ siftFun n $ sortBy sortingFun $ snd $ mapAccumL (\ind element -> (ind+1, (ind, element))) 0 list
+
 keepdropFun :: KeepDrop -> OpType -> OpType -> FunRes
 keepdropFun kd op1 op2
   |TypeStatic (StaticDie d) <- op1, TypeStatic (StaticNum (GReal (GSimp (GInt n)))) <- op2, n >=0 = Resolved $ TypeStatic $ StaticDie $ addKeepDrop d kd $ smartIntegerToInt n
-  |TypeStatic (StaticDie d) <- op1, TypeStatic (StaticNum (GReal (GSimp (GInt n)))) <- op2 = Errored $ ResolveException $ T.pack "Negative number passed as right argument to keep/drop function."
-  |TypeStatic (StaticDie d) <- op1, TypeStatic (StaticNum x) <- op2 = Errored $ ResolveException $ T.pack "Non-integer number passed as right argument to keep/drop function."
-  |TypeStatic (StaticDie d) <- op1, TypeStatic (StaticVec v) <- op2 = Errored $ ResolveException $ T.pack "Non-number passed as right argument to keep/drop function."
+  |TypeStatic (StaticDie d) <- op1, TypeStatic (StaticNum (GReal (GSimp (GInt _)))) <- op2 = Errored $ ResolveException $ T.pack "Negative number passed as right argument to keep/drop function."
+  |TypeStatic (StaticDie d) <- op1, TypeStatic (StaticNum _) <- op2 = Errored $ ResolveException $ T.pack "Non-integer number passed as right argument to keep/drop function."
+  |TypeStatic (StaticDie d) <- op1, TypeStatic (StaticDie _) <- op2 = NeedsRolls 
+  |TypeStatic (StaticDie d) <- op1, TypeStatic _ <- op2 = Errored $ ResolveException $ T.pack "Non-number passed as right argument to keep/drop function."
   |TypeStatic (StaticDie d) <- op1 = NeedsRolls
+  |TypeStatic (StaticVec v) <- op1, Just list <- vecRealNumTest v, TypeStatic (StaticNum (GReal (GSimp (GInt n)))) <- op2, n >=0 = Resolved $ TypeStatic $ smartGet kd (smartIntegerToInt n) list 
+  |TypeStatic (StaticVec v) <- op1, Just _ <- vecRealNumOrDieTest v, TypeStatic (StaticNum (GReal (GSimp (GInt n)))) <- op2, n >=0 = NeedsRolls 
+  |TypeStatic (StaticVec v) <- op1, TypeStatic (StaticNum (GReal (GSimp (GInt n)))) <- op2, n >=0 = Errored $ ResolveException $ T.pack "Vector with non-real entries passed as left argument to keep/drop function." 
+  |TypeStatic (StaticVec v) <- op1, TypeStatic (StaticNum (GReal (GSimp (GInt _)))) <- op2 = Errored $ ResolveException $ T.pack "Negative number passed as right argument to keep/drop function."
+  |TypeStatic (StaticVec v) <- op1, TypeStatic (StaticNum _) <- op2 = Errored $ ResolveException $ T.pack "Non-integer number passed as right argument to keep/drop function."
+  |TypeStatic (StaticVec v) <- op1, TypeStatic (StaticDie _) <- op2 = NeedsRolls 
+  |TypeStatic (StaticDie d) <- op1, TypeStatic _ <- op2 = Errored $ ResolveException $ T.pack "Non-number passed as right argument to keep/drop function."
   |TypeStatic x <- op1 = Errored $ ResolveException $ T.pack "Non-die passed as left argument to keep/drop function."
   |otherwise = NeedsRolls
 

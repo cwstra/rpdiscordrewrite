@@ -13,6 +13,7 @@ class ServerFetcher:
         self.commands['servers']['upsert'] = 'INSERT INTO servers (id, {0}) VALUES ({1}, {2}) ON CONFLICT (id) DO UPDATE SET {0}={2};'
         self.commands['servers']['clear_empty_rows'] = "DELETE FROM servers WHERE ((codex IS NULL or codex = '') and (permissionroles IS NULL or permissionroles = '{}') and (charsigns IS NULL or charsigns = '{}') and (prefixes IS NULL or prefixes = '{}') and (inline IS NULL or NOT inline));"
         self.commands['codex_list'] = {}
+        self.commands['codex_list']['get_name'] = 'SELECT display_name FROM codex_list WHERE id = $1;'
         self.commands['codex_list']['get_all'] = 'SELECT * FROM codex_list;'
 
     async def init_pool(self, settings):
@@ -35,8 +36,11 @@ class ServerFetcher:
                 res = {i['id']:{j:k for j,k in i.items() if j!='id'} for i in res}
             return res
 
-    async def systemlist(self):
+    async def systemlist(self, name = None):
         async with self.pool.acquire() as conn:
+            if name:
+                res = await conn.fetchval(self.commands['codex_list']['get_name'], name)
+                return res
             res = await conn.fetch(self.commands['codex_list']['get_all'])
             return res
 

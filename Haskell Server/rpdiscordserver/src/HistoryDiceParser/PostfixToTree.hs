@@ -21,7 +21,7 @@ numParse str
     res = T.stripSuffix (T.singleton 'j') str
     safeImag :: T.Text -> T.Text
     safeImag t
-      |t == T.empty() = T.singleton("1")
+      |t == T.empty = T.singleton('1')
       |t == T.singleton('-') = T.pack("-1")
       |otherwise = t
     intOrDec :: T.Text -> Either Integer Float

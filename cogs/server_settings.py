@@ -68,12 +68,9 @@ class Settings:
         else:
             initial += "Would you like to add `"+ arg +"` to your "+ singtype +" list? Type `"+ ctx.prefix +"Yes` or `"+ ctx.prefix +"No` to confirm."
             posslist.append(arg)
-            print(currentInfo)
             if len(currentInfo) == 0:
                 posslist += default
-        print(posslist)
         posslist.sort(key = lambda x:len(x))
-        print(posslist)
         async def change(name):
             if type(name) == str and name.lower() == 'yes':
                 await self.bot.upsert_entry(ctx.guild.id, {plurtype:posslist})
@@ -118,23 +115,23 @@ class Settings:
         if await self.is_allowed(ctx):
             currentInfo = await self.bot.serverdata(ctx.guild.id, 'codex')
             initial = "{author}:"
-            initial += "The current codex for this server is {current}.\nYou can change it to any of the following:" if currentInfo else "This server does not currently have a codex. \nIf you would like to change that, you have the following options."
+            initial += "The current codex for this server is {current}.\nYou can change it to any of the following:" if currentInfo else "This server does not currently have a codex. \nIf you would like to change that, you have the following options:"
             systems = await self.bot.systemlist()
-            systemdict = {}
+            systemsdict = {}
             for i in systems:
                 if currentInfo:
                     if i['id'] == currentInfo:
-                        currrentInfo = i['display_name']
-                systemsdict[systems['display_name']] = systems['idi']
+                        currentInfo = i['display_name']
+                systemsdict[i['display_name']] = i['id']
             async def setcodex(name):
                 if name:
                     await self.bot.upsert_entry(ctx.guild.id, {'codex':systemsdict[name]})
                     await ctx.send('Codex changed to '+name+'!')
                 else:
                     await ctx.send('Codex change cancelled.')
-            initial += '\n'+'\n'.join(systemsdict)
-            initial += "\nTo do so, type "+ctx.prefix+'<codex name>'
-            await self.general_dialogue(ctx, initial, currentInfo, list(systemdict.keys()), setcodex)
+            initial += '\n```'+'\n'.join(systemsdict)
+            initial += "```\nTo do so, type "+ctx.prefix+'<codex name>'
+            await self.general_dialogue(ctx, initial, currentInfo, list(systemsdict.keys()), setcodex)
         else:
             await ctx.send('To use this command, you have to either have admin permissions on this server, or have a role permitted to modify this bot.')
 

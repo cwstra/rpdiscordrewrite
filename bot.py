@@ -1,14 +1,28 @@
-import ujson as json 
-print('json imported')
+import sys
+args = str(sys.argv)
+if len(args) > 1:
+    if 'print' in args:
+        logfun = print
+    else:
+        import logging
+        logging.basicConfig(filename='/home/cwstra/logs/bot.log', format='%(asctime)s %(message)s')
+        logfun = logging.info
+else:
+    import logging
+    logging.basicConfig(filename='/home/cwstra/logs/bot.log', format='%(asctime)s %(message)s')
+    logfun = logging.info
+
+import json 
+logfun('json imported')
 import asyncio
-print('asyncio imported')
+logfun('asyncio imported')
 import asyncpg
-print('asyncpg imported')
+logfun('asyncpg imported')
 
 import discord
-print('discord imported')
+logfun('discord imported')
 from discord.ext import commands
-print('commands imported')
+logfun('commands imported')
 
 import serverfetcher
 # Get the prefixes for the bot
@@ -37,6 +51,8 @@ class RPBot(commands.Bot):
         self.waiting = {}
         self.serverfetcher = sf
 
+        self.logger = logfun 
+
         self.botdataserver = {}
         self.botdataserver['credentials'] = {"user": self.settings['sql'][0], "password": self.settings['sql'][2], "database": self.settings['botDataServer'], "host": self.settings['sql'][1]}
         self.botdataserver['commands'] = {}
@@ -48,15 +64,15 @@ class RPBot(commands.Bot):
                 self.load_extension(extension)
             except Exception as e:
                 exc = '{}: {}'.format(type(e).__name__, e)
-                print('Failed to load extension {}\n{}'.format(extension, exc))
+                self.logger('Failed to load extension {}\n{}'.format(extension, exc))
 
     async def redefine(self):
-        self.server_settings = self.serverdata()
+        self.server_settings = await self.serverdata()
 
     # Print bot information, update status and set uptime when bot is ready
     async def on_ready(self):
-        print('Username: ' + str(self.user.name))
-        print('Client ID: ' + str(self.user.id))
+        self.logger('Username: ' + str(self.user.name))
+        self.logger('Client ID: ' + str(self.user.id))
         self.check_for_server = self.serverfetcher.check_for_server        
         self.serverdata = self.serverfetcher.serverdata
         self.systemlist = self.serverfetcher.systemlist
@@ -98,7 +114,6 @@ class RPBot(commands.Bot):
 
     @staticmethod
     async def smartSend(ctx,prefix,message,begin='', end=''):
-        #print('here',prefix,message)
         await ctx.send(prefix)
         if begin and not(end):
             end = begin
@@ -161,14 +176,14 @@ class RPBot(commands.Bot):
         return ret
 
 async def run():
-    print('starting fetcher')
+    logfun('starting fetcher')
     sf = serverfetcher.ServerFetcher()
-    print('making bot')
+    logfun('making bot')
     bot = RPBot(sf)
     try:
-        print('connecting fetcher')
+        logfun('connecting fetcher')
         await sf.init_pool(bot.settings)
-        print('starting bot')
+        logfun('starting bot')
         await bot.start(bot.settings['token'])
     except KeyboardInterrupt:
         await bot.refserver.close()
