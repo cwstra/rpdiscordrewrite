@@ -171,3 +171,6 @@ venv.bak/
 # Config file #
 botsettings.json
 instructions draft.txt
+
+#on-the-fly updater#
+psql_alter
