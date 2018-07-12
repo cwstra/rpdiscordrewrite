@@ -27,8 +27,10 @@ Optional Fields:
 	``[role_ping]``:
 		A ping of a given role. If the role does not have bot-changing permissions, a confirmation to add the role to the list of authorized roles will be presented. If the role already has bot-changing permissions, a confirmation to remove the role to the list of authorized roles will be presented.
 
+.. _charsign:
+
 ``channel_charsign`` / ``server_charsign``
-------------------
+------------------------------------------
 
 The ``channel_charsign`` and ``server_charsign`` commands allow the user to change the channel''is or server''is charsign, respectively. Charsigns are used to reference character attributes in dice rolls. See the Dice Reference for further information.
 
@@ -50,8 +52,10 @@ Optional Fields:
 
 		If no argument is provided to ``charsign``, it will list the current charsigns for this server.
 
+.. _charsep:
+
 ``channel_charsep` / ``server_charsep``
-------------------
+---------------------------------------
 
 The ``channel_charsep` and ``server_charsep`` commands allow the user to change the channel''s or server''s charsep, respectively. Charseps are used to reference character attributes in dice rolls. See the Dice Reference for further information.
 
@@ -72,9 +76,10 @@ Optional Fields:
 
 		If no argument is provided to ``charsep``, it will list the current charseps for this server.
 
+.. _codex:
 
 ``channel_codex`` / ``server_codex``
-------------------
+------------------------------------
 
 The ``channel_codex`` and ``server_codex`` commands allows the user to change the channel''s or server''s codex, respectively. The command does not take arguments, instead providing a list of possible codices in a dialogue. A server can only have one codex.
 
@@ -90,8 +95,11 @@ OR
 
 	server_codex
 
+.. _inline_toggle:
+
 ``channel_inline_toggle`` / ``server_inline_toggle``
-------------------
+----------------------------------------------------
+
 
 The ``channel_inline_toggle`` and ``server_inline_toggle`` commands allows the user to toggle inline rolling on the channel or server, respectively. The command does not take arguments, instead providing a toggle dialogue. By default, the inline roller is disabled.
 
@@ -107,8 +115,10 @@ OR
 
 	server_inline_toggle
 
+.. _prefix:
+
 ``channel_prefix`` / ``server_prefix``
-------------------
+--------------------------------------
 
 The ``channel_prefix`` and ``server_prefix`` commands allows the user to change the channel''s or server''s prefix, respectively. A prefix is the text used prior to each command.
 

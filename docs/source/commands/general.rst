@@ -74,6 +74,8 @@ Syntax
 
 	poke
 
+.. _server_link:
+
 ``server_link``
 ------------------
 
