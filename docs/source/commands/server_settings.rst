@@ -54,7 +54,7 @@ Optional Fields:
 
 .. _charsep:
 
-``channel_charsep` / ``server_charsep``
+``channel_charsep`` / ``server_charsep``
 ---------------------------------------
 
 The ``channel_charsep` and ``server_charsep`` commands allow the user to change the channel''s or server''s charsep, respectively. Charseps are used to reference character attributes in dice rolls. See the Dice Reference for further information.
