@@ -10,6 +10,17 @@ General
 
 These commands have general utility uses.
 
+``donation``
+------------------
+
+``donation`` returns a Patreon link and a Paypal link, for those who wish to financially assist in hosting the bot. 
+
+Syntax
+
+::
+
+	donation
+
 .. _docs:
 
 ``docs``
@@ -62,3 +73,15 @@ Syntax
 ::
 
 	poke
+
+``server_link``
+------------------
+
+``server_link`` returns an invite link to the bot help server.
+
+Syntax
+
+::
+
+	server_link
+
