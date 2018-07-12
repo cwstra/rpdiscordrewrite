@@ -81,7 +81,7 @@ Optional Fields:
 ``channel_codex`` / ``server_codex``
 ------------------------------------
 
-The ``channel_codex`` and ``server_codex`` commands allows the user to change the channel''s or server''s codex, respectively. The command does not take arguments, instead providing a list of possible codices in a dialogue. A server can only have one codex.
+The ``channel_codex`` and ``server_codex`` commands allow the user to change the channel''s or server''s codex, respectively. The command does not take arguments, instead providing a list of possible codices in a dialogue. A server can only have one codex.
 
 Syntax
 
@@ -101,7 +101,7 @@ OR
 ----------------------------------------------------
 
 
-The ``channel_inline_toggle`` and ``server_inline_toggle`` commands allows the user to toggle inline rolling on the channel or server, respectively. The command does not take arguments, instead providing a toggle dialogue. By default, the inline roller is disabled.
+The ``channel_inline_toggle`` and ``server_inline_toggle`` commands allow the user to toggle inline rolling on the channel or server, respectively. The command does not take arguments, instead providing a toggle dialogue. By default, the inline roller is disabled.
 
 Syntax
 
@@ -120,7 +120,7 @@ OR
 ``channel_prefix`` / ``server_prefix``
 --------------------------------------
 
-The ``channel_prefix`` and ``server_prefix`` commands allows the user to change the channel''s or server''s prefix, respectively. A prefix is the text used prior to each command.
+The ``channel_prefix`` and ``server_prefix`` commands allow the user to change the channel''s or server''s prefix, respectively. A prefix is the text used prior to each command.
 
 Syntax
 
