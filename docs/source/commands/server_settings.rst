@@ -55,7 +55,7 @@ Optional Fields:
 .. _charsep:
 
 ``channel_charsep`` / ``server_charsep``
----------------------------------------
+----------------------------------------
 
 The ``channel_charsep`` and ``server_charsep`` commands allow the user to change the channel''s or server''s charsep, respectively. Charseps are used to reference character attributes in dice rolls. See the Dice Reference for further information.
 
@@ -70,6 +70,7 @@ OR
 ::
 
 	server_charsep [new_sep]
+
 Optional Fields:
 	``[new_sep]``:
 		Character(s) that could be used as a charsep. The only symbol that is not allowed in a charsep is the @ symbol. If the symbol is not currently a charsep for the server, and the server has less than 10 charseps, a dialogue to add the charsep to the list will be presented. If the symbol is currently a charsep for the server, and it is not the last charsep for the server, a dialogue to remove the charsep will be presented.
