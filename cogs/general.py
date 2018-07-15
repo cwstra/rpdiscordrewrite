@@ -22,13 +22,25 @@ class General:
         self.bot = bot
         self.pokeEntities = {}
         self.git = self.bot.settings['git']
+        self.discord_server = self.bot.settings['discord']
         self.doc = self.bot.settings['doc']
+        self.donate = self.bot.settings['donate']
+    
+    @commands.command()
+    async def server_link(self, ctx):
+        """Sends the link to the bot discord server."""
+        await ctx.send(self.discord_server)
 
     #Links the github page
     @commands.command()
     async def docs(self, ctx):
         """Sends the documentation link to the channel"""
         await ctx.send(self.doc)
+
+    @commands.command()
+    async def donation(self, ctx):
+        """Sends links to donate to the upkeep of the bot."""
+        await ctx.send(self.donate)
 
     #Links the github page
     @commands.command()

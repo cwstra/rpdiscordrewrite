@@ -39,6 +39,8 @@ class StatServer:
         def mergeDice(oldDice, newDice):
             return {**oldDice, **{i:(str(int(oldDice[i])+newDice[i]) if (i in oldDice) else str(newDice[i])) for i in newDice}}
         newStats = json.loads(jstr)
+        if not(ctx.guild):
+            return
         guild = ctx.guild.id
         author = ctx.author.id
         async with self.pool.acquire() as conn:

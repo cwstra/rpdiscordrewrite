@@ -6,11 +6,16 @@ import random
 import aiohttp
 import re
 import shlex
-import cogs.specialized.dice as rollP
 from collections import OrderedDict
 from urllib.parse import quote as urlEscape
 import os
 import ujson as json
+import tempfile
+
+if __name__ == "__main__":
+    import specialized.dice as rollP
+else:
+    import cogs.specialized.dice as rollP
 
 def specialstart(message, tup, ind):
     if message.startswith(tup, ind):
@@ -88,28 +93,39 @@ class Roll:
 
     #Handle charsign in here, rest in diceParser
     async def inline_roller(self, ctx):
-        test = await self.bot.serverdata(ctx.guild.id, 'inline')
+        test = await self.bot.serverdata(ctx, 'inline')
         if not(ctx.prefix==None and test):
             return
-        charsigns = await self.bot.serverdata(ctx.guild.id, 'charsigns')
+        charsigns = await self.bot.serverdata(ctx, 'charsigns')
         if not(charsigns):
             charsigns = ['$']
-        charseps = await self.bot.serverdata(ctx.guild.id, 'charseps')
+        charseps = await self.bot.serverdata(ctx, 'charseps')
         if not(charseps):
             charseps = [':']
         message = await parseChars(ctx, purgeURLs(ctx.message.content), charsigns, charseps, self.bot.charserver.getBatchInfo)
         await self.rollParse.roll(ctx, message)
+
+    async def resultShortener(self, ctx, prefix, message):
+        l = message.split('\n')
+        maxlen = max(map(len, l))
+        if maxlen > 500:
+            with tempfile.TemporaryFile() as t:
+                t.write(bytes(message, 'UTF-8'))
+                t.seek(0)
+                await ctx.send(prefix, file = discord.File(t, filename = 'roll.txt'))
+        else:
+            await self.bot.smartSend(ctx,prefix.replace('*','\*'), message,'```')
 
     #Command-invoked roller
     @commands.command(aliases = ['r'])
     async def roll(self, ctx, *, args):
         """Command-invoked dice roller."""
         async with ctx.typing():
-            charsigns = await self.bot.serverdata(ctx.guild.id, 'charsigns')
+            charsigns = await self.bot.serverdata(ctx, 'charsigns')
             if not(charsigns):
                 charsigns = ['$']
             prefix = str(ctx.author.display_name)+':\n'+args
-            charseps = await self.bot.serverdata(ctx.guild.id, 'charseps')
+            charseps = await self.bot.serverdata(ctx, 'charseps')
             if not(charseps):
                 charseps = [':']
             message = await parseChars(ctx, args, charsigns, charseps, self.bot.charserver.getBatchInfo)
@@ -126,8 +142,7 @@ class Roll:
                 if message[1] != '{}':
                     await self.bot.statserver.editStats(ctx, message[1])
                 message = message[-1]
-            await self.bot.smartSend(ctx,prefix.replace('*','\*'), message,'```')
-
+            await self.resultShortener(ctx, prefix, message)
 
     #Displays roll statistics
     @commands.command(aliases = ['stats'])

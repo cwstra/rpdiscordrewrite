@@ -18,7 +18,6 @@ def evensplit(l, n):
         yield l[i:i+n]
 
 def splittext(count, text):
-    print(count)
     if count > 10:
         return list(map(lambda x: '\n'.join(x), evensplit(text.split('\n'), 10)))
     else:
@@ -47,7 +46,6 @@ async def pageOrEmbed(ctx, info, forceEmbed = False):
     def toembed(d):
         fields = d.pop('fields', [])
         em = discord.Embed(**d)
-        print(fields)
         for i in fields:
             em.add_field(**i)
         return em
@@ -95,15 +93,13 @@ class Ref:
     @commands.command()
     async def ref(self, ctx, *, args):
         """Look up info from this server's codex."""
-        codex = await self.bot.serverdata(ctx.guild.id, 'codex')
+        codex = await self.bot.serverdata(ctx, 'codex')
         test = shlex.split(args)
         forceEmbed = False
-        print(test)
         if test[0] == '--paginator' or test[0] == '--page':
             if test[1].lower() == 'false' or test[1].lower() == 'f':
                 forceEmbed = True
             args = ' '.join(test[2:])
-        print(forceEmbed)
         if codex:
             info = await self.bot.refserver.ref(codex, args)
             if type(info)==str:
@@ -122,7 +118,7 @@ class Ref:
     @commands.command()
     async def schema(self, ctx, *, args=''):
         """Look up the data structure for the server's codex, or individual entries in its codex."""
-        codex = await self.bot.serverdata(ctx.guild.id, 'codex')
+        codex = await self.bot.serverdata(ctx, 'codex')
         if codex:
             dis_codex = await self.bot.systemlist(codex)
             info = await self.bot.refserver.schema(codex, args)
@@ -138,7 +134,7 @@ class Ref:
     @commands.command()
     async def top(self, ctx, *, args):
         """Finds best matches for a search term in this server's codex."""
-        codex = await self.bot.serverdata(ctx.guild.id, 'codex')
+        codex = await self.bot.serverdata(ctx, 'codex')
         if codex:
             if ' ' in args:
                 n, mess = args.split(' ', 1)

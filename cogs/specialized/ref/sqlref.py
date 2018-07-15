@@ -80,7 +80,6 @@ class Server:
             elif i.startswith('{') and i.endswith('}'):
                 j = json.loads(i)
                 keys = list(data['extra_fields'].keys())+list(j.keys())
-                print(keys)
                 searches = [k.strip() for m in message.split(',') for k in m.split()]
                 test = {k for k in [process.extractOne(k, keys) for k in searches] if k[1]>80}
                 extra = [] 

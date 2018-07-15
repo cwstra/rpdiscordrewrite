@@ -1,17 +1,28 @@
 import sys
-args = str(sys.argv)
+args = sys.argv
 if len(args) > 1:
     if 'print' in args:
+        def logexe(e):
+            raise e
         logfun = print
     else:
         import logging
-        logging.basicConfig(filename='/home/cwstra/logs/bot.log', format='%(asctime)s %(message)s')
-        logfun = logging.info
+        logging.basicConfig(filename='logs/tes.log', format='%(asctime)s %(message)s')
+        logger = logging.getLogger('Logger')
+        print(args, type(args), args[1])
+        logger.setLevel(args[1])
+        logfun = logger.info
+        logexe = logger.exception
 else:
     import logging
-    logging.basicConfig(filename='/home/cwstra/logs/bot.log', format='%(asctime)s %(message)s')
-    logfun = logging.info
-
+    logging.basicConfig(filename='logs/tes.log', format='%(asctime)s %(message)s')
+    logger = logging.getLogger('Logger')
+    logger.setLevel('INFO')
+    logexe = logger.exception
+    logfun = logger.info
+logfun('------------------------------------------------------------------------------------')
+logfun('Boot Start')
+logfun('------------------------------------------------------------------------------------')
 import json 
 logfun('json imported')
 import asyncio
@@ -28,7 +39,7 @@ import serverfetcher
 # Get the prefixes for the bot
 async def command_prefix(bot, message):
     if message.guild:
-        extras = await bot.serverfetcher.prefixes_for(message.guild.id, bot.user.id)
+        extras = await bot.serverfetcher.prefixes_for(message, bot.user.id)
     else:
         extras = ['', '<@'+str(bot.user.id)+'> ', '<@'+str(bot.user.id)+'>']
     return commands.when_mentioned_or(*extras)(bot, message)
@@ -66,9 +77,6 @@ class RPBot(commands.Bot):
                 exc = '{}: {}'.format(type(e).__name__, e)
                 self.logger('Failed to load extension {}\n{}'.format(extension, exc))
 
-    async def redefine(self):
-        self.server_settings = await self.serverdata()
-
     # Print bot information, update status and set uptime when bot is ready
     async def on_ready(self):
         self.logger('Username: ' + str(self.user.name))
@@ -80,7 +88,10 @@ class RPBot(commands.Bot):
         self.botdataserver['pool'] = await asyncpg.create_pool(**self.botdataserver['credentials'])
         activity = discord.Activity(name='"<@bot_ping> init" to help newcomers.', type = discord.ActivityType.listening)
         await self.change_presence(activity=activity)
-        await self.redefine()
+
+    async def on_command_error(self, ctx, e):
+        logexe(e)
+        return
 
     # Prevent bot from replying to other bots
     async def on_message(self, message):
@@ -104,7 +115,8 @@ class RPBot(commands.Bot):
 
     async def on_command_completion(self, ctx):
         async with self.botdataserver['pool'].acquire() as conn:
-            await conn.execute(self.botdataserver['commands']['upsert']('unique_guilds'), ctx.guild.id)
+            if ctx.guild:
+                await conn.execute(self.botdataserver['commands']['upsert']('unique_guilds'), ctx.guild.id)
             await conn.execute(self.botdataserver['commands']['upsert']('unique_users') , ctx.author.id)
             await conn.execute(self.botdataserver['commands']['increment_command']      , ctx.command.name)
 

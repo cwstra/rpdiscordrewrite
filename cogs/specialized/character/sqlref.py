@@ -26,10 +26,11 @@ class Server:
         self.commands = {}
         self.commands['characters'] = {}
         self.commands['characters']['newchar'] = "INSERT INTO characters (server_id, member_id, character_name, attributes) VALUES ($1, $2, $3, $4);"
-        self.commands['characters']['getchar'] = "SELECT * FROM characters WHERE server_id = $1 AND character_name  = $2"
-        self.commands['characters']['checkchar'] = "SELECT TRUE FROM characters WHERE server_id = $1 AND character_name = $2"
-        self.commands['characters']['update'] = "UPDATE characters SET attributes = $3 WHERE server_id = $1 AND character_name = $2"
-        self.commands['characters']['updatewithname'] = "UPDATE characters SET character_name = $3, attributes = $4 WHERE server_id = $1 AND character_name = $2"
+        self.commands['characters']['getchar'] = "SELECT * FROM characters WHERE server_id = $1 AND character_name  = $2;"
+        self.commands['characters']['checkchar'] = "SELECT TRUE FROM characters WHERE server_id = $1 AND character_name = $2;"
+        self.commands['characters']['listchar'] = "SELECT character_name, member_id FROM characters WHERE server_id = $1;"
+        self.commands['characters']['update'] = "UPDATE characters SET attributes = $3 WHERE server_id = $1 AND character_name = $2;"
+        self.commands['characters']['updatewithname'] = "UPDATE characters SET character_name = $3, attributes = $4 WHERE server_id = $1 AND character_name = $2;"
         self.commands['characters']['delete'] = "DELETE FROM characters WHERE server_id = $1 AND character_name = $2;"
         self.pool = await asyncpg.create_pool(**credentials)
         return self
@@ -57,6 +58,12 @@ class Server:
                 return l
             else:
                 return (charentry['member_id'], charentry['attributes'])
+
+    async def listInfo(self, ctx):
+        async with self.pool.acquire() as conn:
+            entries = await conn.fetch(self.commands['characters']['listchar'], ctx.guild.id)
+            out = [(i['character_name'], i['member_id']) for i in entries]
+            return out 
 
     async def editInfo(self, ctx, charactername, predicate, newattrdict, newname=None):
         async with self.pool.acquire() as conn:

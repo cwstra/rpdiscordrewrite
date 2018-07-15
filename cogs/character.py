@@ -3,6 +3,7 @@ from discord.ext import commands
 
 import cogs.specialized.character as db
 import shlex
+from cogs.utils.SimplePaginator import SimplePaginator
 
 def parseMarkedArgs(ctx, args, namecheck=False):
     out = {}
@@ -52,6 +53,26 @@ def smartPlural(objectlist):
     else:
         return ', '.join(objectlist[:-1]) + ', and '+ objectlist[-1]
 
+def evensplit(l, n):
+    for i in range(0, len(l), n):
+        yield l[i:i+n]
+
+def splitlist(text):
+    if len(text) > 10:
+        return map(lambda x: '\n'.join(x), evensplit(text, 10))
+    else:
+        return ['\n'.join(text)]
+
+async def charList(ctx, title, lines):
+    def toembed(d):
+        fields = d.pop('fields', []) if 'fields' in d else []
+        em = discord.Embed(**d)
+        for i in fields:
+            em.add_field(**i)
+        return em
+    embeds = [toembed({'title':title, 'description':i}) for i in splitlist(lines)]
+    await SimplePaginator(extras=embeds).paginate(ctx)
+
 class Character:
     def __init__(self, bot):
         self.bot = bot
@@ -62,7 +83,7 @@ class Character:
     
     def authOr(self, ctx):
         async def f(authorId):
-            allowedroles = await self.bot.serverdata(ctx.guild.id, 'permissionroles')
+            allowedroles = await self.bot.serverdata(ctx, 'permissionroles')
             test = ctx.author.id == authorId or ctx.author.permissions_in(ctx.channel) or (ctx.author.roles and any(i.id in allowedroles for i in ctx.author.roles))
         return f 
 
@@ -92,7 +113,7 @@ class Character:
         await ctx.send(msg)
 
     @commands.command()
-    async def viewchar(self, ctx, *, args):
+    async def viewchar(self, ctx, *, args=''):
         """Gets information about an existing character. If the command has no attribute fields, it will return a list of attributes the character has. Otherwise, it will return the values of the requested attributes.
             Syntax:
                 viewchar [character name] <attributes>
@@ -102,7 +123,13 @@ class Character:
                 <attributes>: A space-separated list of attribute names. If a name contains spaces, quotation marks are necessary. If a name contains quotation marks, they must be escaped with \."""
         args = shlex.split(args)
         if len(args) == 0:
-            await ctx.send("You'll need to give me the name of the character you want to look up.")
+            res = await self.bot.charserver.listInfo(ctx)
+            msg = []
+            for i in res:
+                charname, authorname = i[0], ctx.guild.get_member(i[1])
+                authorname = authorname.display_name if authorname else 'a former member of the server'
+                msg.append(f'`{charname}`, created by {authorname}')
+            await charList(ctx, 'Character Paginator', msg)
             return
         elif len(args) == 1:
             character, attrs = args[0], []

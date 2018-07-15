@@ -174,3 +174,6 @@ instructions draft.txt
 
 #on-the-fly updater#
 psql_alter
+
+#Full database dump#
+pickle.sql
