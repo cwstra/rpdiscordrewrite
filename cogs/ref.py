@@ -37,22 +37,27 @@ def splitbigfields(l):
         outlist += i
     return outlist
 
-async def pageOrEmbed(ctx, info, forceEmbed = False):
+def toembed(d, printFun):
+    fields = d.pop('fields', [])
+    image = d.pop('image', None)
+    printFun(image)
+    em = discord.Embed(**d)
+    for i in fields:
+        em.add_field(**i)
+    if image:
+        em.set_image(url=image)
+    return em
+
+async def pageOrEmbed(ctx, info, printFun, forceEmbed = False):
     def maybeover(key, l, n):
         if n < len(l):
             return {key:l[n]}
         else:
             return {}
-    def toembed(d):
-        fields = d.pop('fields', [])
-        em = discord.Embed(**d)
-        for i in fields:
-            em.add_field(**i)
-        return em
-    counts = {'description':info['description'].count('\n')+1 if 'description' in info else None, 'fields':[str(i['value']).count('\n')+1 for i in info['fields']]}
+    counts = {'description':info['description'].count('\n')+1 if 'description' in info else None, 'fields':[str(i['value']).count('\n')+1 for i in info['fields']], 'image':len(info['image']) if 'image' in info else 0}
     maxlines = max([counts['description'] if counts['description'] else 1]+[i for i in counts['fields']])
     baseembed = {'title':info['title']} ; iterables = {}
-    if not(forceEmbed) and (len(info['fields'])>3 or maxlines>10):
+    if not(forceEmbed) and (len(info['fields'])>3 or maxlines>10 or ('image' in info and len(info['image'])>1)):
         if counts['description']:
             desc = splittext(counts['description'], info['description'])
             if type(desc) == str:
@@ -64,22 +69,26 @@ async def pageOrEmbed(ctx, info, forceEmbed = False):
             iterables['fields'] = list(evensplit(littlefields, 3))
         else:
             baseembed['fields'] = littlefields
-        if 'description' in iterables and 'fields' in iterables:
-            maximum = max(len(iterables['description']), len(iterables['fields']))
-            embeds = [{**baseembed, **maybeover('description', iterables['description'], i), **maybeover('fields', iterables['fields'], i)} for i in range(maximum)]
-        elif 'description' in iterables:
-            embeds = [{**baseembed, 'description':i} for i in iterables['description']]
-        elif 'fields' in iterables:
-            embeds = [{**baseembed, 'fields':i} for i in iterables['fields']]
-        else:
-            embeds = [baseembed]
-        embeds = [toembed(i) for i in embeds]
+        if 'image' in info and len(info['image']) == 1:
+            printFun('baseImage')
+            baseembed['image'] = info['image'][0]
+        elif 'image' in info and len(info['image']) > 1:
+            printFun('iterImage')
+            iterables['image'] = info['image']
+        repfields =  ('description', 'fields', 'image')
+        embeds = [baseembed]
+        for i in repfields:
+            if i in iterables:
+                embeds = [{**(embeds[j] if j<len(embeds) else baseembed), **maybeover(i, iterables[i], j)} for j in range(max(len(embeds), len(iterables[i])))]
+        embeds = [toembed(i, printFun) for i in embeds]
         if len(embeds) == 1:
             await ctx.send(None, embed = embeds[0])
         else:
             await SimplePaginator(extras=embeds).paginate(ctx) 
     else:
-        await ctx.send(None, embed = toembed(info))
+        if 'image' in info and len(info['image']) == 1:
+            info['image'] = info['image'][0]
+        await ctx.send(None, embed = toembed(info, printFun))
 
 class Ref:
     def __init__(self, bot):
@@ -94,7 +103,7 @@ class Ref:
     async def ref(self, ctx, *, args):
         """Look up info from this server's codex."""
         codex = await self.bot.serverdata(ctx, 'codex')
-        test = shlex.split(args)
+        test = args.split()
         forceEmbed = False
         if test[0] == '--paginator' or test[0] == '--page':
             if test[1].lower() == 'false' or test[1].lower() == 'f':
@@ -105,7 +114,7 @@ class Ref:
             if type(info)==str:
                 await ctx.send(info.format(ctx.author.display_name))
             else:
-                await pageOrEmbed(ctx, info, forceEmbed)
+                await pageOrEmbed(ctx, info, self.bot.logger, forceEmbed)
                 """minfo = {i:j for i, j in info.items() if i!='fields'}
                 embed = discord.Embed(**minfo)
                 for i in info['fields']:
@@ -148,10 +157,10 @@ class Ref:
                 mess = args
             info = await self.bot.refserver.top(codex, n, mess)
             if n > 5:
-                await self.bot.smartSend(ctx.author,"Top "+str(n)+" results for "+args+":", info,'```')
+                await self.bot.smartSend(ctx.author,"Top "+str(n)+" results for "+mess+":", info,'```')
                 await ctx.send("Results sent via PM.")
             else:
-                await self.bot.smartSend(ctx,"Top "+str(n)+" results for "+args+":", info,'```')
+                await self.bot.smartSend(ctx,"Top "+str(n)+" results for "+mess+":", info,'```')
         else:
             await ctx.send('This server has no codex selected.')
 

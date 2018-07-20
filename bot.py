@@ -1,3 +1,4 @@
+import datetime
 import sys
 args = sys.argv
 if len(args) > 1:
@@ -7,7 +8,7 @@ if len(args) > 1:
         logfun = print
     else:
         import logging
-        logging.basicConfig(filename='logs/bot.log', format='%(asctime)s %(message)s')
+        logging.basicConfig(filename='logs/bot/bot '+str(datetime.datetime.now())+'.log', format='%(asctime)s %(message)s')
         logger = logging.getLogger('Logger')
         print(args, type(args), args[1])
         logger.setLevel(args[1])
@@ -15,7 +16,7 @@ if len(args) > 1:
         logexe = logger.exception
 else:
     import logging
-    logging.basicConfig(filename='logs/bot.log', format='%(asctime)s %(message)s')
+    logging.basicConfig(filename='logs/bot/bot '+str(datetime.datetime.now())+'.log', format='%(asctime)s %(message)s')
     logger = logging.getLogger('Logger')
     logger.setLevel('INFO')
     logexe = logger.exception

@@ -100,28 +100,36 @@ class Settings:
         else:    
             await ctx.send('To use this command, you have to either have admin permissions on this server, or have a role permitted to modify this bot.')
 
-    async def prefix(self, usechannel, ctx, arg):
+    async def prefix_root(self, usechannel, ctx, arg):
         if await self.is_allowed(ctx):
             await self.symbol_list_change(ctx, arg, 'prefix', 'prefixes', [f'<@{self.bot.user.id}>', f'<@{self.bot.user.id}>'], usechannel)
         else:
             await ctx.send('To use this command, you have to either have admin permissions on this server, or have a role permitted to modify this bot.')
 
     @commands.command()
+    async def prefix(self,ctx, *,arg=''):
+        """Forking command for prefixes"""
+        if ctx.prefix.startswith('<@') and ctx.prefix.find('>')>-1:
+            await ctx.send(f"Please use {ctx.prefix}`channel_prefix` or {ctx.prefix}`server_prefix` to specify the context of your prefix.")
+        else:
+            await ctx.send(f"Please use `{ctx.prefix}channel_prefix` or `{ctx.prefix}server_prefix` to specify the context of your prefix.")
+
+    @commands.command()
     async def server_prefix(self,ctx, *,arg=''):
         """Changes the server prefix. Only available to admins or allowed roles. Will prompt for confirmation before changing the prefix."""
-        await self.prefix(False, ctx, arg)
+        await self.prefix_root(False, ctx, arg)
 
     @commands.command()
     async def channel_prefix(self,ctx,*,arg=''):
         """Changes the prefix for the channel the command is used in. Only available to admins or allowed roles. Will prompt for confirmation before changing the prefix."""
-        await self.prefix(True, ctx, arg)
+        await self.prefix_root(True, ctx, arg)
 
     @commands.command()
     async def remove_channel_prefix(self, ctx):
         """Deletes a channel's independent prefix list, if it exists. Only available to admins or allowed roles. Will prompt for confirmation before deleting the prefix list."""
         await self.remove_entry(ctx, 'prefix list', 'prefixes')
     
-    async def charsign(self, usechannel, ctx, arg):
+    async def charsign_root(self, usechannel, ctx, arg):
         if await self.is_allowed(ctx):
             if '@' in arg:
                 await ctx.send(f"Sorry, {ctx.author.display_name}, but charsigns can't contain @.")
@@ -131,21 +139,29 @@ class Settings:
             await ctx.send('To use this command, you have to either have admin permissions on this server, or have a role permitted to modify this bot.')
 
     @commands.command()
+    async def charsign(self,ctx, *,arg=''):
+        """Forking command for charsigns"""
+        if ctx.prefix.startswith('<@') and ctx.prefix.find('>')>-1:
+            await ctx.send(f"Please use {ctx.prefix}`channel_charsign` or {ctx.prefix}`server_charsign` to specify the context of your charsign.")
+        else:
+            await ctx.send(f"Please use `{ctx.prefix}channel_charsign` or `{ctx.prefix}server_charsign` to specify the context of your charsign.")
+   
+    @commands.command()
     async def server_charsign(self,ctx,*,arg=''):
         """Changes the server charsign. Only available to admins or allowed roles. Will prompt for confirmation before changing the charsign."""
-        await self.charsign(False, ctx, arg)
+        await self.charsign_root(False, ctx, arg)
     
     @commands.command()
     async def channel_charsign(self,ctx,*,arg=''):
         """Changes the charsign for the channel the command is used in. Only available to admins or allowed roles. Will prompt for confirmation before changing the charsign."""
-        await self.charsign(True, ctx, arg)
+        await self.charsign_root(True, ctx, arg)
     
     @commands.command()
     async def remove_channel_charsign(self, ctx):
         """Deletes a channel's independent charsign list, if it exists. Only available to admins or allowed roles. Will prompt for confirmation before deleting the prefix list."""
         await self.remove_entry(ctx, 'charsign list', 'charsigns')
 
-    async def charsep(self, usechannel, ctx, arg):
+    async def charsep_root(self, usechannel, ctx, arg):
         if await self.is_allowed(ctx):
             if '@' in arg:
                 await ctx.send(f"Sorry, {ctx.author.display_name}, but charseps can't contain @.")
@@ -155,21 +171,29 @@ class Settings:
             await ctx.send('To use this command, you have to either have admin permissions on this server, or have a role permitted to modify this bot.')
 
     @commands.command()
+    async def charsep(self,ctx, *,arg=''):
+        """Forking command for charseps"""
+        if ctx.prefix.startswith('<@') and ctx.prefix.find('>')>-1:
+            await ctx.send(f"Please use {ctx.prefix}`channel_charsep` or {ctx.prefix}`server_charsep` to specify the context of your charsep.")
+        else:
+            await ctx.send(f"Please use `{ctx.prefix}channel_charsep` or `{ctx.prefix}server_charsep` to specify the context of your charsep.")
+   
+    @commands.command()
     async def server_charsep(self,ctx,*,arg=''):
         """Changes the server charsep. Only available to admins or allowed roles. Will prompt for confirmation before changing the charsign."""
-        await self.charsep(False, ctx, arg)
+        await self.charsep_root(False, ctx, arg)
 
     @commands.command()
     async def channel_charsep(self,ctx,*,arg=''):
         """Changes the charsep for the channel the command is used in. Only available to admins or allowed roles. Will prompt for confirmation before changing the charsign."""
-        await self.charsep(True, ctx, arg)
+        await self.charsep_root(True, ctx, arg)
 
     @commands.command()
     async def remove_channel_charsep(self, ctx):
         """Deletes a channel's independent charsep list, if it exists. Only available to admins or allowed roles. Will prompt for confirmation before deleting the prefix list."""
         await self.remove_entry(ctx, 'charsep list', 'charseps')
 
-    async def codex(self, usechannel, ctx):
+    async def codex_root(self, usechannel, ctx):
         serv_or_chan = 'channel' if usechannel else 'server'
         if await self.is_allowed(ctx):
             currentInfo = await self.bot.serverdata(ctx, 'codex')
@@ -195,21 +219,29 @@ class Settings:
             await ctx.send('To use this command, you have to either have admin permissions on this server, or have a role permitted to modify this bot.')
 
     @commands.command()
+    async def codex(self,ctx, *,arg=''):
+        """Forking command for charseps"""
+        if ctx.prefix.startswith('<@') and ctx.prefix.find('>')>-1:
+            await ctx.send(f"Please use {ctx.prefix}`channel_codex` or {ctx.prefix}`server_codex` to specify the context of your codex.")
+        else:
+            await ctx.send(f"Please use `{ctx.prefix}channel_codex` or `{ctx.prefix}server_codex` to specify the context of your codex.")
+   
+    @commands.command()
     async def server_codex(self,ctx):
         """Changes the server codex. Takes no arguments, instead giving a selection. Only available to admins or allowed roles."""
-        await self.codex(False, ctx)
+        await self.codex_root(False, ctx)
 
     @commands.command()
     async def channel_codex(self,ctx):
         """Changes the codex for the channel the command is used in. Takes no arguments, instead giving a selection. Only available to admins or allowed roles."""
-        await self.codex(True, ctx)
+        await self.codex_root(True, ctx)
 
     @commands.command()
     async def remove_channel_codex(self, ctx):
         """Deletes a channel's independent codex, if it exists. Only available to admins or allowed roles. Will prompt for confirmation before deleting the prefix list."""
         await self.remove_entry(ctx, 'codex', 'codex')
 
-    async def inline_toggle(self, usechannel, ctx):
+    async def inline_toggle_root(self, usechannel, ctx):
         serv_or_chan = 'in this channel' if usechannel else 'on this server'
         if await self.is_allowed(ctx):
             currentInfo = await self.bot.serverdata(ctx, 'inline')
@@ -226,6 +258,14 @@ class Settings:
         else:
             await ctx.send('To use this command, you have to either have admin permissions on this server, or have a role permitted to modify this bot.')
 
+    @commands.command()
+    async def inline_toggle(self,ctx, *,arg=''):
+        """Forking command for charseps"""
+        if ctx.prefix.startswith('<@') and ctx.prefix.find('>')>-1:
+            await ctx.send(f"Please use {ctx.prefix}`channel_inline_toggle` or {ctx.prefix}`server_inline_toggle` to specify the context of your toggling.")
+        else:
+            await ctx.send(f"Please use `{ctx.prefix}channel_inline_toggle` or `{ctx.prefix}server_inline_toggle` to specify the context of your toggling.")
+   
     @commands.command()
     async def server_inline_toggle(self,ctx):
         """Toggles inline rolling on the current server. Only available to admins or allowed roles."""
