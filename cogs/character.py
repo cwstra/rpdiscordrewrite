@@ -222,6 +222,7 @@ class Character:
                     await self.bot.charserver.delInfo(ctx, character)
                     if test[1]:
                         if ctx.author.id != test[0]:
+                            creator = discord.utils.get(ctx.guild.members, id=test[0]).display_name
                             await ctx.send(creator+"'s"+' character "'+ character + '" has been deleted.')
                         else:
                             await ctx.send('Your character "'+ character + '" has been deleted.')

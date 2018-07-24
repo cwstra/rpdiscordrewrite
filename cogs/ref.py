@@ -37,15 +37,20 @@ def splitbigfields(l):
         outlist += i
     return outlist
 
-def toembed(d, printFun):
+def toembed(d, printFun, genFooter=None):
     fields = d.pop('fields', [])
     image = d.pop('image', None)
+    footer = d.pop('footer', None)
+    if not(footer) and genFooter:
+        footer = genFooter
     printFun(image)
     em = discord.Embed(**d)
     for i in fields:
         em.add_field(**i)
     if image:
         em.set_image(url=image)
+    if footer:
+        em.set_footer(**footer)
     return em
 
 async def pageOrEmbed(ctx, info, printFun, forceEmbed = False):
@@ -80,7 +85,11 @@ async def pageOrEmbed(ctx, info, printFun, forceEmbed = False):
         for i in repfields:
             if i in iterables:
                 embeds = [{**(embeds[j] if j<len(embeds) else baseembed), **maybeover(i, iterables[i], j)} for j in range(max(len(embeds), len(iterables[i])))]
-        embeds = [toembed(i, printFun) for i in embeds]
+        if 'footer' in info:
+            footer = info['footer']
+        else:
+            footer = None
+        embeds = [toembed(i, printFun, footer) for i in embeds]
         if len(embeds) == 1:
             await ctx.send(None, embed = embeds[0])
         else:
