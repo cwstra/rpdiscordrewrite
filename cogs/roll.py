@@ -114,7 +114,7 @@ class Roll:
                 t.seek(0)
                 await ctx.send(prefix, file = discord.File(t, filename = 'roll.txt'))
         else:
-            await self.bot.smartSend(ctx,prefix.replace('*','\*'), message,'```')
+            await self.bot.smartSend(ctx,prefix.replace('*','\*'), message, '```\n', '```')
 
     #Command-invoked roller
     @commands.command(aliases = ['r'])

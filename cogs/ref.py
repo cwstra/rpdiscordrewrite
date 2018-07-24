@@ -13,6 +13,7 @@ def test_int(i):
     except:
         return False
 
+<<<<<<< HEAD
 def evensplit(l, n):
     for i in range(0, len(l), n):
         yield l[i:i+n]
@@ -99,6 +100,8 @@ async def pageOrEmbed(ctx, info, printFun, forceEmbed = False):
             info['image'] = info['image'][0]
         await ctx.send(None, embed = toembed(info, printFun))
 
+=======
+>>>>>>> 6758b352f18db1407fe2d7aa09d2d23eac061f3e
 class Ref:
     def __init__(self, bot):
         self.bot = bot
@@ -123,7 +126,7 @@ class Ref:
             if type(info)==str:
                 await ctx.send(info.format(ctx.author.display_name))
             else:
-                await pageOrEmbed(ctx, info, self.bot.logger, forceEmbed)
+                await self.bot.pageOrEmbed(ctx, info, self.bot.logger, forceEmbed)
                 """minfo = {i:j for i, j in info.items() if i!='fields'}
                 embed = discord.Embed(**minfo)
                 for i in info['fields']:
@@ -166,10 +169,10 @@ class Ref:
                 mess = args
             info = await self.bot.refserver.top(codex, n, mess)
             if n > 5:
-                await self.bot.smartSend(ctx.author,"Top "+str(n)+" results for "+mess+":", info,'```')
+                await self.bot.smartSend(ctx.author,"Top "+str(n)+" results for "+mess+":", info,'```\n', '```')
                 await ctx.send("Results sent via PM.")
             else:
-                await self.bot.smartSend(ctx,"Top "+str(n)+" results for "+mess+":", info,'```')
+                await self.bot.smartSend(ctx,"Top "+str(n)+" results for "+mess+":", info,'```\n', '```')
         else:
             await ctx.send('This server has no codex selected.')
 
