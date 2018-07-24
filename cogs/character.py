@@ -18,9 +18,9 @@ def parseMarkedArgs(ctx, args, namecheck=False):
 def parseAttrArgs(ctx, args):
     out = {}
     while len(args) > 0:
-        if args[0].endswith('=') and not(args[0].endswith('\=')) and len(args)>1:
+        if args[0].endswith('=') and not(args[0].endswith(r'\=')) and len(args)>1:
             out[args[0][:-1]], args = args[1], args[2:]
-        elif args[0].count('=') > args[0].count('\='):
+        elif args[0].count('=') > args[0].count(r'\='):
             eqspl, attr, value = args[0].split('='), '', ''
             test = False
             for i in eqspl:
@@ -85,6 +85,7 @@ class Character:
         async def f(authorId):
             allowedroles = await self.bot.serverdata(ctx, 'permissionroles')
             test = ctx.author.id == authorId or ctx.author.permissions_in(ctx.channel) or (ctx.author.roles and any(i.id in allowedroles for i in ctx.author.roles))
+            return test
         return f 
 
     @commands.command()
@@ -93,9 +94,9 @@ class Character:
             Syntax:
                 newchar [character name] <list of attr = value>
             Required Fields
-                [character name]: The character's name. If the name contains spaces, quotation marks are necessary. If the name contains quotation marks, they must be escaped with \.
+                [character name]: The character's name. If the name contains spaces, quotation marks are necessary. If the name contains quotation marks, they must be escaped with \\.
             Optional Fields
-                <attr = value>: Zero or more Name=Value pairs. If Name or Value contains spaces, quotation marks are necessary. If the name contains quotation marks, they must be escaped with \."""
+                <attr = value>: Zero or more Name=Value pairs. If Name or Value contains spaces, quotation marks are necessary. If the name contains quotation marks, they must be escaped with \\."""
         args = shlex.split(args)
         if len(args) == 0:
             await ctx.send("At the very least, I need a name to make a new character.")
@@ -118,9 +119,9 @@ class Character:
             Syntax:
                 viewchar [character name] <attributes>
             Required Fields
-                [character name]: The character's name. If the name contains spaces, quotation marks are necessary. If the name contains quotation marks, they must be escaped with \.
+                [character name]: The character's name. If the name contains spaces, quotation marks are necessary. If the name contains quotation marks, they must be escaped with \\.
             Optional Fields
-                <attributes>: A space-separated list of attribute names. If a name contains spaces, quotation marks are necessary. If a name contains quotation marks, they must be escaped with \."""
+                <attributes>: A space-separated list of attribute names. If a name contains spaces, quotation marks are necessary. If a name contains quotation marks, they must be escaped with \\."""
         args = shlex.split(args)
         if len(args) == 0:
             res = await self.bot.charserver.listInfo(ctx)
@@ -159,10 +160,10 @@ class Character:
             Syntax:
                 editchar <--n new_name> [character name] [list of attr = value]
             Required Fields
-                [character name]: The character's name. If the name contains spaces, quotation marks are necessary. If the name contains quotation marks, they must be escaped with \.
-                [list of attr = value]: One or more Name=Value attribute pairs, or lone attribute Names; if it's a single attribute name, that attribute will be deleted, if it exists. If Name or Value contains spaces, quotation marks are necessary. If the name contains quotation marks, they must be escaped with \.
+                [character name]: The character's name. If the name contains spaces, quotation marks are necessary. If the name contains quotation marks, they must be escaped with \\.
+                [list of attr = value]: One or more Name=Value attribute pairs, or lone attribute Names; if it's a single attribute name, that attribute will be deleted, if it exists. If Name or Value contains spaces, quotation marks are necessary. If the name contains quotation marks, they must be escaped with \\.
             Options:
-                <--n new_name>: Tell the bot to rename your character. If the name contains spaces, quotation marks are necessary. If the name contains quotation marks, they must be escaped with \."""
+                <--n new_name>: Tell the bot to rename your character. If the name contains spaces, quotation marks are necessary. If the name contains quotation marks, they must be escaped with \\."""
         args = shlex.split(args)
         argdict, args = parseMarkedArgs(ctx, args, True)
         if not('name' in argdict):
@@ -201,7 +202,7 @@ class Character:
             Syntax:
                 delchar [character name]
                 Required Fields
-                    [character name]: The character's name. If the name contains spaces, quotation marks are necessary. If the name contains quotation marks, they must be escaped with \."""
+                    [character name]: The character's name. If the name contains spaces, quotation marks are necessary. If the name contains quotation marks, they must be escaped with \\."""
         args = shlex.split(args)
         if len(args) == 0:
             await ctx.send("You'll need to give me the name of the character you want to delete.")
@@ -222,6 +223,7 @@ class Character:
                     await self.bot.charserver.delInfo(ctx, character)
                     if test[1]:
                         if ctx.author.id != test[0]:
+                            creator = discord.utils.get(ctx.guild.members, id=test[0]).display_name
                             await ctx.send(creator+"'s"+' character "'+ character + '" has been deleted.')
                         else:
                             await ctx.send('Your character "'+ character + '" has been deleted.')

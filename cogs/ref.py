@@ -13,83 +13,6 @@ def test_int(i):
     except:
         return False
 
-def evensplit(l, n):
-    for i in range(0, len(l), n):
-        yield l[i:i+n]
-
-def splittext(count, text):
-    if count > 10:
-        return list(map(lambda x: '\n'.join(x), evensplit(text.split('\n'), 10)))
-    else:
-        return text
-
-def titlemake(tup):
-    if type(tup[1]) == str:
-        return [{'name':tup[0], 'value':tup[1]}]
-    else:
-        return [{'name':tup[0], 'value':tup[1][0]}] + [{'name':tup[0]+' (cont.)', 'value':i} for i in tup[1][1:]]
-
-def splitbigfields(l):
-    newlist = [(i, splittext(j, k)) for i, j, k in l]
-    newlist = [titlemake(i) for i in newlist]
-    outlist = []
-    for i in newlist:
-        outlist += i
-    return outlist
-
-def toembed(d, printFun):
-    fields = d.pop('fields', [])
-    image = d.pop('image', None)
-    printFun(image)
-    em = discord.Embed(**d)
-    for i in fields:
-        em.add_field(**i)
-    if image:
-        em.set_image(url=image)
-    return em
-
-async def pageOrEmbed(ctx, info, printFun, forceEmbed = False):
-    def maybeover(key, l, n):
-        if n < len(l):
-            return {key:l[n]}
-        else:
-            return {}
-    counts = {'description':info['description'].count('\n')+1 if 'description' in info else None, 'fields':[str(i['value']).count('\n')+1 for i in info['fields']], 'image':len(info['image']) if 'image' in info else 0}
-    maxlines = max([counts['description'] if counts['description'] else 1]+[i for i in counts['fields']])
-    baseembed = {'title':info['title']} ; iterables = {}
-    if not(forceEmbed) and (len(info['fields'])>3 or maxlines>10 or ('image' in info and len(info['image'])>1)):
-        if counts['description']:
-            desc = splittext(counts['description'], info['description'])
-            if type(desc) == str:
-                baseembed['description'] = desc
-            else:
-                iterables['description'] = desc
-        littlefields = splitbigfields([(i['name'], counts['fields'][ind], str(i['value'])) for ind, i in enumerate(info['fields'])])  
-        if len(littlefields)>3:
-            iterables['fields'] = list(evensplit(littlefields, 3))
-        else:
-            baseembed['fields'] = littlefields
-        if 'image' in info and len(info['image']) == 1:
-            printFun('baseImage')
-            baseembed['image'] = info['image'][0]
-        elif 'image' in info and len(info['image']) > 1:
-            printFun('iterImage')
-            iterables['image'] = info['image']
-        repfields =  ('description', 'fields', 'image')
-        embeds = [baseembed]
-        for i in repfields:
-            if i in iterables:
-                embeds = [{**(embeds[j] if j<len(embeds) else baseembed), **maybeover(i, iterables[i], j)} for j in range(max(len(embeds), len(iterables[i])))]
-        embeds = [toembed(i, printFun) for i in embeds]
-        if len(embeds) == 1:
-            await ctx.send(None, embed = embeds[0])
-        else:
-            await SimplePaginator(extras=embeds).paginate(ctx) 
-    else:
-        if 'image' in info and len(info['image']) == 1:
-            info['image'] = info['image'][0]
-        await ctx.send(None, embed = toembed(info, printFun))
-
 class Ref:
     def __init__(self, bot):
         self.bot = bot
@@ -114,7 +37,7 @@ class Ref:
             if type(info)==str:
                 await ctx.send(info.format(ctx.author.display_name))
             else:
-                await pageOrEmbed(ctx, info, self.bot.logger, forceEmbed)
+                await self.bot.pageOrEmbed(ctx, info, self.bot.logger, forceEmbed)
                 """minfo = {i:j for i, j in info.items() if i!='fields'}
                 embed = discord.Embed(**minfo)
                 for i in info['fields']:
@@ -157,10 +80,10 @@ class Ref:
                 mess = args
             info = await self.bot.refserver.top(codex, n, mess)
             if n > 5:
-                await self.bot.smartSend(ctx.author,"Top "+str(n)+" results for "+mess+":", info,'```')
+                await self.bot.smartSend(ctx.author,"Top "+str(n)+" results for "+mess+":", info,'```\n', '```')
                 await ctx.send("Results sent via PM.")
             else:
-                await self.bot.smartSend(ctx,"Top "+str(n)+" results for "+mess+":", info,'```')
+                await self.bot.smartSend(ctx,"Top "+str(n)+" results for "+mess+":", info,'```\n', '```')
         else:
             await ctx.send('This server has no codex selected.')
 
