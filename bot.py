@@ -92,12 +92,15 @@ def splitbigfields(l):
 def toembed(d, printFun):
     fields = d.pop('fields', [])
     image = d.pop('image', None)
+    footer = d.pop('footer', None)
     printFun(image)
     em = discord.Embed(**d)
     for i in fields:
         em.add_field(**i)
     if image:
         em.set_image(url=image)
+    if footer:
+        em.set_footer(**footer)
     return em
 
 class RPBot(commands.Bot):
@@ -248,6 +251,8 @@ class RPBot(commands.Bot):
         counts = {'description':info['description'].count('\n')+1 if 'description' in info else None, 'fields':[str(i['value']).count('\n')+1 for i in info['fields']], 'image':len(info['image']) if 'image' in info else 0}
         maxlines = max([counts['description'] if counts['description'] else 1]+[i for i in counts['fields']])
         baseembed = {'title':info['title']} ; iterables = {}
+        if 'footer' in info:
+            baseembed['footer'] = info['footer']
         if not(forceEmbed) and (len(info['fields'])>3 or maxlines>10 or ('image' in info and len(info['image'])>1)):
             if counts['description']:
                 desc = splittext(counts['description'], info['description'])
