@@ -33,8 +33,8 @@ class Initialize:
         msg = f"Hello {ctx.author.display_name}! Here's some things you should know to set me up!\n\n"
         currentInfo = await self.bot.serverdata(ctx, 'prefixes')
         if not(currentInfo):
-            currentInfo = f'<@{self.bot.user.id}>'
-        msg += "To issue a command, you have to use a prefix. Currently, this server's prefix{'es are' if len(currentInfo)>1 else ' is'} {smartListToString(currentInfo)}.\n\n"
+            currentInfo = [f'<@{self.bot.user.id}>']
+        msg += f"To issue a command, you have to use a prefix. Currently, this server's prefix{'es are' if len(currentInfo)>1 else ' is'} {smartListToString(currentInfo)}.\n\n"
         msg += "To set me up for further use in your server, an admin can do the following: \n"
         msg += "\t* Use the `channel_prefix` / `server_prefix` commands to set up some alternate prefixes\n"
         msg += "\t* Use the `channel_codex` / `server_codex` commands to select a system codex for reference\n"

@@ -269,12 +269,12 @@ class Settings:
     @commands.command()
     async def server_inline_toggle(self,ctx):
         """Toggles inline rolling on the current server. Only available to admins or allowed roles."""
-        await self.inline_toggle(False, ctx)
+        await self.inline_toggle_root(False, ctx)
 
     @commands.command()
     async def channel_inline_toggle(self,ctx):
         """Toggles inline rolling for the channel the command is used in. Only available to admins or allowed roles."""
-        await self.inline_toggle(True, ctx)
+        await self.inline_toggle_root(True, ctx)
 
     @commands.command()
     async def remove_channel_inline_toggle(self, ctx):
