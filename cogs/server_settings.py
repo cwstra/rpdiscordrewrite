@@ -75,7 +75,7 @@ class Settings:
                 posslist += default
         posslist.sort(key = lambda x:len(x))
         async def change(name):
-            if type(name) == str and name.lower() == 'yes':
+            if type(name) == str and name.strip().lower() == 'yes':
                 await self.bot.upsert_entry(ctx, {plurtype:posslist}, usechannel)
                 await ctx.send(f'{singtype.title()} list changed!')
             else:

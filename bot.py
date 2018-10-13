@@ -265,7 +265,10 @@ class RPBot(commands.Bot):
                 iterables['fields'] = list(evensplit(littlefields, 3))
             else:
                 baseembed['fields'] = littlefields
-            if 'image' in info and len(info['image']) == 1:
+            if 'image' in info and type(info['image']) == str: 
+                printFun('baseImage')
+                baseembed['image'] = info['image']
+            elif 'image' in info and len(info['image']) == 1:
                 printFun('baseImage')
                 baseembed['image'] = info['image'][0]
             elif 'image' in info and len(info['image']) > 1:

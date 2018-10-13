@@ -64,22 +64,29 @@ def getKeys(message, charsigns, charseps):
             ind += 1
     return outdata
 
-async def parseChars(ctx, message, charsigns, charseps, getInfo):
+async def parseChars(ctx, message, charsigns, charseps, getInfo, logFun=None):
     data = getKeys(message, charsigns, charseps)
     res = await getInfo(ctx, data)
     for i,j in reversed(data):
         if (i, j) in res:
             result = res[(i,j)]
             nextData = getKeys(result, charsigns, charseps)
+            if logFun:
+                logFun(result)
+                logFun(nextData)
             killSwitch = 0
             while nextData and killSwitch < 100:
-                await asyncio.sleep(0)
+                nextRes = await getInfo(ctx, nextData)
                 for k, v in reversed(nextData):
-                    if (k,v) in res:
-                        result = result[:nextData[(k,v)][0]] + res[(k, v)] + result[nextData[(k,v)][1]:]
+                    logFun((k,v))
+                    logFun(nextRes.keys())
+                    logFun((k,v) in nextRes)
+                    if (k,v) in nextRes:
+                        logFun(nextRes[(k,v)])
+                        result = result[:nextData[(k,v)][0]] + nextRes[(k, v)] + result[nextData[(k,v)][1]:]
                 nextData = getKeys(result, charsigns, charseps)
                 killSwitch += 1
-            message = message[:data[(i,j)][0]] + res[(i, j)] + message[data[(i,j)][1]:]
+            message = message[:data[(i,j)][0]] + result + message[data[(i,j)][1]:]
     return message 
 
 urlRegex = re.compile(r'https?:\/\/[^\s]*\.[^\s]*')
@@ -139,7 +146,7 @@ class Roll:
             charseps = await self.bot.serverdata(ctx, 'charseps')
             if not(charseps):
                 charseps = [':']
-            message = await parseChars(ctx, args, charsigns, charseps, self.bot.charserver.getBatchInfo)
+            message = await parseChars(ctx, args, charsigns, charseps, self.bot.charserver.getBatchInfo, self.bot.logger)
             if message != args:
                 prefix += '=' + message
             prefix += '\n'
