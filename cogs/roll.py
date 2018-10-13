@@ -11,6 +11,7 @@ from urllib.parse import quote as urlEscape
 import os
 import ujson as json
 import tempfile
+import asyncio
 
 if __name__ == "__main__":
     import specialized.dice as rollP
@@ -29,7 +30,7 @@ def getKeys(message, charsigns, charseps):
     signtup = tuple(i for i in sorted(charsigns, key=len, reverse=True))
     septup = tuple(i for i in sorted(charseps, key=len, reverse=True))
     ind = 0
-    outdata = OrderedDict()  
+    outdata = OrderedDict()
     while ind < len(message):
         signtest = specialstart(message, signtup, ind)
         if signtest:
@@ -68,6 +69,16 @@ async def parseChars(ctx, message, charsigns, charseps, getInfo):
     res = await getInfo(ctx, data)
     for i,j in reversed(data):
         if (i, j) in res:
+            result = res[(i,j)]
+            nextData = getKeys(result, charsigns, charseps)
+            killSwitch = 0
+            while nextData and killSwitch < 100:
+                await asyncio.sleep(0)
+                for k, v in reversed(nextData):
+                    if (k,v) in res:
+                        result = result[:nextData[(k,v)][0]] + res[(k, v)] + result[nextData[(k,v)][1]:]
+                nextData = getKeys(result, charsigns, charseps)
+                killSwitch += 1
             message = message[:data[(i,j)][0]] + res[(i, j)] + message[data[(i,j)][1]:]
     return message 
 
