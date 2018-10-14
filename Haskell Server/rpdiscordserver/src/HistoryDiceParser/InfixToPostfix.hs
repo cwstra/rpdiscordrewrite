@@ -20,7 +20,7 @@ data StackTokenType = StackTokenNum | StackTokenBool | StackTokenIn T.Text Integ
 data StackToken = StackToken {tokenIndex :: Maybe Integer, tokenType :: StackTokenType, tokenRep :: T.Text}
 
 instance Show StackToken where
-  show StackToken {tokenType = tt, tokenRep = rep} = "Token: (\"" ++ T.unpack rep ++ "\", " ++ show tt ++ ")"
+  show StackToken {tokenType = tt, tokenRep = rep} = "Token: (\"" ++ T.unpack rep ++ "\"," ++ show tt ++ ")"
 
 lparen = "(["
 rparen = ")]"

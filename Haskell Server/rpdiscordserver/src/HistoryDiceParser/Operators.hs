@@ -126,7 +126,7 @@ newtype OpVector = OpVector [OpStatic]
 vecMap f (OpVector list) = OpVector $ map f list
 
 instance Show OpVector where
-  show (OpVector list) = "(" ++ intercalate ", " (map show list) ++ ")"
+  show (OpVector list) = "(" ++ intercalate "," (map show list) ++ ")"
 
 strDup :: (Integral a) => String -> a -> String
 strDup str n = concat $ replicate (fromIntegral n) str
@@ -980,7 +980,7 @@ data OpTokenType = OpTokenIn Integer | OpTokenPre Integer | OpTokenPost Integer 
 data OpToken = OpToken {optype :: OpTokenType, resolveOrder :: OpResolveOrder, assoc :: Assoc, function :: FunType}
 
 instance Show OpToken where
-  show OpToken {optype = ot, assoc = a} = "OpToken: (" ++ show ot ++ ", " ++ show a ++ ")"
+  show OpToken {optype = ot, assoc = a} = "OpToken: (" ++ show ot ++ "," ++ show a ++ ")"
 
 safeComp :: (GeneralRealNumber -> GeneralRealNumber -> Bool) -> GeneralNumber -> GeneralNumber -> Bool
 safeComp fun (GReal n) (GReal m) = fun n m

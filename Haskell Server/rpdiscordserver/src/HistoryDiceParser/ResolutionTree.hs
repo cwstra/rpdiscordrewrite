@@ -319,10 +319,16 @@ sillySplit gen = (sGen, pureMT word)
 
 historyShow :: [(T.Text, T.Text)] -> T.Text
 historyShow [] = T.empty
-historyShow tupList = T.intercalate (T.singleton '\n') $ map tupShow tupList
+historyShow tupList = T.intercalate (T.singleton '\n') $ map tupShow $ preTreat [] tupList
   where
+    preTreat :: [(T.Text, T.Text)] -> [(T.Text, T.Text)]-> [(T.Text, T.Text)]
+    preTreat l1 [] = reverse l1
+    preTreat l1 l2
+      |[] <- l1, [(t1, t2)] <- l2 = [(t1, t2)]
+      |tf@(t1, t2):ts <- l2, t1 == t2 = preTreat l1 ts
+      |tf:ts <- l2 = preTreat (tf:l1) ts
     tupShow :: (T.Text, T.Text) -> T.Text
-    tupShow (before, after) = T.concat [before, T.singleton '=', after]
+    tupShow (before, after) = T.concat [before, T.pack " = ", after]
 
 {-
 vecRoll  :: OpVector -> PureMT -> Either ((VecText, OpVector), PureMT) ResolveException
