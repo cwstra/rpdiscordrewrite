@@ -1,6 +1,7 @@
 {-# LANGUAGE BangPatterns #-}
 module General.UserNumber
 (ResolveException(..)
+,resolveException
 ,ParseException(..)
 ,GeneralSimpleNumber(..)
 --, GRatio(..)
@@ -11,11 +12,12 @@ module General.UserNumber
 , GeneralComplex(..)
 , GeneralNumber(..)
 , PossNumber(..)
-, numberFromString
 , numShow
 , genExp
 , realMod
 , genRealtoFloat
+, gReal
+, imagUnit
 ) where
 
 import qualified Data.Complex                     as DC
@@ -24,10 +26,15 @@ import qualified Data.Text.Lazy                   as T
 import           Math.NumberTheory.Powers.Squares
 
 newtype ResolveException = ResolveException T.Text
+  deriving Eq
 instance Show ResolveException where
   show (ResolveException n) = T.unpack n
 
+resolveException :: String -> ResolveException
+resolveException = ResolveException . T.pack
+
 data ParseException = ParseException T.Text Integer
+  deriving Eq
 instance Show ParseException where
   show (ParseException t n) = T.unpack $ T.concat [T.pack "ParseException: ", t, T.pack " at ",T.pack $ show n]
 
@@ -152,7 +159,7 @@ instance Num GeneralRealNumber where
 
 instance Fractional GeneralRealNumber where
   recip a
-    |GSimp (GInt x) <- a = GRat $ GR 1 x
+    |GSimp (GInt x) <- a = GRat $ sGR 1 x
     |GSimp (GFlo x) <- a = GSimp $ GFlo $ recip x
     |GRat x <- a = reduce $ recip x
 
@@ -322,18 +329,6 @@ realMod a b = a - (b * f)
     realfloor (GRat (GR x y))  = floor $ genRealtoFloat $ GRat $ GR x y
     f = GSimp $ GInt $ realfloor $ a/b
 
-strSimpParse :: String -> GeneralSimpleNumber
-strSimpParse str
-  |'.' `elem` str = GFlo (read str :: Float)
-  |otherwise = GInt (read str :: Integer)
-
-numberFromString :: String -> GeneralNumber
-numberFromString text
-  |text == "j" = GComp $ GC (GSimp $ GInt 0) (GSimp $ GInt 1)
-  |text == "-j" = GComp $ GC (GSimp $ GInt 0) (GSimp $ GInt $ -1)
-  |last text == 'j' = GComp $ GC (GSimp $ GInt 0) (GSimp $ strSimpParse (init text))
-  |otherwise = GReal $ GSimp $ strSimpParse text
-
 realShow :: GeneralRealNumber -> String
 realShow num
   |GRat (GR x y) <- num = show x ++ "/" ++ show y
@@ -355,3 +350,8 @@ data PossNumber = Kept GeneralNumber | Dropped GeneralNumber
 instance Show PossNumber where
   show (Kept n)    = show n
   show (Dropped n) = "//" ++ show n ++ "//"
+
+gReal :: (Integral a) => a -> GeneralNumber
+gReal n = GReal $ GSimp $ GInt $ fromIntegral n
+
+imagUnit = GComp $ GC (GSimp $ GInt 0) (GSimp $ GInt 1)

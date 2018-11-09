@@ -1,31 +1,33 @@
 module HistoryDiceParser.Operators
-(KeepDrop(..)
-,smartIntegerToInt
-,NumTest(..)
-,Dice(..)
-,createDie
-,showDieSuffix
-,addExplode
-,addReroll
-,addKeepDrop
-,addSuccess
-,OpVector(..)
-,OpStatic(..)
-,OpType(..)
-,FunRes(..)
-,UnType(..)
-,FunType(..)
-,OpResolveOrder(..)
-,OpNode(..)
-,operatorKeys
-,operatorDict
-,OpTokenType(..)
-,OpToken(..)
-,getType
-,Assoc(..)
-,opVector
-,opResVector
-,vectorify) where
+( KeepDrop(..)
+, smartIntegerToInt
+, NumTest(..)
+, Dice(..)
+, createDie
+, showDieSuffix
+, addExplode
+, addReroll
+, addKeepDrop
+, addSuccess
+, OpVector(..)
+, OpStatic(..)
+, OpType(..)
+, FunRes(..)
+, UnType(..)
+, FunType(..)
+, OpResolveOrder(..)
+, OpNode(..)
+, operatorKeys
+, operatorDict
+, OpTokenType(..)
+, OpToken(..)
+, getType
+, Assoc(..)
+, opVector
+, opResVector
+, vectorify
+, functionDict
+) where
 
 import qualified Data.Text.Lazy as T
 import qualified Data.HashMap.Strict as Map
@@ -36,11 +38,21 @@ import Debug.Trace
 
 import General.UserNumber
 
-data KeepDrop = KeepHigh | DropHigh | KeepLow | DropLow
+data KeepDrop = KeepHigh
+              | DropHigh
+              | KeepLow
+              | DropLow
   deriving (Eq)
 
-data NumTest = TestNone | TestLeq GeneralRealNumber | TestLes GeneralRealNumber | TestGeq GeneralRealNumber | TestGre GeneralRealNumber
-                 | TestEq [GeneralNumber] | TestNeq [GeneralNumber] | TestIn GeneralRealNumber GeneralRealNumber | TestOut GeneralRealNumber GeneralRealNumber
+data NumTest = TestNone 
+             | TestLeq GeneralRealNumber 
+             | TestLes GeneralRealNumber 
+             | TestGeq GeneralRealNumber 
+             | TestGre GeneralRealNumber
+             | TestEq  [GeneralNumber] 
+             | TestNeq [GeneralNumber] 
+             | TestIn  GeneralRealNumber GeneralRealNumber 
+             | TestOut GeneralRealNumber GeneralRealNumber
   deriving (Show, Eq)
 
 smartIntegerToInt :: Integer -> Int
@@ -49,63 +61,65 @@ smartIntegerToInt n
   |n < fromIntegral (minBound::Int) = minBound::Int
   |otherwise = fromInteger n
 
-data Dice = Die {poolSize::      Int,
-                 poolDis::       String,
-                 face::          Either Int [GeneralNumber],
-                 faceDis::       String,
-                 exploding::     (NumTest, Bool), -- If True, display number, else hide it
-                 reroll::        NumTest,
-                 keep_drop::     Maybe Int,
-                 keep_drop_type::Maybe KeepDrop,
-                 success::       NumTest}
+data Dice = Die { poolSize::       Int
+                , poolDis::        String
+                , face::           Either Int [GeneralNumber]
+                , faceDis::        String
+                , exploding::      (NumTest, Bool) -- If True, display number, else hide it
+                , reroll::         NumTest
+                , keep_drop::      Maybe Int
+                , keep_drop_type:: Maybe KeepDrop
+                , success::        NumTest
+                }
   deriving (Eq)
 
 createDie :: Int -> String -> Either Int [GeneralNumber] -> String -> Dice
 createDie poolnum poolstr facerep facestring =
-          Die {poolSize=poolnum,
-              poolDis=poolstr,
-              face=facerep,
-              faceDis=facestring,
-              exploding=(TestNone, False),
-              reroll=TestNone,
-              keep_drop=Nothing,
-              keep_drop_type=Nothing,
-              success=TestNone}
+          Die { poolSize       = poolnum
+              , poolDis        = poolstr
+              , face           = facerep
+              , faceDis        = facestring
+              , exploding      = (TestNone, False)
+              , reroll         = TestNone
+              , keep_drop      = Nothing
+              , keep_drop_type = Nothing
+              , success        = TestNone
+              }
 
-addExplode :: Dice -> NumTest -> Bool -> Dice
-addExplode die@Die {face=faceposs} numTest bool = die {exploding = (numTest, bool)}
+addExplode                  :: Dice -> NumTest -> Bool -> Dice
+addExplode die numTest bool = die {exploding = (numTest, bool)}
 
-addReroll :: Dice -> NumTest -> Dice
-addReroll die@Die {face=faceposs} numTest = die {reroll = numTest}
+addReroll                   :: Dice -> NumTest -> Dice
+addReroll  die numTest      = die {reroll = numTest}
 
-addKeepDrop :: Dice -> KeepDrop -> Int -> Dice
-addKeepDrop die kdt num = die {keep_drop=Just num, keep_drop_type=Just kdt}
+addSuccess                  :: Dice -> NumTest -> Dice
+addSuccess die numTest      = die {success = numTest}
+
+addKeepDrop                 :: Dice -> KeepDrop -> Int -> Dice
+addKeepDrop die kdt num     = die {keep_drop=Just num, keep_drop_type=Just kdt}
   where
-    dis :: KeepDrop -> String
+    dis          :: KeepDrop -> String
     dis KeepHigh = "kh"
-    dis KeepLow = "kl"
+    dis KeepLow  = "kl"
     dis DropHigh = "dh"
-    dis DropLow = "dl"
-
-addSuccess :: Dice -> NumTest -> Dice
-addSuccess die@Die {face=faceposs} numTest = die {success = numTest}
+    dis DropLow  = "dl"
 
 showDieSuffix :: Dice -> String
 showDieSuffix Die {exploding = (explodingTest, explodingBool), reroll = rerollTest, keep_drop=kd, keep_drop_type=kdt, success=successTest} = suffix
   where
-    fancyListShow :: [GeneralNumber] -> String
-    fancyListShow [] = "()"
-    fancyListShow [x] = show x
+    fancyListShow      :: [GeneralNumber] -> String
+    fancyListShow []   = "()"
+    fancyListShow [x]  = show x
     fancyListShow list = "(" ++ intercalate ", " (map show list) ++ ")"
-    parseGenericTest :: String -> NumTest -> String
-    parseGenericTest pre TestNone = ""
-    parseGenericTest pre (TestLeq n) = pre ++ "<=" ++ show (GReal n)
-    parseGenericTest pre (TestLes n) = pre ++ "<" ++ show (GReal n)
-    parseGenericTest pre (TestGeq n) = pre ++ ">=" ++ show (GReal n)
-    parseGenericTest pre (TestGre n) = pre ++ ">" ++ show (GReal n)
-    parseGenericTest pre (TestEq n)  = (if pre == "" then "==" else pre) ++ fancyListShow n
-    parseGenericTest pre (TestNeq n) = pre ++ "/=" ++ fancyListShow n
-    parseGenericTest pre (TestIn m n) = pre ++ "In(" ++ show (GReal m) ++ "," ++ show (GReal n) ++ ")"
+    parseGenericTest                   :: String -> NumTest -> String
+    parseGenericTest pre TestNone      = ""
+    parseGenericTest pre (TestLeq n)   = pre ++ "<="   ++ show (GReal n)
+    parseGenericTest pre (TestLes n)   = pre ++ "<"    ++ show (GReal n)
+    parseGenericTest pre (TestGeq n)   = pre ++ ">="   ++ show (GReal n)
+    parseGenericTest pre (TestGre n)   = pre ++ ">"    ++ show (GReal n)
+    parseGenericTest pre (TestEq n)    = (if pre == "" then "==" else pre) ++ fancyListShow n
+    parseGenericTest pre (TestNeq n)   = pre ++ "/="   ++ fancyListShow n
+    parseGenericTest pre (TestIn m n)  = pre ++ "In("  ++ show (GReal m) ++ "," ++ show (GReal n) ++ ")"
     parseGenericTest pre (TestOut m n) = pre ++ "Out(" ++ show (GReal m) ++ "," ++ show (GReal n) ++ ")"
     parseKeepDrop :: Maybe Int -> Maybe KeepDrop -> String
     parseKeepDrop Nothing Nothing = ""
@@ -128,34 +142,44 @@ vecMap f (OpVector list) = OpVector $ map f list
 instance Show OpVector where
   show (OpVector list) = "(" ++ intercalate "," (map show list) ++ ")"
 
-strDup :: (Integral a) => String -> a -> String
+strDup       :: (Integral a) => String -> a -> String
 strDup str n = concat $ replicate (fromIntegral n) str
 
 data InvalidNumberComp = InvalidNumberComp String String
 
-data OpStatic = StaticDie Dice | StaticNum GeneralNumber | StaticVec OpVector | StaticBool Bool
+data OpStatic = StaticDie Dice 
+              | StaticNum GeneralNumber 
+              | StaticVec OpVector 
+              | StaticBool Bool
   deriving (Eq)
 
 instance Show OpStatic where
-  show (StaticDie d) = show d
-  show (StaticNum n) = numShow n
-  show (StaticVec v) = show v
+  show (StaticDie d)  = show d
+  show (StaticNum n)  = numShow n
+  show (StaticVec v)  = show v
   show (StaticBool b) = show b
 
-data OpType = TypeStatic OpStatic | TypeNode OpNode
+data OpType = TypeStatic OpStatic 
+            | TypeNode OpNode
   deriving (Eq)
 
 instance Show OpType where
   show (TypeStatic o) = show o
-  show (TypeNode o) = show o
+  show (TypeNode o)   = show o
 
-data FunRes = NeedsRolls | Resolved OpType | Errored ResolveException
+data FunRes = NeedsRolls 
+            | Resolved OpType 
+            | Errored ResolveException
   deriving Show
 
-data UnType = Prefix | Suffix
+data UnType = Prefix 
+            | Suffix
   deriving Show
 
-data FunType = FUnary (OpType -> FunRes) Integer UnType | FInfix (OpType -> OpType -> FunRes) Integer | FFunct ([OpType] -> FunRes) | FPossUn  (OpType -> OpType -> FunRes) Integer (OpType -> FunRes) Integer UnType
+data FunType = FUnary (OpType -> FunRes) Integer UnType 
+             | FInfix (OpType -> OpType -> FunRes) Integer 
+             | FFunct ([OpType] -> FunRes) 
+             | FPossUn  (OpType -> OpType -> FunRes) Integer (OpType -> FunRes) Integer UnType
 
 instance Show FunType where
   show (FUnary _ int t) = "(FUnary fun " ++ show int ++ " " ++ show t ++ ")"
@@ -993,58 +1017,49 @@ getType OpToken {optype=t}=t
 --explodingFun :: NumTest -> OpType -> OpType -> FunRes
 
 operatorDict = Map.fromList
-  [(T.pack "d",     OpToken {optype=OpTokenInOrPre 12 12,   resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FPossUn (feedThrough dFunction) 12 (dFunction "" $ TypeStatic $ StaticNum 1) 12 Prefix                            }),
-   (T.pack "#",     OpToken {optype=OpTokenIn 11,           resolveOrder = OpResolveLeftFirst,  assoc = AssocRight, function = FInfix  dupFunction 11                                             }),
-   (T.pack "dF",    OpToken {optype=OpTokenPost 11,         resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FUnary  fudgeDie 11 Suffix                                         }),
-   --(T.pack "k",   OpToken {optype=OpTokenIn 10,         resolveOrder = OpResolveRight, assoc = AssocNone,  function = FInfix (keepdropFun KeepHigh) 10}),
-   (T.pack "kh",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (keepdropFun KeepHigh) 10                                  }),
-   (T.pack "kl",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (keepdropFun KeepLow) 10                                   }),
-   (T.pack "dh",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (keepdropFun DropHigh) 10                                  }),
-   (T.pack "dl",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (keepdropFun DropLow) 10                                   }),
-   (T.pack "r",     OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (rerollFun (TestEq [0])) 10                                }),
-   (T.pack "r<",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (rerollFun (TestLes 0)) 10                                 }),
-   (T.pack "r<=",   OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (rerollFun (TestLeq 0)) 10                                 }),
-   (T.pack "r>",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (rerollFun (TestGre 0)) 10                                 }),
-   (T.pack "r>=",   OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (rerollFun (TestGeq 0)) 10                                 }),
-   (T.pack "rIn",   OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (rerollFun (TestIn 0 0)) 10                                }),
-   (T.pack "rOut",  OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (rerollFun (TestOut 0 0)) 10                               }),
-   (T.pack "!",     OpToken {optype=OpTokenInOrPost 10 10,  resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FPossUn (explodingFun (TestEq [0])) 8 exclamationpoint 8 Suffix    }),
-   (T.pack "!<",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (explodingFun (TestLes 0)) 10                              }),
-   (T.pack "!<=",   OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (explodingFun (TestLeq 0)) 10                              }),
-   (T.pack "!>",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (explodingFun (TestGre 0)) 10                              }),
-   (T.pack "!>=",   OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (explodingFun (TestGeq 0)) 10                              }),
-   (T.pack "!In",   OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (explodingFun (TestIn 0 0)) 10                             }),
-   (T.pack "!Out",  OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (explodingFun (TestOut 0 0)) 10                            }),
-   (T.pack "~",     OpToken {optype=OpTokenPre 6,           resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FUnary  opNot 6 Prefix                                             }),
-   (T.pack "not",   OpToken {optype=OpTokenFun 1,           resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FFunct  opNotFun                                                   }),
-   (T.pack "^",     OpToken {optype=OpTokenIn 4,            resolveOrder = OpResolveAll,        assoc = AssocRight, function = FInfix  opExp 4                                                    }),
-   (T.pack "**",    OpToken {optype=OpTokenIn 4,            resolveOrder = OpResolveAll,        assoc = AssocRight, function = FInfix  opExp 4                                                    }),
-   (T.pack "&&",    OpToken {optype=OpTokenIn 3,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opAdd 2                                                    }),
-   (T.pack "and",   OpToken {optype=OpTokenIn 3,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opAdd 2                                                    }),
-   (T.pack "*",     OpToken {optype=OpTokenIn 3,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opMult 3                                                   }),
-   (T.pack "/",     OpToken {optype=OpTokenIn 3,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opDiv 3                                                    }),
-   (T.pack "%",     OpToken {optype=OpTokenIn 3,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opMod 3                                                    }),
-   (T.pack "||",    OpToken {optype=OpTokenIn 2,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opOr 2                                                     }),
-   (T.pack "or",    OpToken {optype=OpTokenIn 2,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opOr 2                                                     }),
-   (T.pack "+",     OpToken {optype=OpTokenIn 2,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opAdd 2                                                    }),
-   (T.pack "-",     OpToken {optype=OpTokenInOrPre 2 6,     resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FPossUn opMinus 2 opNeg 6 Prefix                                  }),
-   (T.pack ">",     OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opGre 1                                                    }),
-   (T.pack "<",     OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opLess 1                                                   }),
-   (T.pack ">=",    OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opGeq 1                                                    }),
-   (T.pack "<=",    OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opLeq 1                                                    }),
-   (T.pack "==",    OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opEq 1                                                     }),
-   (T.pack "/=",    OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opNeq 1                                                    }),
-   (T.pack "In",    OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opInRange 1                                                }),
-   (T.pack "Out",   OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opOutRange 1                                               }),
-   (T.pack "if",    OpToken {optype=OpTokenFun 3,           resolveOrder = OpResolveLeft,       assoc = AssocNone,  function = FFunct  opIf                                                       }),
-   (T.pack "ceil",  OpToken {optype=OpTokenFun 1,           resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FFunct  opCeil                                                     }),
-   (T.pack "round", OpToken {optype=OpTokenFun 1,           resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FFunct  opRound                                                    }),
-   (T.pack "floor", OpToken {optype=OpTokenFun 1,           resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FFunct  opFloor                                                    }),
-   (T.pack "max",   OpToken {optype=OpTokenFun 1,           resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FFunct  opMax                                                      }),
-   (T.pack "min",   OpToken {optype=OpTokenFun 1,           resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FFunct  opMin                                                      }),
-   (T.pack "sum",   OpToken {optype=OpTokenFun 1,           resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FFunct  opSum                                                      }),
-   (T.pack "prod",  OpToken {optype=OpTokenFun 1,           resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FFunct  opProd                                                     }),
-   (T.pack "bool",  OpToken {optype=OpTokenFun 1,           resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FFunct  opBool                                                     })]
+  [ (T.pack "d",     OpToken {optype=OpTokenInOrPre 12 12,   resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FPossUn (feedThrough dFunction) 12 (dFunction "" $ TypeStatic $ StaticNum 1) 12 Prefix                            })
+  , (T.pack "#",     OpToken {optype=OpTokenIn 11,           resolveOrder = OpResolveLeftFirst,  assoc = AssocRight, function = FInfix  dupFunction 11                                             })
+  , (T.pack "dF",    OpToken {optype=OpTokenPost 11,         resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FUnary  fudgeDie 11 Suffix                                         })
+   --, (T.pack "k",   OpToken {optype=OpTokenIn 10,         resolveOrder = OpResolveRight, assoc = AssocNone,  function = FInfix (keepdropFun KeepHigh) 10})
+  , (T.pack "kh",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (keepdropFun KeepHigh) 10                                  })
+  , (T.pack "kl",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (keepdropFun KeepLow) 10                                   })
+  , (T.pack "dh",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (keepdropFun DropHigh) 10                                  })
+  , (T.pack "dl",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (keepdropFun DropLow) 10                                   })
+  , (T.pack "r",     OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (rerollFun (TestEq [0])) 10                                })
+  , (T.pack "r<",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (rerollFun (TestLes 0)) 10                                 })
+  , (T.pack "r<=",   OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (rerollFun (TestLeq 0)) 10                                 })
+  , (T.pack "r>",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (rerollFun (TestGre 0)) 10                                 })
+  , (T.pack "r>=",   OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (rerollFun (TestGeq 0)) 10                                 })
+  , (T.pack "rIn",   OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (rerollFun (TestIn 0 0)) 10                                })
+  , (T.pack "rOut",  OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (rerollFun (TestOut 0 0)) 10                               })
+  , (T.pack "!",     OpToken {optype=OpTokenInOrPost 10 10,  resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FPossUn (explodingFun (TestEq [0])) 8 exclamationpoint 8 Suffix    })
+  , (T.pack "!<",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (explodingFun (TestLes 0)) 10                              })
+  , (T.pack "!<=",   OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (explodingFun (TestLeq 0)) 10                              })
+  , (T.pack "!>",    OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (explodingFun (TestGre 0)) 10                              })
+  , (T.pack "!>=",   OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (explodingFun (TestGeq 0)) 10                              })
+  , (T.pack "!In",   OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (explodingFun (TestIn 0 0)) 10                             })
+  , (T.pack "!Out",  OpToken {optype=OpTokenIn 10,           resolveOrder = OpResolveRight,      assoc = AssocNone,  function = FInfix  (explodingFun (TestOut 0 0)) 10                            })
+  , (T.pack "~",     OpToken {optype=OpTokenPre 6,           resolveOrder = OpResolveAll,        assoc = AssocNone,  function = FUnary  opNot 6 Prefix                                             })
+  , (T.pack "^",     OpToken {optype=OpTokenIn 4,            resolveOrder = OpResolveAll,        assoc = AssocRight, function = FInfix  opExp 4                                                    })
+  , (T.pack "**",    OpToken {optype=OpTokenIn 4,            resolveOrder = OpResolveAll,        assoc = AssocRight, function = FInfix  opExp 4                                                    })
+  , (T.pack "&&",    OpToken {optype=OpTokenIn 3,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opAdd 2                                                    })
+  , (T.pack "and",   OpToken {optype=OpTokenIn 3,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opAdd 2                                                    })
+  , (T.pack "*",     OpToken {optype=OpTokenIn 3,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opMult 3                                                   })
+  , (T.pack "/",     OpToken {optype=OpTokenIn 3,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opDiv 3                                                    })
+  , (T.pack "%",     OpToken {optype=OpTokenIn 3,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opMod 3                                                    })
+  , (T.pack "||",    OpToken {optype=OpTokenIn 2,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opOr 2                                                     })
+  , (T.pack "or",    OpToken {optype=OpTokenIn 2,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opOr 2                                                     })
+  , (T.pack "+",     OpToken {optype=OpTokenIn 2,            resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FInfix  opAdd 2                                                    })
+  , (T.pack "-",     OpToken {optype=OpTokenInOrPre 2 6,     resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FPossUn opMinus 2 opNeg 6 Prefix                                  })
+  , (T.pack ">",     OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opGre 1                                                    })
+  , (T.pack "<",     OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opLess 1                                                   })
+  , (T.pack ">=",    OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opGeq 1                                                    })
+  , (T.pack "<=",    OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opLeq 1                                                    })
+  , (T.pack "==",    OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opEq 1                                                     })
+  , (T.pack "/=",    OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opNeq 1                                                    })
+  , (T.pack "In",    OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opInRange 1                                                })
+  , (T.pack "Out",   OpToken {optype=OpTokenIn 1,            resolveOrder = OpResolveRightFirst, assoc = AssocLeft,  function = FInfix  opOutRange 1                                               })
+   ]
 
 operatorKeys = lensort $ Map.keys operatorDict
   where
@@ -1064,3 +1079,16 @@ operatorKeys = lensort $ Map.keys operatorDict
       where
         lesser = filter (leq str) rest
         greater = filter (gre str) rest
+
+functionDict = Map.fromList
+    [ (T.pack "not",   OpToken {optype=OpTokenFun 1,  resolveOrder = OpResolveAll,   assoc = AssocNone,  function = FFunct opNotFun})
+    , (T.pack "if",    OpToken {optype=OpTokenFun 3,  resolveOrder = OpResolveLeft,  assoc = AssocNone,  function = FFunct opIf})
+    , (T.pack "ceil",  OpToken {optype=OpTokenFun 1,  resolveOrder = OpResolveAll,   assoc = AssocNone,  function = FFunct opCeil})
+    , (T.pack "round", OpToken {optype=OpTokenFun 1,  resolveOrder = OpResolveAll,   assoc = AssocNone,  function = FFunct opRound})
+    , (T.pack "floor", OpToken {optype=OpTokenFun 1,  resolveOrder = OpResolveAll,   assoc = AssocNone,  function = FFunct opFloor})
+    , (T.pack "max",   OpToken {optype=OpTokenFun 1,  resolveOrder = OpResolveAll,   assoc = AssocNone,  function = FFunct opMax})
+    , (T.pack "min",   OpToken {optype=OpTokenFun 1,  resolveOrder = OpResolveAll,   assoc = AssocNone,  function = FFunct opMin})
+    , (T.pack "sum",   OpToken {optype=OpTokenFun 1,  resolveOrder = OpResolveAll,   assoc = AssocNone,  function = FFunct opSum})
+    , (T.pack "prod",  OpToken {optype=OpTokenFun 1,  resolveOrder = OpResolveAll,   assoc = AssocNone,  function = FFunct opProd})
+    , (T.pack "bool",  OpToken {optype=OpTokenFun 1,  resolveOrder = OpResolveAll,   assoc = AssocNone,  function = FFunct opBool})
+    ]

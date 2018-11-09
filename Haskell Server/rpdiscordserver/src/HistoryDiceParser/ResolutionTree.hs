@@ -103,7 +103,7 @@ diceRoll d@Die {poolSize=pool, face=faceposs, exploding=explodtest, reroll=rerol
       |TestLes n <- numTest    = all (orderedTest $ (<) n)  numList
       |TestGeq n <- numTest    = all (orderedTest $ (>=) n) numList
       |TestGre n <- numTest    = all (orderedTest $ (>) n) numList
-      |TestEq list <- numTest  = all (`elem` list) numList)
+      |TestEq list <- numTest  = all (`elem` list) numList
       |TestNeq list <- numTest = all (`notElem` list) numList
       |TestIn m n <- numTest   = all (orderedTest $ inRange m n) numList
       |TestOut m n <- numTest  = not $ any (orderedTest $ inRange m n) numList
@@ -267,6 +267,11 @@ vecRoll (OpVector list) gen diceMap = finisher $ rollVecR list gen diceMap
 
 extract (Left (TypeNode t,_)) = t
 
+textUnsnoc :: T.Text -> Maybe (T.Text, Char)
+textUnsnoc t
+  |T.null t = Nothing
+  |otherwise = Just (T.init t, T.last t)
+
 functionWithChildren :: OpNode -> [T.Text] -> T.Text
 functionWithChildren OpNode {nodeDisplay = test, nodeFunctionKey = Nothing} childDis
   |test == T.pack "res" = T.concat [T.singleton '[', T.intercalate (T.singleton ',') childDis, T.singleton ']']
@@ -288,7 +293,7 @@ functionWithChildren OpNode {nodeDisplay = dis, nodeFunction = fun, nodeChildren
       |otherwise = False
     suffPred :: T.Text -> Bool
     suffPred text
-      |Just (_, c) <- T.unsnoc text, c `elem` [')', ']'] = True
+      |Just (_, c) <- textUnsnoc text, c `elem` [')', ']'] = True
       |otherwise = False
     disTest :: (T.Text -> Bool) -> Maybe Integer -> Maybe OpType -> T.Text -> T.Text
     disTest fun (Just prec) (Just child) childDis

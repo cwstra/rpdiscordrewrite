@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 2829a2f7245a28e9e8a2b449b685c180356dcf54f0ea3d8145275fa5d42510a0
+-- hash: b8cd797d7c1047c79973b605606a37678398518c9821110d40e5a7785634135f
 
 name:           rpdiscordserver
 version:        1.0.0.0
@@ -31,17 +31,26 @@ library
       aeson
     , arithmoi
     , base
+    , bytestring
     , cassava
     , extra
+    , megaparsec
     , mersenne-random-pure64
+    , monad-loops
+    , mtl
+    , parser-combinators
     , primitive
     , scotty
     , text
     , timeit
+    , transformers
     , unordered-containers
   exposed-modules:
       General.UserNumber
       HistoryDiceParser.InfixToPostfix
+      HistoryDiceParser.NewItP
+      HistoryDiceParser.NewOperatorTree
+      HistoryDiceParser.NewResolveData
       HistoryDiceParser.Operators
       HistoryDiceParser.PostfixToTree
       HistoryDiceParser.ResolutionTree
@@ -58,38 +67,86 @@ executable rpdiscordserver
       aeson
     , arithmoi
     , base
+    , bytestring
     , cassava
     , extra
+    , megaparsec
     , mersenne-random-pure64
+    , monad-loops
+    , mtl
+    , parser-combinators
     , primitive
     , rpdiscordserver
     , scotty
     , text
     , timeit
+    , transformers
     , unordered-containers
   other-modules:
       Paths_rpdiscordserver
   default-language: Haskell2010
 
-test-suite rpdiscordserver-test
+test-suite rpdiscordserver-integration-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
+  other-modules:
+      Paths_rpdiscordserver
   hs-source-dirs:
-      test
+      test/integration
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      aeson
+      QuickCheck
+    , aeson
     , arithmoi
     , base
+    , bytestring
     , cassava
     , extra
+    , hspec
+    , megaparsec
     , mersenne-random-pure64
+    , monad-loops
+    , mtl
+    , parser-combinators
     , primitive
     , rpdiscordserver
     , scotty
     , text
     , timeit
+    , transformers
     , unordered-containers
+  default-language: Haskell2010
+
+test-suite rpdiscordserver-unit-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
   other-modules:
+      General.UserNumberSpec
+      HistoryDiceParser.NewOperatorTreeSpec
+      HistoryDiceParser.NewResolveDataSpec
       Paths_rpdiscordserver
+  hs-source-dirs:
+      test/unit
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      QuickCheck
+    , aeson
+    , arithmoi
+    , base
+    , bytestring
+    , cassava
+    , extra
+    , hspec
+    , megaparsec
+    , mersenne-random-pure64
+    , monad-loops
+    , mtl
+    , parser-combinators
+    , primitive
+    , rpdiscordserver
+    , scotty
+    , text
+    , timeit
+    , transformers
+    , unordered-containers
   default-language: Haskell2010

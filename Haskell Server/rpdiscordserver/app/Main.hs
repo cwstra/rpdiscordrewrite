@@ -34,10 +34,10 @@ roller = do
   text $ failedRoll $ trace ("result: " ++ show result) result
   ---}
   --{-
-  e0 <- timeItNamed "e0" $ return $ traceShowId $! seededInfixToPostfix (input, pureMT seed)
-  e1 <- timeItNamed "e1" $ return $ traceShowId $! seededPostFixToTrees e0
-  e2 <- timeItNamed "e2" $ return $ traceShowId $! treeResolve e1
-  e3 <- timeItNamed "e3" $ return $ traceShowId $! resShow e2
+  e0 <- return $ traceShowId $! seededInfixToPostfix (input, pureMT seed)
+  e1 <- return $ traceShowId $! seededPostFixToTrees e0
+  e2 <- return $ traceShowId $! treeResolve e1
+  e3 <- return $ traceShowId $! resShow e2
   text e3
   ---}
 
