@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: b8cd797d7c1047c79973b605606a37678398518c9821110d40e5a7785634135f
+-- hash: 3d39921cd96a8155799714a311d91ff155cf94043dc69159a67fb44b8fa4713d
 
 name:           rpdiscordserver
 version:        1.0.0.0
@@ -34,11 +34,13 @@ library
     , bytestring
     , cassava
     , extra
+    , lens
     , megaparsec
     , mersenne-random-pure64
     , monad-loops
     , mtl
     , parser-combinators
+    , pcg-random
     , primitive
     , scotty
     , text
@@ -70,11 +72,13 @@ executable rpdiscordserver
     , bytestring
     , cassava
     , extra
+    , lens
     , megaparsec
     , mersenne-random-pure64
     , monad-loops
     , mtl
     , parser-combinators
+    , pcg-random
     , primitive
     , rpdiscordserver
     , scotty
@@ -103,11 +107,13 @@ test-suite rpdiscordserver-integration-test
     , cassava
     , extra
     , hspec
+    , lens
     , megaparsec
     , mersenne-random-pure64
     , monad-loops
     , mtl
     , parser-combinators
+    , pcg-random
     , primitive
     , rpdiscordserver
     , scotty
@@ -137,11 +143,13 @@ test-suite rpdiscordserver-unit-test
     , cassava
     , extra
     , hspec
+    , lens
     , megaparsec
     , mersenne-random-pure64
     , monad-loops
     , mtl
     , parser-combinators
+    , pcg-random
     , primitive
     , rpdiscordserver
     , scotty

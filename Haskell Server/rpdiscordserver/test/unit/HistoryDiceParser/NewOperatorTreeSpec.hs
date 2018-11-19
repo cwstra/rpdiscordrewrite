@@ -18,11 +18,18 @@ import           Test.QuickCheck
 import           Debug.Trace
 
 import           General.UserNumber
-import           HistoryDiceParser.NewResolveData
+import           HistoryDiceParser.NewOperatorTree
+
+nonEmptyString :: Gen String
+nonEmptyString = listOf1 arbitrary
 
 spec :: Spec
 spec = do
-  describe "HistoryDiceParser.NewOperators" $ do
+  describe "HistoryDiceParser.NewOperatorTree" $ do
 
-    describe "" $ do
+    describe "standardize" $ do
+
+      it "makes a list of lists square" $ forAll (listOf nonEmptyString) $
+        \lOL -> let maxLength = foldl' (\m l -> max m $ length l) 0 lOL
+                in all (\l -> length l == maxLength) (standardize lOL)
 

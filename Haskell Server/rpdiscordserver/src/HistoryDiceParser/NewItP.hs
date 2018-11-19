@@ -1,3 +1,4 @@
+{-# LANGUAGE OverloadedStrings #-}
 module HistoryDiceParser.NewItP
 (Tree(..)
 , expr) where
@@ -18,7 +19,8 @@ import qualified Text.Megaparsec.Char.Lexer    as L
 import           Debug.Trace
 
 import           General.UserNumber
-import           HistoryDiceParser.Operators
+import           HistoryDiceParser.NewOperatorTree
+import           HistoryDiceParser.NewResolveData
 
 -- Defining the Parser (Change String to T.Text later)
 type Parser = Parsec Void String
@@ -107,7 +109,7 @@ boolParse = trueParse <|> falseParse
 
 -- defining compound parsers
 
-expr = try vec <|> try res <|> constant
+expr = try vec <|> {-try res <|>-} constant
 
 constant :: Parser Tree
 constant = try boolParse <|> numbParse
@@ -116,8 +118,8 @@ vec :: Parser Tree
 vec = do
     list <- parens $ listOf expr
     return $ TreeVec list
-res :: Parser Tree
+{-res :: Parser Tree
 res = do
     list <- brackets $ listOf expr
     return $ TreeRes list
-
+-}

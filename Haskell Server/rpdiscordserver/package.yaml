@@ -37,6 +37,8 @@ dependencies:
 - megaparsec
 - parser-combinators
 - bytestring
+- lens
+- pcg-random
 
 library:
   source-dirs: src

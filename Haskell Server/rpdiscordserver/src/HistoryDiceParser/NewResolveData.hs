@@ -1,41 +1,63 @@
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RankNTypes #-}
 module HistoryDiceParser.NewResolveData
-( History(..)
+( tShow
+, History(..)
 , historySimplify
 , historyTextShow
 , Statistics(..)
 , statToJSONText
 , KeepDrop (..)
 , toComparator
+, vectorStyleShow
 , NumTest(..)
+, rangedIntegerToIntegral
 , Dice(..)
 , createDie
 , addExplode
 , addReroll
 , addKeepDrop
 , addSuccess
-, ResolveState
-, historyUpdate_
+, DataStateT
+, DataState
+, historyBlank_
+, historyNewEntry_
+, historyUpdateRight_
+, historyMap_
+, historyZip_
 , fromIntegralToStat
 , infiniteTest
 , explodingRoll
 , rerollRoll
 , keepDropResolve
 , successResolve
-, diceRoll
-, Static
+, Assoc(..)
+, UnaryFunction(..)
+, InfixFunction(..)
+, CalledFunction(..)
+, Tree(..)
+, treeRecShow
+, getPrec
+, Resolution(..)
+, ResolveState
+, roll
+, simplify
+, runResolve
 ) where
 
+import           Control.Applicative
 import           Control.Monad
 import           Control.Monad.Identity
 import           Control.Monad.Loops
 import           Control.Monad.State.Lazy
+import           Control.Monad.ST
 import           Control.Monad.Trans.Class
 import qualified Data.HashMap.Strict      as HM
 import           Data.List
 import           Data.Maybe
 import qualified Data.Text.Lazy           as T
 import           Data.Word
-import           System.Random.Mersenne.Pure64
+import           System.Random.PCG
 
 import           Debug.Trace
 
@@ -45,28 +67,19 @@ import           General.UserNumber
 -- History data
 -- ----------------------------------------------------------------------------
 
-lbrac = T.singleton '{'
-rbrac = T.singleton '}'
-lparn = T.singleton '('
-rparn = T.singleton ')'
-comma = T.pack      ", "
-eqsep = T.pack      " = "
-quote = T.singleton '"'
-colon = T.singleton ':'
-
 (<++>) = T.append
 
 bracketed :: T.Text -> T.Text
-bracketed mid = lbrac <++> mid <++> rbrac
+bracketed mid = "{" <++> mid <++> "}"
 
 parened :: T.Text -> T.Text
-parened mid = lparn <++> mid <++> rparn
+parened mid = "(" <++> mid <++> ")"
 
 commaCal :: [T.Text] -> T.Text
-commaCal = T.intercalate comma
+commaCal = T.intercalate ", "
 
 jsonKey :: T.Text -> T.Text
-jsonKey  key = quote <++> key <++> quote <++> colon
+jsonKey  key = "\"" <++> key <++> "\":"
 
 tShow :: (Show a) => a -> T.Text
 tShow = T.pack . show
@@ -76,7 +89,7 @@ type History = [(T.Text, T.Text)]
 historySimplify :: History -> History
 historySimplify history = foldr historyStep [] history
   where
-    historyStep :: (T.Text, T.Text) -> [(T.Text, T.Text)] -> [(T.Text, T.Text)]
+    historyStep :: (T.Text, T.Text) -> History -> History
     historyStep t [] = [t]
     historyStep t@(t1, t2) l@((l1,l2):ls)
         |l2 == t1 = (l1,t2):ls
@@ -87,7 +100,7 @@ historyTextShow [] = T.empty
 historyTextShow history = T.intercalate (T.singleton '\n') $ map tupMerge $ historySimplify history
   where
     tupMerge :: (T.Text, T.Text) -> T.Text
-    tupMerge (before, after) = before <++> eqsep <++> after
+    tupMerge (before, after) = before <++> " = " <++> after
 
 type Statistics = (HM.HashMap (Word, Word) (HM.HashMap Word Word))
 
@@ -155,10 +168,10 @@ toComparator test
       |GReal n <- x = test n
       |otherwise    = False
 
-fancyListShow      :: [GeneralNumber] -> String
-fancyListShow []   = "()"
-fancyListShow [x]  = show x
-fancyListShow list = "(" ++ intercalate ", " (map show list) ++ ")"
+vectorStyleShow      :: Show a => [a] -> String
+vectorStyleShow []   = "()"
+vectorStyleShow [x]  = show x
+vectorStyleShow list = "(" ++ intercalate ", " (map show list) ++ ")"
 
 instance Show NumTest where
   show TestNone      = ""
@@ -166,19 +179,19 @@ instance Show NumTest where
   show (TestLes n)   = "<"    ++ show (GReal n)
   show (TestGeq n)   = ">="   ++ show (GReal n)
   show (TestGre n)   = ">"    ++ show (GReal n)
-  show (TestEq n)    = "=="   ++ fancyListShow n
-  show (TestNeq n)   = "/="   ++ fancyListShow n
+  show (TestEq n)    = "=="   ++ vectorStyleShow n
+  show (TestNeq n)   = "/="   ++ vectorStyleShow n
   show (TestIn m n)  = "In("  ++ show (GReal m) ++ "," ++ show (GReal n) ++ ")"
   show (TestOut m n) = "Out(" ++ show (GReal m) ++ "," ++ show (GReal n) ++ ")"
 
-rangedIntegerToWord :: Integer -> Word
-rangedIntegerToWord n
-    |n > fromIntegral maxi = maxBound
-    |n < fromIntegral mini = minBound
+rangedIntegerToIntegral :: (Bounded a, Integral a) => Integer -> a
+rangedIntegerToIntegral n
+    |n > fromIntegral maxi = maxi
+    |n < fromIntegral mini = mini
     |otherwise = fromInteger n
   where
-    mini = minBound :: Word
-    maxi = maxBound :: Word
+    mini = minBound
+    maxi = maxBound
 
 data Dice = Die { poolSize::       Int
                 , poolDis::        String
@@ -238,34 +251,61 @@ instance Show Dice where
 -- Monad Representation
 -- ----------------------------------------------------------------------------
 
-type ResolveStateT  = StateT (PureMT, History, Statistics)
-type ResolveState   = ResolveStateT Identity
+type DataStateT = StateT (FrozenGen, [History], Statistics)
+type DataState = DataStateT Identity
 
 -- ----------------------------------------------------------------------------
 -- Base Monad Access
 -- ----------------------------------------------------------------------------
 
-genM :: Monad m => (PureMT -> (a, PureMT)) -> ResolveStateT m a
+genM :: Monad m => (forall s. Gen s -> ST s a) -> DataStateT m a
 genM f = do
     (gen, his, sta) <- get
-    let (a, nGen) = f gen
+    let (a, nGen) = withFrozen gen f
     put (nGen, his, sta)
     return a
 
---Remember: This generates an integer in [mini, maxi)
-intRange :: Monad m => Int -> Int -> ResolveStateT m Int
-intRange mini maxi = do
-    res <- iterateWhile (>= maxRange) (genM randomWord64)
-    return $ fromIntegral res `mod` range + mini
-  where
-    range = maxi - mini
-    maxWord = maxBound :: Word64
-    maxRange = maxWord - maxWord `mod` fromIntegral range
+historyBlank_ :: Monad m => DataStateT m ()
+historyBlank_ = do
+    (gen, cs, sta) <- get
+    put (gen, []:cs, sta)
 
-historyUpdate_ :: Monad m => (T.Text, T.Text) -> ResolveStateT m ()
-historyUpdate_ nextChapter = do
+historyNewEntry_ :: Monad m => (T.Text, T.Text) -> DataStateT m ()
+historyNewEntry_ nextChapter = do
+    (gen, c:cs, sta) <- get
+    put (gen, (nextChapter:c):cs, sta)
+
+historyUpdateRight_ :: Monad m => T.Text -> DataStateT m ()
+historyUpdateRight_ rightHand = do
     (gen, his, sta) <- get
-    put $ (gen, nextChapter:his, sta)
+    put (gen, updateAll his, sta)
+  where
+    updateAll :: [History] -> [History]
+    updateAll [] = [updateRight []]
+    updateAll (c:cs) = updateRight c : cs
+    updateRight :: History -> History
+    updateRight [] = [(rightHand, rightHand)]
+    updateRight ((leftHand, _):c) = (leftHand, rightHand):c
+
+historyMap_ :: Monad m => ((T.Text, T.Text) -> (T.Text, T.Text)) -> DataStateT m ()
+historyMap_ f = do
+    (gen, h:hs, sta) <- get
+    put $ (gen, (map f h):hs, sta)
+
+historyZip_ :: Monad m
+            => Int
+            -> ([History] -> History)
+            -> DataStateT m ()
+historyZip_ n f = do
+    (gen, his, sta) <- get
+    let (h, hs) = splitAt n his
+    put (gen, f h:hs, sta)
+
+historyPeel :: Monad m => DataStateT m History
+historyPeel = do
+    (gen, h:hs, sta) <- get
+    put (gen, hs, sta)
+    return h
 
 toWordMap :: (Integral a) => HM.HashMap a a -> HM.HashMap Word Word
 toWordMap hashMap = HM.foldlWithKey' wordStep HM.empty hashMap
@@ -284,7 +324,7 @@ fromIntegralToStat m = toTupWordMap $ HM.map toWordMap m
 mapAdd :: HM.HashMap Word Word -> HM.HashMap Word Word -> HM.HashMap Word Word
 mapAdd map1 map2 = HM.unionWith (+) map1 map2
 
-statUpdate_ :: (Integral a, Integral b, Monad m) => (a, a) -> HM.HashMap b b -> ResolveStateT m ()
+statUpdate_ :: (Integral a, Integral b, Monad m) => (a, a) -> HM.HashMap b b -> DataStateT m ()
 statUpdate_ k@(key1, key2) value = do
     (gen, his, sta) <- get
     put $ (gen, his, updateHelper sta)
@@ -293,7 +333,7 @@ statUpdate_ k@(key1, key2) value = do
                       -> HM.HashMap (Word, Word) (HM.HashMap Word Word)
     updateHelper  =  HM.insertWith mapAdd (fromIntegral key1, fromIntegral key2) (toWordMap value)
 
-statUpdateMany_ :: (Integral a, Integral b, Monad m) => HM.HashMap (a, a) (HM.HashMap b b) -> ResolveStateT m ()
+statUpdateMany_ :: (Integral a, Integral b, Monad m) => HM.HashMap (a, a) (HM.HashMap b b) -> DataStateT m ()
 statUpdateMany_ intMap = do
     (gen, his, sta) <- get
     put $ (gen, his, updateHelper sta)
@@ -306,30 +346,25 @@ statUpdateMany_ intMap = do
 -- Rolling Functions
 -- ----------------------------------------------------------------------------
 
-rollOne :: Monad m => Either Int [GeneralNumber] -> ResolveStateT m GeneralNumber
-rollOne face = liftM f $ intRange mini maxi
-    {-Non-liftM
-    res <- intRange mini maxi
-    return $ f res-}
+rollOne :: Monad m => Either Int [GeneralNumber] -> DataStateT m GeneralNumber
+rollOne face = liftM f $ genM $ uniformR (mini, maxi)
   where
     rangeGen :: Either Int [GeneralNumber] -> (Int, Int, Int -> GeneralNumber)
-    --Note: right bound of intRange is non-inclusive, so inflate right
-    --element
-    rangeGen (Left n) = (1, n+1, \x -> gReal x)
-    rangeGen (Right l) = (0, length l, (l!!))
+    rangeGen (Left n) = (1, n, \x -> gReal x)
+    rangeGen (Right l) = (0, length l -1, (l!!))
     (mini, maxi, f) = rangeGen face
 
-rollPool   :: Monad m => Int -> Either Int [GeneralNumber] -> ResolveStateT m [GeneralNumber]
+rollPool   :: Monad m => Int -> Either Int [GeneralNumber] -> DataStateT m [GeneralNumber]
 rollPool n = replicateM n . rollOne
 
-trackedPool :: Monad m => Int -> Either Int [GeneralNumber] -> ResolveStateT m [GeneralNumber]
+trackedPool :: Monad m => Int -> Either Int [GeneralNumber] -> DataStateT m [GeneralNumber]
 trackedPool n face@(Left m) = do
     res <- rollPool n face
     statUpdate_ (n, m) $ toHMap res
     return res
   where
     toWord :: GeneralNumber -> Word
-    toWord (GReal (GSimp (GInt n))) = rangedIntegerToWord n
+    toWord (GReal (GSimp (GInt n))) = rangedIntegerToIntegral n
     toHMap :: [GeneralNumber] -> HM.HashMap Word Word
     toHMap l = HM.singleton (toWord $ sum l) 1
 trackedPool n face = rollPool n face
@@ -356,10 +391,10 @@ explodingRoll :: Monad m
               => [GeneralNumber]
               -> Either Int [GeneralNumber]
               -> NumTest
-              -> ResolveStateT m (Either ResolveException [GeneralNumber])
+              -> DataStateT m (Either T.Text [GeneralNumber])
 
 explodingRoll lastResults face test
-    |infiniteTest face test = return $ Left $ resolveException "Infinitely exploding roll detected. Roll aborted"
+    |infiniteTest face test = return $ Left "Infinitely exploding roll detected. Roll aborted"
     |otherwise = do
         listO'Lists <- iterateUntilM stopMultiList explodeStep [lastResults]
         return $ reduceMultiList listO'Lists
@@ -370,7 +405,7 @@ explodingRoll lastResults face test
     stopMultiList ([]:_) = True
     stopMultiList a    = False
     comp = toComparator test
-    explodeStep :: Monad m => [[GeneralNumber]] -> ResolveStateT m [[GeneralNumber]]
+    explodeStep :: Monad m => [[GeneralNumber]] -> DataStateT m [[GeneralNumber]]
     explodeStep (o@(l:_)) = do
         let c = successCount comp l
         next <- rollPool c face
@@ -380,9 +415,9 @@ rerollRoll :: Monad m
            => [GeneralNumber]
            -> Either Int [GeneralNumber]
            -> NumTest
-           -> ResolveStateT m (Either ResolveException [PossNumber])
+           -> DataStateT m (Either T.Text [PossNumber])
 rerollRoll lastResults face test
-    |infiniteTest face test = return $ Left $ resolveException "Infinitely rerolling roll detected. Roll aborted"
+    |infiniteTest face test = return $ Left "Infinitely rerolling roll detected. Roll aborted"
     |otherwise = do
         (_, listO'Lists) <- iterateUntilM rerollPred rerollStep (lastResults, [])
         return $ reduceMultiList listO'Lists
@@ -398,7 +433,7 @@ rerollRoll lastResults face test
         possStep n (c, l)
             |comp n    = (c+1, Dropped n:l)
             |otherwise = (c,   Kept n:l)
-    rerollStep :: Monad m => ([GeneralNumber], [[PossNumber]]) -> ResolveStateT m ([GeneralNumber], [[PossNumber]])
+    rerollStep :: Monad m => ([GeneralNumber], [[PossNumber]]) -> DataStateT m ([GeneralNumber], [[PossNumber]])
     rerollStep (l, ls) = do
         let (c, ln) = rerollify l
         next <- rollPool c face
@@ -434,7 +469,7 @@ successResolve lastResult test = gReal $ length filteredList
     succPrec _        = False
     filteredList = filter succPrec lastResult
 
-diceRoll :: Monad m => Dice -> ResolveStateT m (Either ResolveException (T.Text, GeneralNumber))
+diceRoll :: Monad m => Dice -> DataStateT m (Either T.Text (T.Text, GeneralNumber))
 diceRoll Die { poolSize = diePool
              , face = dieFace
              , exploding = (dieExpl, _)
@@ -453,21 +488,181 @@ diceRoll Die { poolSize = diePool
           Right rerollL -> return $ Right $ successed $ keepDropResolve rerollL dieKD
   where
     text :: [PossNumber] -> T.Text
-    text list = parened $ commaCal $ map (T.pack . show) list
+    text list = parened $ commaCal $ map (tShow) list
     successed :: [PossNumber] -> (T.Text, GeneralNumber)
     successed list = (text list, successResolve list dieSucc)
 
 -- ----------------------------------------------------------------------------
--- Static Data
+-- Function types
 -- ----------------------------------------------------------------------------
 
-data Static = StaticNum  GeneralNumber
-            | StaticBool Bool
-            | StaticDice Dice
-            | StaticVect [Static]
+data Assoc = AssocLeft | AssocRight | AssocNone
 
-instance Show OpVector where
-    show (StaticNum n)  = show n
-    show (StaticBool b) = show b
-    show (StaticDice d) = show d
-    show (StaticVect v) = "(" ++ intercalate ", " (map show v) ++ ")"
+data UnaryFunction  = UnaryF {unaryParen :: Bool,
+                              unaryRep :: T.Text,
+                              unaryPrec :: Int,
+                              unaryFun :: (Tree -> ResolveState Tree)}
+
+instance Show UnaryFunction where
+    show (UnaryF _ t _ _) = T.unpack t
+
+data InfixFunction  = InfixF {infixParen :: Bool,
+                              infixRep :: T.Text,
+                              infixAssoc :: Assoc,
+                              infixPrec :: Int,
+                              infixFun :: (Tree -> Tree -> ResolveState Tree)}
+
+instance Show InfixFunction where
+    show (InfixF _ t _ _ _) = T.unpack t
+
+data CalledFunction = CalledF {calledRep :: T.Text, calledFun :: [Tree] -> ResolveState Tree}
+
+instance Show CalledFunction where
+    show (CalledF t _) = T.unpack t
+
+-- ----------------------------------------------------------------------------
+-- Trees
+-- ----------------------------------------------------------------------------
+
+data Tree = TreeNum     GeneralNumber
+          | TreeBool    Bool
+          | TreeDie     Dice
+          | TreePrefix  UnaryFunction Tree
+          | TreeInfix   Tree InfixFunction Tree
+          | TreePostfix Tree UnaryFunction
+          | TreeFun     CalledFunction Tree
+          | TreeVec     [Tree]
+
+treeRecShow :: Int -> Tree -> String
+treeRecShow n t = replicate n ' ' ++ treeStep t
+  where
+    next  = treeRecShow (n + 2)
+    lined = intercalate "\n"
+    mid p l = lined $ [p ++ show (length l)] ++ map next l
+    vecDrop :: String -> String -> String -> [Tree] -> String
+    vecDrop left right pre list = concat [left, mid pre list, right]
+    treeStep :: Tree -> String
+    treeStep (TreeNum n)         = show n
+    treeStep (TreeBool b)        = show b
+    treeStep (TreeDie d)         = show d
+    treeStep (TreePrefix o t)    = show o ++ "\n" ++ next t
+    treeStep (TreeInfix t1 o t2) = lined $ (show o):(map next [t1, t2])
+    treeStep (TreePostfix t o)   = show o ++ "\n" ++ next t
+    treeStep (TreeFun o t)       = show o ++ "\n" ++ next t
+    treeStep (TreeVec l)         = vecDrop "(" ")" "vec" l
+
+instance Show Tree where
+    show = treeRecShow 0
+
+getPrec :: Tree -> Maybe Int
+getPrec (TreePrefix (UnaryF {unaryPrec = n}) _)   = Just n
+getPrec (TreeInfix  _ (InfixF {infixPrec = n}) _) = Just n
+getPrec (TreePostfix _ (UnaryF {unaryPrec = n}))  = Just n
+getPrec _                                         = Nothing
+
+-- ----------------------------------------------------------------------------
+-- Resolution
+-- ----------------------------------------------------------------------------
+
+data Resolution a = Resolved a
+                  | Failed T.Text
+
+instance Show a => Show (Resolution a) where
+    show (Resolved a) = show a
+    show (Failed t)   = "Failed " ++ T.unpack t
+
+instance Functor Resolution where
+    fmap _ (Failed e) = Failed e
+    fmap f (Resolved a) = Resolved $ f a
+
+instance Applicative Resolution where
+    pure a = Resolved a
+    liftA2 f (Resolved a) (Resolved b) = Resolved $ f a b
+    liftA2 f (Failed e) _ = Failed e
+    liftA2 f _ (Failed e) = Failed e
+
+instance Alternative Resolution where
+    empty = Failed ""
+    a@(Resolved _) <|> _ = a
+    _ <|> a@(Resolved _) = a
+    e@(Failed _) <|> _   = e
+
+instance Monad Resolution where
+    m >>= g = case m of
+                Failed t -> Failed t
+                Resolved a -> g a
+
+instance MonadPlus Resolution
+
+-- ----------------------------------------------------------------------------
+-- ResolveState
+-- ----------------------------------------------------------------------------
+
+type ResolveState = DataStateT Resolution
+
+simplify :: Tree -> ResolveState Tree
+simplify input
+    |TreePrefix (UnaryF {unaryFun = f}) child <- input = simplify child >>= f
+    |TreeInfix child1 (InfixF {infixFun = f}) child2 <- input = do
+        sChild1 <- simplify child1
+        sChild2 <- simplify child2
+        f child1 child2
+    |TreePostfix child (UnaryF {unaryFun = f}) <- input = simplify child >>= f
+    |TreeFun (CalledF text f) childVec <- input = do
+        sChildVec <- simplify childVec
+        let TreeVec children = sChildVec
+        f children
+    |otherwise = return input
+
+wrappedRoll :: Dice -> ResolveState (T.Text, GeneralNumber)
+wrappedRoll d = do
+    res <- diceRoll d
+    case res of
+        Left t -> lift $ Failed t
+        Right a -> return a
+
+roll :: Tree -> ResolveState Tree
+roll (TreeDie d) = do
+    (trackedText, res) <- wrappedRoll d
+    historyNewEntry_ (trackedText, tShow res)
+    return $ TreeNum res
+roll v@(TreeVec l) = if all noDice l then return v else do
+    (t, resEl) <- liftM showVec $ mapM rollRec l
+    historyNewEntry_ t
+    return resEl
+  where
+    noDice :: Tree -> Bool
+    noDice (TreeDie d) = False
+    noDice (TreeVec l) = all noDice l
+    noDice _           = True
+    rollRec :: Tree -> ResolveState ((T.Text, T.Text), Tree)
+    rollRec (TreeDie d) = liftM showNum $ wrappedRoll d
+    rollRec (TreeVec l) = liftM showVec $ mapM rollRec l
+    rollRec t           = return ((shown, shown), t)
+      where
+        shown = tShow t
+    showNum :: (T.Text, GeneralNumber) -> ((T.Text, T.Text), Tree)
+    showNum (t, n) = ((t, tShow n), TreeNum n)
+    showVec :: [((T.Text, T.Text), Tree)] -> ((T.Text, T.Text), Tree)
+    showVec l = finish $ foldr vecStep ("", "", []) l
+      where
+        vecStep :: ((T.Text, T.Text), Tree)
+                -> (T.Text, T.Text, [Tree])
+                -> (T.Text, T.Text, [Tree])
+        vecStep ((t1, t2), tt) (b1, b2, bt) = (b1 <++> t1, b2 <++> t2, tt:bt)
+        finish :: (T.Text, T.Text, [Tree]) -> ((T.Text, T.Text), Tree)
+        finish (t1, t2, l) = ((t1, t2), TreeVec l)
+roll t = return t
+
+runResolve :: Word64
+           -> Word64
+           -> ResolveState Tree
+           -> Resolution (Tree, (FrozenGen, [History], Statistics))
+runResolve word1 word2 monad = runStateT initMonad (initFrozen word1 word2, [], HM.empty)
+  where
+    initMonad = do
+        historyBlank_
+        firstRes <- monad
+        simple <- simplify firstRes
+        historyUpdateRight_ $ tShow simple
+        roll simple

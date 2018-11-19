@@ -1,10 +1,8 @@
 {-# LANGUAGE BangPatterns #-}
 module General.UserNumber
-(ResolveException(..)
-,resolveException
-,ParseException(..)
-,GeneralSimpleNumber(..)
---, GRatio(..)
+(GeneralSimpleNumber(..)
+, ResolveException(..)
+, ParseException(..)
 , GRatio(..)
 , sGR
 , reduce
@@ -18,6 +16,10 @@ module General.UserNumber
 , genRealtoFloat
 , gReal
 , imagUnit
+, getIntegral
+, getIntGen
+, getFloat
+, getRatio
 ) where
 
 import qualified Data.Complex                     as DC
@@ -25,18 +27,11 @@ import           Data.Ratio
 import qualified Data.Text.Lazy                   as T
 import           Math.NumberTheory.Powers.Squares
 
-newtype ResolveException = ResolveException T.Text
-  deriving Eq
-instance Show ResolveException where
-  show (ResolveException n) = T.unpack n
+data ResolveException = ResolveException T.Text
+    deriving Show
 
-resolveException :: String -> ResolveException
-resolveException = ResolveException . T.pack
-
-data ParseException = ParseException T.Text Integer
-  deriving Eq
-instance Show ParseException where
-  show (ParseException t n) = T.unpack $ T.concat [T.pack "ParseException: ", t, T.pack " at ",T.pack $ show n]
+data ParseException   = ParseException T.Text Integer
+    deriving Show
 
 -- Complex constructor: a:+ b, i.e. 1 + 1j = 1 :+ 1
 -- Fraction constructor a % b, i.e. 1 / 2 = 1 % 2 = 2 % 4
@@ -355,3 +350,19 @@ gReal :: (Integral a) => a -> GeneralNumber
 gReal n = GReal $ GSimp $ GInt $ fromIntegral n
 
 imagUnit = GComp $ GC (GSimp $ GInt 0) (GSimp $ GInt 1)
+
+getIntegral :: (Integral a) => GeneralNumber -> Maybe a
+getIntegral (GReal (GSimp (GInt n))) = Just $ fromInteger n
+getIntegral _                        = Nothing
+
+getIntGen :: (Integer -> a) -> GeneralNumber -> Maybe a
+getIntGen p (GReal (GSimp (GInt n))) = Just $ p n
+getIntGen _ _                        = Nothing
+
+getFloat :: GeneralNumber -> Maybe Float
+getFloat (GReal (GSimp (GFlo f))) = Just f
+getFloat _                        = Nothing
+
+getRatio :: GeneralNumber -> Maybe Rational
+getRatio (GReal (GRat (GR p q))) = Just $ p % q
+getRatio _                       = Nothing

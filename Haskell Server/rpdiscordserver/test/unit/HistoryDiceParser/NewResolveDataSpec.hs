@@ -13,6 +13,7 @@ import qualified Data.Text.Lazy                   as T
 import           System.Random.Mersenne.Pure64
 import           Test.Hspec
 import           Test.QuickCheck
+import           System.Random.PCG                hiding (Gen)
 
 import           Debug.Trace
 
@@ -279,7 +280,7 @@ verifyStats text
 
 addHistories :: (History, History) -> History
 addHistories (h1, h2)
-  |(_, h, _) <- execState (mapM_ historyUpdate_ h2) (pureMT 1, h1, HM.empty) = h
+  |(_, [h], _) <- execState (mapM_ historyUpdate_ h2) (initFrozen 0 0, [h1], HM.empty) = h
 
 countPred :: (a -> Bool) -> [a] -> Int
 countPred test = foldl' (\i e  -> i + if test e then 1 else 0) 0
@@ -361,22 +362,22 @@ spec = do
     describe "explodingRoll" $ do
 
       it "does not explode normal dice" $ forAll (arbitraryIndefiniteRoll False) $
-        \(res, face, test) -> Right res == evalState (explodingRoll res face test) (pureMT 1, [], HM.empty)
+        \(res, face, test) -> Right res == evalState (explodingRoll res face test) (initFrozen 0 0, [], HM.empty)
 
 
       it "properly explodes exploding dice, and identifies infinitely exploding dice" $ forAll (arbitraryIndefiniteRoll True) $
-        \(res, face, test) -> case evalState (explodingRoll res face test) (pureMT 1, [], HM.empty) of
+        \(res, face, test) -> case evalState (explodingRoll res face test) (initFrozen 0 0, [], HM.empty) of
                                 Left _ -> infiniteTest face test
                                 Right l -> length l == length res + countPred (toComparator test) l
 
     describe "rerollRoll" $ do
 
       it "does not reroll normal dice" $ forAll (arbitraryIndefiniteRoll False) $
-        \(res, face, test) -> Right res == evalState (explodingRoll res face test) (pureMT 1, [], HM.empty)
+        \(res, face, test) -> Right res == evalState (explodingRoll res face test) (initFrozen 0 0, [], HM.empty)
 
 
       it "properly rerolls rerolling dice, and identifies infinitely rerolling dice" $ forAll (arbitraryIndefiniteRoll True) $
-        \(res, face, test) -> case evalState (rerollRoll res face test) (pureMT 1, [], HM.empty) of
+        \(res, face, test) -> case evalState (rerollRoll res face test) (initFrozen 0 0, [], HM.empty) of
                                 Left _ -> infiniteTest face test
                                 Right l -> length res == countKept l && checkDropped test l
 

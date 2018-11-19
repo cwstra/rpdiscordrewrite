@@ -147,9 +147,9 @@ strDup str n = concat $ replicate (fromIntegral n) str
 
 data InvalidNumberComp = InvalidNumberComp String String
 
-data OpStatic = StaticDie Dice 
-              | StaticNum GeneralNumber 
-              | StaticVec OpVector 
+data OpStatic = StaticDie Dice
+              | StaticNum GeneralNumber
+              | StaticVec OpVector
               | StaticBool Bool
   deriving (Eq)
 
@@ -159,7 +159,7 @@ instance Show OpStatic where
   show (StaticVec v)  = show v
   show (StaticBool b) = show b
 
-data OpType = TypeStatic OpStatic 
+data OpType = TypeStatic OpStatic
             | TypeNode OpNode
   deriving (Eq)
 
@@ -1013,8 +1013,7 @@ safeComp fun n m = False
 getType :: OpToken -> OpTokenType
 getType OpToken {optype=t}=t
 
---rerollFun :: NumTest -> OpType -> OpType -> FunRes
---explodingFun :: NumTest -> OpType -> OpType -> FunRes
+--rerollFun :: NumTest -> OpType -> OpType -> FunRes--explodingFun :: NumTest -> OpType -> OpType -> FunRes
 
 operatorDict = Map.fromList
   [ (T.pack "d",     OpToken {optype=OpTokenInOrPre 12 12,   resolveOrder = OpResolveAll,        assoc = AssocLeft,  function = FPossUn (feedThrough dFunction) 12 (dFunction "" $ TypeStatic $ StaticNum 1) 12 Prefix                            })
