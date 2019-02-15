@@ -463,7 +463,7 @@ Exponentiation ( ``^``, ``**``)
 
 The ``^`` / ``**`` function performs exponentiation, as follows:
 
-* If both arguments are numbers, the left will be raised to the power of the right. If either is a float, floating point arithmetic will be used; otherwise, values will be exactly calculated.
+* If both arguments are numbers, the left will be raised to the power of the right. If the left is a float, or the right a non-integer, floating point arithmetic will be used; otherwise, values will be exactly calculated.
 
 * If the left argument is a number, and the right a numeric vector, the result will be a numeric vector, containing the results of raising the left argument to each element of the right accordingly.
 
