@@ -364,9 +364,9 @@ OR
 
 	not(X)
 
-Operator Type: Infix ( ``~``) or Functional ( ``not``)
+Operator Type: Prefix ( ``~``) or Functional ( ``not``)
 
-Precedence (for Infix): 6
+Precedence (for Prefix): 6
 
 * ``X``: The value to logically negate.
 
