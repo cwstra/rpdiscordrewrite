@@ -739,7 +739,7 @@ Operator Type: Functional
 
 .. _min:
 
-Maximum ( ``min``)
+Minimum ( ``min``)
 --------------------------------------------
 
 The ``min`` function takes an indefinite number of real numbers, and returns the smallest one.
