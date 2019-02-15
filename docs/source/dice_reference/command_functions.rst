@@ -461,7 +461,15 @@ The following commands all perform standard operations on numeric values.
 Exponentiation ( ``^``, ``**``)
 --------------------------------------------
 
-The ``^`` and ``**`` functions raise their left-hand argument to the power of their right-hand argument.
+The ``^`` / ``**`` function performs exponentiation, as follows:
+
+* If both arguments are numbers, the left will be raised to the power of the right. If either is a float, floating point arithmetic will be used; otherwise, values will be exactly calculated.
+
+* If the left argument is a number, and the right a numeric vector, the result will be a numeric vector, containing the results of raising the left argument to each element of the right accordingly.
+
+* If the left argument is a numeric vector, and the right a number, the result will be a numeric vector, containing the results of raising each element of the left argument to the power of the right.
+
+* If both arguments are numeric vectors of the same length, corresponding elements will be exponentiated.
 
 Syntax:
 
@@ -479,9 +487,11 @@ Operator Type: Infix
 
 Precedence: 4
 
-* ``X``: The value to logically negate.
+* ``X`` and ``Y``.
 
-	- All types can be passed to ``~`` and ``not``. Dice will be evaluated prior to the operator being called.
+	- Numbers
+
+	- Numeric Vectors: If both arguments are vectors, they must be of the same length.
 
 .. _multiplication:
 
