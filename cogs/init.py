@@ -16,7 +16,7 @@ def smartListToString(l):
         return ' and '.join(map(smartSurround, l))
     return ' and '.join(', '.join(map(smartSurround, l)).rsplit(', ', 1))
 
-class Initialize:
+class Initialize(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 

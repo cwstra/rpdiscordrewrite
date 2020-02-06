@@ -1,0 +1,266 @@
+{
+    "CommanderFeature List":{
+        "embed":"{\"title\":\"Commander Feature List (Class Feature not included):\\n\",\"description\":\"Mobilize\\nLeadership\\nBattle Conductor\\nComplex Orders\\nTip the Scales\\nScheme Twist\",\"fields\":[]}"
+    },
+    "RiderFeature List":{
+        "embed":"{\"title\":\"Rider Feature List (Class Feature not included):\\n\",\"description\":\"Ramming Speed\\nConqueror's March\\nRide as One\\nLean In\\nCavalier's Reprisal\\nOverrun\",\"fields\":[]}"
+    },
+    "TaskmasterFeature List":{
+        "embed":"{\"title\":\"Taskmaster Feature List (Class Feature not included):\\n\",\"description\":\"Quick Healing\\nSavage Strike\\nStrike of the Whip\\nPain Resistance\\nPress On!\\nDesperate Strike\\nDeadly Gambit\",\"fields\":[]}"
+    },
+    "TricksterFeature List":{
+        "embed":"{\"title\":\"Trickster Feature List (Class Feature not included):\\n\",\"description\":\"Bag of Tricks\\nStacked Deck\\nFlourish\\nEncore Performance\\nSleight\",\"fields\":[]}"
+    },
+    "Stat AceFeature List":{
+        "embed":"{\"title\":\"Stat Ace Feature List (Class Feature not included):\\n\",\"description\":\"Stat Link\\nStat Training\\nStat Maneuver\\nStat Mastery\\nStat Embodiment\\nStat Stratagem\",\"fields\":[]}"
+    },
+    "Attack AceFeature List":{
+        "embed":"{\"title\":\"Attack Ace Feature List (Class Feature not included):\\n\",\"description\":\"Attack Link\\nAttack Training\\nAttack Maneuver\\nAttack Mastery\\nAttack Embodiment\\nAttack Stratagem\",\"fields\":[]}"
+    },
+    "Defense AceFeature List":{
+        "embed":"{\"title\":\"Defense Ace Feature List (Class Feature not included):\\n\",\"description\":\"Defense Link\\nDefense Training\\nDefense Maneuver\\nDefense Mastery\\nDefense Embodiment\\nDefense Stratagem\",\"fields\":[]}"
+    },
+    "Special Attack AceFeature List":{
+        "embed":"{\"title\":\"Special Attack Ace Feature List (Class Feature not included):\\n\",\"description\":\"Special Attack Link\\nSpecial Attack Training\\nSpecial Attack Maneuver\\nSpecial Attack Mastery\\nSpecial Attack Embodiment\\nSpecial Attack Stratagem\",\"fields\":[]}"
+    },
+    "Special Defense AceFeature List":{
+        "embed":"{\"title\":\"Special Defense Ace Feature List (Class Feature not included):\\n\",\"description\":\"Special Defense Link\\nSpecial Defense Training\\nSpecial Defense Maneuver\\nSpecial Defense Mastery\\nSpecial Defense Embodiment\\nSpecial Defense Stratagem\",\"fields\":[]}"
+    },
+    "Speed AceFeature List":{
+        "embed":"{\"title\":\"Speed Ace Feature List (Class Feature not included):\\n\",\"description\":\"Speed Link\\nSpeed Training\\nSpeed Maneuver\\nSpeed Mastery\\nSpeed Embodiment\\nSpeed Stratagem\",\"fields\":[]}"
+    },
+    "ChefFeature List":{
+        "embed":"{\"title\":\"Chef Feature List (Class Feature not included):\\n\",\"description\":\"Hits the Spot\\nCulinary Appreciation\\nAccentuated Taste\\nComplex Aftertaste\\nDietician\\nDumplings\",\"fields\":[]}"
+    },
+    "ChroniclerFeature List":{
+        "embed":"{\"title\":\"Chronicler Feature List (Class Feature not included):\\n\",\"description\":\"Archival Training\\nArchive Tutor\\nTargeted Profiling\\nObservation Party\\nCinematic Analysis\",\"fields\":[]}"
+    },
+    "FashionistaFeature List":{
+        "embed":"{\"title\":\"Fashionista Feature List (Class Feature not included):\\n\",\"description\":\"Dashing Makeover\\nStyle is Eternal\\nAccessorize\\nParfumier\\nVersatile Wardrobe\\nDress to Impress\",\"fields\":[]}"
+    },
+    "Glamour WeaverFeature List":{
+        "embed":"{\"title\":\"Glamour Weaver Feature List (Class Feature not included):\\n\",\"description\":\"Fey Law\\nPassionato Harmony\\nLucky Clover Grand Finale\\nGlamour Mastery\\nEnchanting Transformation\\nMagical Burst\",\"fields\":[]}"
+    },
+    "Fire BringerFeature List":{
+        "embed":"{\"title\":\"Fire Bringer Feature List (Class Feature not included):\\n\",\"description\":\"Fiery Soul\\nFirebrand\\nBurning Passion\\nBlazing Inferno\\nFire Breather\",\"fields\":[]}"
+    },
+    "Wind RunnerFeature List":{
+        "embed":"{\"title\":\"Wind Runner Feature List (Class Feature not included):\\n\",\"description\":\"One With the Winds\\nFlight\\nGale Speed\\nRaging Winds\",\"fields\":[]}"
+    },
+    "Capture SpecialistFeature List":{
+        "embed":"{\"title\":\"Capture Specialist Feature List (Class Feature not included):\\n\",\"description\":\"Advanced Capture Techniques\\nCaptured Momentum\\nGotta Catch 'Em All\",\"fields\":[]}"
+    },
+    "CoordinatorFeature List":{
+        "embed":"{\"title\":\"Coordinator Feature List (Class Feature not included):\\n\",\"description\":\"Decisive Director\\nAdaptable Performance\\nFlexible Preparations\\nInnovation\\nNuanced Performance\\nReliable Performance\",\"fields\":[]}"
+    },
+    "HobbyistFeature List":{
+        "embed":"{\"title\":\"Hobbyist Feature List (Class Feature not included):\\n\",\"description\":\"Dilettante\\nDabbler\\nLook and Learn\",\"fields\":[]}"
+    },
+    "MentorFeature List":{
+        "embed":"{\"title\":\"Mentor Feature List (Class Feature not included):\\n\",\"description\":\"Lessons\\nExpand Horizons\\nGuidance\\nMove Tutor\\nEgg Tutor\\nLifelong Learning\",\"fields\":[]}"
+    },
+    "CheerleaderFeature List":{
+        "embed":"{\"title\":\"Cheerleader Feature List (Class Feature not included):\\n\",\"description\":\"Cheer Brigade\\nGleeful Interference\\nInspirational Support\\nMoment of Action\\nGo, Fight, Win!\\nKeep Fighting!\",\"fields\":[]}"
+    },
+    "Enduring SoulFeature List":{
+        "embed":"{\"title\":\"Enduring Soul Feature List (Class Feature not included):\\n\",\"description\":\"Staying Power\\nShrug Off\\nAwareness\\nResilience\\nNot Yet!\\nVim and Vigor\",\"fields\":[]}"
+    },
+    "JugglerFeature List":{
+        "embed":"{\"title\":\"Juggler Feature List (Class Feature not included):\\n\",\"description\":\"Bounce Shot\\nJuggling Show\\nRound Trip\\nTag In\\nEmergency Release\\nFirst Blood\",\"fields\":[]}"
+    },
+    "AthleteFeature List":{
+        "embed":"{\"title\":\"Athlete Feature List (Class Feature not included):\\n\",\"description\":\"Training Regime\\nCoaching\\nAdrenaline Rush\\nAthletic Moves\",\"fields\":[]}"
+    },
+    "HunterFeature List":{
+        "embed":"{\"title\":\"Hunter Feature List (Class Feature not included):\\n\",\"description\":\"Pack Tactics\\nSurprise!\\nHunter's Reflexes\\nFinisher\\nDon't Look Away\\nPack Master\",\"fields\":[]}"
+    },
+    "Martial ArtistFeature List":{
+        "embed":"{\"title\":\"Martial Artist Feature List (Class Feature not included):\\n\",\"description\":\"Martial Training\\nMy Kung-Fu is Stronger\\nMartial Achievement\\nSecond Strike\",\"fields\":[]}"
+    },
+    "MusicianFeature List":{
+        "embed":"{\"title\":\"Musician Feature List (Class Feature not included):\\n\",\"description\":\"Musical Ability\\nMt. Moon Blues\\nCacophony\\nNoise Complaint\\nVoice Lessons\\nPower Chord\",\"fields\":[]}"
+    },
+    "ProvocateurFeature List":{
+        "embed":"{\"title\":\"Provocateur Feature List (Class Feature not included):\\n\",\"description\":\"Push Buttons\\nQuick Wit\\nMixed Messages\\nPowerful Motivator\\nPlay Them Like a Fiddle\\nEnchanting Gaze\",\"fields\":[]}"
+    },
+    "RogueFeature List":{
+        "embed":"{\"title\":\"Rogue Feature List (Class Feature not included):\\n\",\"description\":\"Cutthroat\\nDirty Fighting\\nUnexpected Attacks\\nUnderhanded Tactics\\nStreet Fighter\\nScoundrel's Strike\",\"fields\":[]}"
+    },
+    "RoughneckFeature List":{
+        "embed":"{\"title\":\"Roughneck Feature List (Class Feature not included):\\n\",\"description\":\"Menace\\nMettle\\nMalice\\nFearsome Display\\nCruel Gaze\\nTough as Nails\",\"fields\":[]}"
+    },
+    "TumblerFeature List":{
+        "embed":"{\"title\":\"Tumbler Feature List (Class Feature not included):\\n\",\"description\":\"Aerialist\\nQuick Gymnastics\\nFlip Out\\nDeath From Above\\nQuick Reflexes\\nBurst of Speed\",\"fields\":[]}"
+    },
+    "Aura GuardianFeature List":{
+        "embed":"{\"title\":\"Aura Guardian Feature List (Class Feature not included):\\n\",\"description\":\"Aura Reader\\nThe Power of Aura\\nSword of Body and Soul\\nAmbient Aura\\nAura Mastery\",\"fields\":[]}"
+    },
+    "ChannelerFeature List":{
+        "embed":"{\"title\":\"Channeler Feature List (Class Feature not included):\\n\",\"description\":\"Shared Senses\\nBattle Synchronization\\nSpirit Boost\\nPower Conduit\\nPain Dampening\\nSoothing Connection\",\"fields\":[]}"
+    },
+    "Hex ManiacFeature List":{
+        "embed":"{\"title\":\"Hex Maniac Feature List (Class Feature not included):\\n\",\"description\":\"Hex Maniac Studies\\nDiffuse Pain\\nMalediction\\nGrand Hex\",\"fields\":[]}"
+    },
+    "NinjaFeature List":{
+        "embed":"{\"title\":\"Ninja Feature List (Class Feature not included):\\n\",\"description\":\"Ninja's Arsenal\\nPoison Weapons\\nGenjutsu\\nUtility Drop\\nWeightless Step\\nKinjutsu\",\"fields\":[]}"
+    },
+    "OracleFeature List":{
+        "embed":"{\"title\":\"Oracle Feature List (Class Feature not included):\\n\",\"description\":\"Divination\\nUnveiled Sight\\nSmall Prophecies\\nMark of Vision\\nTwo-Second Preview\\nPrescience\",\"fields\":[]}"
+    },
+    "SageFeature List":{
+        "embed":"{\"title\":\"Sage Feature List (Class Feature not included):\\n\",\"description\":\"Sacred Shield\\nMystic Defense\\nSage's Benediction\\nLay on Hands\\nHighly Responsive to Prayers\\nDivine Wind\",\"fields\":[]}"
+    },
+    "TelekineticFeature List":{
+        "embed":"{\"title\":\"Telekinetic Feature List (Class Feature not included):\\n\",\"description\":\"PK Alpha\\nPK Omega\\nPower of the Mind\\nPK Combat\\nTelekinetic Burst\\nPsionic Overload\",\"fields\":[]}"
+    },
+    "TelepathFeature List":{
+        "embed":"{\"title\":\"Telepath Feature List (Class Feature not included):\\n\",\"description\":\"Honed Mind\\nTelepathic Awareness\\nThought Detection\\nTelepathic Warning\\nMental Assault\\nSuggestion\",\"fields\":[]}"
+    },
+    "WarperFeature List":{
+        "embed":"{\"title\":\"Warper Feature List (Class Feature not included):\\n\",\"description\":\"Space Distortion\\nWarping Ground\\nStrange Energy\\nFarcast\\nWarped Transmission\\nReality Bender\",\"fields\":[]}"
+    },
+    "BerserkerFeature List":{
+        "embed":"{\"title\":\"Berserker Feature List (Class Feature not included):\\n\",\"description\":\"Power of Rage\\nLessons In Rage & Pain\\nFrenzy\\nFight On and On\\nCrash and Smash\\nPush it to the Limit\",\"fields\":[]}"
+    },
+    "Rune MasterFeature List":{
+        "embed":"{\"title\":\"Rune Master Feature List (Class Feature not included):\\n\",\"description\":\"Hidden Power\\nRewrite\\nGlyph\\nWords of Power\\nAlarm Runes\\nExplosive Runes\\nSentry Runes\",\"fields\":[]}"
+    },
+    "ArcanistFeature List":{
+        "embed":"{\"title\":\"Arcanist Feature List (Class Feature not included):\\n\",\"description\":\"Metamagic\\nAuthentic Thaumaturgy\\nSignature Manipulations\\nRecoup Energy\\nSoul Investment\",\"fields\":[]}"
+    },
+    "FortressFeature List":{
+        "embed":"{\"title\":\"Fortress Feature List (Class Feature not included):\\n\",\"description\":\"Slow or Steady\\nStalwart Bastion\\nShield Bearer\\nWall of Iron\\nGuardian's Punishment\\nUnstoppable Will\",\"fields\":[]}"
+    },
+    "MarksmanFeature List":{
+        "embed":"{\"title\":\"Marksman Feature List (Class Feature not included):\\n\",\"description\":\"Aiming Down The Sights\\nDouble Shot\\nOverwatch\\nClear Shot\\nCrippling Shot\\nDead-Eye Shot\",\"fields\":[]}"
+    },
+    "SkirmisherFeature List":{
+        "embed":"{\"title\":\"Skirmisher Feature List (Class Feature not included):\\n\",\"description\":\"Nimble Steps\\nCounter Stance\\nHarrier\\nWeapon Finesse\\nOutmaneuver\\nSwift Strikes\",\"fields\":[]}"
+    },
+    "SwarmlordFeature List":{
+        "embed":"{\"title\":\"Swarmlord Feature List (Class Feature not included):\\n\",\"description\":\"How To Shoot Web\\nBroodlord\\nPheromone Markers\\nEnhanced Embrace\",\"fields\":[]}"
+    },
+    "Shade CallerFeature List":{
+        "embed":"{\"title\":\"Shade Caller Feature List (Class Feature not included):\\n\",\"description\":\"Twisted Soul\\nLiving Shadow\\nSharpen Shadows\\nHeart of Darkness\\nWorld of Darkness\\nDark Soul\",\"fields\":[]}"
+    },
+    "Herald of PrideFeature List":{
+        "embed":"{\"title\":\"Herald of Pride Feature List (Class Feature not included):\\n\",\"description\":\"Noblesse Oblige\\nChannel the Dragon's Spirit\\nBare the Dragon's Claws\\nCall the Dragon's Rage\\nRouse the Dragon's Blood\\nSovereignty\",\"fields\":[]}"
+    },
+    "Spark MasterFeature List":{
+        "embed":"{\"title\":\"Spark Master Feature List (Class Feature not included):\\n\",\"description\":\"Magnetize\\nBody of Lightning\\nBottled Lightning\\nStorm Wizard\",\"fields\":[]}"
+    },
+    "SurvivalistFeature List":{
+        "embed":"{\"title\":\"Survivalist Feature List (Class Feature not included):\\n\",\"description\":\"Natural Fighter\\nTrapper\\nWilderness Guide\\nTerrain Talent\\nAdaptive Geography\",\"fields\":[]}"
+    },
+    "DancerFeature List":{
+        "embed":"{\"title\":\"Dancer Feature List (Class Feature not included):\\n\",\"description\":\"Dance Form\\nBeguiling Dance\\nDance Practice\\nChoreographer\\nPower Pirouette\\nPassing Waltz\",\"fields\":[]}"
+    },
+    "Earth ShakerFeature List":{
+        "embed":"{\"title\":\"Earth Shaker Feature List (Class Feature not included):\\n\",\"description\":\"Earthen Bond\\nEarth Mother's Blessing\\nEarthshifter\\nGround Out\\nTectonic Shift\",\"fields\":[]}"
+    },
+    "Frost TouchedFeature List":{
+        "embed":"{\"title\":\"Frost Touched Feature List (Class Feature not included):\\n\",\"description\":\"The Cold Never Bothered Me Anyway\\nGlacial Defense\\nFrozen Domain\\nWinter is Coming\\nWinter's Herald\",\"fields\":[]}"
+    },
+    "Class List":{
+        "embed":"{\"title\":\"Class List\",\"description\":\"Ace Trainer\\nCapture Specialist\\nCommander\\nCoordinator\\nHobbyist\\nMentor\\nCheerleader\\nDuelist\\nEnduring Soul\\nJuggler\\nRider\\nTrickster\\nStat Ace\\nStyle Expert\\nType Ace\\nChef\\nChronicler\\nFashionista\\nResearcher\\nSurvivalist\\nAthlete\\nDancer\\nHunter\\nMartial Artist\\nMusician\\nProvocateur\\nRogue\\nRoughneck\\nTumbler\\nAura Guardian\\nChanneler\\nHex Maniac\\nNinja\\nOracle\\nSage\\nTelekinetic\\nTelepath\\nWarper\\nBerserker\\nRune Master\\nArcanist\\nFortress\\nMarksman\\nSkirmisher\\nSwarmlord\\nShade Caller\\nHerald of Pride\\nSpark Master\\nGlamour Weaver\\nFire Bringer\\nWind Runner\\nApparition\\nDruid\\nEarth Shaker\\nFrost Touched\\nPrism\\nMiasmic\\nStone Warrior\\nSteelheart\\nMaelstrom\\nGlitch Bender\",\"fields\":[]}"
+    },
+    "Ace TrainerFeature List":{
+        "embed":"{\"title\":\"Ace Trainer Feature List (Class Feature not included):\\n\",\"description\":\"Perseverance\\nElite Trainer\\nCritical Moment\\nTop Percentage\\nSignature Technique\\nChamp in the Making\",\"fields\":[]}"
+    },
+    "DuelistFeature List":{
+        "embed":"{\"title\":\"Duelist Feature List (Class Feature not included):\\n\",\"description\":\"Expend Momentum\\nEffective Methods\\nDirected Focus\\nType Methodology\\nDuelist's Manual\\nSeize The Moment\",\"fields\":[]}"
+    },
+    "Style ExpertFeature List":{
+        "embed":"{\"title\":\"Style Expert Feature List (Class Feature not included):\\n\",\"description\":\"Style Flourish\\nStyle Entrainment\\nBeauty Expert:\\n\\tBeautiful Ballet\\n\\tFabulous Max\\n\\tEnticing Beauty\\nCool Expert:\\n\\tCool Conduct\\n\\tRule of Cool\\n\\tAction Hero Stunt\\nCute Expert:\\n\\tCute Cuddle\\n\\tGleeful Steps\\n\\tLet's Be Friends!\\nSmart Expert:\\n\\tSmart Scheme\\n\\tCalculated Assault\\n\\tLearn From Your Mistakes\\nTough Expert:\\n\\tTough Tumble\\n\\tMacho Charge\\n\\tEndurance\",\"fields\":[]}"
+    },
+    "ResearcherFeature List":{
+        "embed":"{\"title\":\"Researcher Feature List (Class Feature not included):\\n\",\"description\":\"General Research Field:\\n\\tBreadth of Knowledge\\n\\tLive and Learn\\n\\tInstant Analysis\\n\\tEchoes of the Future\\nApothecary Research Field:\\n\\tApothecary\\n\\tPatch Cure\\n\\tMedical Techniques\\n\\tMedicinal Blend\\nArtificer Research Field:\\n\\tCrystal Artificer\\n\\tCrystal Resonance\\n\\tRainbow Light\\n\\tFistful of Force\\nBotany Research Field:\\n\\tSeed Bag\\n\\tTop Tier Berries\\n\\tHerb Lore\\nChemistry Research Field:\\n\\tChemist\\n\\tChemical Warfare\\n\\tCaustic Chemistry\\n\\tPlaying God\\nClimatology Research Field:\\n\\tClimatology\\n\\tClimate Control\\n\\tWeather Systems\\n\\tExtreme Weather\\nOccultism Research Field:\\n\\tWitch Hunter\\n\\tPsionic Analysis\\n\\tMental Resistance\\n\\tImmutable Mind\\nPaleontology Research Field:\\n\\tFossil Restoration\\n\\tAncient Heritage\\n\\tGenetic Memory\\n\\tPrehistoric Bond\\nPoke\\u0301mon Caretaking Research Field:\\n\\tPusher\\n\\tThis One's Special, I Know It\\n\\tSkill Trainer\\n\\tRe-Balancing\\nEngineer Research Field:\\n\\tEngineer\\n\\tRobofighter\\n\\tOverclock\\n\\tExperimental AI\\nJailbreaker Research Field:\\n\\tJailbreaker\\n\\tPoke Ball Mods\\n\\tFusion Cases\\n\\tCase Specialist\\nUpgrader Research Field:\\n\\tUpgrader\\n\\tEmergency Reactivation\\n\\tEfficient Installation\\n\\tExperimental Designs\",\"fields\":[]}"
+    },
+    "ApparitionFeature List":{
+        "embed":"{\"title\":\"Apparition Feature List (Class Feature not included):\\n\",\"description\":\"Shadow Arms\\nToo Spooky\\nSilent Assassin\\nShadow Form\\nPhantom Menace\\nHaunted Wounds\",\"fields\":[]}"
+    },
+    "DruidFeature List":{
+        "embed":"{\"title\":\"Druid Feature List (Class Feature not included):\\n\",\"description\":\"Green Path\\nOvergrowth\\nDruid's Call\\nNature's Embrace\",\"fields\":[]}"
+    },
+    "PrismFeature List":{
+        "embed":"{\"title\":\"Prism Feature List (Class Feature not included):\\n\",\"description\":\"Blinding Brightness\\nSparkle\\nRainbow Surge\\nLucent Mirage\\nLuminous Aura\\nPrismatic Alignment\",\"fields\":[]}"
+    },
+    "MiasmicFeature List":{
+        "embed":"{\"title\":\"Miasmic Feature List (Class Feature not included):\\n\",\"description\":\"Corrupt Blood\\nFlexible Form\\nVile Body\\nMiasma\\u2019s Call\\nMiasma Unleashed\\nMiasmic Spray\",\"fields\":[]}"
+    },
+    "Stone WarriorFeature List":{
+        "embed":"{\"title\":\"Stone Warrior Feature List (Class Feature not included):\\n\",\"description\":\"Stone Stance\\nRock Power\\nShards of Stone\\nStone Cold Finish\\nStone Stance Mastery\",\"fields\":[]}"
+    },
+    "SteelheartFeature List":{
+        "embed":"{\"title\":\"Steelheart Feature List (Class Feature not included):\\n\",\"description\":\"Champion of Steel\\nSteel Wind\\nReactive Armour\\nImpenetrable\\nMaster of Arms\\nMan of Steel\",\"fields\":[]}"
+    },
+    "MaelstromFeature List":{
+        "embed":"{\"title\":\"Maelstrom Feature List (Class Feature not included):\\n\",\"description\":\"Water's Shroud\\nHydro Jet\\nOceanic Feeling\\nCall The Current\",\"fields\":[]}"
+    },
+    "Glitch BenderFeature List":{
+        "embed":"{\"title\":\"Glitch Bender Feature List (Class Feature not included):\\n\",\"description\":\"I Am Error\\nNull Error\\nCorrupt Reality\\nCode Injection\\nGlitch Shuffle\\nGlitch Burst\",\"fields\":[]}"
+    },
+    "Chronicler Archive List":{
+        "embed":"{\"title\":\"Chronicler Archive List\",\"fields\":[{\"name\":\"Profile Archive\", \"value\":\"You may place Records of Poke\u0301mon and Trainers in your Profile Archive. You gain a +2 bonus to Charm, Guile, Command, Intimidate, and Intuition Checks targeting Poke\u0301mon and Trainers in your Profile Archive.\"},{\"name\":\"Technique Archive\",\"value\":\"You may place Records of Moves in your Technique Archive. You and your Poke\u0301mon gain +2 Evasion against Moves in your Technique Archives.\"},{\"name\":\"Travel Archive\",\"value\":\"You may place Records of Locations in your Travel Archive. When you gain Travel Archive, choose Keen Eye or Perception. While you are in a Location in your Travel Archive, you have the Chosen Ability and gain a +2 bonus to Perception Checks to notice the environment.\"}]}"
+    },
+    "Focus":{
+        "embed":"{\"title\":\"Focus (Disambiguation)\",\"description\":\"`Focus` is an ambiguous search. See:\\n`Focus (Ability)`\\n`Focus (Item)`\",\"fields\":[]}"
+    },
+    "Levitate":{
+        "embed":"{\"title\":\"Levitate (Disambiguation)\",\"description\":\"`Levitate` is an ambiguous search. See:\\n`Levitate (Ability)`\\n`Levitate (Capability)`\",\"fields\":[]}"
+    },
+    "Last Chance":{
+        "embed":"{\"title\":\"Last Chance (Disambiguation)\",\"description\":\"`Last Chance` is an ambiguous search. See:\\n`Last Chance (Ability)`\\n`Last Chance (Keyword)`\",\"fields\":[]}"
+    },
+    "Sprint":{
+        "embed":"{\"title\":\"Sprint (Disambiguation)\",\"description\":\"`Sprint` is an ambiguous search. See:\\n`Sprint (Ability)`\\n`Sprint (Maneuver)`\",\"fields\":[]}"
+    },
+    "Illusion":{
+        "embed":"{\"title\":\"Illusion (Disambiguation)\",\"description\":\"`Illusion` is an ambiguous search. See:\\n`Illusion (Ability)`\\n`Illusion (Keyword)`\",\"fields\":[]}"
+    },
+    "Blur":{
+        "embed":"{\"title\":\"Blur (Disambiguation)\",\"description\":\"`Blur` is an ambiguous search. See:\\n`Blur (Ability)`\\n`Blur (Feature)`\",\"fields\":[]}"
+    },
+    "Dream Mist":{
+        "embed":"{\"title\":\"Dream Mist (Disambiguation)\",\"description\":\"`Dream Mist` is an ambiguous search. See:\\n`Dream Mist (Capability)`\\n`Dream Mist (Item)`\",\"fields\":[]}"
+    },
+    "Egg Warmer":{
+        "embed":"{\"title\":\"Egg Warmer (Disambiguation)\",\"description\":\"`Egg Warmer` is an ambiguous search. See:\\n`Egg Warmer (Capability)`\\n`Egg Warmer (Item)`\",\"fields\":[]}"
+    },
+    "Aura Reader":{
+        "embed":"{\"title\":\"Aura Reader (Disambiguation)\",\"description\":\"`Aura Reader` is an ambiguous search. See:\\n`Aura Reader (Capability)`\\n`Aura Reader (Feature)`\",\"fields\":[]}"
+    },
+    "Telekinetic":{
+        "embed":"{\"title\":\"Telekinetic (Disambiguation)\",\"description\":\"`Telekinetic` is an ambiguous search. See:\\n`Telekinetic (Capability)`\\n`Telekinetic (Feature)`\",\"fields\":[]}"
+    },
+    "Telepath":{
+        "embed":"{\"title\":\"Telepath (Disambiguation)\",\"description\":\"`Telepath` is an ambiguous search. See:\\n`Telepath (Capability)`\\n`Telepath (Feature)`\",\"fields\":[]}"
+    },
+    "Work Up":{
+        "embed":"{\"title\":\"Work Up (Disambiguation)\",\"description\":\"`Work Up` is an ambiguous search. See:\\n`Work Up (Edge)`\\n`Work Up (Move)`\",\"fields\":[]}"
+    },
+    "Dive":{
+        "embed":"{\"title\":\"Dive (Disambiguation)\",\"description\":\"`Dive` is an ambiguous search. See:\\n`Dive (Feature)`\\n`Dive (Move)`\",\"fields\":[]}"
+    },
+    "Hidden Power":{
+        "embed":"{\"title\":\"Hidden Power (Disambiguation)\",\"description\":\"`Hidden Power` is an ambiguous search. See:\\n`Hidden Power (Feature)`\\n`Hidden Power (Move)`\",\"fields\":[]}"
+    },
+    "Push":{
+        "embed":"{\"title\":\"Push (Disambiguation)\",\"description\":\"`Push` is an ambiguous search. See:\\n`Push (Keyword)`\\n`Push (Maneuver)`\",\"fields\":[]}"
+    },
+    "Sandstorm":{
+        "embed":"{\"title\":\"Sandstorm (Disambiguation)\",\"description\":\"`Sandstorm` is an ambiguous search. See:\\n`Sandstorm (Weather)`\\n`Sandstorm (Move)`\",\"fields\":[]}"
+    },
+    "Powder":{
+        "embed":"{\"title\":\"Powder (Disambiguation)\",\"description\":\"`Powder` is an ambiguous search. See:\\n`Powder (Keyword)`\\n`Powder (Move)`\",\"fields\":[]}"
+    },
+    "Hail":{
+        "embed":"{\"title\":\"Hail (Disambiguation)\",\"description\":\"`Hail` is an ambiguous search. See:\\n`Hail (Weather)`\\n`Hail (Move)`\",\"fields\":[]}"
+    },
+    "Type AceFeature List":{
+        "embed":"{\"title\":\"Type Ace Feature List (Class Feature not included):\\n\",\"description\":\"Type Refresh\\nMove Sync\\nBug Ace:\\n\\tInsectoid Utility\\n\\tIterative Evolution\\n\\tChitin Shield\\n\\tDisruption Order\\nDark Ace:\\n\\tClever Ruse\\n\\tSneak Attack\\n\\tDevious\\n\\tBlack-Out Strike\\nDragon Ace:\\n\\tTyrant\\u2019s Roar\\n\\tHighlander\\n\\tUnconquerable\\n\\tThis Will Not Stand\\nElectric Ace:\\n\\tLockdown\\n\\tOverload\\n\\tShocking Speed\\n\\tChain Lightning\\nFairy Ace:\\n\\tFairy Lights\\n\\tArcane Favor\\n\\tFey Trance\\n\\tFairy Rite\\nFighting Ace:\\n\\tClose Quarters Mastery\\n\\tBrawler\\n\\tFace Me Whelp\\n\\tSmashing Punishment\\nFire Ace:\\n\\tBrightest Flame\\n\\tTrail Blazer\\n\\tIncandescence\\n\\tFan The Flames\\nFlying Ace:\\n\\tCelerity\\n\\tGale Strike\\n\\tZephyr Shield\\n\\tTornado Charge\\nGhost Ace:\\n\\tGhost Step\\n\\tHaunting Curse\\n\\tVampirism\\n\\tBoo!\\nGrass Ace:\\n\\tFoiling Foliage\\n\\tSunlight Within\\n\\tEnduring Bloom\\n\\tCross-Pollinate\\nGround Ace:\\n\\tMold the Earth\\n\\tDesert Heart\\n\\tEarthroil\\n\\tUpheaval\\nIce Ace:\\n\\tGlacial Ice\\n\\tPolar Vortex\\n\\tArctic Zeal\\n\\tDeep Cold\\nNormal Ace:\\n\\tExtra Ordinary\\n\\tPlainly Perfect\\n\\tNew Normal\\n\\tSimple Improvements\\nPoison Ace:\\n\\tPotent Venom\\n\\tDebilitate\\n\\tMiasma\\n\\tCorrosive Blight\\nPsychic Ace:\\n\\tPsionic Sponge\\n\\tMindbreak\\n\\tPsychic Resonance\\n\\tForce of Will\\nRock Ace:\\n\\tGravel Before Me\\n\\tBigger and Boulder\\n\\tTough as Schist\\n\\tGneiss Aim\\nSteel Ace:\\n\\tPolished Shine\\n\\tIron Grit\\n\\tAssault Armor\\n\\tTrue Steel\\nWater Ace:\\n\\tFlood!\\n\\tFishbowl Technique\\n\\tFountain of Life\\n\\tAqua Vortex\",\"fields\":[]}"
+    },
+    "Signature Technique List":{
+        "embed":"{\"title\":\"Signature Technique List\",\"fields\":[{\"name\":\"Cone, Line, Burst, and Blast Moves\",\"value\":\"**Scattershot \u2013 Agility Training:** Instead of the Move\u2019s normal range, it has a range of 4m, 3 Targets.\\n**Shock and Awe \u2013 Inspired Training:** Foes targeted by the Move take a -2 penalty to Save Checks and a -1 Penalty to Evasion until the end of the user\u2019s next turn. This effect applies whether the attack hits or misses.\\n**Vicious Storm \u2013 Brutal Training:** The Move gains the Smite keyword. Applicable to Damaging Moves only.\"},{\"name\":\"Single Target Moves\", \"value\":\"**Guarding Strike \u2013 Inspired Training:** If this Move hits, the user gains +5 Damage Reduction against the target of the attack until the end of their next turn.\\n**Unbalancing Blow \u2013 Brutal Training:** Whether the Move hits or misses, the target becomes Vulnerable until the next time they are hit by a Damaging Attack or one full round has passed, whichever comes first.\\n**Reliable Attack \u2013 Focused Training:** If the Move misses its target, its Frequency is not spent and the user may immediately make a Struggle Attack as a Free Action. Cannot be applied to Moves with the Smite keyword.\"},{\"name\":\"Damaging Moves\",\"value\":\"**Alternative Energy \u2013 Focused Training:** Switch the Class of the Move from Physical to Special or vice versa.\\n**Bloodied Speed \u2013 Agility Training:** This Move may be used as Priority (Advanced) if the user has less than half of their maximum Hit Points.\\n**Double Down \u2013 Brutal Training:** The Move gains the Double Strike keyword. Effects and Effect-Ranges may be triggered only once (but either roll may trigger the effect). This may only be applied to Moves with a Damage Base of 4 or less, and may not be applied to Moves whose Damage Base change upon certain conditions (such as Fury Cutter or Ice Ball) or moves with Special-Case Damage (such as Night Shade).\"},{\"name\":\"Status Moves\", \"value\":\"**Burst of Motivation \u2013 Inspired Training:** After this Move is Resolved, the user may increase any Stats with negative Combat Stages by up to +2 Combat Stages (but this cannot put Combat Stages above +0 CS total).\\n**Supreme Concentration \u2013 Focused Training:** This Move may be used even if the user is Paralyzed, Flinched, Enraged, or has failed their Confusion Save Check.\\n**Double Curse \u2013 Agility Training:** The user may target an additional foe with this Attack. This may be applied only to 1-Target Moves.\"}]}"
+    }
+}

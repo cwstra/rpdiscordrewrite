@@ -35,6 +35,9 @@ class Server:
         self.pool = await asyncpg.create_pool(**credentials)
         return self
 
+    async def close(self):
+        await self.pool.close()
+
     async def newInfo(self, ctx, charactername, attrdict = None):
         async with self.pool.acquire() as conn:
             author = ctx.author.id

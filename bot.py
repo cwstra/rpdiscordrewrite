@@ -28,7 +28,7 @@ else:
 logfun('------------------------------------------------------------------------------------')
 logfun('Boot Start')
 logfun('------------------------------------------------------------------------------------')
-import json 
+import json
 logfun('json imported')
 import asyncio
 logfun('asyncio imported')
@@ -115,7 +115,7 @@ class RPBot(commands.Bot):
         self.serverfetcher = sf
 
         #Provide logfun to the cogs
-        self.logger = logfun 
+        self.logger = logfun
 
         #Set up the bot stat logging server
         self.botdataserver = {}
@@ -127,6 +127,8 @@ class RPBot(commands.Bot):
         #Initializing some objects to prevent errors should their cogs fail to load:
         self.inline_roller = lambda x: None
         self.refserver = None
+        self.charserver = None
+        self.statserver = None
 
         #Load extensions
         for extension in startup_extensions:
@@ -242,7 +244,7 @@ class RPBot(commands.Bot):
         await ctx.send(begin+message+end)
 
     @staticmethod
-    async def pageOrEmbed(ctx, info, printFun, forceEmbed = False):
+    async def pageOrEmbed(ctx, info, printFun, freeze, forceEmbed = False):
         def maybeover(key, l, n):
             if n < len(l):
                 return {key:l[n]}
@@ -265,7 +267,7 @@ class RPBot(commands.Bot):
                 iterables['fields'] = list(evensplit(littlefields, 3))
             else:
                 baseembed['fields'] = littlefields
-            if 'image' in info and type(info['image']) == str: 
+            if 'image' in info and type(info['image']) == str:
                 printFun('baseImage')
                 baseembed['image'] = info['image']
             elif 'image' in info and len(info['image']) == 1:
@@ -283,7 +285,7 @@ class RPBot(commands.Bot):
             if len(embeds) == 1:
                 await ctx.send(None, embed = embeds[0])
             else:
-                await SimplePaginator(extras=embeds).paginate(ctx) 
+                await SimplePaginator(extras=embeds, freeze=freeze).paginate(ctx)
         else:
             if 'image' in info and len(info['image']) == 1:
                 info['image'] = info['image'][0]
@@ -341,6 +343,11 @@ async def run():
     except KeyboardInterrupt:
         if bot.refserver:
             await bot.refserver.close()
+        if bot.charserver:
+            await bot.charserver.close()
+        if bot.statserver:
+            await bot.statserver.close()
+        await botdataserver['pool'].close()
         await sf.pool.close()
         await bot.logout()
 

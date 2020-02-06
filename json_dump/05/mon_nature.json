@@ -1,0 +1,110 @@
+{
+    "Docile":{
+        "embed":"{\"title\":\"Docile\",\"description\":\"Docile: Neutral\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Lax":{
+        "embed":"{\"title\":\"Lax\",\"description\":\"Lax: Raises Defense, Lowers Special Defense\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Sassy":{
+        "embed":"{\"title\":\"Sassy\",\"description\":\"Sassy: Raises Special Defense, Lowers Speed\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Adamant":{
+        "embed":"{\"title\":\"Adamant\",\"description\":\"Adamant: Raises Attack, Lowers Special Attack\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Serious":{
+        "embed":"{\"title\":\"Serious\",\"description\":\"Serious: Neutral\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Mild":{
+        "embed":"{\"title\":\"Mild\",\"description\":\"Mild: Raises Special Attack, Lowers Defense\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Desperate":{
+        "embed":"{\"title\":\"Desperate\",\"description\":\"Desperate: Raises Attack, Lowers HP\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Curious":{
+        "embed":"{\"title\":\"Curious\",\"description\":\"Curious: Raises Special Attack, Lowers HP\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Naive":{
+        "embed":"{\"title\":\"Naive\",\"description\":\"Naive: Raises Speed, Lowers Special Defense\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Skittish":{
+        "embed":"{\"title\":\"Skittish\",\"description\":\"Skittish: Raises Speed, Lowers HP\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Distracted":{
+        "embed":"{\"title\":\"Distracted\",\"description\":\"Distracted: Raises HP, Lowers Defense\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Composed":{
+        "embed":"{\"title\":\"Composed\",\"description\":\"Composed: Neutral\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Naughty":{
+        "embed":"{\"title\":\"Naughty\",\"description\":\"Naughty: Raises Attack, Lowers Special Defense\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Impish":{
+        "embed":"{\"title\":\"Impish\",\"description\":\"Impish: Raises Defense, Lowers Special Defense\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Careful":{
+        "embed":"{\"title\":\"Careful\",\"description\":\"Careful: Raises Special Defense, Lowers Special Attack\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Gentle":{
+        "embed":"{\"title\":\"Gentle\",\"description\":\"Gentle: Raises Special Defense, Lowers Defense\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Lonely":{
+        "embed":"{\"title\":\"Lonely\",\"description\":\"Lonely: Raises Attack, Lowers Defense\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Patient":{
+        "embed":"{\"title\":\"Patient\",\"description\":\"Patient: Raises HP, Lowers Speed\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Bold":{
+        "embed":"{\"title\":\"Bold\",\"description\":\"Bold: Raises Defense, Lowers Attack\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Hardy":{
+        "embed":"{\"title\":\"Hardy\",\"description\":\"Hardy: Neutral\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Relaxed":{
+        "embed":"{\"title\":\"Relaxed\",\"description\":\"Relaxed: Raises Defense, Lowers Speed\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Bashful":{
+        "embed":"{\"title\":\"Bashful\",\"description\":\"Bashful: Neutral\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Timid":{
+        "embed":"{\"title\":\"Timid\",\"description\":\"Timid: Raises Speed, Lowers Attack\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Hasty":{
+        "embed":"{\"title\":\"Hasty\",\"description\":\"Hasty: Raises Speed, Lowers Defense\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Proud":{
+        "embed":"{\"title\":\"Proud\",\"description\":\"Proud: Raises HP, Lowers Special Attack\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Quiet":{
+        "embed":"{\"title\":\"Quiet\",\"description\":\"Quiet: Raises Special Attack, Lowers Speed\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Cuddly":{
+        "embed":"{\"title\":\"Cuddly\",\"description\":\"Cuddly: Raises HP, Lowers Attack\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Brave":{
+        "embed":"{\"title\":\"Brave\",\"description\":\"Brave: Raises Attack, Lowers Speed\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Rash":{
+        "embed":"{\"title\":\"Rash\",\"description\":\"Rash: Raises Special Attack, Lowers Special Defense\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Stark":{
+        "embed":"{\"title\":\"Stark\",\"description\":\"Stark: Raises Defense, Lowers HP\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Jolly":{
+        "embed":"{\"title\":\"Jolly\",\"description\":\"Jolly: Raises Speed, Lowers Special Attack\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Calm":{
+        "embed":"{\"title\":\"Calm\",\"description\":\"Calm: Raises Special Defense, Lowers Attack\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Quirky":{
+        "embed":"{\"title\":\"Quirky\",\"description\":\"Quirky: Neutral\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Decisive":{
+        "embed":"{\"title\":\"Decisive\",\"description\":\"Decisive: Raises HP, Lowers Special Defense\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Modest":{
+        "embed":"{\"title\":\"Modest\",\"description\":\"Modest: Raises Special Attack, Lowers Attack\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    },
+    "Dreamy":{
+        "embed":"{\"title\":\"Dreamy\",\"description\":\"Dreamy: Raises Special Defense, Lowers HP\",\"fields\":[],\"footer\":{\"text\":\"Core: p.199\"}}"
+    }
+}

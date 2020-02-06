@@ -9,7 +9,7 @@ async def pager(entries, chunk: int):
 class SimplePaginator:
 
     __slots__ = ('entries', 'extras', 'title', 'description', 'colour', 'footer', 'length', 'prepend', 'append',
-                 'fmt', 'timeout', 'ordered', 'controls', 'controller', 'pages', 'current', 'previous', 'eof', 'base',
+                 'fmt', 'timeout', 'ordered', 'freeze', 'controls', 'controller', 'pages', 'current', 'previous', 'eof', 'base',
                  'names')
 
     def __init__(self, **kwargs):
@@ -27,6 +27,7 @@ class SimplePaginator:
         self.fmt = kwargs.get('fmt', '')
         self.timeout = kwargs.get('timeout', 90)
         self.ordered = kwargs.get('ordered', False)
+        self.freeze = kwargs.get('freeze', True)
 
         self.controller = None
         self.pages = []
@@ -37,14 +38,15 @@ class SimplePaginator:
         self.previous = 0
         self.eof = 0
 
-        self.controls = {'⏮': 0.0, '◀': -1, '⏹': 'stop',
+        self.controls = {'⏮': 0.0, '◀': -1, '⏹': 'stop', '⏸️': 'freeze',
                          '▶': +1, '⏭': None}
 
 
     async def indexer(self, ctx, ctrl):
         if ctrl == 'stop':
             ctx.bot.loop.create_task(self.stop_controller(ctx, self.base))
-
+        elif ctrl == 'freeze':
+            ctx.bot.loop.create_task(self.stop_controller(ctx, self.base, True))
         elif isinstance(ctrl, int):
             self.current += ctrl
             if self.current > self.eof or self.current < 0:
@@ -80,7 +82,7 @@ class SimplePaginator:
             try:
                 react, user = await bot.wait_for('reaction_add', check=check, timeout=self.timeout)
             except asyncio.TimeoutError:
-                return ctx.bot.loop.create_task(self.stop_controller(ctx, self.base))
+                return ctx.bot.loop.create_task(self.stop_controller(ctx, self.base, self.freeze))
 
             control = self.controls.get(str(react))
 
@@ -100,13 +102,14 @@ class SimplePaginator:
             except KeyError:
                 pass
 
-    async def stop_controller(self, ctx, message):
+    async def stop_controller(self, ctx, message, freeze=False):
         try:
-            curmsg = await message.channel.get_message(message.id)
+            curmsg = await message.channel.fetch_message(message.id)
             for i in curmsg.reactions:
                 if i.me:
                     await message.remove_reaction(i, ctx.me)
-            await message.edit(content = 'Paginator Deleted', embed = None)
+            if not(freeze):
+                await message.edit(content = 'Paginator Deleted', embed = None)
         except discord.HTTPException:
             pass
 

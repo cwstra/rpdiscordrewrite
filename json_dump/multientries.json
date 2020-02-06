@@ -1,0 +1,850 @@
+{
+    "05": {
+        "Focus": [
+            [
+                "Focus (Ability)",
+                "ability"
+            ],
+            [
+                "Focus (Item)",
+                "item"
+            ],
+            [
+                "Focus",
+                "list"
+            ]
+        ],
+        "Levitate": [
+            [
+                "Levitate (Ability)",
+                "ability"
+            ],
+            [
+                "Levitate (Capability)",
+                "capability"
+            ],
+            [
+                "Levitate",
+                "list"
+            ]
+        ],
+        "Last Chance": [
+            [
+                "Last Chance (Ability)",
+                "ability"
+            ],
+            [
+                "Last Chance (Keyword)",
+                "keyword"
+            ],
+            [
+                "Last Chance",
+                "list"
+            ]
+        ],
+        "Sprint": [
+            [
+                "Sprint (Ability)",
+                "ability"
+            ],
+            [
+                "Sprint",
+                "list"
+            ],
+            [
+                "Sprint (Maneuver)",
+                "maneuver"
+            ]
+        ],
+        "Illusion": [
+            [
+                "Illusion (Ability)",
+                "ability"
+            ],
+            [
+                "Illusion (Keyword)",
+                "keyword"
+            ],
+            [
+                "Illusion",
+                "list"
+            ]
+        ],
+        "Blur": [
+            [
+                "Blur (Ability)",
+                "ability"
+            ],
+            [
+                "Blur (Feature)",
+                "feature"
+            ],
+            [
+                "Blur",
+                "list"
+            ]
+        ],
+        "Egg Warmer": [
+            [
+                "Egg Warmer (Capability)",
+                "capability"
+            ],
+            [
+                "Egg Warmer (Item)",
+                "item"
+            ],
+            [
+                "Egg Warmer",
+                "list"
+            ]
+        ],
+        "Dream Mist": [
+            [
+                "Dream Mist (Capability)",
+                "capability"
+            ],
+            [
+                "Dream Mist (Item)",
+                "item"
+            ],
+            [
+                "Dream Mist",
+                "list"
+            ]
+        ],
+        "Aura Reader": [
+            [
+                "Aura Reader (Capability)",
+                "capability"
+            ],
+            [
+                "Aura Reader (Feature)",
+                "feature"
+            ],
+            [
+                "Aura Reader",
+                "list"
+            ]
+        ],
+        "Telekinetic": [
+            [
+                "Telekinetic (Capability)",
+                "capability"
+            ],
+            [
+                "Telekinetic (Feature)",
+                "feature"
+            ],
+            [
+                "Telekinetic",
+                "list"
+            ]
+        ],
+        "Telepath": [
+            [
+                "Telepath (Capability)",
+                "capability"
+            ],
+            [
+                "Telepath (Feature)",
+                "feature"
+            ],
+            [
+                "Telepath",
+                "list"
+            ]
+        ],
+        "Work Up": [
+            [
+                "Work Up (Edge)",
+                "edge"
+            ],
+            [
+                "Work Up",
+                "list"
+            ],
+            [
+                "Work Up (Move)",
+                "move"
+            ]
+        ],
+        "Dive": [
+            [
+                "Dive (Feature)",
+                "feature"
+            ],
+            [
+                "Dive",
+                "list"
+            ],
+            [
+                "Dive (Move)",
+                "move"
+            ]
+        ],
+        "Hidden Power": [
+            [
+                "Hidden Power (Feature)",
+                "feature"
+            ],
+            [
+                "Hidden Power",
+                "list"
+            ],
+            [
+                "Hidden Power (Move)",
+                "move"
+            ]
+        ],
+        "Sleeping Bag": [
+            [
+                "Sleeping Bag",
+                "item"
+            ],
+            [
+                "Sleeping Bag (Double)",
+                "item"
+            ]
+        ],
+        "Push": [
+            [
+                "Push (Keyword)",
+                "keyword"
+            ],
+            [
+                "Push",
+                "list"
+            ],
+            [
+                "Push (Maneuver)",
+                "maneuver"
+            ]
+        ],
+        "Sandstorm": [
+            [
+                "Sandstorm (Weather)",
+                "keyword"
+            ],
+            [
+                "Sandstorm",
+                "list"
+            ],
+            [
+                "Sandstorm",
+                "move"
+            ]
+        ],
+        "Powder": [
+            [
+                "Powder (Keyword)",
+                "keyword"
+            ],
+            [
+                "Powder",
+                "list"
+            ],
+            [
+                "Powder (Move)",
+                "move"
+            ]
+        ],
+        "Hail": [
+            [
+                "Hail (Weather)",
+                "keyword"
+            ],
+            [
+                "Hail",
+                "list"
+            ],
+            [
+                "Hail",
+                "move"
+            ]
+        ]
+    },
+    "pt": {
+        "Sprint": [
+            [
+                "Sprint (Ability)",
+                "ability"
+            ],
+            [
+                "Sprint",
+                "list"
+            ],
+            [
+                "Sprint (Maneuver)",
+                "maneuver"
+            ]
+        ],
+        "Last Chance": [
+            [
+                "Last Chance (Ability)",
+                "ability"
+            ],
+            [
+                "Last Chance (Keyword)",
+                "keyword"
+            ],
+            [
+                "Last Chance",
+                "list"
+            ]
+        ],
+        "Focus": [
+            [
+                "Focus (Ability)",
+                "ability"
+            ],
+            [
+                "Focus (Item)",
+                "item"
+            ],
+            [
+                "Focus",
+                "list"
+            ]
+        ],
+        "Blur": [
+            [
+                "Blur (Ability)",
+                "ability"
+            ],
+            [
+                "Blur (Feature)",
+                "feature"
+            ],
+            [
+                "Blur",
+                "list"
+            ]
+        ],
+        "Levitate": [
+            [
+                "Levitate (Ability)",
+                "ability"
+            ],
+            [
+                "Levitate (Capability)",
+                "capability"
+            ],
+            [
+                "Levitate",
+                "list"
+            ]
+        ],
+        "Illusion": [
+            [
+                "Illusion (Ability)",
+                "ability"
+            ],
+            [
+                "Illusion (Keyword)",
+                "keyword"
+            ],
+            [
+                "Illusion",
+                "list"
+            ]
+        ],
+        "Dream Mist": [
+            [
+                "Dream Mist (Capability)",
+                "capability"
+            ],
+            [
+                "Dream Mist (Item)",
+                "item"
+            ],
+            [
+                "Dream Mist",
+                "list"
+            ]
+        ],
+        "Egg Warmer": [
+            [
+                "Egg Warmer (Capability)",
+                "capability"
+            ],
+            [
+                "Egg Warmer (Item)",
+                "item"
+            ],
+            [
+                "Egg Warmer",
+                "list"
+            ]
+        ],
+        "Aura Reader": [
+            [
+                "Aura Reader (Capability)",
+                "capability"
+            ],
+            [
+                "Aura Reader (Feature)",
+                "feature"
+            ],
+            [
+                "Aura Reader",
+                "list"
+            ]
+        ],
+        "Telepath": [
+            [
+                "Telepath (Capability)",
+                "capability"
+            ],
+            [
+                "Telepath (Feature)",
+                "feature"
+            ],
+            [
+                "Telepath",
+                "list"
+            ]
+        ],
+        "Telekinetic": [
+            [
+                "Telekinetic (Capability)",
+                "capability"
+            ],
+            [
+                "Telekinetic (Feature)",
+                "feature"
+            ],
+            [
+                "Telekinetic",
+                "list"
+            ]
+        ],
+        "Work Up": [
+            [
+                "Work Up (Edge)",
+                "edge"
+            ],
+            [
+                "Work Up",
+                "list"
+            ],
+            [
+                "Work Up (Move)",
+                "move"
+            ]
+        ],
+        "Dive": [
+            [
+                "Dive (Feature)",
+                "feature"
+            ],
+            [
+                "Dive",
+                "list"
+            ],
+            [
+                "Dive (Move)",
+                "move"
+            ]
+        ],
+        "Hidden Power": [
+            [
+                "Hidden Power (Feature)",
+                "feature"
+            ],
+            [
+                "Hidden Power",
+                "list"
+            ],
+            [
+                "Hidden Power (Move)",
+                "move"
+            ]
+        ],
+        "Sleeping Bag": [
+            [
+                "Sleeping Bag",
+                "item"
+            ],
+            [
+                "Sleeping Bag (Double)",
+                "item"
+            ]
+        ],
+        "Shield": [
+            [
+                "Shield (Item)",
+                "item"
+            ],
+            [
+                "Shield (Keyword)",
+                "keyword"
+            ],
+            [
+                "Shield",
+                "list"
+            ]
+        ],
+        "Push": [
+            [
+                "Push (Keyword)",
+                "keyword"
+            ],
+            [
+                "Push",
+                "list"
+            ],
+            [
+                "Push (Maneuver)",
+                "maneuver"
+            ]
+        ],
+        "Powder": [
+            [
+                "Powder (Keyword)",
+                "keyword"
+            ],
+            [
+                "Powder",
+                "list"
+            ],
+            [
+                "Powder (Move)",
+                "move"
+            ]
+        ],
+        "Hail": [
+            [
+                "Hail (Weather)",
+                "keyword"
+            ],
+            [
+                "Hail",
+                "list"
+            ],
+            [
+                "Hail (Move)",
+                "move"
+            ]
+        ],
+        "Sandstorm": [
+            [
+                "Sandstorm (Weather)",
+                "keyword"
+            ],
+            [
+                "Sandstorm",
+                "list"
+            ],
+            [
+                "Sandstorm (Move)",
+                "move"
+            ]
+        ]
+    },
+    "al": {
+        "Sprint": [
+            [
+                "Sprint (Ability)",
+                "ability"
+            ],
+            [
+                "Sprint",
+                "list"
+            ],
+            [
+                "Sprint (Maneuver)",
+                "maneuver"
+            ]
+        ],
+        "Last Chance": [
+            [
+                "Last Chance (Ability)",
+                "ability"
+            ],
+            [
+                "Last Chance (Keyword)",
+                "keyword"
+            ],
+            [
+                "Last Chance",
+                "list"
+            ]
+        ],
+        "Focus": [
+            [
+                "Focus (Ability)",
+                "ability"
+            ],
+            [
+                "Focus (Item)",
+                "item"
+            ],
+            [
+                "Focus",
+                "list"
+            ]
+        ],
+        "Blur": [
+            [
+                "Blur (Ability)",
+                "ability"
+            ],
+            [
+                "Blur (Feature)",
+                "feature"
+            ],
+            [
+                "Blur",
+                "list"
+            ]
+        ],
+        "Dancer": [
+            [
+                "Dancer (Ability)",
+                "ability"
+            ],
+            [
+                "Dancer (Feature)",
+                "feature"
+            ],
+            [
+                "Dancer",
+                "list"
+            ]
+        ],
+        "Levitate": [
+            [
+                "Levitate (Ability)",
+                "ability"
+            ],
+            [
+                "Levitate (Capability)",
+                "capability"
+            ],
+            [
+                "Levitate",
+                "list"
+            ]
+        ],
+        "Stamina": [
+            [
+                "Stamina (Ability)",
+                "ability"
+            ],
+            [
+                "Stamina (Edge)",
+                "edge"
+            ],
+            [
+                "Stamina",
+                "list"
+            ]
+        ],
+        "Illusion": [
+            [
+                "Illusion (Ability)",
+                "ability"
+            ],
+            [
+                "Illusion (Keyword)",
+                "keyword"
+            ],
+            [
+                "Illusion",
+                "list"
+            ]
+        ],
+        "Dream Mist": [
+            [
+                "Dream Mist (Capability)",
+                "capability"
+            ],
+            [
+                "Dream Mist (Item)",
+                "item"
+            ],
+            [
+                "Dream Mist",
+                "list"
+            ]
+        ],
+        "Egg Warmer": [
+            [
+                "Egg Warmer (Capability)",
+                "capability"
+            ],
+            [
+                "Egg Warmer (Item)",
+                "item"
+            ],
+            [
+                "Egg Warmer",
+                "list"
+            ]
+        ],
+        "Aura Reader": [
+            [
+                "Aura Reader (Capability)",
+                "capability"
+            ],
+            [
+                "Aura Reader (Feature)",
+                "feature"
+            ],
+            [
+                "Aura Reader",
+                "list"
+            ]
+        ],
+        "Telepath": [
+            [
+                "Telepath (Capability)",
+                "capability"
+            ],
+            [
+                "Telepath (Feature)",
+                "feature"
+            ],
+            [
+                "Telepath",
+                "list"
+            ]
+        ],
+        "Telekinetic": [
+            [
+                "Telekinetic (Capability)",
+                "capability"
+            ],
+            [
+                "Telekinetic (Feature)",
+                "feature"
+            ],
+            [
+                "Telekinetic",
+                "list"
+            ]
+        ],
+        "Work Up": [
+            [
+                "Work Up (Edge)",
+                "edge"
+            ],
+            [
+                "Work Up",
+                "list"
+            ],
+            [
+                "Work Up (Move)",
+                "move"
+            ]
+        ],
+        "Hidden Power": [
+            [
+                "Hidden Power (Feature)",
+                "feature"
+            ],
+            [
+                "Hidden Power",
+                "list"
+            ],
+            [
+                "Hidden Power (Move)",
+                "move"
+            ]
+        ],
+        "Dive": [
+            [
+                "Dive (Feature)",
+                "feature"
+            ],
+            [
+                "Dive",
+                "list"
+            ],
+            [
+                "Dive (Move)",
+                "move"
+            ]
+        ],
+        "Sleeping Bag": [
+            [
+                "Sleeping Bag (Double)",
+                "item"
+            ],
+            [
+                "Sleeping Bag",
+                "item"
+            ]
+        ],
+        "Shield": [
+            [
+                "Shield (Item)",
+                "item"
+            ],
+            [
+                "Shield (Keyword)",
+                "keyword"
+            ],
+            [
+                "Shield",
+                "list"
+            ]
+        ],
+        "Push": [
+            [
+                "Push (Keyword)",
+                "keyword"
+            ],
+            [
+                "Push",
+                "list"
+            ],
+            [
+                "Push (Maneuver)",
+                "maneuver"
+            ]
+        ],
+        "Powder": [
+            [
+                "Powder (Keyword)",
+                "keyword"
+            ],
+            [
+                "Powder",
+                "list"
+            ],
+            [
+                "Powder (Move)",
+                "move"
+            ]
+        ],
+        "Hail": [
+            [
+                "Hail (Weather)",
+                "keyword"
+            ],
+            [
+                "Hail",
+                "list"
+            ],
+            [
+                "Hail (Move)",
+                "move"
+            ]
+        ],
+        "Sandstorm": [
+            [
+                "Sandstorm (Weather)",
+                "keyword"
+            ],
+            [
+                "Sandstorm",
+                "list"
+            ],
+            [
+                "Sandstorm (Move)",
+                "move"
+            ]
+        ]
+    }
+}

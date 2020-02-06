@@ -1,0 +1,1097 @@
+{
+    "Aura Break":{
+        "embed":"{\"title\":\"Aura Break\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Foes may not benefit from Abilities that increase the Combat Stages or damage dealt by themselvs or their allies.\",\"footer\":{\"text\":\"Core: p.311\"}}"
+    },
+    "Aura Storm":{
+        "embed":"{\"title\":\"Aura Storm\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"For each injury the user has, they gain a +3 Damage bonus to all Moves with the Aura keyword. Additionally, while the user is at or under \\u00bd of their Max Hit Points, they gain a +3 Damage Bonus to all Moves with the Aura Keyword.\",\"footer\":{\"text\":\"Core: p.312\"}}"
+    },
+    "Bad Dreams":{
+        "embed":"{\"title\":\"Bad Dreams\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"At the beginning of the user\\u2019s turn, all Sleeping Pok\\u00e9mon or Trainers in a Burst 5 lose a Tick of Hit Points.\",\"footer\":{\"text\":\"Core: p.312\"}}"
+    },
+    "Battle Armor":{
+        "embed":"{\"title\":\"Battle Armor\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user is immune to Critical Hits; they are instead normal hits. Defensive.\",\"footer\":{\"text\":\"Core: p.312\"}}"
+    },
+    "Beautiful":{
+        "embed":"{\"title\":\"Beautiful\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Swift Action\"}],\"description\":\"The user may activate Beautiful to either grain +2 Beauty DIce in a Contest, or to cure any adjacent targets of the Enraged Condition.\",\"footer\":{\"text\":\"Core: p.312\"}}"
+    },
+    "Big Pecks":{
+        "embed":"{\"title\":\"Big Pecks\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user cannot have its Defense Stat lowered. The user cannot have its Defense Combat Stages lowered. Defensive.\",\"footer\":{\"text\":\"Core: p.312\"}}"
+    },
+    "Big Swallow":{
+        "embed":"{\"title\":\"Big Swallow\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Connection - Stockpile. Whenever the user uses Swallow or Spit Up, it may treat the Stockpile Count as if it was one higher. This Ability has no effect if the Stockpile Counter is already 3.\",\"footer\":{\"text\":\"Core: p.312\"}}"
+    },
+    "Blaze":{
+        "embed":"{\"title\":\"Blaze\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"},{\"name\":\"Keywords\",\"value\":\"Last Chance\"}],\"description\":\"The user gains Last Chance with Fire.\",\"footer\":{\"text\":\"Core: p.312\"}}"
+    },
+    "Blow Away":{
+        "embed":"{\"title\":\"Blow Away\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Connection - Whirlwind. When the user uses Whirlwind, all targets hit lose a Tick of Hit Points.\",\"footer\":{\"text\":\"Core: p.312\"}}"
+    },
+    "Dodge":{
+        "embed":"{\"title\":\"Dodge\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is hit by a Damaging Move.\"}],\"description\":\"The triggering Move instead misses. Defensive.\",\"footer\":{\"text\":\"Core: p.316\"}}"
+    },
+    "Absorb Force":{
+        "embed":"{\"title\":\"Absorb Force\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is damaged by a Physical Attack\"}],\"description\":\"The user takes damage as if the attack was one step less effective.\",\"footer\":{\"text\":\"Core: p.311\"}}"
+    },
+    "Adaptability":{
+        "embed":"{\"title\":\"Adaptability\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Increase the Damage of all Moves with which the user shares an Elemental Type by +1 Damage Base.\",\"footer\":{\"text\":\"Core: p.311\"}}"
+    },
+    "Aerilate":{
+        "embed":"{\"title\":\"Aerilate\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At Will -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"The User uses a Normal Type Damaging Move.\"}],\"description\":\"The Move is Changed to Flying Type.\",\"footer\":{\"text\":\"Core: p.311\"}}"
+    },
+    "Aftermath":{
+        "embed":"{\"title\":\"Aftermath\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"}],\"description\":\"When the user is reduced to 0 HP or less, they create a Burst 1. Everything in the Burst loses \\u00bc of its Max Hit Points.\",\"footer\":{\"text\":\"Core: p.311\"}}"
+    },
+    "Aroma Veil":{
+        "embed":"{\"title\":\"Aroma Veil\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user and all Pok\\u00e9mon and Trainers within 3 meters cannot be Confused, Enraged, or Suppressed. Defensive.\",\"footer\":{\"text\":\"Core: p.311\"}}"
+    },
+    "Ambush":{
+        "embed":"{\"title\":\"Ambush\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"}],\"description\":\"The user may use a Melee Move with a Damage Base of 6 (before applying STAB or other modifiers) or lower as if it had the Priority keyword. If it hits, the target is Flinched.\",\"footer\":{\"text\":\"Core: p.311\"}}"
+    },
+    "Analytic":{
+        "embed":"{\"title\":\"Analytic\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Whenever the user targets uses a damaging Move on a Pok\\u00e9mon or Trainer that have acted before it during Initiative this Round, that Move deals an additional +5 Damage.\",\"footer\":{\"text\":\"Core: p.311\"}}"
+    },
+    "Anger Point":{
+        "embed":"{\"title\":\"Anger Point\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Free Action\"}],\"description\":\"When the Pok\\u00e9mon receives a Critical Hit, they become Enraged and gain +6 Attack Combat Stages.\",\"footer\":{\"text\":\"Core: p.311\"}}"
+    },
+    "Beam Cannon":{
+        "embed":"{\"title\":\"Beam Cannon\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The Effect Range and Critical Hit Range of the user's Ranged, 1-Target Moves are increased by 3.\",\"footer\":{\"text\":\"Core: p.312\"}}"
+    },
+    "Blessed Touch":{
+        "embed":"{\"title\":\"Blessed Touch\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily x2 - Standard Action\"}],\"description\":\"An adjacent Pok\\u00e9mon or Trainer gains Hit Points equal to 1\\\/4th of its maximum Hit Points.\",\"footer\":{\"text\":\"Core: p.312\"}}"
+    },
+    "Anticipation":{
+        "embed":"{\"title\":\"Anticipation\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Swift Action\"},{\"name\":\"Target\",\"value\":\"Pok\\u00e9mon or Trainers\"}],\"description\":\"The target reveals if they have any Moves that are Super-Effective against the Pok\\u00e9mon with Anticipation. You may not target a Pok\\u00e9mon or Trainer more than once per encounter with Anticipation. Anticipation only reveals whether the opponent does or does not have those moves, not the specific moves themselves.\",\"footer\":{\"text\":\"Core: p.311\"}}"
+    },
+    "Aqua Boost":{
+        "embed":"{\"title\":\"Aqua Boost\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Free Action\"},{\"name\":\"Trigger\",\"value\":\"An adjacent Ally uses a Water-Type Move\"}],\"description\":\"The allied target gains a +5 Bonus to its damage roll with the triggering Move.  A target may not benefit from more than one instance of Aqua Boost at a time.  \",\"footer\":{\"text\":\"Core: p.311\"}}"
+    },
+    "Arena Trap":{
+        "embed":"{\"title\":\"Arena Trap\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Target\",\"value\":\"Pok\\u00e9mon or Trainers\"}],\"description\":\"Once Arena trap is activated, all foes within 5 meters of the user are considered Slowed. This does not affect targets of the Flying Type, or with a Levitate, Sky, or Burrow Speed of 4 or higher. The user may end the effect as a Free Action, and the effect ends if the user is fainted or returned to a Pok\\u00e9 Ball.\",\"footer\":{\"text\":\"Core: p.311\"}}"
+    },
+    "Corrosive Toxins":{
+        "embed":"{\"title\":\"Corrosive Toxins\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"}],\"description\":\"Connection - Toxic. The user may activate this Ability when using Toxic to allow the Move to ignore Immunity to the Status Affliction, Blessings, and the effects of Abilities that may prevent Hit Point loss from being Badly Poisoned (such as Magic Guard or Poison Heal).\",\"footer\":{\"text\":\"Core: p.314\"}}"
+    },
+    "Bone Lord":{
+        "embed":"{\"title\":\"Bone Lord\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user hits with Bone Club, Bonemerang, or Bone Rush\"}],\"description\":\"Connection \\u2013 Bonemerang. This Ability may be activated when hitting with Bone Club to automatically Flinch its target; or to use Bonemerang as a Priority Move; or when hitting with Bone Rush to cause the attack to automatically hit 5 times.\",\"footer\":{\"text\":\"Core: p.312\"}}"
+    },
+    "Bone Wielder":{
+        "embed":"{\"title\":\"Bone Wielder\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"This ability is only functional if the user is holding a Thick Club item. The user gains a +1 Accuracy Bonus to Bone Club, Bonemerang, and Bone Rush. Additionally, the user cannot be disarmed, or have their Thick Club forcefully removed by Trick, Switcheroo, Thief, or any other Moves or effects unless the user wishes it.\",\"footer\":{\"text\":\"Core: p.313\"}}"
+    },
+    "Brimstone":{
+        "embed":"{\"title\":\"Brimstone\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Whenever the user causes a Burn with a damaging Fire-Type Attack, the target is also Poisoned.\",\"footer\":{\"text\":\"Core: p.313\"}}"
+    },
+    "Bulletproof":{
+        "embed":"{\"title\":\"Bulletproof\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user resists all X target ranged attacks one step further. This refers to attacks and Moves that simply hit one target or specify hitting multiple targets, such as Razor Wind hitting three targets. It has no effect on Moves that are capable of hitting multiple targets through areas of effect, such as Bursts or Cones. Defensive.\",\"footer\":{\"text\":\"Core: p.313\"}}"
+    },
+    "Bully":{
+        "embed":"{\"title\":\"Bully\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user hits the target for Super-Effective Damage with a Melee Move.\"}],\"description\":\"The target of the attack  is pushed 2 Meters, becomes Tripped, and gains an Injury.\",\"footer\":{\"text\":\"Core: p.313\"}}"
+    },
+    "Compound Eyes":{
+        "embed":"{\"title\":\"Compound Eyes\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user gains a +3 Bonus to all Accuracy Rolls.\",\"footer\":{\"text\":\"Core: p.314\"}}"
+    },
+    "Cave Crasher":{
+        "embed":"{\"title\":\"Cave Crasher\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user resists Ground-Type and Rock-Type attacks one step further. Defensive.\",\"footer\":{\"text\":\"Core: p.313\"}}"
+    },
+    "Celebrate":{
+        "embed":"{\"title\":\"Celebrate\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user causes a foe to Faint by using a damaging attack\"}],\"description\":\"The user increases their Speed by 1 Combat Stage and may immediately take an additional Shift Action to move as if they were Slowed. This Ability may only be activated if the user is not prevented from shifting.\",\"footer\":{\"text\":\"Core: p.313\"}}"
+    },
+    "Chlorophyll":{
+        "embed":"{\"title\":\"Chlorophyll\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"While in Sunny Weather, the user gains +4 Speed Combat Stages.\",\"footer\":{\"text\":\"Core: p.313\"}}"
+    },
+    "Cloud Nine":{
+        "embed":"{\"title\":\"Cloud Nine\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"}],\"description\":\"The weather of the Field is set to Normal.\",\"footer\":{\"text\":\"Core: p.313\"}}"
+    },
+    "Cluster Mind":{
+        "embed":"{\"title\":\"Cluster Mind\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user's Move Pool limit is increased by +2.\",\"footer\":{\"text\":\"Core: p.313\"}}"
+    },
+    "Competitive":{
+        "embed":"{\"title\":\"Competitive\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Whenever the user has its Combat Stages lowered, by something other than its own Moves or Abilities, the user\\u2019s Special Attack is raised 2 Combat Stages.\",\"footer\":{\"text\":\"Core: p.314\"}}"
+    },
+    "Copy Master":{
+        "embed":"{\"title\":\"Copy Master\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Connection - Copycat. Copycat's frequency is Scene. Whenever the user uses Copycat or Mimic, it gains +1 Combat Stage in a Stat of its choIce after the Move is resolved.\",\"footer\":{\"text\":\"Core: p.314\"}}"
+    },
+    "Courage":{
+        "embed":"{\"title\":\"Courage\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"While at or under 1\\\/3rd of its Max Hit Point value, the user gains a +5 Damage Bonus to all Damage Rolls, and 5 Damage Reduction. Defensive.\",\"footer\":{\"text\":\"Core: p.314\"}}"
+    },
+    "Clay Cannons":{
+        "embed":"{\"title\":\"Clay Cannons\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Swift Action\"}],\"description\":\"Until the end of the round, the user may originate any Ranged Move they use from any square adjacent to itself.\",\"footer\":{\"text\":\"Core: p.313\"}}"
+    },
+    "Confidence":{
+        "embed":"{\"title\":\"Confidence\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Standard Action\"}],\"description\":\"Choose a Combat Stat. All allies within 5 meters of the user gain +1 CS in the Chosen Stat.\",\"footer\":{\"text\":\"Core: p.314\"}}"
+    },
+    "Contrary":{
+        "embed":"{\"title\":\"Contrary\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"If something would raise the user\\u2019s Combat Stages, it instead lowers the user\\u2019s Combat Stages by the same amount. If something would lower the user\\u2019s Combat Stages, it instead raises the user\\u2019s Combat Stages by the same amount.\",\"footer\":{\"text\":\"Core: p.314\"}}"
+    },
+    "Cherry Power":{
+        "embed":"{\"title\":\"Cherry Power\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily - Swift Action\"}],\"description\":\"The user gains 15 Temporary Hit Points, and is cured of all Persistent Status Afflictions.\",\"footer\":{\"text\":\"Core: p.313\"}}"
+    },
+    "Conqueror":{
+        "embed":"{\"title\":\"Conqueror\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user causes a foe to Faint by using a damaging Physical or Special Attack\"}],\"description\":\"The user's Attack, Special Attack, and Speed gain +1 Combat Stage.\",\"footer\":{\"text\":\"Core: p.314\"}}"
+    },
+    "Clear Body":{
+        "embed":"{\"title\":\"Clear Body\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user\\u2019s Combat Stages may not be lowered by the effect of foes\\u2019 Features, Abilities, or Moves. Status Affictions may still alter their Combat Stages. Defensive.\",\"footer\":{\"text\":\"Core: p.313\"}}"
+    },
+    "Color Change":{
+        "embed":"{\"title\":\"Color Change\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is targeted by a Move\"}],\"description\":\"The User's Type changes to match the Type of the triggering Move.\",\"footer\":{\"text\":\"Core: p.313\"}}"
+    },
+    "Dig Away":{
+        "embed":"{\"title\":\"Dig Away\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily - Free Action\"}],\"description\":\"Connection - Dig. When hit by a Move, this Pok\\u00e9mon may activate this Feature to use Dig, frequency allowing, as an interrupt to avoid the attack and shift underground immediately. This consumes a command as normal. The terrain must allow for Dig to be used.\",\"footer\":{\"text\":\"Core: p.316\"}}"
+    },
+    "Discipline":{
+        "embed":"{\"title\":\"Discipline\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"}],\"description\":\"If the user gains initiative and is Confused, Enraged, Infatuated, or Flinched, they may activate Discipline to cure themselves of any of these conditions.\",\"footer\":{\"text\":\"Core: p.316\"}}"
+    },
+    "Dire Spore":{
+        "embed":"{\"title\":\"Dire Spore\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Connection - Spore. Whenever the user hits a target with Spore, that target is also Poisoned.\",\"footer\":{\"text\":\"Core: p.316\"}}"
+    },
+    "Crush Trap":{
+        "embed":"{\"title\":\"Crush Trap\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user successfully grapples a target.\"}],\"description\":\"Connection - Wrap.  When you activate this Ability, the user may immediately deal damage to the target as if the user had hit with a Struggle Attack.  There is no attack roll and this damage cannot miss, be a critical hit, or trigger any Effect Ranges.\",\"footer\":{\"text\":\"Core: p.314\"}}"
+    },
+    "Cursed Body":{
+        "embed":"{\"title\":\"Cursed Body\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is hit by a Damaging Move.\"}],\"description\":\"The Move becomes Disabled.\",\"footer\":{\"text\":\"Core: p.314\"}}"
+    },
+    "Cute Charm":{
+        "embed":"{\"title\":\"Cute Charm\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"A foe of the opposite gender attacks the user with a Melee Attack\"}],\"description\":\"The foe becomes Infatuated.\",\"footer\":{\"text\":\"Core: p.314\"}}"
+    },
+    "Cute Tears":{
+        "embed":"{\"title\":\"Cute Tears\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is hit by a Damaging Move.\"}],\"description\":\"The attacking foe loses 2 Combat Stages in the Attack Stat used by the triggering Move.\",\"footer\":{\"text\":\"Core: p.314\"}}"
+    },
+    "Damp":{
+        "embed":"{\"title\":\"Damp\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The Moves Self-Destruct and Explosion may not be used when a Pok\\u00e9mon with Damp is within 10-meters of Self-Destruct or Explosion\\u2019s user. The Ability Aftermath may not be activated when a Pok\\u00e9mon with Damp is within 10-meters of the Pok\\u00e9mon attempting to activate Aftermath.\",\"footer\":{\"text\":\"Core: p.315\"}}"
+    },
+    "Diamond Defense":{
+        "embed":"{\"title\":\"Diamond Defense\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Connection - Stealth Rock. Stealth Rock\\u2019s Frequency is Scene x2, and the user\\u2019s Stealth Rocks can be treated as dealing Rock-Type or Fairy-Type Damage, whichever is more effective.\",\"footer\":{\"text\":\"Core: p.315\"}}"
+    },
+    "Danger Syrup":{
+        "embed":"{\"title\":\"Danger Syrup\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"}],\"description\":\"Connection - Sweet Scent.  If the user it hit by a damaging attack, it may use Sweet Scent as a Free action, frequency allowing.\",\"footer\":{\"text\":\"Core: p.315\"}}"
+    },
+    "Dark Art":{
+        "embed":"{\"title\":\"Dark Art\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"},{\"name\":\"Keywords\",\"value\":\"Last Chance\"}],\"description\":\"The user gains Last Chance with Dark.\",\"footer\":{\"text\":\"Core: p.315\"}}"
+    },
+    "Dark Aura":{
+        "embed":"{\"title\":\"Dark Aura\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user and all allies have the Damage Base of their damaging Dark Type Attacks increased by +1.\",\"footer\":{\"text\":\"Core: p.315\"}}"
+    },
+    "Daze":{
+        "embed":"{\"title\":\"Daze\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Standard Action\"}],\"description\":\"Make an AC4 Status attack against a target within 6 meters.  If you hit, the target falls Asleep.\",\"footer\":{\"text\":\"Core: p.315\"}}"
+    },
+    "Deadly Poison":{
+        "embed":"{\"title\":\"Deadly Poison\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user Poisons a target\"}],\"description\":\"The target is Badly Poisoned instead.\",\"footer\":{\"text\":\"Core: p.315\"}}"
+    },
+    "Decoy":{
+        "embed":"{\"title\":\"Decoy\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily - Free Action\"}],\"description\":\"The user uses the Move \\\"Follow Me\\\" as if it was on their Move List, and their Evasion is raised by +2 until the end of their next turn.\",\"footer\":{\"text\":\"Core: p.315\"}}"
+    },
+    "Deep Sleep":{
+        "embed":"{\"title\":\"Deep Sleep\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"When asleep, this Pok\\u00e9mon restores a Tick of Hit Points at the end of each turn.\",\"footer\":{\"text\":\"Core: p.315\"}}"
+    },
+    "Defeatist":{
+        "embed":"{\"title\":\"Defeatist\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Whenever the user is brought below 50% of their max Hit Points, the user\\u2019s Attack and Special Attack are lowered by 1 Combat Stage each, and the user\\u2019s Speed is increased by +2 Combat Stages. If the user is healed above 50% max Hit Points, these changes are reverted.\",\"footer\":{\"text\":\"Core: p.315\"}}"
+    },
+    "Defy Death":{
+        "embed":"{\"title\":\"Defy Death\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily - Swift Action\"}],\"description\":\"By activating this Ability, the user is instantly healed of up to 2 Injuries;  These count towards the total number of Injuries that can be healed each day.  Additionally, to die, the user must reach -250% Hit Points instead of -200% Hit Points.\",\"footer\":{\"text\":\"Core: p.315\"}}"
+    },
+    "Defiant":{
+        "embed":"{\"title\":\"Defiant\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Whenever the user has its Combat Stages lowered, by something other than its own Moves or Abilities, the user\\u2019s Attack is raised 2 Combat Stages.\",\"footer\":{\"text\":\"Core: p.315\"}}"
+    },
+    "Delivery Bird":{
+        "embed":"{\"title\":\"Delivery Bird\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user may hold two Held Items at once. Whenever an Ability or Move affects the user\\u2019s Held Items, you may choose which one is affected.\",\"footer\":{\"text\":\"Core: p.315\"}}"
+    },
+    "Desert Weather":{
+        "embed":"{\"title\":\"Desert Weather\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user is immune to Sandstorm Damage, resists Fire-Type Moves in Sunny Weather, and regains 1\\\/16th of its Max Hit Points at the end of each of its turns while in Rainy Weather.\",\"footer\":{\"text\":\"Core: p.315\"}}"
+    },
+    "Flame Body":{
+        "embed":"{\"title\":\"Flame Body\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is hit by a Melee Attack\"}],\"description\":\"The attacking foe becomes Burned.\",\"footer\":{\"text\":\"Core: p.317\"}}"
+    },
+    "Flare Boost":{
+        "embed":"{\"title\":\"Flare Boost\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"While Burned, the user\\u2019s Special Attack is raised by 2 Combat Stages. If the user is cured of its Burn, its Special Attack is lowered by 2 Combat Stages.\",\"footer\":{\"text\":\"Core: p.317\"}}"
+    },
+    "Fluffy Charge":{
+        "embed":"{\"title\":\"Fluffy Charge\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Connection - Charge.  Whenever the user uses Charge, they gain +1 CS to Defense.\",\"footer\":{\"text\":\"Core: p.317\"}}"
+    },
+    "Dreamspinner":{
+        "embed":"{\"title\":\"Dreamspinner\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily - Standard Action\"}],\"description\":\"For each Sleeping Pok\\u00e9mon or Trainer within 10 meters, the user gains a Tick of Hit Points.\",\"footer\":{\"text\":\"Core: p.316\"}}"
+    },
+    "Drizzle":{
+        "embed":"{\"title\":\"Drizzle\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Swift Action\"}],\"description\":\"The Weather changes to be Rainy for 5 rounds.\",\"footer\":{\"text\":\"Core: p.316\"}}"
+    },
+    "Drown Out":{
+        "embed":"{\"title\":\"Drown Out\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"A foe uses a Move with the Sonic keyword\"}],\"description\":\"The user makes a Focus Check with a DC equal to the Move\\u2019s Accuracy Roll. If the user succeeds, the triggering Move fails.\",\"footer\":{\"text\":\"Core: p.316\"}}"
+    },
+    "Drought":{
+        "embed":"{\"title\":\"Drought\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"}],\"description\":\"The Weather changes to be Sunny for 5 rounds.\",\"footer\":{\"text\":\"Core: p.316\"}}"
+    },
+    "Dry Skin":{
+        "embed":"{\"title\":\"Dry Skin\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Whenever the user is hit by a damaging Fire-Type Move or ends their turn in Sunny Weather, they lose a Tick of Hit Points. The user is immune to the damage and effects of Water-Type Moves, and whenever the user is hit by a damaging Water-Type Move or ends their turn in Rainy Weather, they gain a Tick of Hit Points.\",\"footer\":{\"text\":\"Core: p.316\"}}"
+    },
+    "Filter":{
+        "embed":"{\"title\":\"Filter\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"When the user is hit by a Super-Effective attack, the attack deals x1.25 damage instead of x1.5 damage. If the user is hit by a Super-Super-Effective attack, the attack deals x1.5 damage instead of x2 damage. If you have both Solid Rock and Filter, you gain 5 Damage Reduction against Super-Effective Damage. Defensive.\",\"footer\":{\"text\":\"Core: p.317\"}}"
+    },
+    "Flash Fire":{
+        "embed":"{\"title\":\"Flash Fire\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user is immune to the damage and effects of Fire-Type attacks. If the user is hit by a Fire-Type attack, the user gains a +5 Bonus to their next Damage Roll with a Fire-Type Move. Defensive.\",\"footer\":{\"text\":\"Core: p.317\"}}"
+    },
+    "Dust Cloud":{
+        "embed":"{\"title\":\"Dust Cloud\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"}],\"description\":\"Connection - PoisonPowder. Whenever the user uses PoisonPowder, Sleep Powder, or Stun Spore, the user may activate this Ability to use if it as if that move have a range of Burst 1 instead.\",\"footer\":{\"text\":\"Core: p.316\"}}"
+    },
+    "Early Bird":{
+        "embed":"{\"title\":\"Early Bird\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user gains a +3 Bonus to rolls made due to Status Afflictions.\",\"footer\":{\"text\":\"Core: p.316\"}}"
+    },
+    "Effect Spore":{
+        "embed":"{\"title\":\"Effect Spore\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is hit by a Melee Attack\"}],\"description\":\"Roll 1d6. On a result of 1 or 2, the attacker is Poisoned. On a result of 3 or 4, the attacker is Paralyzed. On a result of 5 or 6, the attacker falls asleep.\",\"footer\":{\"text\":\"Core: p.316\"}}"
+    },
+    "Enfeebling Lips":{
+        "embed":"{\"title\":\"Enfeebling Lips\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Connection - Lovely Kiss. Whenever the user uses the Move \\\"Lovely Kiss\\\", they may choose a stat. If the Move successfully hits, the Pok\\u00e9mon or Trainer being targeted loses 2 combat stages in that stat.\",\"footer\":{\"text\":\"Core: p.316\"}}"
+    },
+    "Electrodash":{
+        "embed":"{\"title\":\"Electrodash\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"}],\"description\":\"The user may make a Sprint Action as a Swift Action.\",\"footer\":{\"text\":\"Core: p.316\"}}"
+    },
+    "Enduring Rage":{
+        "embed":"{\"title\":\"Enduring Rage\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user may not make rolls to cure themselved of the Enraged condition.  However, while Enraged, the user gains 5 Damage Reduction.\",\"footer\":{\"text\":\"Core: p.316\"}}"
+    },
+    "Exploit":{
+        "embed":"{\"title\":\"Exploit\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Whenever you deal Super-Effective Damage to a target, that target treats your damage roll as if it were increased by +5.\",\"footer\":{\"text\":\"Core: p.317\"}}"
+    },
+    "Fiery Crash":{
+        "embed":"{\"title\":\"Fiery Crash\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Whenever the user uses a Move with the Dash keyword, they may either increase that Move\\u2019s Damage Base by +2, or change the Move to be Fire-Type if it was not already. All Moves with the Dash keyword performed as Fire-Typed burn their target on 19+, or increase the effect range by +2 if they could already inflict Burn.\",\"footer\":{\"text\":\"Core: p.317\"}}"
+    },
+    "Flame Tongue":{
+        "embed":"{\"title\":\"Flame Tongue\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user hits a foe with Lick.\"}],\"description\":\"Connection - Lick. The foe hit with Lick gains an Injury and becomes Burned.\",\"footer\":{\"text\":\"Core: p.317\"}}"
+    },
+    "Fade Away":{
+        "embed":"{\"title\":\"Fade Away\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Standard Action, Interrupt\"}],\"description\":\"The user becomes Invisible until the beginning of their next turn, and may immediately Shift. This Ability may be activated as an Interrupt when hit by a Physical attack; the user may declare the use of Fade Away to avoid all damage and\\\/or effects of the move. Defensive.\",\"footer\":{\"text\":\"Core: p.317\"}}"
+    },
+    "Fairy Aura":{
+        "embed":"{\"title\":\"Fairy Aura\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user and all allies have the Damage Base of their Damaging Fairy Type attacks increased by +1.\",\"footer\":{\"text\":\"Core: p.317\"}}"
+    },
+    "Frisk":{
+        "embed":"{\"title\":\"Frisk\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Target\",\"value\":\"An Adjacent Pok\\u00e9mon\"}],\"description\":\"The target reveals their Type, Ability, Nature, Level, and name of any Held Items they are currently holding, if any.\",\"footer\":{\"text\":\"Core: p.318\"}}"
+    },
+    "Frostbite":{
+        "embed":"{\"title\":\"Frostbite\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user's damaging Ice Type attacks cause the target to become Slowed on 18+, and the Effect Range for Freeze on these Moves is increased by +1. If the Move does not cause Freezing, it now causes Freezing on a roll of 20.\",\"footer\":{\"text\":\"Core: p.319\"}}"
+    },
+    "Fur Coat":{
+        "embed":"{\"title\":\"Fur Coat\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user resists all Physical Attacks one step further. Defensive.\",\"footer\":{\"text\":\"Core: p.319\"}}"
+    },
+    "Gale Wings":{
+        "embed":"{\"title\":\"Gale Wings\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user may use Flying Type Moves as if they have the Priority Keyword.\",\"footer\":{\"text\":\"Core: p.319\"}}"
+    },
+    "Gardener":{
+        "embed":"{\"title\":\"Gardener\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily x3 - Extended Action\"},{\"name\":\"Target\",\"value\":\"A yielding Plant\"}],\"description\":\"Increase the Soil Quality of the plant by +1, as if Mulch has been applied.  This may target a Specific Plant only once per day.\",\"footer\":{\"text\":\"Core: p.319\"}}"
+    },
+    "Gentle Vibe":{
+        "embed":"{\"title\":\"Gentle Vibe\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Standard Action\"}],\"description\":\"Burst 2.  All targets in the Burst, including the user, have their Combat Stages reset and are cured of any Volatile Status ailments.\",\"footer\":{\"text\":\"Core: p.319\"}}"
+    },
+    "Gluttony":{
+        "embed":"{\"title\":\"Gluttony\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user may have up to three Digestion\\\/Food Buffs at once, and may eat up to two refreshments per half hour.\",\"footer\":{\"text\":\"Core: p.319\"}}"
+    },
+    "Gooey":{
+        "embed":"{\"title\":\"Gooey\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At Will - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is hit by a Melee Attack.\"}],\"description\":\"The triggering attacker has their Speed lowered by 1 Combat Stage.\",\"footer\":{\"text\":\"Core: p.319\"}}"
+    },
+    "Gore":{
+        "embed":"{\"title\":\"Gore\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Connection - Horn Attack. Whenever the user uses Horn Attack, they may push the target away 1 meter. Additionally, Horn Attack has a Critical Range of 18-20 for the user.\",\"footer\":{\"text\":\"Core: p.319\"}}"
+    },
+    "Grass Pelt":{
+        "embed":"{\"title\":\"Grass Pelt\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"When standing on any grassy or leafy terrain that is either Slow or Rough Terrain, the user gains +5 Damage Reduction. Defensive.\",\"footer\":{\"text\":\"Core: p.319\"}}"
+    },
+    "Gulp":{
+        "embed":"{\"title\":\"Gulp\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily -  Extended Action\"}],\"description\":\"If the user is allowed to spend time fully submerged in water for at least 10 minutes, they may heal up to 25% of their Max Hit Points, and remove one Injury.\",\"footer\":{\"text\":\"Core: p.319\"}}"
+    },
+    "Harvest":{
+        "embed":"{\"title\":\"Harvest\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At Will - Free Action\"}],\"description\":\"Whenever the user trades in a Digestion\\\/Food Buff from a Berry, flip a coin. On heads, the user gains all the benefits of the Digestion\\\/Food Buff, but the Buff is not used up. On tails, the Buff is consumed normally. While in Sunny Weather, the Buff is never consumed. The user may trade in a Digestion\\\/Food Buff up to once per turn during an encounter, but only until they flip \\u201cTails\\u201d.\",\"footer\":{\"text\":\"Core: p.319\"}}"
+    },
+    "Flower Veil":{
+        "embed":"{\"title\":\"Flower Veil\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Allied Grass-Type Pok\\u00e9mon within 10 meters cannot have Combat Stages lowered. Defensive.\",\"footer\":{\"text\":\"Core: p.318\"}}"
+    },
+    "Flutter":{
+        "embed":"{\"title\":\"Flutter\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At Will - Shift Action\"}],\"description\":\"The user gains +3 Evasion until the end of their next turn and cannot be Flanked.\",\"footer\":{\"text\":\"Core: p.318\"}}"
+    },
+    "Flying Fly Trap":{
+        "embed":"{\"title\":\"Flying Fly Trap\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The Pok\\u00e9mon takes no damage from Ground Type Moves and Bug Type Moves. Defensive.\",\"footer\":{\"text\":\"Core: p.318\"}}"
+    },
+    "Forest Lord":{
+        "embed":"{\"title\":\"Forest Lord\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene x2 - Shift Action\"}],\"description\":\"This turn, the user may originate a Grass or Ghost-Typed Move from any fully grown tree within 10 meters. Moves performed this way gain a +2 Bonus on their Accuracy Roll.\",\"footer\":{\"text\":\"Core: p.318\"}}"
+    },
+    "Frighten":{
+        "embed":"{\"title\":\"Frighten\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Swift Action\"},{\"name\":\"Target\",\"value\":\"Pok\\u00e9mon or Trainer within 5 meters\"}],\"description\":\"Lower the target's Speed 2 Combat Stages.\",\"footer\":{\"text\":\"Core: p.318\"}}"
+    },
+    "Forewarn":{
+        "embed":"{\"title\":\"Forewarn\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Target\",\"value\":\"A Pok\\u00e9mon or Trainer\"}],\"description\":\"The Move with the highest Damage Dice Roll known by the targeted foe is revealed. If there is a tie, all tied Moves are revealed. The Moves revealed gain a -2 Penalty during Accuracy Checks when used by the target for the rest of the encounter.\",\"footer\":{\"text\":\"Core: p.318\"}}"
+    },
+    "Focus (Ability)":{
+        "embed":"{\"title\":\"Focus\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"},{\"name\":\"Keywords\",\"value\":\"Last Chance\"}],\"description\":\"The user gains Last Chance with Fighting.\",\"footer\":{\"text\":\"Core: p.318\"}}"
+    },
+    "Fox Fire":{
+        "embed":"{\"title\":\"Fox Fire\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Standard Action\"}],\"description\":\"The user creates 3 Fire Wisps. Whenever the user is targeted by a foe within 6 meters, they may spend a Fire Wisp as an Interrupt to use the Move Ember against that foe as a Free Action, as if it was on their Move List.\",\"footer\":{\"text\":\"Core: p.318\"}}"
+    },
+    "Freezing Point":{
+        "embed":"{\"title\":\"Freezing Point\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Trigger\"},{\"name\":\"Keywords\",\"value\":\"Last Chance\"}],\"description\":\"The user gains Last Chance with Ice.\",\"footer\":{\"text\":\"Core: p.318\"}}"
+    },
+    "Friend Guard":{
+        "embed":"{\"title\":\"Friend Guard\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"An adjacent Ally takes Damage\"}],\"description\":\"The damage is resisted one step further. Defensive.\",\"footer\":{\"text\":\"Core: p.318\"}}"
+    },
+    "Heatproof":{
+        "embed":"{\"title\":\"Heatproof\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user resists Fire Type moves one step further (Super-Effective Becomes Neutral, Doubly-Super Effective becomes Super-Effective, Neutral becomes Resistant, Resistant becomes doubly Resistant).\",\"footer\":{\"text\":\"Core: p.320\"}}"
+    },
+    "Heavy Metal":{
+        "embed":"{\"title\":\"Heavy Metal\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"When referring to Weight Classes, treat the Pok\\u00e9mon as if it is 2 Weight Classes higher.\",\"footer\":{\"text\":\"Core: p.320\"}}"
+    },
+    "Helper":{
+        "embed":"{\"title\":\"Helper\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Connection - Helping Hand.  Whenever the user uses a Move that targets a single Ally, that Ally gains a +1 Bonus to Accuracy and Skill Checks until the end of the user's next turn.\",\"footer\":{\"text\":\"Core: p.320\"}}"
+    },
+    "Imposter":{
+        "embed":"{\"title\":\"Imposter\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will\"},{\"name\":\"Trigger\",\"value\":\"Ditto enters the encounter\"}],\"description\":\"When Ditto is sent out, it may use the Move Transform as a free action. If the target of Transform has any modified Combat Stages, apply these Combat Stages to Ditto. One of the target\\u2019s Abilities is randomly assigned to Ditto until Ditto uses Transform again.\",\"footer\":{\"text\":\"Core: p.321\"}}"
+    },
+    "Honey Paws":{
+        "embed":"{\"title\":\"Honey Paws\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user may consume Honey to gain a Digestion\\\/Food Buff as if they had consumed Leftovers. This Digestion\\\/Food Buff does not count against their normal limit.\",\"footer\":{\"text\":\"Core: p.320\"}}"
+    },
+    "Honey Thief":{
+        "embed":"{\"title\":\"Honey Thief\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Connection - Bug Bite. If the user uses Bug Bite to steal the effects of a Digestion\\\/Food Buff, they gain a Tick of Temporary Hit Points.\",\"footer\":{\"text\":\"Core: p.320\"}}"
+    },
+    "Huge Power":{
+        "embed":"{\"title\":\"Huge Power\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The Pok\\u00e9mon's Base Attack stat is doubled. This may double any bonuses from Nature or Vitamins, but not bonuses from Trainer Features.\",\"footer\":{\"text\":\"Core: p.320\"}}"
+    },
+    "Hustle":{
+        "embed":"{\"title\":\"Hustle\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user receives a -2 penalty to all Accuracy Rolls with Physical Attacks, and gains a +10 Bonus to all Physical Damage Rolls.\",\"footer\":{\"text\":\"Core: p.320\"}}"
+    },
+    "Hydration":{
+        "embed":"{\"title\":\"Hydration\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"At the end of the user\\u2019s turn, if the weather is Rainy, the user is cured of one Status Affliction.\",\"footer\":{\"text\":\"Core: p.320\"}}"
+    },
+    "Hyper Cutter":{
+        "embed":"{\"title\":\"Hyper Cutter\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user\\u2019s Attack Stat may not be lowered, and its Attack Combat Stages may not be lowered. Defensive.\",\"footer\":{\"text\":\"Core: p.320\"}}"
+    },
+    "Hypnotic":{
+        "embed":"{\"title\":\"Hypnotic\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Connection - Hypnosis. When used by the user, Hypnosis cannot miss.\",\"footer\":{\"text\":\"Core: p.320\"}}"
+    },
+    "Ice Body":{
+        "embed":"{\"title\":\"Ice Body\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"While Hailing, the user gains a Tick of Hit Points at the beginning of each of their turns. The user is not damaged by Hail.\",\"footer\":{\"text\":\"Core: p.320\"}}"
+    },
+    "Ice Shield":{
+        "embed":"{\"title\":\"Ice Shield\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Standard Action, Interrupt\"}],\"description\":\"The user places up to 3 segments of Ice Wall; each segment must be continuous with another segment, and at least one must be adjacent to the user. These Ice Walls count as Blocking Terrain and last until the end of the encounter or until they are destroyed. Each Ice Wall segment is 2 meters tall, 1 meter wide, and 2 centimeters thick. Each segment has 10 Hit Points, 5 Damage Reduction, and takes damage as if it was Ice-Type.\",\"footer\":{\"text\":\"Core: p.320\"}}"
+    },
+    "Ignition Boost":{
+        "embed":"{\"title\":\"Ignition Boost\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Free Action\"},{\"name\":\"Trigger\",\"value\":\"An adjacent Ally uses a Fire-Type Move\"}],\"description\":\"The allied target gains a +5 Bonus to its damage roll with the triggering Move.  A target may not benefit from more than one instance of Ignition Boost at a time.  \",\"footer\":{\"text\":\"Core: p.320\"}}"
+    },
+    "Illuminate":{
+        "embed":"{\"title\":\"Illuminate\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Attacks that target the user have a -2 Accuracy Penalty against the user. Does not affect attackers with the Blindsense Capability. Defensive.\",\"footer\":{\"text\":\"Core: p.320\"}}"
+    },
+    "Immunity":{
+        "embed":"{\"title\":\"Immunity\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user cannot be Poisoned or Badly Poisoned. Defensive.\",\"footer\":{\"text\":\"Core: p.321\"}}"
+    },
+    "Infiltrator":{
+        "embed":"{\"title\":\"Infiltrator\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user gains a +2 Bonus to Stealth Checks, does not trigger Hazards, and Blessings cannot be activated in response to its actions, and the user may bypass the effects of Substitute.\",\"footer\":{\"text\":\"Core: p.321\"}}"
+    },
+    "Instinct":{
+        "embed":"{\"title\":\"Instinct\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user\\u2019s default Evasion is increased by +2. Defensive.\",\"footer\":{\"text\":\"Core: p.321\"}}"
+    },
+    "Inner Focus":{
+        "embed":"{\"title\":\"Inner Focus\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user cannot be Flinched. If an effect would set the user\\u2019s Initiative to 0, their Initiative is not affected. Defensive.\",\"footer\":{\"text\":\"Core: p.321\"}}"
+    },
+    "Insomnia":{
+        "embed":"{\"title\":\"Insomnia\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user is immune to the Sleep condition, and cannot use the move Rest. Defensive.\",\"footer\":{\"text\":\"Core: p.321\"}}"
+    },
+    "Healer":{
+        "embed":"{\"title\":\"Healer\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Target\",\"value\":\"An Adjacent Pok\\u00e9mon or Trainer\"}],\"description\":\"The target is cured of all Status conditions.\",\"footer\":{\"text\":\"Core: p.319\"}}"
+    },
+    "Interference":{
+        "embed":"{\"title\":\"Interference\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Standard Action\"}],\"description\":\"The accuracy of all foes within 3 meters is reduced by -2 until the end of the user's next turn.\",\"footer\":{\"text\":\"Core: p.321\"}}"
+    },
+    "Heat Mirage":{
+        "embed":"{\"title\":\"Heat Mirage\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user uses a Fire-Type Move\"}],\"description\":\"The user's Evasion is increased by +3 until the beginning of their next turn.\",\"footer\":{\"text\":\"Core: p.320\"}}"
+    },
+    "Leek Mastery":{
+        "embed":"{\"title\":\"Leek Mastery\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Connection - Acrobatics. If the user is holding a Rare Leek, they may still use Acrobatics as if they were not holding an item. The user cannot be disarmed of their Stick, nor can be it be forcefully removed by Trick, Switcheroo, Thief, or any other Moves or effects unless the user wishes it.\",\"footer\":{\"text\":\"Core: p.322\"}}"
+    },
+    "Magic Guard":{
+        "embed":"{\"title\":\"Magic Guard\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user is immune to damage and Hit Point loss from Hazards, Weather, Status Afflictions, Vortexes, Recoil, Hay Fever, Iron Barbs, Rough Skin, and Leech Seed. Defensive.\",\"footer\":{\"text\":\"Core: p.323\"}}"
+    },
+    "Sand Stream":{
+        "embed":"{\"title\":\"Sand Stream\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"}],\"description\":\"The Weather changes to a Sandstorm for 5 rounds. As a static effect, the user is not damaged by Sandstorm.\",\"footer\":{\"text\":\"Core: p.328\"}}"
+    },
+    "Justified":{
+        "embed":"{\"title\":\"Justified\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is hit by a damaging Dark Type Move\"}],\"description\":\"The user may raise its Attack 1 Combat Stage. The user always gains a +4 bonus to Skill Checks made to Intercept.\",\"footer\":{\"text\":\"Core: p.321\"}}"
+    },
+    "Kampfgeist":{
+        "embed":"{\"title\":\"Kampfgeist\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user gainst STAB on Fighting Type Moves.\",\"footer\":{\"text\":\"Core: p.321\"}}"
+    },
+    "Klutz":{
+        "embed":"{\"title\":\"Klutz\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The Pok\\u00e9mon ignores the effects of all held Items in its possession. The user may drop Held Items At-Will as a Free Action during their turn, even if they have Status Afflictions that prevent them from taking actions.\",\"footer\":{\"text\":\"Core: p.322\"}}"
+    },
+    "Landslide":{
+        "embed":"{\"title\":\"Landslide\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"},{\"name\":\"Keywords\",\"value\":\"Last Chance\"}],\"description\":\"The user gains Last Chance with Ground.\",\"footer\":{\"text\":\"Core: p.322\"}}"
+    },
+    "Leaf Guard":{
+        "embed":"{\"title\":\"Leaf Guard\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"At the end of the User's turn, if the weather is Sunny, the user is cured of one Status Condition.\",\"footer\":{\"text\":\"Core: p.322\"}}"
+    },
+    "Levitate (Ability)":{
+        "embed":"{\"title\":\"Levitate (Ability)\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The Pok\\u00e9mon is immune to the damage and effects of Ground Type Moves, and gains a Levitate Speed of 4, or has existing Levitate Speeds increased by +2. Defensive.\",\"footer\":{\"text\":\"Core: p.322\"}}"
+    },
+    "Life Force":{
+        "embed":"{\"title\":\"Life Force\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily  - Swift Action\"}],\"description\":\"The user gains a Tick of Hit Points immediately upon activating this Ability, and gains the same amount at the beginning of each of their turns for the following 4 rounds.\",\"footer\":{\"text\":\"Core: p.322\"}}"
+    },
+    "Light Metal":{
+        "embed":"{\"title\":\"Light Metal\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"When referring to Weight Classes, treat the Pok\\u00e9mon as if it is 2 Weight Classes lower.\",\"footer\":{\"text\":\"Core: p.322\"}}"
+    },
+    "Limber":{
+        "embed":"{\"title\":\"Limber\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user is immune to Paralysis. Defensive.\",\"footer\":{\"text\":\"Core: p.322\"}}"
+    },
+    "Liquid Ooze":{
+        "embed":"{\"title\":\"Liquid Ooze\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"When the Pok\\u00e9mon with Liquid Ooze is damaged by Absorb, Drain Punch, Giga Drain, Horn Leech, Leech Life, Leech Seed or Mega Drain, that Move gains Recoil \\u00bd and the Move\\u2019s user does not gain any HP.\",\"footer\":{\"text\":\"Core: p.322\"}}"
+    },
+    "Last Chance (Ability)":{
+        "embed":"{\"title\":\"Last Chance (Ability)\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"},{\"name\":\"Keywords\",\"value\":\"Last Chance\"}],\"description\":\"The user gains Last Chance with Normal.\",\"footer\":{\"text\":\"Core: p.322\"}}"
+    },
+    "Lightning Kicks":{
+        "embed":"{\"title\":\"Lightning Kicks\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"}],\"description\":\"The user may activate this Ability to use any Move with \\\"Kick\\\" in the name as a Priority Move.\",\"footer\":{\"text\":\"Core: p.322\"}}"
+    },
+    "Lullaby":{
+        "embed":"{\"title\":\"Lullaby\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Free Action\"}],\"description\":\"Connection - Sing. Whenever the user uses the Move \\u201cSing\\u201d, they may activate this Feature. The user then picks a Pok\\u00e9mon or Trainer being targeted by Sing; Sing automatically hits that target.\",\"footer\":{\"text\":\"Core: p.323\"}}"
+    },
+    "Lunchbox":{
+        "embed":"{\"title\":\"Lunchbox\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user trades in a Digestion\\\/Food Buff\"}],\"description\":\"The user gains 5 Temporary Hit Points. These Temporary Hit Points stack with any Temporary Hit Points granted by the triggering Buff.\",\"footer\":{\"text\":\"Core: p.323\"}}"
+    },
+    "Mach Speed":{
+        "embed":"{\"title\":\"Mach Speed\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"},{\"name\":\"Keywords\",\"value\":\"Last Chance\"}],\"description\":\"The user gains Last Chance with Flying.\",\"footer\":{\"text\":\"Core: p.323\"}}"
+    },
+    "Magic Bounce":{
+        "embed":"{\"title\":\"Magic Bounce\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is hit by a Status Move\"}],\"description\":\"The user may reflect the Move back to the attacker. This Ability may be used to change the placement and affiliation of any Hazards being set within 10 meters of the user as well. Defensive.\",\"footer\":{\"text\":\"Core: p.323\"}}"
+    },
+    "Iron Barbs":{
+        "embed":"{\"title\":\"Iron Barbs\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is hit by a damaging Melee Attack\"}],\"description\":\"The attacker loses Hit Points equal to Tick of Hit Points.\",\"footer\":{\"text\":\"Core: p.321\"}}"
+    },
+    "Keen Eye":{
+        "embed":"{\"title\":\"Keen Eye\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user\\u2019s Accuracy cannot be lowered, their attacks cannot have Accuracy Penalties (such as from Illuminate), the user is immune to the Blind condition (but not Total Blindness), and the user ignores any Evasion not directly derived from Stats (such as from the Instinct Ability, or from moves like Minimize).\",\"footer\":{\"text\":\"Core: p.321\"}}"
+    },
+    "No Guard":{
+        "embed":"{\"title\":\"No Guard\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user may not apply any form of Evasion to avoiding melee attacks; however, the user ignores all forms of evasion when making Melee attack rolls.\",\"footer\":{\"text\":\"Core: p.325\"}}"
+    },
+    "Memory Wipe":{
+        "embed":"{\"title\":\"Memory Wipe\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Special\"}],\"description\":\"The user selects a Pok\\u00e9mon or Trainer within 10 meters. If used as a Swift Action, the last Move used by the target becomes Disabled. If used as a Standard Action, the target is Flinched. If used as an Extended Action that takes about 1 minute, it can erase up to 5 minutes that have occurred within the last 30 minutes from the target\\u2019s memory.\",\"footer\":{\"text\":\"Core: p.323\"}}"
+    },
+    "Migraine":{
+        "embed":"{\"title\":\"Migraine\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Whenever the user is at 50% Hit Points or less, they gain the Telekinetic Capability and may add STAB to Psychic Type Moves.\",\"footer\":{\"text\":\"Core: p.323\"}}"
+    },
+    "Mind Mold":{
+        "embed":"{\"title\":\"Mind Mold\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"},{\"name\":\"Keywords\",\"value\":\"Last Chance\"}],\"description\":\"The user gains Last Chance with Psychic.\",\"footer\":{\"text\":\"Core: p.323\"}}"
+    },
+    "Minus":{
+        "embed":"{\"title\":\"Minus\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Target\",\"value\":\"An ally with Plus within 10 Meters\"}],\"description\":\"The target's Special Attack is raised by +2 Combat Stages.\",\"footer\":{\"text\":\"Core: p.324\"}}"
+    },
+    "Magma Armor":{
+        "embed":"{\"title\":\"Magma Armor\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user cannot be Frozen. Defensive.\",\"footer\":{\"text\":\"Core: p.323\"}}"
+    },
+    "Marvel Scale":{
+        "embed":"{\"title\":\"Marvel Scale\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"When Asleep, Paralyzed, Burned, Frozen or Poisoned, Marvel Scale raises the user\\u2019s Defense by +2 Combat Stages. The Combat Stages return to Normal if the user is cured of their status affliction.\",\"footer\":{\"text\":\"Core: p.323\"}}"
+    },
+    "Miracle Mile":{
+        "embed":"{\"title\":\"Miracle Mile\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"},{\"name\":\"Keywords\",\"value\":\"Last Chance\"}],\"description\":\"The user gains Last Chance with Fairy.\",\"footer\":{\"text\":\"Core: p.324\"}}"
+    },
+    "Moody":{
+        "embed":"{\"title\":\"Moody\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user joins an encounter, misses with a Move, or hurts itself in Confusion\"}],\"description\":\"Moody must be activated whenever it is triggered. Roll 1d10 to determine a Stat to be raised by +2 Combat Stages, then roll 1d10 to determine a Stat to be lower 2 Combat Stages. 1 or 2 is Attack, 3 or 4 is Defense, 5 or 6 is Special Attack, 7 or 8 is Special Defense, 9 or 10 is Speed.\",\"footer\":{\"text\":\"Core: p.324\"}}"
+    },
+    "Motor Drive":{
+        "embed":"{\"title\":\"Motor Drive\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user is immune to the damage and effects of Electric Type attacks. Whenever an Electric Type attack hits the Pok\\u00e9mon, raise their Speed by +1 Combat Stage. Defensive.\",\"footer\":{\"text\":\"Core: p.324\"}}"
+    },
+    "Moxie":{
+        "embed":"{\"title\":\"Moxie\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Whenever the user\\u2019s Move causes a target to faint, it may raise its Attack Combat Stage by +1. You may only trigger Moxie once per Move, even if the Move causes multiple targets to faint.\",\"footer\":{\"text\":\"Core: p.324\"}}"
+    },
+    "Mud Dweller":{
+        "embed":"{\"title\":\"Mud Dweller\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user resists Ground-Type and Water-Type attacks one step further.\",\"footer\":{\"text\":\"Core: p.324\"}}"
+    },
+    "Natural Cure":{
+        "embed":"{\"title\":\"Natural Cure\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Free Action\"}],\"description\":\"Whenever the user is returned to its Pok\\u00e9 Ball or Takes A Breather, it may activate Natural Cure to cure itself of all Persistent Status Afflictions.\",\"footer\":{\"text\":\"Core: p.324\"}}"
+    },
+    "Normalize":{
+        "embed":"{\"title\":\"Normalize\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"All Moves performed by the Pok\\u00e9mon are considered Normal Type instead of whatever Type they normally are.\",\"footer\":{\"text\":\"Core: p.325\"}}"
+    },
+    "Oblivious":{
+        "embed":"{\"title\":\"Oblivious\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user is immune to the Enraged and Infatuated conditions. Defensive.\",\"footer\":{\"text\":\"Core: p.325\"}}"
+    },
+    "Mega Launcher":{
+        "embed":"{\"title\":\"Mega Launcher\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user increases the Damage Base of Aura Sphere, Dark Pulse, Dragon Pulse, and Water Pulse by +2.\",\"footer\":{\"text\":\"Core: p.323\"}}"
+    },
+    "Mimitree":{
+        "embed":"{\"title\":\"Mimitree\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Connection - Mimic. Whenever the user uses a Move copied by Mimic, they may choose to replace that Move with Mimic once more. When used this way, the user ignores Mimic's Frequency.\",\"footer\":{\"text\":\"Core: p.323\"}}"
+    },
+    "Mojo":{
+        "embed":"{\"title\":\"Mojo\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Normal Types are not immune to the user's Ghost Type Moves.\",\"footer\":{\"text\":\"Core: p.324\"}}"
+    },
+    "Multiscale":{
+        "embed":"{\"title\":\"Multiscale\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"When at full Hit Points, when taking damage from a Move, half the total damage before applying weakness and resistance, after applying your Defenses. Defensive.\",\"footer\":{\"text\":\"Core: p.324\"}}"
+    },
+    "Mold Breaker":{
+        "embed":"{\"title\":\"Mold Breaker\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"},{\"name\":\"Target\",\"value\":\"An Adjacent Pok\\u00e9mon or Trainer\"}],\"description\":\"The user ignores the effect of enemies\\u2019 Defensive Abilities.\",\"footer\":{\"text\":\"Core: p.324\"}}"
+    },
+    "Mummy":{
+        "embed":"{\"title\":\"Mummy\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily \\u2013 Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is hit by a Melee Attack\"}],\"description\":\"Replace all of the Attacker\\u2019s Abilities with Mummy until the end of the encounter.\",\"footer\":{\"text\":\"Core: p.324\"}}"
+    },
+    "Mountain Peak":{
+        "embed":"{\"title\":\"Mountain Peak\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"},{\"name\":\"Keywords\",\"value\":\"Last Chance\"}],\"description\":\"The user gains Last Chance with Rock.\",\"footer\":{\"text\":\"Core: p.324\"}}"
+    },
+    "Multitype":{
+        "embed":"{\"title\":\"Multitype\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At Will - Free Action\"}],\"description\":\"The user changes its Elemental Type to any of the Elemental Types. Multitype cannot be copied or disabled.\",\"footer\":{\"text\":\"Core: p.324\"}}"
+    },
+    "Poltergeist":{
+        "embed":"{\"title\":\"Poltergeist\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Rotom gains an Ability and a Move depending on what Form it has taken. This Move cannot be forgotten or replaced in any way.\\n\\nStandard Rotom: Move - Thunder Shock. Ability - Levitate.\\nHeat Rotom: Move- Overheat. Ability - Levitate.\\nWash Rotom: Move - Hydro Pump. Ability - Aqua Boost.\\nFrost Rotom: Move - Blizzard. Ability - Frostbite.\\nFan Rotom: Move - Air Slash. Ability - Keen Eye\\nMow Rotom: Move - Leaf Storm. Ability - Grass Pelt.\",\"footer\":{\"text\":\"Core: p.326\"}}"
+    },
+    "Polycephaly":{
+        "embed":"{\"title\":\"Polycephaly\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user may make Struggle Attacks as a Swift Action. Struggle Attacks made this way are resisted one step further than they normally would be.\",\"footer\":{\"text\":\"Core: p.326\"}}"
+    },
+    "Pride":{
+        "embed":"{\"title\":\"Pride\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"While suffering from Burn, Poison, Paralysis, Freezing, or while Asleep, the user\\u2019s Special Attack is raised 2 Combat Stages. If suffering from none of these conditions, the user loses any Combat Stages gained this way.\",\"footer\":{\"text\":\"Core: p.326\"}}"
+    },
+    "Prime Fury":{
+        "embed":"{\"title\":\"Prime Fury\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Swift Action\"}],\"description\":\"The user becomes Enraged, and gains +1 Attack Combat Stage.\",\"footer\":{\"text\":\"Core: p.326\"}}"
+    },
+    "Overcoat":{
+        "embed":"{\"title\":\"Overcoat\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user is immune to Moves with the Powder Keyword, and does not take damage from any Weather that would normally cause it to take damage. Defensive.\",\"footer\":{\"text\":\"Core: p.325\"}}"
+    },
+    "Overgrow":{
+        "embed":"{\"title\":\"Overgrow\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"},{\"name\":\"Keywords\",\"value\":\"Last Chance\"}],\"description\":\"The user gains Last Chance with Grass.\",\"footer\":{\"text\":\"Core: p.325\"}}"
+    },
+    "Pack Hunt":{
+        "embed":"{\"title\":\"Pack Hunt\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At Will - Free Action\"},{\"name\":\"Trigger\",\"value\":\"An adjacent foe is damaged by an ally's Melee attack.\"}],\"description\":\"The user may make a Physical Attack with an AC of 5 against the triggering foe. If the attack hits, the foe loses a Tick of Hit Points.\",\"footer\":{\"text\":\"Core: p.325\"}}"
+    },
+    "Parry":{
+        "embed":"{\"title\":\"Parry\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is hit by a Melee Attack\"}],\"description\":\"The attack instead misses. Defensive.\",\"footer\":{\"text\":\"Core: p.325\"}}"
+    },
+    "Perception":{
+        "embed":"{\"title\":\"Perception\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will \\u2013 Shift Action, Interrupt\"},{\"name\":\"Trigger\",\"value\":\"An ally uses an area-of-effect attack that would hit you\"}],\"description\":\"You may Shift to remove yourself from the area-of-effect.\",\"footer\":{\"text\":\"Core: p.325\"}}"
+    },
+    "Permafrost":{
+        "embed":"{\"title\":\"Permafrost\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user gains 5 Damage Reduction against Super-Effective Damage. Additionally, whenever the user would lose a Tick of Hit Points due to an effect such as Sandstorm or the Burn Status condition, subtract 5 from the amount of Hit Points lost. Defensive.\",\"footer\":{\"text\":\"Core: p.325\"}}"
+    },
+    "Prankster":{
+        "embed":"{\"title\":\"Prankster\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user may use Status Moves as Priority (Advanced).\",\"footer\":{\"text\":\"Core: p.326\"}}"
+    },
+    "Own Tempo":{
+        "embed":"{\"title\":\"Own Tempo\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user is immune to Confusion. Defensive.\",\"footer\":{\"text\":\"Core: p.325\"}}"
+    },
+    "Photosynthesis":{
+        "embed":"{\"title\":\"Photosynthesis\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily - Extended Action\"}],\"description\":\"If the user is allowed to bask in normal sunlight for at least 10 minutes, they may heal up to 25% of their Max Hit Points, and remove one Injury.\",\"footer\":{\"text\":\"Core: p.325\"}}"
+    },
+    "Pickpocket":{
+        "embed":"{\"title\":\"Pickpocket\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is hit by an opponent with a Melee Move\"}],\"description\":\"If the opponent has a Held Item and the user does not, the user takes the Held Item the opponent is holding.\",\"footer\":{\"text\":\"Core: p.326\"}}"
+    },
+    "Pickup":{
+        "embed":"{\"title\":\"Pickup\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily - Extended Action\"}],\"description\":\"You may use Pickup as an Extended Action that requires at least 5 minutes. Roll 1d20, consult the Pickup keyword to figure out what you find!\",\"footer\":{\"text\":\"Core: p.326\"}}"
+    },
+    "Plus":{
+        "embed":"{\"title\":\"Plus\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Target\",\"value\":\"An ally with Minus within 10 Meters\"}],\"description\":\"The target's Special Attack is raised by +2 Combat Stages.\",\"footer\":{\"text\":\"Core: p.326\"}}"
+    },
+    "Overcharge":{
+        "embed":"{\"title\":\"Overcharge\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"},{\"name\":\"Keywords\",\"value\":\"Last Chance\"}],\"description\":\"The user gains Last Chance with Electric.\",\"footer\":{\"text\":\"Core: p.325\"}}"
+    },
+    "Pixilate":{
+        "embed":"{\"title\":\"Pixilate\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user uses a Normal Type damaging Move.\"}],\"description\":\"The Move is changed to be Fairy-Type.\",\"footer\":{\"text\":\"Core: p.326\"}}"
+    },
+    "Poison Point":{
+        "embed":"{\"title\":\"Poison Point\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is hit by a Melee Move\"}],\"description\":\"The attacking foe is Poisoned.\",\"footer\":{\"text\":\"Core: p.326\"}}"
+    },
+    "Poison Touch":{
+        "embed":"{\"title\":\"Poison Touch\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The Pok\\u00e9mon\\u2019s Moves which deal damage Poison Legal Targets on 19+. If a move already has a chance of Poisoning foes, Poison Touch increases the effect range by +2.\",\"footer\":{\"text\":\"Core: p.326\"}}"
+    },
+    "Pressure":{
+        "embed":"{\"title\":\"Pressure\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"While within 3 meters of the user, all foes are Suppressed. This effect ends when the user is Fainted.\",\"footer\":{\"text\":\"Core: p.326\"}}"
+    },
+    "Omen":{
+        "embed":"{\"title\":\"Omen\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Swift Action\"}],\"description\":\"Choose a Pok\\u00e9mon or Trainer within 5 meters. The target's Accuracy is lowered by 2.\",\"footer\":{\"text\":\"Core: p.325\"}}"
+    },
+    "Reckless":{
+        "embed":"{\"title\":\"Reckless\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Increase the Damage Base of the moves Jump Kick, Hi Jump Kick, and moves with the Recoil Keyword by +2.\",\"footer\":{\"text\":\"Core: p.327\"}}"
+    },
+    "Refreshing Veil":{
+        "embed":"{\"title\":\"Refreshing Veil\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Free Action\"}],\"description\":\"Connection \\u2013 Aqua Ring. Whenever the user activates Aqua Ring, they may activate this Feature to cure themselves of all Persistent Status Effects.\",\"footer\":{\"text\":\"Core: p.327\"}}"
+    },
+    "Refrigerate":{
+        "embed":"{\"title\":\"Refrigerate\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user uses a Normal Type Damaging Move.\"}],\"description\":\"The Move is changed to be Ice Type.\",\"footer\":{\"text\":\"Core: p.327\"}}"
+    },
+    "Regal Challenge":{
+        "embed":"{\"title\":\"Regal Challenge\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Swift Action\"},{\"name\":\"Target\",\"value\":\"Pok\\u00e9mon or Trainer within 5 Meters\"}],\"description\":\"Make an AC4 Status Attack against the target. If the attack hits, lower the target\\u2019s Speed by 1 Combat Stage and the target is Slowed. If the attack misses, raise the user\\u2019s Attack and Special Attack by +1 Combat Stage each.\",\"footer\":{\"text\":\"Core: p.327\"}}"
+    },
+    "Regenerator":{
+        "embed":"{\"title\":\"Regenerator\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily x2 - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is recalled into a Pokeball or Takes a Breather.\"}],\"description\":\"The user gains Hit Points equal to 1\\\/3rd of its maximum Hit Points. Regenerator may be activated only once per Scene.\",\"footer\":{\"text\":\"Core: p.328\"}}"
+    },
+    "Rivalry":{
+        "embed":"{\"title\":\"Rivalry\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Whenever the user deals direct damage to a target of the same gender, increase the Damage dealt by +5.\",\"footer\":{\"text\":\"Core: p.328\"}}"
+    },
+    "Rock Head":{
+        "embed":"{\"title\":\"Rock Head\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user ignores the Recoil keyword when attacking.\",\"footer\":{\"text\":\"Core: p.328\"}}"
+    },
+    "Root Down":{
+        "embed":"{\"title\":\"Root Down\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Shift Action\"}],\"description\":\"Connection - Ingrain. While the user has the Ingrain Coat, they may activate this Ability to gain Temporary Hit Points equal to 1\\\/16th of their Max Hit Points.\",\"footer\":{\"text\":\"Core: p.328\"}}"
+    },
+    "Rough Skin":{
+        "embed":"{\"title\":\"Rough Skin\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is hit by a damaging Melee Attack\"}],\"description\":\"The attacker loses a tick of Hit Points.\",\"footer\":{\"text\":\"Core: p.328\"}}"
+    },
+    "Run Away":{
+        "embed":"{\"title\":\"Run Away\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user cannot be Slowed, Stuck, or Trapped. The user does not provoke Attacks of Opportunity by Shifting.\",\"footer\":{\"text\":\"Core: p.328\"}}"
+    },
+    "Run Up":{
+        "embed":"{\"title\":\"Run Up\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"If the user moves in a straight line to a target and uses a damaging Melee Attack, it may add the number of meters traveled in a direct line as Bonus Damage to a Damage Roll.\",\"footer\":{\"text\":\"Core: p.328\"}}"
+    },
+    "Sand Force":{
+        "embed":"{\"title\":\"Sand Force\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"While in a Sandstorm, the user's Ground, Rock, and Steel-Type Direct-Damage Moves deal +5 Damage. Additionally, the user is immune to damage from Sandstorms.\",\"footer\":{\"text\":\"Core: p.328\"}}"
+    },
+    "Sand Rush":{
+        "embed":"{\"title\":\"Sand Rush\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"While the Weather is a Sandstorm, the user gains +4 Speed Combat Stages. Additionally, the user is immune to damage from Sandstorms.\",\"footer\":{\"text\":\"Core: p.328\"}}"
+    },
+    "Protean":{
+        "embed":"{\"title\":\"Protean\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will -  Swift Action\"},{\"name\":\"Trigger\",\"value\":\"The user uses a Move.\"}],\"description\":\"The user\\u2019s Type changes to match the Type of the triggering Move. This Ability resolves before the Move is resolved (And thus you may apply STAB, and trigger other Features and Abilities appropriately).\",\"footer\":{\"text\":\"Core: p.327\"}}"
+    },
+    "Pumpkingrab":{
+        "embed":"{\"title\":\"Pumpkingrab\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user gains a +4 bonus to Accuracy Checks of Struggle Attacks made to initiate Grapple, and a +3 Bonus to Skill Checks made to initiate a Grapple.\",\"footer\":{\"text\":\"Core: p.327\"}}"
+    },
+    "Pure Blooded":{
+        "embed":"{\"title\":\"Pure Blooded\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"},{\"name\":\"Keywords\",\"value\":\"Last Chance\"}],\"description\":\"The user gains Last Chance with Dragon.\",\"footer\":{\"text\":\"Core: p.327\"}}"
+    },
+    "Pure Power":{
+        "embed":"{\"title\":\"Pure Power\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The Pok\\u00e9mon's base attack stat is doubled. This may double any bonuses from Nature or Vitamins, but not bonuses from Features.\",\"footer\":{\"text\":\"Core: p.327\"}}"
+    },
+    "Quick Curl":{
+        "embed":"{\"title\":\"Quick Curl\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"}],\"description\":\"Connection - Defense Curl. The user may activate this Ability to use Defense Curl as a Swift Action.\",\"footer\":{\"text\":\"Core: p.327\"}}"
+    },
+    "Rocket":{
+        "embed":"{\"title\":\"Rocket\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Swift Action\"}],\"description\":\"The user\\u2019s Sky capability is increased by +3 until the end of the user\\u2019s next turn, and the user goes first on the following round, ignoring initiative; Interrupt Moves may not be used in response to their Moves that round.\",\"footer\":{\"text\":\"Core: p.328\"}}"
+    },
+    "Rain Dish":{
+        "embed":"{\"title\":\"Rain Dish\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"While Rainy, the user gains a Tick of Hit Points at the beginning of each of their turns.\",\"footer\":{\"text\":\"Core: p.327\"}}"
+    },
+    "Rally":{
+        "embed":"{\"title\":\"Rally\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Swift Action\"}],\"description\":\"All allies within 10 meters may immediately shift 1 Meter in any direction they wish. Rally does not work on sleeping, flinched, stuck, fainted, or otherwise incapacitated allies. Rally does not work on the user.\",\"footer\":{\"text\":\"Core: p.327\"}}"
+    },
+    "Rattled":{
+        "embed":"{\"title\":\"Rattled\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is hit by a Bug, Dark, or Ghost Type Move\"}],\"description\":\"The user's Speed is raised by +1 Combat Stage.\",\"footer\":{\"text\":\"Core: p.327\"}}"
+    },
+    "Razor Edge":{
+        "embed":"{\"title\":\"Razor Edge\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Connection - Poison Tail. The user's Critical Hit Range on all Moves is increased by +2; any Moves with \\\"Tail\\\" in their name have their Critical Hit Range increased by +3 instead.\",\"footer\":{\"text\":\"Core: p.327\"}}"
+    },
+    "Snow Cloak":{
+        "embed":"{\"title\":\"Snow Cloak\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user's Evasion is increased by +2 while in Hail. The user and allies adjacent to the user are not damaged by Hail.\",\"footer\":{\"text\":\"Core: p.330\"}}"
+    },
+    "Snow Warning":{
+        "embed":"{\"title\":\"Snow Warning\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"}],\"description\":\"The Weather changes to Hail for 5 rounds. As a static effect the user is not damaged by Hail.\",\"footer\":{\"text\":\"Core: p.330\"}}"
+    },
+    "Solar Power":{
+        "embed":"{\"title\":\"Solar Power\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"When Sunny, the Pok\\u00e9mon loses 1\\\/16th of its Max HP at the beginning of its turn. When Sunny, its Special Attack Stat is increased by 2 Combat Stages.\",\"footer\":{\"text\":\"Core: p.330\"}}"
+    },
+    "Solid Rock":{
+        "embed":"{\"title\":\"Solid Rock\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"When the user is hit by a Super-Effective attack, the attack deals 1.25x damage instead of x1.5 damage. If the user is hit by a Super-Super-Effective attack, the attack deals x1.5 damage instead of x2 damage. If you have both Solid Rock and Filter, you gain 5 Damage eduction against Super-Effective Damage. Defensive.\",\"footer\":{\"text\":\"Core: p.330\"}}"
+    },
+    "Sonic Courtship":{
+        "embed":"{\"title\":\"Sonic Courtship\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user uses Attract\"}],\"description\":\"Connection - Attract. Treat Attract as a Cone 2 Move with the Sonic keyword for this use, which effects all targets regardless of Gender.\",\"footer\":{\"text\":\"Core: p.330\"}}"
+    },
+    "Sap Sipper":{
+        "embed":"{\"title\":\"Sap Sipper\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user is immune to the damage and effects of Grass Type attacks. If a damaging Grass Type attack hits the user, the user gains +1 Attack Combat Stage. Defensive.\",\"footer\":{\"text\":\"Core: p.328\"}}"
+    },
+    "Scrappy":{
+        "embed":"{\"title\":\"Scrappy\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Ghosts are not immune to the user's Normal and Fighting-Type Moves.\",\"footer\":{\"text\":\"Core: p.328\"}}"
+    },
+    "Sequence":{
+        "embed":"{\"title\":\"Sequence\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user uses an Electric Attack\"}],\"description\":\"For every allied Electric-Type Pok\\u00e9mon cardinally adjacent to the user, raise the user\\u2019s Attack and Special Attack by +1 CS each before calculating damage for the triggering attack. After the attack is resolved, lose all Combat Stages gained this way.\",\"footer\":{\"text\":\"Core: p.328\"}}"
+    },
+    "Serene Grace":{
+        "embed":"{\"title\":\"Serene Grace\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The users Effect Range is increased by +2.\",\"footer\":{\"text\":\"Core: p.328\"}}"
+    },
+    "Shackle":{
+        "embed":"{\"title\":\"Shackle\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"}],\"description\":\"Shackle creates a Burst 3. All foes in the burst have their movement capabilities halved until the end of their next turn.\",\"footer\":{\"text\":\"Core: p.329\"}}"
+    },
+    "Slow Start":{
+        "embed":"{\"title\":\"Slow Start\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"For 3 rounds after joining an encounter, the Pok\\u00e9mon\\u2019s Speed and Attack Stats are halved and they have 10 Damage Reduction.\",\"footer\":{\"text\":\"Core: p.330\"}}"
+    },
+    "Sniper":{
+        "embed":"{\"title\":\"Sniper\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"When the Pok\\u00e9mon gets a Critical Hit, add the value of the Damage Dice Roll an additional time to the total damage.\",\"footer\":{\"text\":\"Core: p.330\"}}"
+    },
+    "Shadow Tag":{
+        "embed":"{\"title\":\"Shadow Tag\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Target\",\"value\":\"An adjacent Trainer or Pok\\u00e9mon\"}],\"description\":\"The target\\u2019s shadow becomes pinned to the target\\u2019s current spot for 5 turns. During this time, the target is Slowed and Trapped, and cannot move more than 5 meters from the spot their shadow is pinned to; even being Pushed and other forced movement effects cannot force the target to Move more than 5 meters from that spot.\",\"footer\":{\"text\":\"Core: p.329\"}}"
+    },
+    "Shed Skin":{
+        "embed":"{\"title\":\"Shed Skin\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"}],\"description\":\"The user is cured of one of Paralysis, Freezing, Burns, Poison, or Sleep.\",\"footer\":{\"text\":\"Core: p.329\"}}"
+    },
+    "Sheer Force":{
+        "embed":"{\"title\":\"Sheer Force\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"If a Pok\\u00e9mon with Sheer Force uses a Move with a secondary effect that triggers during Accuracy Roll, increase that Move's Base Damage by +2. However, the secondary effects of Move never trigger. This does not affect Critical Hits, or moves with increased Critical Hit ranges.\",\"footer\":{\"text\":\"Core: p.329\"}}"
+    },
+    "Shell Shield":{
+        "embed":"{\"title\":\"Shell Shield\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"}],\"description\":\"Connection - Withdraw. The user may activate this Ability to use Withdraw as an Interrupt and a Free Action. The user must still use a Shift Action to stop being Withdrawn.\",\"footer\":{\"text\":\"Core: p.329\"}}"
+    },
+    "Shield Dust":{
+        "embed":"{\"title\":\"Shield Dust\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user ignores the secondary effects that trigger during Accuracy Roll of damaging Moves that target the user. For example, Flamethrower can never inflict the Burn Condition. Defensive.\",\"footer\":{\"text\":\"Core: p.329\"}}"
+    },
+    "Simple":{
+        "embed":"{\"title\":\"Simple\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"When the Pok\\u00e9mon\\u2019s Combat Stages are altered, double the amount of Combat Stages they are raised or lowered.\",\"footer\":{\"text\":\"Core: p.329\"}}"
+    },
+    "Shell Armor":{
+        "embed":"{\"title\":\"Shell Armor\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user is immune to Critical Hits; they are instead normal hits. Defensive.\",\"footer\":{\"text\":\"Core: p.329\"}}"
+    },
+    "Silk Threads":{
+        "embed":"{\"title\":\"Silk Threads\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Connection - String Shot. Whenever the user uses \\\"String Shot\\\", the target becomes Slowed until the end of their next turn.\",\"footer\":{\"text\":\"Core: p.329\"}}"
+    },
+    "Skill Link":{
+        "embed":"{\"title\":\"Skill Link\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user hits with a Move with the Five Strike keyword.\"}],\"description\":\"The Triggering Move automatically hits 5 Times.\",\"footer\":{\"text\":\"Core: p.329\"}}"
+    },
+    "Sturdy":{
+        "embed":"{\"title\":\"Sturdy\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The Pok\\u00e9mon is immune to the Moves Sheer Cold, Guillotine, Horn Drill and Fissure. If any attack would lower this Pok\\u00e9mon to 0 Hit Points or less from full Hit Points, instead the Pok\\u00e9mon\\u2019s Hit Point value is set to 1. This effect fails if the user\\u2019s full Hit Point value is 1. Pok\\u00e9mon with Sturdy do not gain Injuries from Massive Damage. Defensive.\",\"footer\":{\"text\":\"Core: p.332\"}}"
+    },
+    "Suction Cups":{
+        "embed":"{\"title\":\"Suction Cups\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user is immune to Push effects, and the effects of Roar. Defensive.\",\"footer\":{\"text\":\"Core: p.332\"}}"
+    },
+    "Sound Lance":{
+        "embed":"{\"title\":\"Sound Lance\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene x2 - Swift Action\"},{\"name\":\"Trigger\",\"value\":\"The user uses Supersonic\"}],\"description\":\"Connection \\u2013 Supersonic. The target of Supersonic takes Special Normal-Type damage equal to the user\\u2019s Special Attack score. This effect functions independently of whether Supersonic hits its target.\",\"footer\":{\"text\":\"Core: p.330\"}}"
+    },
+    "Soundproof":{
+        "embed":"{\"title\":\"Soundproof\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The Pok\\u00e9mon is immune to Moves with the Sonic Keyword. Defensive.\",\"footer\":{\"text\":\"Core: p.330\"}}"
+    },
+    "Speed Boost":{
+        "embed":"{\"title\":\"Speed Boost\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The Pok\\u00e9mon\\u2019s Speed is raised 1 Combat Stage at the end of each of its turns. Speed Boost has no effect while out of combat.\",\"footer\":{\"text\":\"Core: p.330\"}}"
+    },
+    "Spinning Dance":{
+        "embed":"{\"title\":\"Spinning Dance\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is targeted by an attack, but is missed\"}],\"description\":\"If not Fainted, Paralyzed, or Asleep, the user gains +1 Evasion and may immediately Shift 1 meter.\",\"footer\":{\"text\":\"Core: p.330\"}}"
+    },
+    "Spiteful Intervention":{
+        "embed":"{\"title\":\"Spiteful Intervention\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Connection -  Spite.  The user may use Spite in response to an attack hitting an ally, in addition to hitting themselves.\",\"footer\":{\"text\":\"Core: p.330\"}}"
+    },
+    "Strange Tempo":{
+        "embed":"{\"title\":\"Strange Tempo\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Special\"}],\"description\":\"While Confused, the user may choose either to 1) As a Free Action, not to roll for Confusion, instead acting Normally or 2) As a Standard Action, cure themselves of Confusion and gain +2 Combat Stages to the Stat of their choIce.\",\"footer\":{\"text\":\"Core: p.331\"}}"
+    },
+    "Strong Jaw":{
+        "embed":"{\"title\":\"Strong Jaw\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user has the Damage Base of the following Moves increased by +2; Bite, Bug Bite, Crunch, Fire Fang, Ice Fang, Thunder Fang, Poison Fang, and Hyper Fang.\",\"footer\":{\"text\":\"Core: p.331\"}}"
+    },
+    "Spray Down":{
+        "embed":"{\"title\":\"Spray Down\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user hits an airborne target with a ranged 1-target attack.\"}],\"description\":\"The triggering attack\\u2019s target is knocked down to ground level, and loses all Sky or Levitate Speeds for 3 turns. During this time, they may be hit by Ground-Type Moves even if normally immune.\",\"footer\":{\"text\":\"Core: p.330\"}}"
+    },
+    "Static":{
+        "embed":"{\"title\":\"Static\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is hit by a Melee Attack\"}],\"description\":\"The attacking foe becomes Paralyzed.\",\"footer\":{\"text\":\"Core: p.331\"}}"
+    },
+    "Stall":{
+        "embed":"{\"title\":\"Stall\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"In a round\\u2019s queue, a Pok\\u00e9mon with Stall is always last. If a Pok\\u00e9mon goes to the end of the queue, the Pok\\u00e9mon with Stall is still the last to move. The user\\u2019s actions taken on their Initiative Count (not Priority or Interrupt) cannot be Interrupted.\",\"footer\":{\"text\":\"Core: p.331\"}}"
+    },
+    "Starlight":{
+        "embed":"{\"title\":\"Starlight\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Swift Action\"}],\"description\":\"The user may activate Starlight while exposed to moonlight or starlight to become Luminous. While the user is Luminous, all foes suffer a -2 penalty to Accuracy Rolls against the user. The user may expend the Luminous condition upon hitting a foe with a damaging attack to cause that foe to become Confused.\",\"footer\":{\"text\":\"Core: p.331\"}}"
+    },
+    "Starswirl":{
+        "embed":"{\"title\":\"Starswirl\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Swift Action\"}],\"description\":\"Connection \\u2013 Rapid Spin. The user may activate this Ability to user Rapid Spin as a Swift Action that deals no damage. Rapid Spin need not have a target when used this way.\",\"footer\":{\"text\":\"Core: p.331\"}}"
+    },
+    "Steadfast":{
+        "embed":"{\"title\":\"Steadfast\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is Flinched\"}],\"description\":\"The user's Speed is raised by +1 Combat Stage.\",\"footer\":{\"text\":\"Core: p.331\"}}"
+    },
+    "Sticky Smoke":{
+        "embed":"{\"title\":\"Sticky Smoke\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"}],\"description\":\"Connection - Smokescreen. All targets that begin or end their turn in the target's Smokescreen have their Accuracy lowered by -1. This penalty may occur multiple times. This stacks with the usual penalties from Smokescreen.\",\"footer\":{\"text\":\"Core: p.331\"}}"
+    },
+    "Sprint (Ability)":{
+        "embed":"{\"title\":\"Sprint\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Swift Action\"},{\"name\":\"Trigger\",\"value\":\"The user uses the Sprint Action during Combat\"}],\"description\":\"The user gains +2 Speed Combat Stages. Additionally, the user's Overland Speed is always increased by +2.\",\"footer\":{\"text\":\"Core: p.331\"}}"
+    },
+    "Stench":{
+        "embed":"{\"title\":\"Stench\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The Pok\\u00e9mon\\u2019s Moves Flinch Targets on a roll of 19+.  If a move already has a chance of Flinching foes, The Effect Range is increased by +2 instead.\",\"footer\":{\"text\":\"Core: p.331\"}}"
+    },
+    "Sticky Hold":{
+        "embed":"{\"title\":\"Sticky Hold\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The Pok\\u00e9mon\\u2019s held items cannot be stolen, switched, destroyed or dropped.\",\"footer\":{\"text\":\"Core: p.331\"}}"
+    },
+    "Storm Drain":{
+        "embed":"{\"title\":\"Storm Drain\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"A ranged Water Type Move is used within 10 Meters of the user.\"}],\"description\":\"The Move is turned into a Single-Target Move and is re-directed at the User without fail, and cannot miss. This negates Lock-On or Mind Reader. Additionally, the user is immune to the damage and effects of Water Type Moves, and each time they are hit by a Water-Type Move, the User's Special Attack is raised 1 Combat Stage. Defensive.\",\"footer\":{\"text\":\"Core: p.331\"}}"
+    },
+    "Teamwork":{
+        "embed":"{\"title\":\"Teamwork\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"While you are adjacent to an opponent, allies using Melee attacks against that opponent receive a +2 bonus to Accuracy Checks.\",\"footer\":{\"text\":\"Core: p.332\"}}"
+    },
+    "Technician":{
+        "embed":"{\"title\":\"Technician\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Moves with a Damage Base of 6 or lower have their Damage Base increased by +2. This bonus always applies to Moves with the Double Strike or Fivestrike Keywords.\",\"footer\":{\"text\":\"Core: p.332\"}}"
+    },
+    "Telepathy":{
+        "embed":"{\"title\":\"Telepathy\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Shift Action, Interrupt\"},{\"name\":\"Trigger\",\"value\":\"An ally uses an area-of-effect attack that would hit you\"}],\"description\":\"You may Shift to remove yourself from the area-of-effect.\",\"footer\":{\"text\":\"Core: p.332\"}}"
+    },
+    "Teravolt":{
+        "embed":"{\"title\":\"Teravolt\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user damages a foe\"}],\"description\":\"The damaged foe's Abilities are disabled for the remainder of the encounter.\",\"footer\":{\"text\":\"Core: p.333\"}}"
+    },
+    "Thermosensitive":{
+        "embed":"{\"title\":\"Thermosensitive\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"While Sunny, the user's Attack and Special Attack are raised by +2 combat stages each. While Hailing, the user's movement capabilities are reduced by half.\",\"footer\":{\"text\":\"Core: p.333\"}}"
+    },
+    "Thick Fat":{
+        "embed":"{\"title\":\"Thick Fat\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user resists Fire-Type and Ice-Type attacks one step further. Defensive.\",\"footer\":{\"text\":\"Core: p.333\"}}"
+    },
+    "Thrust":{
+        "embed":"{\"title\":\"Thrust\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"All moves used by this Pok\\u00e9mon which consult the Attack stat now have the Push keyword. The default push for moves is 1 meter. If a move already has the Push Keyword, that move may push 1 additional meter.\",\"footer\":{\"text\":\"Core: p.333\"}}"
+    },
+    "Tingly Tongue":{
+        "embed":"{\"title\":\"Tingly Tongue\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene x2 -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user hits a target with Lick\"}],\"description\":\"Connection \\u2013 Lick. Lick\\u2019s Damage Roll gains a +10 Bonus and automatically paralyses its target. On a roll of 15+, the target automatically fails its Paralysis Save Check on its next turn.\",\"footer\":{\"text\":\"Core: p.333\"}}"
+    },
+    "Tinted Lens":{
+        "embed":"{\"title\":\"Tinted Lens\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user's Resisted moves are instead Neutral. The user's Doubly Resisted moves are instead Resisted. The user\\u2019s Triply Resisted Moves are instead Double Resisted.\",\"footer\":{\"text\":\"Core: p.333\"}}"
+    },
+    "Tochukaso":{
+        "embed":"{\"title\":\"Tochukaso\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user resists Bug-Type and Poison-Type attacks one step further. Defensive.\",\"footer\":{\"text\":\"Core: p.333\"}}"
+    },
+    "Tolerance":{
+        "embed":"{\"title\":\"Tolerance\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Any Types resisted by the user are resisted one step further. Defensive.\",\"footer\":{\"text\":\"Core: p.333\"}}"
+    },
+    "Torrent":{
+        "embed":"{\"title\":\"Torrent\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user gains Last Chance with Water.\",\"footer\":{\"text\":\"Core: p.333\"}}"
+    },
+    "Tough Claws":{
+        "embed":"{\"title\":\"Tough Claws\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user increases the Damage Base of all Melee Moves by +2.\",\"footer\":{\"text\":\"Core: p.333\"}}"
+    },
+    "Toxic Boost":{
+        "embed":"{\"title\":\"Toxic Boost\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"When Poisoned or Badly Poisoned, the user\\u2019s Attack is raised by 2 Combat Stages. If the user is cured of its Poisoning, its Attack stat is lowered by 2 Combat Stages.\",\"footer\":{\"text\":\"Core: p.333\"}}"
+    },
+    "Trace":{
+        "embed":"{\"title\":\"Trace\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Free Action\"},{\"name\":\"Target\",\"value\":\"A Trainer or Pok\\u00e9mon within 10 meters\"}],\"description\":\"The Pok\\u00e9mon gains an Ability known by the Target for the remainder of the encounter, or until it is Fainted.\",\"footer\":{\"text\":\"Core: p.333\"}}"
+    },
+    "Weaponize":{
+        "embed":"{\"title\":\"Weaponize\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user takes Physical damage.\"}],\"description\":\"While being wielded as a Living Weapon and being actively Commanded as a Pok\\u00e9mon, the user may Intercept for its Wielder as a Free Action.\",\"footer\":{\"text\":\"Core: p.335\"}}"
+    },
+    "Sun Blanket":{
+        "embed":"{\"title\":\"Sun Blanket\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user is one step more resistant to Fire-Type Attacks, and gains a Tick of Hit Points at the beginning of each turn in Sunny weather.\",\"footer\":{\"text\":\"Core: p.332\"}}"
+    },
+    "Super Luck":{
+        "embed":"{\"title\":\"Super Luck\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The Pok\\u00e9mon\\u2019s Moves are Critical Hits on 18-20. If a Move already has an extended Critical Hit range, Super Luck extends that range by 2.\",\"footer\":{\"text\":\"Core: p.332\"}}"
+    },
+    "Swarm":{
+        "embed":"{\"title\":\"Swarm\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"},{\"name\":\"Keywords\",\"value\":\"Last Chance\"}],\"description\":\"The user gains Last Chance with Bug.\",\"footer\":{\"text\":\"Core: p.332\"}}"
+    },
+    "Sweet Veil":{
+        "embed":"{\"title\":\"Sweet Veil\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user and allies within 3 meters are immune to Sleep. Defensive.\",\"footer\":{\"text\":\"Core: p.332\"}}"
+    },
+    "Swift Swim":{
+        "embed":"{\"title\":\"Swift Swim\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"While in Rainy Weather, the user gains +4 Speed Combat Stages.\",\"footer\":{\"text\":\"Core: p.332\"}}"
+    },
+    "Targeting System":{
+        "embed":"{\"title\":\"Targeting System\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Free Action\"}],\"description\":\"Connection \\u2013 Lock On. By activating this Ability the target may use Lock-On as a Swift Action.\",\"footer\":{\"text\":\"Core: p.332\"}}"
+    },
+    "Symbiosis":{
+        "embed":"{\"title\":\"Symbiosis\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will -  Swift Action\"}],\"description\":\"The user may pass its held item to an adjacent ally.\",\"footer\":{\"text\":\"Core: p.332\"}}"
+    },
+    "Synchronize":{
+        "embed":"{\"title\":\"Synchronize\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is Paralyzed, Frozen, Burned, Poisoned, or put to Sleep.\"}],\"description\":\"The foe which caused the Status Condition is given the same Status they inflicted.\",\"footer\":{\"text\":\"Core: p.332\"}}"
+    },
+    "Tangled Feet":{
+        "embed":"{\"title\":\"Tangled Feet\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"While Confused, the user gains +3 Evasion.\",\"footer\":{\"text\":\"Core: p.332\"}}"
+    },
+    "Venom":{
+        "embed":"{\"title\":\"Venom\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"},{\"name\":\"Keywords\",\"value\":\"Last Chance\"}],\"description\":\"The user gains Last Chance with Poison.\",\"footer\":{\"text\":\"Core: p.334\"}}"
+    },
+    "Victory Star":{
+        "embed":"{\"title\":\"Victory Star\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Any allied Pok\\u00e9mon in the encounter gain a +2 Bonus to Accuracy Rolls.\",\"footer\":{\"text\":\"Core: p.334\"}}"
+    },
+    "Vigor":{
+        "embed":"{\"title\":\"Vigor\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user uses Endure\"}],\"description\":\"Connection \\u2013 Endure. When this Ability is activated, after being set to 1 Hit Point, the user gains a Tick of Hit Points. Furthermore, if the Move that triggered Endure gave the user an Injury from Massive Damage, the user does not gain that Injury. Defensive.\",\"footer\":{\"text\":\"Core: p.334\"}}"
+    },
+    "Vital Spirit":{
+        "embed":"{\"title\":\"Vital Spirit\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user is immune to the Sleep condition, and cannot use the move Rest. Defensive.\",\"footer\":{\"text\":\"Core: p.335\"}}"
+    },
+    "Volt Absorb":{
+        "embed":"{\"title\":\"Volt Absorb\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user is immune to the damage and effects of Electric-Type attacks, and whenever they are hit with an Electric Type attack, they gain Hit Points equal to a Tick of Hit Points. Defensive.\",\"footer\":{\"text\":\"Core: p.335\"}}"
+    },
+    "Voodoo Doll":{
+        "embed":"{\"title\":\"Voodoo Doll\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user uses the Move Curse as a Ghost Type\"}],\"description\":\"Connection - Curse. Choose an additional target within 8 meters of the user to become Cursed.\",\"footer\":{\"text\":\"Core: p.335\"}}"
+    },
+    "Wallmaster":{
+        "embed":"{\"title\":\"Wallmaster\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Connection \\u2013 Barrier. Whenever the user uses Barrier, they may choose to either gain +2 Defense Combat Stages, or place 2 additional segments of Barrier.\",\"footer\":{\"text\":\"Core: p.335\"}}"
+    },
+    "Water Absorb":{
+        "embed":"{\"title\":\"Water Absorb\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user is immune to the damage and effects of Water-Type attacks, and whenever they are hit with a Water Type attack, they gain a Tick of Hit Points. Defensive.\",\"footer\":{\"text\":\"Core: p.335\"}}"
+    },
+    "Water Veil":{
+        "embed":"{\"title\":\"Water Veil\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"},{\"name\":\"Keywords\",\"value\":\"Immune\"}],\"description\":\"The user is immune to Burns. Defensive.\",\"footer\":{\"text\":\"Core: p.335\"}}"
+    },
+    "Wave Rider":{
+        "embed":"{\"title\":\"Wave Rider\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"While in water, the user\\u2019s Speed Stat gains +4 Combat Stages. Remove these Combat Stages if the user exits the water.\",\"footer\":{\"text\":\"Core: p.335\"}}"
+    },
+    "Weak Armor":{
+        "embed":"{\"title\":\"Weak Armor\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user takes Physical Damage\"}],\"description\":\"The user may lower its Defense Combat Stage by 1 Combat Stage, and gain +1 Speed Combat Stage. This is done after the triggering damage is resolved.\",\"footer\":{\"text\":\"Core: p.335\"}}"
+    },
+    "Truant":{
+        "embed":"{\"title\":\"Truant\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"At the beginning of each of its turns, the user must roll 1d20. On a roll of 7 or lower, the target refuses to act; they heal a Tick of Hit Points, and do not get a Standard Action that turn. Turns in which the user refuses to act count towards turns used up by Interrupts or the Exhausted Condition, and the user may make Rolls to cure themselves from Status Effects with a +3 Bonus that turn.\",\"footer\":{\"text\":\"Core: p.334\"}}"
+    },
+    "Turboblaze":{
+        "embed":"{\"title\":\"Turboblaze\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user damages a foe\"}],\"description\":\"The damaged foe's Abilities are disabled for the remainder of the encounter.\",\"footer\":{\"text\":\"Core: p.334\"}}"
+    },
+    "Twisted Power":{
+        "embed":"{\"title\":\"Twisted Power\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user adds half of their Attack Stat to the damage rolls of their Special Moves; and the user adds half of their Special Attack Stat to the damage of their Physical Moves. This does not change the Damage Class of any attack.\",\"footer\":{\"text\":\"Core: p.334\"}}"
+    },
+    "Type Strategist":{
+        "embed":"{\"title\":\"Type Strategist\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Whenever the user uses a Move of the Type associated with Type Strategist, they gain +5 Damage Reduction for one full round. If they are under 1\\\/3rd of their Maximum Hit Points, they instead gain +10 Damage Reduction. Defensive.\",\"footer\":{\"text\":\"Core: p.334\"}}"
+    },
+    "Ugly":{
+        "embed":"{\"title\":\"Ugly\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The Pok\\u00e9mon\\u2019s Moves Flinch Targets on a roll of 19+. If a move already has a chance of Flinching foes, The Effect Range is increased by +2. During the Introduction Stage of a Contest using this Pok\\u00e9mon, any 6s that are rolled instead count as 1s.\",\"footer\":{\"text\":\"Core: p.334\"}}"
+    },
+    "Unaware":{
+        "embed":"{\"title\":\"Unaware\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"When the Pok\\u00e9mon is attacking or being attacked, it the foe must make all damage calculations as if their Combat Stages were at their default state.\",\"footer\":{\"text\":\"Core: p.334\"}}"
+    },
+    "Vanguard":{
+        "embed":"{\"title\":\"Vanguard\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user gains a +5 Bonus to all Damage Rolls against targets with an initiative lower than itself that have not yet acted that round (having Ante\\u2019d up your Action via an Interrupt or similar on a previous round does not count as having acted that round).\",\"footer\":{\"text\":\"Core: p.334\"}}"
+    },
+    "Unbreakable":{
+        "embed":"{\"title\":\"Unbreakable\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"},{\"name\":\"Keywords\",\"value\":\"Last Chance\"}],\"description\":\"The user gains Last Chance with Steel.\",\"footer\":{\"text\":\"Core: p.334\"}}"
+    },
+    "Unburden":{
+        "embed":"{\"title\":\"Unburden\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"If the user is not holding a Held Item, their Speed is increased by +2 Combat Stages.\",\"footer\":{\"text\":\"Core: p.334\"}}"
+    },
+    "Unnerve":{
+        "embed":"{\"title\":\"Unnerve\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Foes within 3 meters of you cannot gain positive Combat Stages or trade in Digestion\\\/Food Buffs. This does not affect any Combat Stages they already have.\",\"footer\":{\"text\":\"Core: p.334\"}}"
+    },
+    "White Flame":{
+        "embed":"{\"title\":\"White Flame\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user may not make rolls to cure themselves from the Enraged condition. However, while Enraged, the user gains a +5 Bonus to all Damage Rolls.\",\"footer\":{\"text\":\"Core: p.335\"}}"
+    },
+    "Winter's Kiss":{
+        "embed":"{\"title\":\"Winter's Kiss\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user does not take damage from Ice-Type Moves. Whenever the user uses or is hit by an Ice-Type Move, the user is healed by a Tick of Hit Points. Defensive.\",\"footer\":{\"text\":\"Core: p.336\"}}"
+    },
+    "Wishmaster":{
+        "embed":"{\"title\":\"Wishmaster\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Connection \\u2013 Wish. Whenever the user uses Wish, the user may pick one of the following effects: the target is healed instantly instead of the following round; or the target gains +2 CS to the Stat of their choice upon being healed; or the target is cured of any Status Affliction.\",\"footer\":{\"text\":\"Core: p.336\"}}"
+    },
+    "Wistful Melody":{
+        "embed":"{\"title\":\"Wistful Melody\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"}],\"description\":\"Connection \\u2013 Sing. Whenever the user uses Sing, they may activate to his Ability to cause targets that are targeted by Sing have their Attack and Special Attack lowered by -2 CS each, whether Sing successfully hits that target or not. This Ability does not affect targets with the Soundproof Ability.\",\"footer\":{\"text\":\"Core: p.336\"}}"
+    },
+    "Wobble":{
+        "embed":"{\"title\":\"Wobble\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is hit by a damaging attack\"}],\"description\":\"The user may use either Counter or Mirror Coat as a Reaction, ignoring Frequency.\",\"footer\":{\"text\":\"Core: p.336\"}}"
+    },
+    "Wonder Guard":{
+        "embed":"{\"title\":\"Wonder Guard\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Only damaging attacks that are Super-Effective affect the Pok\\u00e9mon with Wonder Guard; all other damaging attacks cannot hit the user or deal damage. Wonder Guard loses its effect if the user has no weaknesses. Defensive.\",\"footer\":{\"text\":\"Core: p.336\"}}"
+    },
+    "Wonder Skin":{
+        "embed":"{\"title\":\"Wonder Skin\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user gains +6 Evasion against Status Moves. Defensive.\",\"footer\":{\"text\":\"Core: p.336\"}}"
+    },
+    "Air Lock":{
+        "embed":"{\"title\":\"Air Lock\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"}],\"description\":\"The weather is set to Normal as long as the Pok\\u00e9mon with Air Lock wants it to remain that way. The user may continue to sustain this effect as a Swift Action each round.\",\"footer\":{\"text\":\"Core: p.311\"}}"
+    },
+    "Bodyguard":{
+        "embed":"{\"title\":\"Bodyguard\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"A cardinally adjacent Ally is hit by an attack\"}],\"description\":\"The user and the target switch places, and the user becomes the target of the attack instead, taking damage from the attack as if resisted one step further. If switching places would not move the triggering Ally out of the area-of-effect of a Burst, Blast, Cone, or Line, this Ability does not prevent the ally from being hit. Defensive.\",\"footer\":{\"text\":\"Core: p.312\"}}"
+    },
+    "Covert":{
+        "embed":"{\"title\":\"Covert\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"If this Pok\\u00e9mon is standing on a terrain related to its natural habitat, its Evasion is increased by +2. For Ice types, this is generally snowy or icy terrain; Ground and Ground types are apt to feel at home in sandy terrain or craggy rocks; Grass types, Bug Types, and others likely feel at home in long grass. Some Pok\\u00e9mon may be at home in several types of terrain.\",\"footer\":{\"text\":\"Core: p.314\"}}"
+    },
+    "Cruelty":{
+        "embed":"{\"title\":\"Cruelty\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Swift Action\"},{\"name\":\"Trigger\",\"value\":\"The user hits a foe with a damaging attack\"}],\"description\":\"After Damage is Resolved, the foe gains an Injury. The user is then informed of the total number of Injuries currently on the target, and may use that number to \\u201cpurchase\\u201d the effects listed below.\\n\\u00bb\\u00bb 1 Injury: The target loses 2 Hit Points. May be \\u201cpurchased\\u201d multiple times.\\n\\u00bb\\u00bb 1 Injury: The target is Slowed.\\n\\u00bb\\u00bb 2 Injuries: Until the end of the encounter, the target may not gain Hit Points or Temporary Hit Points from any source. This effect ends if the target is switched out or Takes a Breather.\",\"footer\":{\"text\":\"Core: p.314\"}}"
+    },
+    "Download":{
+        "embed":"{\"title\":\"Download\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Target\",\"value\":\"Trainer or Pok\\u00e9mon\"}],\"description\":\"The target must reveal whether its Defense or Special Defense Stats are lower. If the Defense Stat is lower, the user gains a +5 Damage Bonus with Physical Moves when attacking the target. If the Special Defense Stat is lower, the Damage Bonus is instead to Special Moves.\",\"footer\":{\"text\":\"Core: p.316\"}}"
+    },
+    "Whirlwind Kicks":{
+        "embed":"{\"title\":\"Whirlwind Kicks\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Connection \\u2013 Rapid Spin. When the user uses the Move \\u201cRapid Spin\\u201d, it has a range of \\u201cBurst 1\\u201d instead of Melee and gains the Priority keyword.\",\"footer\":{\"text\":\"Core: p.335\"}}"
+    },
+    "White Smoke":{
+        "embed":"{\"title\":\"White Smoke\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user\\u2019s Combat Stages, Evasion, or Accuracy may not be lowered except by the user\\u2019s own Moves and effects. Defensive.\",\"footer\":{\"text\":\"Core: p.335\"}}"
+    },
+    "Windveiled":{
+        "embed":"{\"title\":\"Windveiled\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user is immune to the damage and effects of Flying-Type attacks. If the user is hit by a Flying-Type attack, the user raises the Damage Base of their next Flying-Type Move by +1. Defensive.\",\"footer\":{\"text\":\"Core: p.335\"}}"
+    },
+    "Abominable":{
+        "embed":"{\"title\":\"Abominable\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user ignores the Recoil Keyword when attacking, and does not gain injuries from Massive Damage.\",\"footer\":{\"text\":\"Core: p.311\"}}"
+    },
+    "Flower Gift":{
+        "embed":"{\"title\":\"Flower Gift\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Keywords\",\"value\":\"Burst\"}],\"description\":\"If it is Sunny, Flower Gift creates a 4-meter Burst. The user and all of their allies in the burst gain +2 Combat Stages, distributed among any Stat or Stats as they wish.\",\"footer\":{\"text\":\"Core: p.318\"}}"
+    },
+    "Flower Power":{
+        "embed":"{\"title\":\"Flower Power\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At Will - Extended Action\"},{\"name\":\"Target\",\"value\":\"A Grass Type Pokemon.\"}],\"description\":\"The target gains Flower Power for the rest of the day. While the target has Flower Power, they gain a +1 bonus to Skill Checks. A Pok\\u00e9mon with Flower Power may choose to expend their Flower Power when making an Accuracy Roll with a Grass-Type Move or when making a Save Check to gain a +2 Bonus to that roll. This Ability may target a specific target only once per day.\",\"footer\":{\"text\":\"Core: p.318\"}}"
+    },
+    "Haunt":{
+        "embed":"{\"title\":\"Haunt\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"},{\"name\":\"Keywords\",\"value\":\"Last Chance\"}],\"description\":\"The user gains Last Chance with Ghost.\",\"footer\":{\"text\":\"Core: p.319\"}}"
+    },
+    "Hay Fever":{
+        "embed":"{\"title\":\"Hay Fever\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Swift Action\"},{\"name\":\"Trigger\",\"value\":\"The user uses a Status Move; or the user ends their turn while Asleep.\"}],\"description\":\"The user creates a Burst 2 or Close Blast 3 of allergenic pollen. All Trainers and Pok\\u00e9mon in the burst that are not Bug, Grass, or Poison Typed lose a Tick of Hit Points. This Ability cannot be activated in Rainy Weather, Sandstorms, or if it is Hailing.\",\"footer\":{\"text\":\"Core: p.319\"}}"
+    },
+    "Illusion (Ability)":{
+        "embed":"{\"title\":\"Illusion\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Special\"}],\"description\":\"As a Standard Action, the user may mark an object, Pok\\u00e9mon, or Trainer. The user may have a number of targets marked equal to their Focus Rank; to mark a new target, an old mark must be forfeited. Once per round as a Free Action, the user may use illusory powers to make itself look exactly like a marked target. This may be done as the user is being released from a Pok\\u00e9 Ball. This change is aesthetic and does not affect typing or Moves. The illusion allows the user to vaguely mimic sounds made by its marked target, but it is not capable of intelligible speech. Whenever the user is hit by a damaging Move, the Illusion is destroyed. The user may also dismiss the Illusion as a Free Action.\",\"footer\":{\"text\":\"Core: p.321\"}}"
+    },
+    "Leaf Gift":{
+        "embed":"{\"title\":\"Leaf Gift\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily - Extended Action\"}],\"description\":\"The user is adept at crafting clothes for itself out of common leaves. As an extended action, the user may craft a Leaf Suit listed below by activating this Ability; each suit has different effects on the user. The user may only wear one Leaf Suit at a time; building a new suit destroys previous suits.\\n\\nNourishing Suit - Effect: Grants the Sun Blanket and Leaf Guard Abilities.\\nHeavy Suit - Effect: Grants the Sturdy and Overcoat Abilities.\\nVibrant Suit - Effect: Grants the Chlorophyll and Photosynthesis Abilities.\",\"footer\":{\"text\":\"Core: p.322\"}}"
+    },
+    "Magician":{
+        "embed":"{\"title\":\"Magician\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user hits a foe with a damaging Single-Target attack\"}],\"description\":\"The user takes the target\\u2019s Held Item. This Ability may not be triggered if the user is already holding a Held Item.\",\"footer\":{\"text\":\"Core: p.323\"}}"
+    },
+    "Iron Fist":{
+        "embed":"{\"title\":\"Iron Fist\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user increases the Damage Base of the following Moves by +2; Bullet Punch, Comet Punch, Dizzy Punch, Drain Punch, Dynamic Punch, Fire Punch, Meteor Mash, Shadow Punch, Ice Punch, Mach Punch, Mega Punch, Sky Uppercut, Thunder Punch, Focus Punch, Hammer Arm, and Power-Up Punch.\",\"footer\":{\"text\":\"Core: p.321\"}}"
+    },
+    "Magnet Pull":{
+        "embed":"{\"title\":\"Magnet Pull\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Swift Action\"},{\"name\":\"Target\",\"value\":\"A Steel-Type Pok\\u00e9mon\"}],\"description\":\"Until the end of the user's next turn, the target may not move more then 8-meters away from the user and\\\/or may not move closer than 3-meters to the user.\",\"footer\":{\"text\":\"Core: p.323\"}}"
+    },
+    "Parental Bond":{
+        "embed":"{\"title\":\"Parental Bond\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Only Kangaskhan with the Baby Template can be Mega Evolved and gain this Ability. While they have this Ability, the Baby gains 10 Damage Reduction, and will leave its mother\\u2019s pouch and may be commanded to take action in battle. Both the Baby Kangaskhan with this Ability and its Mother may take their turn when the Mother takes its turn; the Baby will not willingly walk farther than 10 meters from its mother however. If the Baby Kangaskhan with this Ability is Fainted, its mother will become Enraged, and gain 5 Damage Reduction and +5 to Damage Rolls for the remainder of the Scene.\",\"footer\":{\"text\":\"Core: p.325\"}}"
+    },
+    "Intimidate":{
+        "embed":"{\"title\":\"Intimidate\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Swift Action\"},{\"name\":\"Target\",\"value\":\"Pok\\u00e9mon or Trainer within 5 meters\"}],\"description\":\"Lower the target's Attack 1 Combat Stage.\",\"footer\":{\"text\":\"Core: p.321\"}}"
+    },
+    "Probability Control":{
+        "embed":"{\"title\":\"Probability Control\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Free Action\"},{\"name\":\"Target\",\"value\":\"Any roll made by yourself or an ally.\"}],\"description\":\"The user may reroll any roll, or have any ally reroll any roll that has been made. This leaves discoverable Psychic residue.\",\"footer\":{\"text\":\"Core: p.326\"}}"
+    },
+    "Odious Spray":{
+        "embed":"{\"title\":\"Odious Spray\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"}],\"description\":\"Connection - Poison Gas. The user may activate this Ability when using Poison Gas to cause Poison Gas to be a single target attack with a range of 8. When used this way, Poison Gas has an AC of 2, and also flinches its target if it hits.\",\"footer\":{\"text\":\"Core: p.325\"}}"
+    },
+    "Serpent's Mark":{
+        "embed":"{\"title\":\"Serpent's Mark\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Arbok\\u2019s Advanced and High Abilities depend on the Arbok\\u2019s hood pattern. To determine its pattern, roll 1d6 upon evolution or upon generation. If an Arbok is bred, it will have the same pattern as its parent. If both parents are Arboks with different patterns, determine the pattern randomly.\\n\\nPattern Name - Adv Ability \\\/ High Ability\\n1) Attack Pattern - Rivalry \\\/ Strong Jaw\\n2) Crush Pattern - Unnerve \\\/ Crush Trap\\n3) Fear Pattern - Frighten \\\/ Regal Challenge\\n4) Life Pattern \\u2013 Regenerator \\\/ Defy Death\\n5) Speed Pattern - Run Away \\\/ Speed Boost\\n6) Stealth Pattern - Instinct \\\/ Infiltrator\",\"footer\":{\"text\":\"Core: p.329\"}}"
+    },
+    "Soothing Tone":{
+        "embed":"{\"title\":\"Soothing Tone\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Connection - Heal Bell. Whenever the user uses the Move Heal Bell, all targets that recovered from a Status ailment gain a Tick of Hit Points.\",\"footer\":{\"text\":\"Core: p.330\"}}"
+    },
+    "Soulstealer":{
+        "embed":"{\"title\":\"Soulstealer\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user\\u2019s attack causes a foe to Faint\"}],\"description\":\"The user removes one Injury from themselves and recovers 25% of their Maximum Hit Points. If the triggering attack killed its target, the user instead removes all Injuries and recovers all Hit Points.\",\"footer\":{\"text\":\"Core: p.330\"}}"
+    },
+    "Stance Change":{
+        "embed":"{\"title\":\"Stance Change\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Aegislash has two Stances: Shield Stance and Sword Stance. Its default Stance is Shield Stance. Whenever Aegislash uses a damaging attack, it switches to Sword Stance and swaps its Attack Stat with its Defense and its Special Attack Stat with its Special Defense, without changing Combat Stages. Whenever Aegislash uses King\\u2019s Shield, Protect, a Status Move that raises Defense Combat Stages, or a Blessing, it switches to Shield Stance and swaps its offensive and defensive Stats back to their original arrangement. Aegislash may also change its Stance as a Full Action.\",\"footer\":{\"text\":\"Core: p.331\"}}"
+    },
+    "Sumo Stance":{
+        "embed":"{\"title\":\"Sumo Stance\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user\\u2019s Weight Class is increased by +1, and the user is immune to Push effects. Defensive.\",\"footer\":{\"text\":\"Core: p.332\"}}"
+    },
+    "Sunglow":{
+        "embed":"{\"title\":\"Sunglow\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Swift Action\"}],\"description\":\"The user may activate Sunglow while exposed to sunlight to become Radiant. While Radiant, the user gains a +5 bonus to all Damage Rolls. The user may expend the Radiant condition upon hitting a foe with a damaging attack to cause that foe to become Blinded until the end of their next turn.\",\"footer\":{\"text\":\"Core: p.332\"}}"
+    },
+    "Zen Mode":{
+        "embed":"{\"title\":\"Zen Mode\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Free Action\"}],\"description\":\"Keep two sets of Base Stats for Darmanitan, the first set of Base Stats are its normal stats while the second will be referred to during Zen Mode. The HP Stat for both sets of Base Stats must be the same. If Darmanitan has its Base Stats altered in any way, both sets of Base Stats are affected. As a Free Action, Darmanitan may activate Zen Mode if it is at less than 50% of its full Hit Points. Darmanitan may change back from Zen Mode as a Free Action if its Hit Point total is at 50% or higher. Darmanitan may switch from one form to another once per Scene.\",\"footer\":{\"text\":\"Core: p.336\"}}"
+    },
+    "Transporter":{
+        "embed":"{\"title\":\"Transporter\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily x3 - Free Action\"},{\"name\":\"Trigger\",\"value\":\"You use the Move Teleport or activate the Teleporter Capability\"}],\"description\":\"Choose One Effect: Connection \\u2013 Teleport. You activate Teleporter as if your Teleporter value were three times its normal value or you may take one willing Pok\\u00e9mon or Trainer along with you as you teleport so long as you are touching them when you activate Transporter. You may expend two uses of Transporter at once to choose both effects.\",\"footer\":{\"text\":\"Core: p.333\"}}"
+    },
+    "Blur (Ability)":{
+        "embed":"{\"title\":\"Blur\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Attacks and Moves targeting you that don\\u2019t require an Accuracy Check now require one, as though they had an Accuracy Check of 2. You may only apply half of your Evasion to these Attacks and Moves. Defensive.\",\"footer\":{\"text\":\"Core: p.312\"}}"
+    },
+    "Guts":{
+        "embed":"{\"title\":\"Guts\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"While suffering from Burn, Poison, Paralysis, Freezing, or while Asleep, the user\\u2019s Attack is raised 2 Combat Stages. If suffering from none of these conditions, the user loses any Combat Stages gained this way.\",\"footer\":{\"text\":\"Core: p.319\"}}"
+    },
+    "Forecast":{
+        "embed":"{\"title\":\"Forecast\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user\\u2019s Type changes depending on the weather. It changes to Fire Type if it is Sunny, Ice Type if it is Hailing, Water Type if it is Rainy, and Rock Type if there is a Sandstorm. It returns to Normal Type if it is in normal weather or foggy weather. If there are multiple Weather Effects on the field, choose one type for the user to be that corresponds with an existing Weather Effect.\",\"footer\":{\"text\":\"Core: p.318\"}}"
+    },
+    "Berry Storage":{
+        "embed":"{\"title\":\"Berry Storage\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily \\u2013 Extended Action\"},{\"name\":\"Trigger\",\"value\":\"The user eats a Berry\"}],\"description\":\"The user gains 3 instances of the Berry\\u2019s Digestion\\\/Food Buff instead of 1. It may only trade in one of these Digestion\\\/Food Buffs each Scene. Neither storing nor trading in these Digestion\\\/Food Buffs counts against the user\\u2019s normal limits. All Digestion\\\/Food Buffs gained from Berry Storage are lost after an Extended Rest.\",\"footer\":{\"text\":\"Core: p.312\"}}"
+    },
+    "Quick Cloak":{
+        "embed":"{\"title\":\"Quick Cloak\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Standard Action\"}],\"description\":\"Burmy quickly builds a cloak out of nearby materials; using leaves and twigs will give it a Grass Plant Cloak, using sand and rocks will give it a Ground Sandy Cloak, and using trash or scrap will give it a Steel Trash Cloak. While in a Cloak, Burmy gains the Type associated with the Cloak as a secondary Typing, which will become permanent upon evolution into Wormadam. Cloaks are destroyed if Burmy is hit for Super-Effective Damage, or if Burmy makes a new Cloak.\",\"footer\":{\"text\":\"Core: p.327\"}}"
+    },
+    "Sand Veil":{
+        "embed":"{\"title\":\"Sand Veil\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"The user\\u2019s Evasion is increased by +2 while in a Sandstorm. The user and allies adjacent to the user are not damaged by the Sandstorm.\",\"footer\":{\"text\":\"Core: p.328\"}}"
+    },
+    "Sway":{
+        "embed":"{\"title\":\"Sway\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Standard Action, Interrupt\"},{\"name\":\"Trigger\",\"value\":\"The user is hit by a damaging Melee Attack\"}],\"description\":\"The triggering attack misses the user and hits the foe that made the attack instead. That foe may then be pushed to any empty square adjacent to the user.\",\"footer\":{\"text\":\"Core: p.332\"}}"
+    },
+    "Weeble":{
+        "embed":"{\"title\":\"Weeble\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Standard Action, Reaction\"},{\"name\":\"Trigger\",\"value\":\"The user is hit by a damaging attack\"}],\"description\":\"The user may make an AC4 Physical Attack against an adjacent target. If the attack hits, the target loses Hit Points equal to 1\\\/3rd of the damage taken by the user from the attack that triggered Weeble.\",\"footer\":{\"text\":\"Core: p.335\"}}"
+    },
+    "Fashion Designer":{
+        "embed":"{\"title\":\"Fashion Designer\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily - Extended Action\"}],\"description\":\"The user knows how to make useful accessories from mere common leaves. The user may craft one of the consumable Held Items below by activating this ability.\\nLucky Leaf - Grass Type Booster for one encounter.\\nTasty Reeds - Bug Type Booster for one encounter.\\nDew Cup - Same Effect as an Occa Berry.\\nThorn Mantle - Same Effect as a Coba Berry.\\nChewy Cluster - Same Effect as Leftovers.\\nDecorative Twine \\u2013 Roll +2d6 on any Move during a Contest.\",\"footer\":{\"text\":\"Core: p.317\"}}"
+    },
+    "Delayed Reaction":{
+        "embed":"{\"title\":\"Delayed Reaction\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user is hit by a direct damaging attack\"}],\"description\":\"Halve the damage taken by the user. At the end of the user\\u2019s next turn, the user loses Hit Points equal to the other half of the damage. For example, if the user is hit for 11 damage and triggers this Ability, the user would take 5 damage upon being hit and 6 damage at the end of its next turn. Defensive.\",\"footer\":{\"text\":\"Core: p.315\"}}"
+    },
+    "Fabulous Trim":{
+        "embed":"{\"title\":\"Fabulous Trim\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Furfrou\\u2019s Ability depends on its current hairstyle. A Furfrou\\u2019s hairstyle can be changed as an Extended Action at an appropriate hair parlor.\\n\\nStar Trim: Celebrate\\nDiamond Trim: Defiant\\nHeart Trim: Cute Tears\\nPharaoh Trim: Sand Veil\\nKabuki Trim: Inner Focus\\nLa Reine Trim: Intimidate\\nMatron Trim: Friend Guard\\nDandy Trim: Moxie\\nDebutante Trim: Confidence\",\"footer\":{\"text\":\"Core: p.317\"}}"
+    },
+    "Lightning Rod":{
+        "embed":"{\"title\":\"Lightning Rod\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"},{\"name\":\"Trigger\",\"value\":\"A ranged Electric Type Move is used within 10 Meters of the user.\"}],\"description\":\"The Move is turned into a Single-Target Move and is re-directed at the user without fail, and cannot miss. This negates Lock-On or Mind Reader. Additionally, the user is immune to the damage and effects of Electric Type attacks, and each time they are hit by an Electric attack, the user\\u2019s Special Attack is raised 1 Combat Stage. Defensive.\",\"footer\":{\"text\":\"Core: p.322\"}}"
+    },
+    "Poison Heal":{
+        "embed":"{\"title\":\"Poison Heal\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user becomes Poisoned.\"}],\"description\":\"For the rest of the encounter, while Poisoned or Badly Poisoned, the user gains a Tick of Hit Points at the beginning of each turn instead of losing any Hit Points from Poison. At the end of the encounter, the user is cured of the Poison Status. Additionally, the user does not have any Combat Stages lowered from being Poisoned.\",\"footer\":{\"text\":\"Core: p.326\"}}"
+    },
+    "Quick Feet":{
+        "embed":"{\"title\":\"Quick Feet\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"When Poisoned, Burned, Paralyzed, Frozen or put to Sleep, the user\\u2019s Speed is raised 2 Combat Stages. The user does not lose Speed Combat Stages from Paralysis. If the user is healed all Status Conditions, their Speed is lowered appropriately.\",\"footer\":{\"text\":\"Core: p.327\"}}"
+    },
+    "Shell Cannon":{
+        "embed":"{\"title\":\"Shell Cannon\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene -  Free Action\"}],\"description\":\"When Blastoise uses Aqua Jet, Dive, Flash Cannon, Hydro Cannon, Hydro Pump, Tackle, Waterfall, Water Gun, and Water Spout they may activate this Ability to gain +2 to their Accuracy Roll and deals +4 Bonus Damage with Damage Rolls. When using Aqua Jet, Dive, Tackle, or Waterfall, Blastoise must shift in a straight line to their target to activate this Ability, but their Overland and Swim Speeds are increased by +2 when doing so.\",\"footer\":{\"text\":\"Core: p.329\"}}"
+    },
+    "Vicious":{
+        "embed":"{\"title\":\"Vicious\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Scene - Special\"},{\"name\":\"Trigger\",\"value\":\"The user uses Hone Claws\"}],\"description\":\"Connection \\u2013 Hone Claws. When this Ability is activated, choose one effect; the user gains another Standard Action this round; or the user increase their Critical Hit Range on all attacks by +2 for the remainder of the encounter.\",\"footer\":{\"text\":\"Core: p.334\"}}"
+    },
+    "Wash Away":{
+        "embed":"{\"title\":\"Wash Away\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily - Free Action\"},{\"name\":\"Trigger\",\"value\":\"The user hits with a Water Type Move\"}],\"description\":\"Before the Move \\u201chits\\u201d, all Combat Stages on targets hit by the Move are reset to their default (usually 0), and all coats on the targets, except ones placed by Water Sport, are destroyed.\",\"footer\":{\"text\":\"Core: p.335\"}}"
+    },
+    "Thunder Boost":{
+        "embed":"{\"title\":\"Thunder Boost\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"At-Will - Free Action\"},{\"name\":\"Trigger\",\"value\":\"An adjacent Ally uses an Electric-Type Move\"}],\"description\":\"The allied target gains a +5 Bonus to its damage roll with the triggering Move.  A target may not benefit from more than one instance of Thunder Boost at a time.  \",\"footer\":{\"text\":\"Core: p.333\"}}"
+    },
+    "Color Theory":{
+        "embed":"{\"title\":\"Color Theory\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Static\"}],\"description\":\"Upon gaining this ability at Birth, the user rolls 1d12 to determine the color of their tail secretions. 1 = Red; 2 = Red-Orange; 3 = Orange; 4 = Yellow- Orange; 5 = Yellow; 6 = Yellow-Green; 7 = Green; 8 = Blue-Green; 9 = Blue; 10 = Blue-Violet; 11 = Violet; 12 = Red-Violet.\\n\\nRed is tied to Attack, Orange is tied to Defense, Yellow is tied to Special Attack, Green is tied to Special Defense, Blue is tied to Speed, Violet is tied to HP. Users with a \\u201cPure\\u201d Color (Red, Orange, Yellow, etc) gain a +6 Bonus to the Base Stat tied to their color. Users with a \\u201cMixed\\u201d Color (Red-Orange, Yellow-Orange, etc) gain a +3 Bonus to each Stat tied to the color.\",\"footer\":{\"text\":\"Core: p.313\"}}"
+    },
+    "Mini-Noses":{
+        "embed":"{\"title\":\"Mini-Noses\",\"fields\":[{\"name\":\"Frequency\",\"value\":\"Daily - Standard Action\"}],\"description\":\"The user detaches up to three Mini-Noses from themselves and places them adjacent to them on the battlefield. These Mini-Noses have HP equal to the user\\u2019s level but otherwise uses their user\\u2019s stats. Each Mini-Nose has a Levitate Speed of 4. The user may Shift them each round on their turn, and they may originate any Ranged Move from one of the Mini-Noses instead of themselves if they choose. If a Mini-Nose is reduced to 0 HP, it is destroyed and takes a full 24 hours to regrow, one at a time. If the user has less than three grown Mini-Noses, then this ability can only place as many on the field as are available. All Mini-Noses deactivate, but are not destroyed, if the user is Fainted. Mini-Noses cannot be made to Shift more than 5 meters away from the user; if they are forced farther away, they will automatically Shift toward the user on the user\\u2019s turn.\",\"footer\":{\"text\":\"Core: p.324\"}}"
+    }
+}

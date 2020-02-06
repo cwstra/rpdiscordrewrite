@@ -98,7 +98,7 @@ def purgeURLs(message):
         test = urlRegex.search(message)
     return message
 
-class Roll:
+class Roll(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.bot.inline_roller = self.inline_roller

@@ -2,6 +2,7 @@ import ujson as json
 import asyncpg
 from fuzzywuzzy import process
 from collections import deque
+import random
 
 class Server:
     @classmethod
@@ -14,6 +15,9 @@ class Server:
         self.commands['get_all_of_entry'] = 'SELECT {} FROM {};'
         self.commands['get_all'] = 'SELECT * FROM {};'
         return self
+
+    async def close(self):
+        await self.pool.close()
 
     @staticmethod
     def limited_words(limit, message, keys, processFun, maxFun):
@@ -45,7 +49,7 @@ class Server:
         for i in arr:
             d[i[0]] = i[1]
         return d
-    
+
     async def dive(self, conn, oMessage, codex, table, keys, schema):
         message = oMessage
         for i in schema:
@@ -114,6 +118,26 @@ class Server:
             coll, rest = '', message
         return (schema, names, coll, rest)
 
+    async def random(self, codex, coll):
+        async with self.pool.acquire() as conn:
+            #Get schema for codex
+            schema = await conn.fetch(self.commands['get_all'].format(codex+'_schema'))
+            try:
+                schema = next(i['schema'] for i in schema if i['id'] == coll)
+            except StopIteration:
+                return "Sorry {}, that category doesn't exist in the current codex."
+            print(schema)
+            entries = await conn.fetch(self.commands['get_all_of_entry'].format('id', codex+'_'+coll))
+            entry = random.choice(entries)['id']
+            print(entry)
+            if schema != 'flat':
+                return "Sorry {}, random selections don't work for non-flat categories (yet!)"
+            print(codex+'_'+coll, 'embed')
+            result = await conn.fetchrow(self.commands['get_specific_row'](codex+'_'+coll, 'id'), entry)
+            return json.loads(result['embed'])
+
+
+
     async def lookup(self, codex, message):
         async with self.pool.acquire() as conn:
             #Get list of tables for codex.
@@ -145,7 +169,7 @@ class Server:
                     if i != 'schema':
                         keys = await conn.fetch(self.commands['get_all_of_entry'].format('id',names[i]))
                         keys = [i['id'] for i in keys]
-                        val = self.indTest(keys, schema, i, message) 
+                        val = self.indTest(keys, schema, i, message)
                         if val != None:
                             test += [(val,i)]
                 result = max(test, key=lambda x:x[0][1])
@@ -263,6 +287,7 @@ class Server:
                 else:
                     return "Sorry {}, I couldn't find a good match for that query."
             res = ''
+            schema = sorted(i for i in schema)
             for i in schema:
                 res += i['id'] + '\n'
                 if i['schema'] == 'flat':
@@ -279,7 +304,7 @@ class Server:
                             res += '\t\tCheck individual entries for a list of relevant subfields.\n'
             return res
 
-    async def top(self, codex, number, message):
+    async def top(self, codex, number, message, logger):
         def test(keys, schema_entry, mess, num):
             if schema_entry == 'flat':
                 return process.extract(mess, keys, limit=num)
@@ -296,6 +321,17 @@ class Server:
                 keys = await conn.fetch(self.commands['get_all_of_entry'].format('id',names[coll]))
                 keys = [i['id'] for i in keys]
                 results = test(keys, schema[coll], rest, number)
+                res = ''
+                mode = 0
+                for i in results:
+                    if mode == 0 and i[1] > 80:
+                        res += "Strong Matches:\n"
+                        mode = 1
+                    elif mode < 2 and i[1] <= 80:
+                        res += "Weak Matches:\n"
+                        mode = 2
+                    res += f'\t"{i[0]}" ({i[1]})\n'
+                return (res, coll)
             else:
                 testRes = []
                 for i in collections:
@@ -304,17 +340,18 @@ class Server:
                         keys = [i['id'] for i in keys]
                         testRes += list(map(lambda x:(x,i), test(keys, schema[i], message, number)))
                 results = sorted(testRes, key=lambda x:x[0][1], reverse=True)[:number]
-            res = ''
-            mode = 0
-            for i in results:
-                if mode == 0 and i[0][1] > 80:
-                    res += "Strong Matches:\n"
-                    mode = 1
-                elif mode < 2 and i[0][1] <= 80:
-                    res += "Weak Matches:\n"
-                    mode = 2
-                res += '\t"'+i[0][0]+'" in '+i[1]+' ('+str(i[0][1])+')\n'
-            return res
+                res = ''
+                mode = 0
+                for i in results:
+                    logger(i[0][1])
+                    if mode == 0 and i[0][1] > 80:
+                        res += "Strong Matches:\n"
+                        mode = 1
+                    elif mode < 2 and i[0][1] <= 80:
+                        res += "Weak Matches:\n"
+                        mode = 2
+                    res += f'\t"{i[0][0]}" in {i[1]} ({i[0][1]})\n'
+                return (res, None)
 
 if __name__ == "__main__":
     import asyncio

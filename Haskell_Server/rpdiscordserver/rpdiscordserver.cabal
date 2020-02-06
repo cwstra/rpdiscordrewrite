@@ -1,0 +1,158 @@
+-- This file has been generated from package.yaml by hpack version 0.28.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 0347d10206f10d96ff24dc11dbbe32f638c525c8f410615af1231365004aa80b
+
+name:           rpdiscordserver
+version:        1.0.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/diceparser#readme>
+homepage:       https://github.com/githubuser/rpdiscordserver#readme
+bug-reports:    https://github.com/githubuser/rpdiscordserver/issues
+author:         Corin (CWStra)
+maintainer:     cwstra@gmail.com
+copyright:      2018 Corin (CWStra)
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+extra-source-files:
+    ChangeLog.md
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/rpdiscordserver
+
+library
+  hs-source-dirs:
+      src
+  build-depends:
+      aeson
+    , arithmoi
+    , base
+    , bytestring
+    , cassava
+    , extra
+    , megaparsec
+    , mersenne-random-pure64
+    , monad-loops
+    , mtl
+    , parser-combinators
+    , pcg-random
+    , primitive
+    , scotty
+    , text
+    , timeit
+    , transformers
+    , unordered-containers
+  exposed-modules:
+      General.UserNumber
+      HistoryDiceParser.InfixToPostfix
+      HistoryDiceParser.Operators
+      HistoryDiceParser.PostfixToTree
+      HistoryDiceParser.ResolutionTree
+      NewDiceParser.Data
+      NewDiceParser.Eval
+      NewDiceParser.Functions
+      NewDiceParser.Getters
+      NewDiceParser.Monads
+      NewDiceParser.Parser
+  other-modules:
+      Paths_rpdiscordserver
+  default-language: Haskell2010
+
+executable rpdiscordserver
+  main-is: Main.hs
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson
+    , arithmoi
+    , base
+    , bytestring
+    , cassava
+    , extra
+    , megaparsec
+    , mersenne-random-pure64
+    , monad-loops
+    , mtl
+    , parser-combinators
+    , pcg-random
+    , primitive
+    , rpdiscordserver
+    , scotty
+    , text
+    , timeit
+    , transformers
+    , unordered-containers
+  other-modules:
+      Paths_rpdiscordserver
+  default-language: Haskell2010
+
+test-suite rpdiscordserver-integration-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_rpdiscordserver
+  hs-source-dirs:
+      test/integration
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      QuickCheck
+    , aeson
+    , arithmoi
+    , base
+    , bytestring
+    , cassava
+    , extra
+    , hspec
+    , megaparsec
+    , mersenne-random-pure64
+    , monad-loops
+    , mtl
+    , parser-combinators
+    , pcg-random
+    , primitive
+    , rpdiscordserver
+    , scotty
+    , text
+    , timeit
+    , transformers
+    , unordered-containers
+  default-language: Haskell2010
+
+test-suite rpdiscordserver-unit-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Arbitrary
+      General.UserNumberSpec
+      Paths_rpdiscordserver
+  hs-source-dirs:
+      test/unit
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      QuickCheck
+    , aeson
+    , arithmoi
+    , base
+    , bytestring
+    , cassava
+    , extra
+    , hspec
+    , megaparsec
+    , mersenne-random-pure64
+    , monad-loops
+    , mtl
+    , parser-combinators
+    , pcg-random
+    , primitive
+    , rpdiscordserver
+    , scotty
+    , text
+    , timeit
+    , transformers
+    , unordered-containers
+  default-language: Haskell2010

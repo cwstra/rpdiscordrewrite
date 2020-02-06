@@ -63,7 +63,7 @@ def splitlist(text):
     else:
         return ['\n'.join(text)]
 
-async def charList(ctx, title, lines):
+async def charList(ctx, title, lines, freeze):
     def toembed(d):
         fields = d.pop('fields', []) if 'fields' in d else []
         em = discord.Embed(**d)
@@ -71,22 +71,22 @@ async def charList(ctx, title, lines):
             em.add_field(**i)
         return em
     embeds = [toembed({'title':title, 'description':i}) for i in splitlist(lines)]
-    await SimplePaginator(extras=embeds).paginate(ctx)
+    await SimplePaginator(extras=embeds, freeze=freeze).paginate(ctx)
 
-class Character:
+class Character(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.bot.loop.create_task(self.server_start())
 
     async def server_start(self):
         self.bot.charserver = await db.Server.create(self.bot.settings)
-    
+
     def authOr(self, ctx):
         async def f(authorId):
             allowedroles = await self.bot.serverdata(ctx, 'permissionroles')
             test = ctx.author.id == authorId or ctx.author.permissions_in(ctx.channel) or (ctx.author.roles and any(i.id in allowedroles for i in ctx.author.roles))
             return test
-        return f 
+        return f
 
     @commands.command()
     async def newchar(self, ctx, *, args):
@@ -130,7 +130,8 @@ class Character:
                 charname, authorname = i[0], ctx.guild.get_member(i[1])
                 authorname = authorname.display_name if authorname else 'a former member of the server'
                 msg.append(f'`{charname}`, created by {authorname}')
-            await charList(ctx, 'Character Paginator', msg)
+            freeze = await self.bot.serverdata(ctx, 'freeze_pages')
+            await charList(ctx, 'Character Paginator', msg, freeze)
             return
         elif len(args) == 1:
             character, attrs = args[0], []
