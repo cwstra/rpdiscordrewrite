@@ -35,6 +35,9 @@ class StatServer:
         self.pool = await asyncpg.create_pool(**credentials)
         return self
 
+    async def close(self):
+        await self.pool.close()
+
     async def editStats(self, ctx, jstr):
         def mergeDice(oldDice, newDice):
             return {**oldDice, **{i:(str(int(oldDice[i])+newDice[i]) if (i in oldDice) else str(newDice[i])) for i in newDice}}

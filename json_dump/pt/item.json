@@ -1,0 +1,1376 @@
+{
+    "Fishing Lure":{
+        "embed":"{\"title\":\"Fishing Lure\",\"description\":\"Instead of Bait, some trainers may opt to use a Fishing Lure when attempting to Fish. Fishing Lures work just like Bait, but can be used multiple times. If the line snaps or the fish gets away, they may take your lure with them, however.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1500\"}],\"footer\":{\"text\":\"Core: p.274\"}}"
+    },
+    "Basic Rope":{
+        "embed":"{\"title\":\"Basic Rope\",\"description\":\"Basic Fiber Rope. Has a tensile strength of 35 kg or 77 lbs. It has 5 Hit Points.\\nRope can only be damaged by Fire-Type attacks, attacks made with sharp objects(knives, swords, sharp teeth), and moves like Scratch, Slash, Leaf Blade, Razor Leaf, etc. The Move Cut ignores all Damage Reduction against Rope. Rope can be bought in any length of 25 ft up to 300.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"100\"}],\"footer\":{\"text\":\"Core: p.274\"}}"
+    },
+    "Utility Rope":{
+        "embed":"{\"title\":\"Utility Rope\",\"description\":\"Braided Utility Rope. Has a tensile strength of 80 kg or 176 lbs. It has 20 Hit Points and 10 Damage Reduction.\\nRope can only be damaged by Fire-Type attacks, attacks made with sharp objects(knives, swords, sharp teeth), and moves like Scratch, Slash, Leaf Blade, Razor Leaf, etc. The Move Cut ignores all Damage Reduction against Rope. Rope can be bought in any length of 25 ft up to 300.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"200\"}],\"footer\":{\"text\":\"Core: p.274\"}}"
+    },
+    "Sturdy Rope":{
+        "embed":"{\"title\":\"Sturdy Rope\",\"description\":\"Sturdy Rope with a tensile strength of 225 kg or roughly 500lbs. 30 Hit Points and 20 Damage Reduction.\\nRope can only be damaged by Fire-Type attacks, attacks made with sharp objects(knives, swords, sharp teeth), and moves like Scratch, Slash, Leaf Blade, Razor Leaf, etc. The Move Cut ignores all Damage Reduction against Rope. Rope can be bought in any length of 25 ft up to 300.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"400\"}],\"footer\":{\"text\":\"Core: p.274\"}}"
+    },
+    "Sleeping Bag":{
+        "embed":"{\"title\":\"Sleeping Bag\",\"description\":\"A standard sleeping bag.  Holds one person.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"Core: p.274\"}}"
+    },
+    "Sleeping Bag (Double)":{
+        "embed":"{\"title\":\"Sleeping Bag (Double)\",\"description\":\"A standard sleeping bag.  Holds two people.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1800\"}],\"footer\":{\"text\":\"Core: p.274\"}}"
+    },
+    "Tent":{
+        "embed":"{\"title\":\"Tent\",\"description\":\"Standard outdoor tents. Provide protection from the elements of nature. A small one person tent would be about 1m x 1.5m x 1.5m, or 2.25 cubic meters\\u2013 meaning 900 in price.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"400\\\/m^3\"}],\"footer\":{\"text\":\"Core: p.274\"}}"
+    },
+    "Lighter":{
+        "embed":"{\"title\":\"Lighter\",\"description\":\"For creating flames in a hurry.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"150\"}],\"footer\":{\"text\":\"Core: p.274\"}}"
+    },
+    "Waterproof Lighter":{
+        "embed":"{\"title\":\"Waterproof Lighter\",\"description\":\"For creating flames in a hurry.  Waterproof.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"Core: p.274\"}}"
+    },
+    "Flashlight":{
+        "embed":"{\"title\":\"Flashlight\",\"description\":\"For, you know, seeing. In the dark. Yes.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"200\"}],\"footer\":{\"text\":\"Core: p.274\"}}"
+    },
+    "Waterproof Flashlight":{
+        "embed":"{\"title\":\"Waterproof Flashlight\",\"description\":\"For, you know, seeing. In the dark. Yes.  Waterproof.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"600\"}],\"footer\":{\"text\":\"Core: p.274\"}}"
+    },
+    "Water Filter":{
+        "embed":"{\"title\":\"Water Filter\",\"description\":\"Can ensure that river or pond water is clean to drink after being filtered.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.274\"}}"
+    },
+    "Repel":{
+        "embed":"{\"title\":\"Repel\",\"description\":\"Lasts 1 hour; causes Pok\\u00e9mon of level 15 or lower to flee.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"200\"}],\"footer\":{\"text\":\"Core: p.275\"}}"
+    },
+    "Super Repel":{
+        "embed":"{\"title\":\"Super Repel\",\"description\":\"Lasts 2 hours; causes Pok\\u00e9mon of level 25 or lower to flee.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"300\"}],\"footer\":{\"text\":\"Core: p.275\"}}"
+    },
+    "Max Repel":{
+        "embed":"{\"title\":\"Max Repel\",\"description\":\"Lasts 5 hours; causes Pok\\u00e9mon of level 35 or lower to flee.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"400\"}],\"footer\":{\"text\":\"Core: p.275\"}}"
+    },
+    "Chemistry Set":{
+        "embed":"{\"title\":\"Chemistry Set\",\"description\":\"Used to create Repels, Potions, and other objects.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"Core: p.284\"}}"
+    },
+    "Cooking Set":{
+        "embed":"{\"title\":\"Cooking Set\",\"description\":\"Used by Chefs to create Snacks and Refreshments.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"Core: p.284\"}}"
+    },
+    "Dowsing Rod":{
+        "embed":"{\"title\":\"Dowsing Rod\",\"description\":\"Dowsing Rods have been attuned to the energy resonance given off by Shards and may be used while in any route, cave, or outside area. They may be activated by spending 10 minutes searching an area, and may be activated a number of times per day equal to half of the trainer\\u2019s Occult Education Rank.\\nRoll 1d6 per Occult Ed Rank. If the area being searched is a beach, cave, desert, or any other sandy\\\/rocky area, roll +1d6. If you have Skill Stunt (Dowsing), roll an additional 1d6. For each die that results in 4 or higher, you find 1 Shard of a random color: Red, Orange, Yellow, Green, Blue, or Violet. You may reroll any die that result in 6, gaining that shard and potentially more.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"2000\"}],\"footer\":{\"text\":\"Core: p.284\"}}"
+    },
+    "Super Bait":{
+        "embed":"{\"title\":\"Super Bait\",\"description\":\"Super Bait is a tasty, strong-smelling morsel of food designed to attract Pok\\u00e9mon. It may be used in two ways; to lure Pok\\u00e9mon, or to distract Pok\\u00e9mon.\\nTo lure Pok\\u00e9mon, set the super bait on a route. Every 15 minutes thereafter, roll 1d20+Intuition Rank until you roll 15 or higher. If you roll 3 times without success, the super bait loses its potency and fails. If you succeed however, a random Pok\\u00e9mon will appear. Super bait is often used for Fishing in this way.\\nTo distract Pok\\u00e9mon, throw it at a Wild Pok\\u00e9mon as a Standard Action. The target must then make a Focus Roll with a DC of 12. If they fail, the Pok\\u00e9mon gives up its next Standard Action to eat the food.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"200\"}],\"footer\":{\"text\":\"Core: p.132\"}}"
+    },
+    "First Aid Kit":{
+        "embed":"{\"title\":\"First Aid Kit\",\"description\":\"Required to use the First Aid Expertise Feature. By Draining 1 AP, any Trainer can make a Medicine Education Check on a target as an Extended Action. The target gains Hit Points equal to the result, and is cured of Burn, Poison, and Paralysis.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.274\"}}"
+    },
+    "Collection Jar":{
+        "embed":"{\"title\":\"Collection Jar\",\"description\":\"A simple sealable glass jar. Useful when collecting Items from Pok\\u00e9mon, such as Honey from Pok\\u00e9mon with the Honey Gather Ability, or MooMoo Milk from Pok\\u00e9mon with the Milk Collection Ability. Available almost everywhere.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"100\"}],\"footer\":{\"text\":\"Core: p.274\"}}"
+    },
+    "Yellow Shard":{
+        "embed":"{\"title\":\"Yellow Shard\",\"description\":\"Associated with Electric, Rock, & Steel.  With Gem Lore, 4 can be combined into a Thunder Stone.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.284\"}}"
+    },
+    "Green Shard":{
+        "embed":"{\"title\":\"Green Shard\",\"description\":\"Associated with Bug, Grass, & Ground.  With Gem Lore, 4 can be combined into a Leaf Stone.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.284\"}}"
+    },
+    "Blue Shard":{
+        "embed":"{\"title\":\"Blue Shard\",\"description\":\"Associated with Water, Ice, & Flying.  With Gem Lore, 4 can be combined into a Water Stone.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.284\"}}"
+    },
+    "Violet Shard":{
+        "embed":"{\"title\":\"Violet Shard\",\"description\":\"Associated with Poison, Dark, & Ghost.  With Gem Lore, 4 can be combined into a Dusk Stone.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.284\"}}"
+    },
+    "Poffin Mixer":{
+        "embed":"{\"title\":\"Poffin Mixer\",\"description\":\"A Poffin Mixer can be used by any Trainer to create Poffins. You simply insert cooking ingredients worth $500, and at least one of the listed berries. You create two Poffins that raises the Contest Stat most represented by the berries used by +1 Contest Die. Some Berries can raise multiple Contest Stats; you choose which to raise when using these Berries to make Poffins. Poffins can be purchased for $500 in bakeries.\\nCheri, Figy, Razz, Spelon and Belue Berries raise Cool; Chesto, Wiki, Bluk, Spelon and Pamtre Berries raise Beauty; Pecha, Mago, Nanab, Pamtre, and Watmel Berries raise Cute; Rawst, Aguav, Wepear, Watmel, and Durin Berries raise Smart; Aspear, Iapapa, Pinap, Durin, and Belue Berries raise Tough.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.284\"}}"
+    },
+    "Pok\u00e9 Ball Tool Box":{
+        "embed":"{\"title\":\"Pok\\u00e9 Ball Tool Box\",\"description\":\"These tool boxes let those with the know-how craft and repair Pok\\u00e9 Balls.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.284\"}}"
+    },
+    "Portable Grower":{
+        "embed":"{\"title\":\"Portable Grower\",\"description\":\"Portable Growers can be used to grow berries and herbs. Portable Growers protect the plants within them from external weather, and never need to be fertilized. Each Grower holds one plant.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"2000\"}],\"footer\":{\"text\":\"Core: p.284\"}}"
+    },
+    "Mulch":{
+        "embed":"{\"title\":\"Mulch\",\"description\":\"Mulch may be used to temporarily increase soil Quality; it may be applied to a Plant to increase the Soil Quality of a plant by +1 for the following day. This cannot make a Soil Quality go above +2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"200\"}],\"footer\":{\"text\":\"Core: p.280\"}}"
+    },
+    "Groomer's Kit":{
+        "embed":"{\"title\":\"Groomer's Kit\",\"description\":\"Used by Trainers with the Groomer Edge to clean their Pok\\u00e9mon.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Reanimation Machine":{
+        "embed":"{\"title\":\"Reanimation Machine\",\"description\":\"Can be used to revive Fossils. Reanimation Machines also come in a smaller but more expensive Portable variety. Prices are up to GM discretion, often upwards of $10,000. See the Pok\\u00e9mon Fossils section for more details (page 216).\",\"fields\":[{\"name\":\"Cost\",\"value\":\"Varies\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Poffin":{
+        "embed":"{\"title\":\"Poffin\",\"fields\":[{\"name\":\"Cost\",\"value\":500}],\"description\":\"Raises one Contest Stat by +1 Contest Die. See Poffin Mixer for details on stat selection.\",\"footer\":{\"text\":\"Core: p.284\"}}"
+    },
+    "The Joy of Cooking":{
+        "embed":"{\"title\":\"The Joy of Cooking\",\"description\":\"A cookbook for novice and experienced chefs alike.\\nRank 1 - Novice General Education: Your material costs for crafting Food Items of any variety are reduced by 10%.\\nRank 2 - Expert General Education: Meal and Refreshment Items you create cause whoever eats them to gain a Tick of Hit Points.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"May: p.7\"}}"
+    },
+    "Egg Warmer (Item)":{
+        "embed":"{\"title\":\"Egg Warmer\",\"description\":\"Egg Warmers are insulated cases that carry up to four Pok\\u00e9mon Eggs and protect them from harm. They also cause Pok\\u00e9mon to hatch twice as fast; each day spent in an Egg Warmer counts as 2 days for the purposes of Hatch Rate.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"2500\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Vile Bait":{
+        "embed":"{\"title\":\"Vile Bait\",\"description\":\"Vile Bait is a strong-smelling morsel of food designed to attract Pok\\u00e9mon. Pok\\u00e9mon that eat it are poisoned.\\nTo lure Pok\\u00e9mon, set the vile bait on a route. Every 15 minutes thereafter, roll 1d20 until you roll 15 or higher. If you roll 3 times without success, the vile bait loses its potency and fails. If you succeed however, a random Pok\\u00e9mon will appear. Vile bait is often used for Fishing in this way.\\nTo distract Pok\\u00e9mon, throw it at a Wild Pok\\u00e9mon as a Standard Action. The target must then make a Focus Roll with a DC of 12. If they fail, the Pok\\u00e9mon gives up its next Standard Action to eat the food.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"200\"}],\"footer\":{\"text\":\"Core: p.132\"}}"
+    },
+    "Saddle":{
+        "embed":"{\"title\":\"Saddle\",\"description\":\"Saddles help Trainers ride Pok\\u00e9mon. They are created with a specific Pok\\u00e9mon species in mind, and only Pok\\u00e9mon with that body type can wear the saddle. A common Saddle type fits Ponyta, Rapidash, Blitzle, and Zebstrika, for example. Saddles grant a +3 bonus to all Skill Checks made to mount Pok\\u00e9mon, or to remain on the Saddle when hit by an attack.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"2000\"}],\"footer\":{\"text\":\"Core: p.274\"}}"
+    },
+    "Red Shard":{
+        "embed":"{\"title\":\"Red Shard\",\"description\":\"Associated with Fire, Fairy, & Psychic.  With Gem Lore, 4 can be combined into a Fire Stone.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.284\"}}"
+    },
+    "Orange Shard":{
+        "embed":"{\"title\":\"Orange Shard\",\"description\":\"Associated with Normal, Fighting, & Dragon.  With Gem Lore, 4 can be combined into a Shiny Stone.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.284\"}}"
+    },
+    "First Aid Manual":{
+        "embed":"{\"title\":\"First Aid Manual\",\"description\":\"A training manual given to all EMTs.\\nRank 1 - Novice Medicine Education: You gain a +10 Bonus to Medicine Education Checks made to use a First Aid Kit.\\nRank 2 - Expert Medicine Education: You may use the First Aid Expertise Feature once per day.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"May: p.8\"}}"
+    },
+    "Tinfoil Gospel: Your Primer on Thwarting the Conspiracies of the New World Order":{
+        "embed":"{\"title\":\"Tinfoil Gospel: Your Primer on Thwarting the Conspiracies of the New World Order\",\"description\":\"An even more questionable tome, filled with laughable conspiracy theories. Its mental exercises are strangely effective, however.\\nRank 1 - Novice Occult Education: You gain the Iron Mind Edge and the Skill Stunt - Focus (resisting Telepathy).\\nRank 2 - Expert Occult Education: Your Aura becomes muddled and difficult to read. Pok\\u00e9mon and Trainers with the Aura Reader Capability cannot discern the tint of your Aura and must succeed on an opposed Intuition or Focus Check vs your Occult Education or Focus in order to read the hue of your Aura. Upon failure, they may not attempt to read your Aura again for the remainder of the Scene.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"May: p.8\"}}"
+    },
+    "Type Study Manual":{
+        "embed":"{\"title\":\"Type Study Manual\",\"description\":\"These Books focus on one particular Pokemon Type.\\nRank 1 - Novice Pok\\u00e9mon Education: You gain a -5 Bonus on Capture Checks against the studied Type.\\nRank 2 - Expert Pok\\u00e9mon Education: When you apply Experience Training, you may choose to give one of your Pok\\u00e9mon of the studied Type +10 Bonus Experience. The same Pok\\u00e9mon cannot be chosen two days in a row.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"May: p.9\"}}"
+    },
+    "Pok\u00e9mon Daycare Licensing Guide":{
+        "embed":"{\"title\":\"Pok\\u00e9mon Daycare Licensing Guide\",\"description\":\"This book teaches advanced Pok\\u00e9mon Breeding techniques.\\nRank 1 - Adept Pok\\u00e9mon Education: When Breeding Pok\\u00e9mon of this Book\\u2019s Egg Group, you may choose which parent\\u2019s species the Egg is of.\\nRank 2 - Master Pok\\u00e9mon Education: When hatching Eggs of Pok\\u00e9mon of this Book\\u2019s Egg Group, the hatched Pok\\u00e9mon learns their first Inheritance Move at Level 10 instead of Level 20.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"May: p.9\"}}"
+    },
+    "Fishing 101":{
+        "embed":"{\"title\":\"Fishing 101\",\"description\":\"A good way to waste an afternoon sitting at the side of a boat.\\nRank 1 - Novice Survival: You gain the Snare Capture Technique, but it only applies to Pok\\u00e9mon you have fished up.\\nRank 2 - Adept Survival: Whenever you fish up a Pok\\u00e9mon, choose two Combat Stats. That Pok\\u00e9mon becomes Flinched and loses 1 Combat Stage in each of the chosen Stats.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"May: p.9\"}}"
+    },
+    "A Field Guide to Fungi":{
+        "embed":"{\"title\":\"A Field Guide to Fungi\",\"description\":\"This book tells you which mushrooms are good to eat and which ones will give you a bad trip.\\nRank 1 - Novice Survival: You automatically identify all Tiny Mushrooms, Big Mushrooms, and Balm Mushrooms you pick. Whenever you or your Pok\\u00e9mon consume one of those Mushrooms, they ignore the negative effect of the Mushroom (Hit Point loss, Poison, Combat Stage loss).\\nRank 2 - Adept Survival: You can create the Hearty Meal Chef Recipe as an Extended Action but only by using Mushrooms as ingredients.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"May: p.9\"}}"
+    },
+    "Travel Guide":{
+        "embed":"{\"title\":\"Travel Guide\",\"description\":\"A Travel Guide covers a specific location, such as a mountain or a pair of routes in the wilderness. Travel Guides are usually written for the more popular destinations in a region, but they might not necessarily exist for more obscure and out of the way locations.\\nRank 1 - Novice Survival: You gain the following Skill Stunts while traveling in the studied location: Survival (Foraging) and Survival (Navigation).\\nRank 2 - Expert Survival: You and your Pok\\u00e9mon do not take damage from naturally occurring Weather effects in the studied location.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"May: p.9\"}}"
+    },
+    "Zinc":{
+        "embed":"{\"title\":\"Zinc\",\"description\":\"Raise the user\\u2019s Special Defense Base Stat 1.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"4900\"}],\"footer\":{\"text\":\"Core: p.299\"}}"
+    },
+    "Dowsing for Dummies":{
+        "embed":"{\"title\":\"Dowsing for Dummies\",\"description\":\"A favorite of rock collectors everywhere, this book teaches the user how to attune their dowsing rods.\\nRank 1 - Novice Occult Education: Roll +1d6 when searching for Shards.\\nRank 2 - Adept Occult Education: When you begin searching for Shards, you may choose to expend an additional activation of Dowsing for the day. If you do, choose a Shard Color; all the Shards you find during this search will be of the chosen Color.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"May: p.8\"}}"
+    },
+    "How To Avoid Being Spooked":{
+        "embed":"{\"title\":\"How To Avoid Being Spooked\",\"description\":\"A questionable old tome filled with Ghost-related esoterica.\\nRank 1 - Adept Occult Education: While holding a Cleanse Tag in your Main or Off-Hand Equipment Slot, you can see Pok\\u00e9mon and Trainers using the Invisibility Capability.\\nRank 2 - Expert Occult Education: While holding a Cleanse Tag in your Main or Off-Hand Equipment Slot, you are immune to the Cursed Status Affliction.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"May: p.8\"}}"
+    },
+    "Super Potion":{
+        "embed":"{\"title\":\"Super Potion\",\"description\":\"Heals 35 Hit Points\",\"fields\":[{\"name\":\"Cost\",\"value\":\"380\"}],\"footer\":{\"text\":\"Core: p.276\"}}"
+    },
+    "Hyper Potion":{
+        "embed":"{\"title\":\"Hyper Potion\",\"description\":\"Heals 70 Hit Points\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"}],\"footer\":{\"text\":\"Core: p.276\"}}"
+    },
+    "Antidote":{
+        "embed":"{\"title\":\"Antidote\",\"description\":\"Cures Poison\",\"fields\":[{\"name\":\"Cost\",\"value\":\"200\"}],\"footer\":{\"text\":\"Core: p.276\"}}"
+    },
+    "Paralyze Heal":{
+        "embed":"{\"title\":\"Paralyze Heal\",\"description\":\"Cures Paralysis\",\"fields\":[{\"name\":\"Cost\",\"value\":\"200\"}],\"footer\":{\"text\":\"Core: p.276\"}}"
+    },
+    "Burn Heal":{
+        "embed":"{\"title\":\"Burn Heal\",\"description\":\"Cures Burns\",\"fields\":[{\"name\":\"Cost\",\"value\":\"200\"}],\"footer\":{\"text\":\"Core: p.276\"}}"
+    },
+    "Ice Heal":{
+        "embed":"{\"title\":\"Ice Heal\",\"description\":\"Cures Freezing\",\"fields\":[{\"name\":\"Cost\",\"value\":\"200\"}],\"footer\":{\"text\":\"Core: p.276\"}}"
+    },
+    "Full Heal":{
+        "embed":"{\"title\":\"Full Heal\",\"description\":\"Cures all Persistent Status Afflictions\",\"fields\":[{\"name\":\"Cost\",\"value\":\"450\"}],\"footer\":{\"text\":\"Core: p.276\"}}"
+    },
+    "Full Restore":{
+        "embed":"{\"title\":\"Full Restore\",\"description\":\"Heals a Pok\\u00e9mon for 80 Hit Points and cures any Status Afflictions\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1450\"}],\"footer\":{\"text\":\"Core: p.276\"}}"
+    },
+    "Revive":{
+        "embed":"{\"title\":\"Revive\",\"description\":\"Revives fainted Pok\\u00e9mon and sets to 20 Hit Points\",\"fields\":[{\"name\":\"Cost\",\"value\":\"300\"}],\"footer\":{\"text\":\"Core: p.276\"}}"
+    },
+    "Energy Powder":{
+        "embed":"{\"title\":\"Energy Powder\",\"description\":\"Heals 25 Hit Points - Repulsive\",\"fields\":[{\"name\":\"Cost\",\"value\":\"150\"}],\"footer\":{\"text\":\"Core: p.276\"}}"
+    },
+    "Energy Root":{
+        "embed":"{\"title\":\"Energy Root\",\"description\":\"Heals 70 Hit Points - Repulsive\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.281\"}}"
+    },
+    "Heal Powder":{
+        "embed":"{\"title\":\"Heal Powder\",\"description\":\"Cure all Persistent Status Afflictions \\u2013 Repulsive\",\"fields\":[{\"name\":\"Cost\",\"value\":\"350\"}],\"footer\":{\"text\":\"Core: p.276\"}}"
+    },
+    "Revival Herb":{
+        "embed":"{\"title\":\"Revival Herb\",\"description\":\"Revives Pok\\u00e9mon and sets to 50% Hit Points - Repulsive\",\"fields\":[{\"name\":\"Cost\",\"value\":\"350\"}],\"footer\":{\"text\":\"Core: p.281\"}}"
+    },
+    "X Attack":{
+        "embed":"{\"title\":\"X Attack\",\"description\":\"Increases the Pok\\u00e9mon\\u2019s Attack by two Combat Stages\",\"fields\":[{\"name\":\"Cost\",\"value\":\"350\"}],\"footer\":{\"text\":\"Core: p.276\"}}"
+    },
+    "X Defend":{
+        "embed":"{\"title\":\"X Defend\",\"description\":\"Increases the Pok\\u00e9mon\\u2019s Defense by two Combat Stages\",\"fields\":[{\"name\":\"Cost\",\"value\":\"350\"}],\"footer\":{\"text\":\"Core: p.276\"}}"
+    },
+    "X Special":{
+        "embed":"{\"title\":\"X Special\",\"description\":\"Increases the Pok\\u00e9mon\\u2019s Special Attack by two Combat Stages\",\"fields\":[{\"name\":\"Cost\",\"value\":\"350\"}],\"footer\":{\"text\":\"Core: p.276\"}}"
+    },
+    "X Speed":{
+        "embed":"{\"title\":\"X Speed\",\"description\":\"Increases the Pok\\u00e9mon\\u2019s Speed by two Combat Stages\",\"fields\":[{\"name\":\"Cost\",\"value\":\"350\"}],\"footer\":{\"text\":\"Core: p.276\"}}"
+    },
+    "Dire Hit":{
+        "embed":"{\"title\":\"Dire Hit\",\"description\":\"Increases Critical Hit Range of all moves by +2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"600\"}],\"footer\":{\"text\":\"Core: p.276\"}}"
+    },
+    "X Accuracy":{
+        "embed":"{\"title\":\"X Accuracy\",\"description\":\"Increases Accuracy by +2\",\"fields\":[{\"name\":\"Cost\",\"value\":\"600\"}],\"footer\":{\"text\":\"Core: p.276\"}}"
+    },
+    "Poultices":{
+        "embed":"{\"title\":\"Poultices\",\"description\":\"Poultices are applied as Extended Actions on Pok\\u00e9mon or Trainers. Poultices last for 6 hours; while applied, they double the Natural Healing Rate of Pok\\u00e9mon or Trainers, meaning a Pok\\u00e9mon or Trainer will heal 1\\\/8th of their Hit Points per half hour. Poultices also immediately heal one Injury if they remain in place for their full duration.\\nIf a Pok\\u00e9mon is damaged or loses Hit Points in any way, the Poulticess immediately stop working.  Poultices are itchy and irritating to the skin and may cause loyalty loss.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"225\"}],\"footer\":{\"text\":\"Core: p.277\"}}"
+    },
+    "HP Up":{
+        "embed":"{\"title\":\"HP Up\",\"description\":\"Raise the user\\u2019s HP Base Stat 1.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"4900\"}],\"footer\":{\"text\":\"Core: p.299\"}}"
+    },
+    "Protein":{
+        "embed":"{\"title\":\"Protein\",\"description\":\"Raise the user\\u2019s Attack Base Stat 1.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"4900\"}],\"footer\":{\"text\":\"Core: p.299\"}}"
+    },
+    "Iron":{
+        "embed":"{\"title\":\"Iron\",\"description\":\"Raise the user\\u2019s Defense Base Stat 1.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"4900\"}],\"footer\":{\"text\":\"Core: p.299\"}}"
+    },
+    "Calcium":{
+        "embed":"{\"title\":\"Calcium\",\"description\":\"Raise the user\\u2019s Special Attack Base Stat 1.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"4900\"}],\"footer\":{\"text\":\"Core: p.299\"}}"
+    },
+    "X Sp. Def":{
+        "embed":"{\"title\":\"X Sp. Def.\",\"description\":\"Increases the Pok\\u00e9mon\\u2019s Special Defense by two Combat Stages\",\"fields\":[{\"name\":\"Cost\",\"value\":\"350\"}],\"footer\":{\"text\":\"Core: p.276\"}}"
+    },
+    "Pok\u00e9 Ball Technical Manual":{
+        "embed":"{\"title\":\"Pok\\u00e9 Ball Technical Manual\",\"description\":\"Your all-in-one guide to balls.\\nRank 1 - Novice Technology Education: Your material costs for crafting Poke Balls of any variety are reduced by 10%.\\nRank 2 - Expert Technology Education: Poke Balls you craft gain a +2 Bonus to Accuracy Rolls.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"May: p.9\"}}"
+    },
+    "DIY Engineering":{
+        "embed":"{\"title\":\"DIY Engineering\",\"description\":\"Duct tape not included.\\nRank 1 - Novice Technology Education: Your material costs for crafting items crafted from Mechanical Scrap are reduced by 10%.\\nRank 2 - Expert Technology Education: Whenever you Scrap an Item you created, you gain Scrap worth 75% of its monetary cost instead of only 50%.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"May: p.10\"}}"
+    },
+    "Combat Medic's Primer":{
+        "embed":"{\"title\":\"Combat Medic's Primer\",\"description\":\"\\nRank 1 \\u2013 Novice Medicine Education: After taking a Sprint Maneuver, you may apply a Restorative Item on an adjacent target as a Swift Action.\\nRank 2 \\u2013 Expert Medicine Education: Once per Scene as a Standard Action, you may target an adjacent ally. The target may immediately Take a Breather as a Full-Action Interrupt if they wish. They do not Shift and do not become Tripped as part of this action. If the target is Confused or Enraged, you must make a Medicine Education Check with a DC of 12 for them to be able to Take a Breather.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"Sept: p.7\"}}"
+    },
+    "Potion":{
+        "embed":"{\"title\":\"Potion\",\"description\":\"Heals 20 Hit Points\",\"fields\":[{\"name\":\"Cost\",\"value\":\"200\"}],\"footer\":{\"text\":\"Core: p.276\"}}"
+    },
+    "Heart Booster":{
+        "embed":"{\"title\":\"Heart Booster\",\"description\":\"The Pok\\u00e9mon gains 2 Tutor Points. Use only one per Pok\\u00e9mon.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"9800\"}],\"footer\":{\"text\":\"Core: p.299\"}}"
+    },
+    "PP Up":{
+        "embed":"{\"title\":\"PP Up\",\"description\":\"Raise one of the user\\u2019s Move\\u2019s Frequency one level. Use only one per Pok\\u00e9mon.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"9800\"}],\"footer\":{\"text\":\"Core: p.299\"}}"
+    },
+    "Heart Scale":{
+        "embed":"{\"title\":\"Heart Scale\",\"description\":\"Can be used to make Heart Boosters.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.299\"}}"
+    },
+    "Rare Candy":{
+        "embed":"{\"title\":\"Rare Candy\",\"description\":\"These very rare treats are created from Shuckles that have held a Berry for a long time. When ingested by a Pok\\u00e9mon, the eater gains enough experience to reach its next Level. Pok\\u00e9mon may benefit from up to five Rare Candies in their lifetime.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"9800\"}],\"footer\":{\"text\":\"Core: p.299\"}}"
+    },
+    "Stat Suppressants":{
+        "embed":"{\"title\":\"Stat Suppressants\",\"description\":\"These medicines have an identical effect to the Suppressant Berries \\u2013 they lower one of the user\\u2019s Base Stats by 1 point and only function if the Trainer of the Pok\\u00e9mon wants them to.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.299\"}}"
+    },
+    "Puissance Pellet":{
+        "embed":"{\"title\":\"Puissance Pellet\",\"description\":\"This painkiller and adrenaline injection lets the user temporarily ignore their debilitating injuries. A user with 5 or more injuries does not suffer Hit Point loss equal to their number of injuries when taking Standard Actions. If you are using the optional rule to decrease combat stages for each Injury, the user ignores these combat stage losses. This effect lasts for 5 turns, and at the end of the effect, the user automatically takes another injury.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"450\"}],\"footer\":{\"text\":\"DPDoM: p.47\"}}"
+    },
+    "Oxygenation Vial":{
+        "embed":"{\"title\":\"Oxygenation Vial\",\"description\":\"These vials contain a solution of oxygen-encasing lipids that are injected directly into the bloodstream. One injection is enough to allow the user to go without breathing for up to thirty minutes. Subsequent injections extend the effect, but each one after the first in a 24 hour period causes the user to take one injury as their body suffers complications from the imbalance caused by the solution. These are often carried as a last resort device for astronauts and deep sea divers, as well as used by EMTs to stabilize patients.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"DPDoM: p.47\"}}"
+    },
+    "Locus Lozenge":{
+        "embed":"{\"title\":\"Locus Lozenge\",\"description\":\"A drug to help the user focus on a single task. The user gains a +3 bonus to Focus and Intuition checks for the next hour but suffers a -4 penalty to Perception checks to notice outside events.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"DPDoM: p.47\"}}"
+    },
+    "Berserker Bolus":{
+        "embed":"{\"title\":\"Berserker Bolus\",\"description\":\"A combat drug used by street gangs. Immediately inflicts 1 injury on the user upon taking it, but for the duration of the Scene, the user is immune to Flinch effects, gains a +2 bonus to Save Rolls, and adds 5 to all Damage Rolls. However, they are Enraged and may not make Save Rolls to end the effect until all combat ceases for at least a few minutes.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"DPDoM: p.47\"}}"
+    },
+    "Prescient Powder":{
+        "embed":"{\"title\":\"Prescient Powder\",\"description\":\"An illegal and dangerous substance produced by desert-dwelling Steelix. Taking the drug inflicts 3 injuries on the user and allows them to use either a Scry or Augury once. The user also gains the Psychic Navigator Edge for two hours. Habitual use of the drug can lead to addiction and health problems.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"2500\"}],\"footer\":{\"text\":\"DPDoM: p.47\"}}"
+    },
+    "Anti-Radiation Pills":{
+        "embed":"{\"title\":\"Anti-Radiation Pills\",\"description\":\"An advanced version of the real life potassium iodide pills. These not only protect the thyroid but instead guard against all forms of radiation poisoning, granting the user Hazard Immunity for radioactive environments only for 24 hours.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"400\"}],\"footer\":{\"text\":\"DPDoM: p.47\"}}"
+    },
+    "Rambo Roids":{
+        "embed":"{\"title\":\"Rambo Roids\",\"description\":\"The user treats their Power Capability as increased by 2 for the next hour. However, each time they lift an object or perform a feat of strength beyond their normal means, they must make an Athletics check with a DC of 12. If they fail, they take an Injury immediately. Each such feat of strength induces a cumulative -1 penalty to these Athletics checks.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"750\"}],\"footer\":{\"text\":\"DPDoM: p.47\"}}"
+    },
+    "White Light":{
+        "embed":"{\"title\":\"White Light\",\"description\":\"So named for the soft white glow the liquid gives off, White Light is a crude \\u201ctruth serum\\u201d. It is slow-acting, taking upwards of an hour to take full effect on a victim. The victim becomes more suggestible and gullible. All of their Guile, Intuition, and Focus Checks made during an interrogation are subject to a -5 penalty.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"}],\"footer\":{\"text\":\"DPDoM: p.48\"}}"
+    },
+    "Spritz Spray":{
+        "embed":"{\"title\":\"Spritz Spray\",\"description\":\"A drug that improves reflexes at the cost of mental focus. The user of Spritz gains +5 initiative and +1 Evasion for the next 5 rounds of combat but suffers a -3 penalty to Perception and Focus checks for the next hour.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"DPDoM: p.48\"}}"
+    },
+    "Soldier Pill":{
+        "embed":"{\"title\":\"Soldier Pill\",\"description\":\"A potentially dangerous stimulant that provides the user enough energy to go 24 hours without sleep. Upon taking the pill twice in a 48 hour period, the user begins to take 1 injury every 2 hours until they choose to go to sleep. The user of a Soldier Pill gets a +3 bonus to rolls to wake up from Sleep.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"750\"}],\"footer\":{\"text\":\"DPDoM: p.48\"}}"
+    },
+    "Shock Syringe":{
+        "embed":"{\"title\":\"Shock Syringe\",\"description\":\"This drug enhances the sensitivity of the user\\u2019s nerves, enhancing their perception and making it incredibly useful for scouts and recon missions. However, the enhanced sense of touch greatly lowers the user\\u2019s pain tolerance. The user gains a +3 bonus to Perception, Focus, and Guile and a +1 bonus to Accuracy. However, each time the user takes an Injury, they are Flinched. The effects of Shock Syringe last for an hour.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"DPDoM: p.48\"}}"
+    },
+    "Carbos":{
+        "embed":"{\"title\":\"Carbos\",\"description\":\"Raise the user\\u2019s Speed Base Stat 1.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"4900\"}],\"footer\":{\"text\":\"Core: p.299\"}}"
+    },
+    "Honey":{
+        "embed":"{\"title\":\"Honey\",\"description\":\"Snack. Grants a Digestion Buff that heals 5 Hit Points. May be used as Bait\",\"fields\":[{\"name\":\"Cost\",\"value\":\"100\"}],\"footer\":{\"text\":\"Core: p.278\"}}"
+    },
+    "Enriched Water":{
+        "embed":"{\"title\":\"Enriched Water\",\"description\":\"Heals 20 Hit Points\",\"fields\":[{\"name\":\"Cost\",\"value\":\"75\"}],\"footer\":{\"text\":\"Core: p.279\"}}"
+    },
+    "Shuckle's Berry Juice":{
+        "embed":"{\"title\":\"Shuckle's Berry Juice\",\"description\":\"Heals 30 Hit Points\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.279\"}}"
+    },
+    "Super Soda Pop":{
+        "embed":"{\"title\":\"Super Soda Pop\",\"description\":\"Heals 30 Hit Points\",\"fields\":[{\"name\":\"Cost\",\"value\":\"125\"}],\"footer\":{\"text\":\"Core: p.279\"}}"
+    },
+    "Sparkling Lemonade":{
+        "embed":"{\"title\":\"Sparkling Lemonade\",\"description\":\"Heals 50 Hit Points\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.279\"}}"
+    },
+    "MooMoo Milk":{
+        "embed":"{\"title\":\"MooMoo Milk\",\"description\":\"Heals 80 Hit Points\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.279\"}}"
+    },
+    "Cheri Berry":{
+        "embed":"{\"title\":\"Cheri Berry\",\"description\":\"Cures Paralysis, Cool Poffin Ingredient. Tier 1.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"150\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Chesto Berry":{
+        "embed":"{\"title\":\"Chesto Berry\",\"description\":\"Cures Sleep, Beauty Poffin Ingredient. Tier 1.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"150\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Pecha Berry":{
+        "embed":"{\"title\":\"Pecha Berry\",\"description\":\"Cures Poison, Cute Poffin Ingredient. Tier 1.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"150\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Rawst Berry":{
+        "embed":"{\"title\":\"Rawst Berry\",\"description\":\"Cures Burn, Smart Poffin Ingredient. Tier 1.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"150\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Aspear Berry":{
+        "embed":"{\"title\":\"Aspear Berry\",\"description\":\"Cures Freeze, Tough Poffin Ingredient. Tier 1\",\"fields\":[{\"name\":\"Cost\",\"value\":\"150\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Oran Berry":{
+        "embed":"{\"title\":\"Oran Berry\",\"description\":\"Restores 5 Hit Points. Tier 1.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"150\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Persim Berry":{
+        "embed":"{\"title\":\"Persim Berry\",\"description\":\"Cures Confusion. Tier 1.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"150\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Razz Berry":{
+        "embed":"{\"title\":\"Razz Berry\",\"description\":\"Cool Poffin Ingredient. Tier 1.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"150\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Bluk Berry":{
+        "embed":"{\"title\":\"Bluk Berry\",\"description\":\"Beauty Poffin Ingredient. Tier 1.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"150\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Nanab Berry":{
+        "embed":"{\"title\":\"Nanab Berry\",\"description\":\"Cute Poffin Ingredient. Tier 1.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"150\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Wepear Berry":{
+        "embed":"{\"title\":\"Wepear Berry\",\"description\":\"Smart Poffin Ingredient. Tier 1.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"150\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Lum Berry":{
+        "embed":"{\"title\":\"Lum Berry\",\"description\":\"Cures any single status ailment. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Sitrus Berry":{
+        "embed":"{\"title\":\"Sitrus Berry\",\"description\":\"Restores 15 Hit Points. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Figy Berry":{
+        "embed":"{\"title\":\"Figy Berry\",\"description\":\"Spicy Treat, Cool Poffin Ingredient. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Wiki Berry":{
+        "embed":"{\"title\":\"Wiki Berry\",\"description\":\"Dry Treat, Beauty Poffin Ingredient. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Mago Berry":{
+        "embed":"{\"title\":\"Mago Berry\",\"description\":\"Sweet Treat, Cute Poffin Ingredient. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Iapapa Berry":{
+        "embed":"{\"title\":\"Iapapa Berry\",\"description\":\"Sour Treat, Tough Poffin Ingredient. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Liechi Berry":{
+        "embed":"{\"title\":\"Liechi Berry\",\"description\":\"+1 Attack CS. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Ganlon Berry":{
+        "embed":"{\"title\":\"Ganlon Berry\",\"description\":\"+1 Defense CS. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Salac Berry":{
+        "embed":"{\"title\":\"Salac Berry\",\"description\":\"+1 Speed CS. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Petaya Berry":{
+        "embed":"{\"title\":\"Petaya Berry\",\"description\":\"+1 Special Attack CS. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Lansat Berry":{
+        "embed":"{\"title\":\"Lansat Berry\",\"description\":\"Increases Critical Range by +1 for the remainder of the encounter. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Starf Berry":{
+        "embed":"{\"title\":\"Starf Berry\",\"description\":\"+2 CS to a random Stat. May be used only at 25% HP or lower. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Enigma Berry":{
+        "embed":"{\"title\":\"Enigma Berry\",\"description\":\"User gains Temporary HP equal to 1\\\/6th of their Max HP when hit by a Super Effective Move. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Micle Berry":{
+        "embed":"{\"title\":\"Micle Berry\",\"description\":\"Increases Accuracy by +1. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Rowap Berry":{
+        "embed":"{\"title\":\"Rowap Berry\",\"description\":\"Foe dealing Special Damage to the user loses 1\\\/8 of their Maximum HP. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Cornn Berry":{
+        "embed":"{\"title\":\"Cornn Berry\",\"description\":\"Cures Disabled condition. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Magost Berry":{
+        "embed":"{\"title\":\"Magost Berry\",\"description\":\"Cures Enraged condition. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Rabuta Berry":{
+        "embed":"{\"title\":\"Rabuta Berry\",\"description\":\"Cures Suppressed condition. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Candy Bar":{
+        "embed":"{\"title\":\"Candy Bar\",\"description\":\"Snack. Grants a Digestion Buff that heals 5 Hit Points.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"75\"}],\"footer\":{\"text\":\"Core: p.278\"}}"
+    },
+    "Watmel Berry":{
+        "embed":"{\"title\":\"Watmel Berry\",\"description\":\"Cute or Smart Poffin Ingredient. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Durin Berry":{
+        "embed":"{\"title\":\"Durin Berry\",\"description\":\"Smart or Tough Poffin Ingredient. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Belue Berry":{
+        "embed":"{\"title\":\"Belue Berry\",\"description\":\"Cool or Tough Poffin Ingredient. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Leppa Berry":{
+        "embed":"{\"title\":\"Leppa Berry\",\"description\":\"Restores a Scene Move. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Pomeg Berry":{
+        "embed":"{\"title\":\"Pomeg Berry\",\"description\":\"Lowers HP stat by 1 with trainer permission. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Qualot Berry":{
+        "embed":"{\"title\":\"Qualot Berry\",\"description\":\"Lowers Defense stat by 1 with trainer permission. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Hondew Berry":{
+        "embed":"{\"title\":\"Hondew Berry\",\"description\":\"Lowers Special Attack stat by 1 with trainer permission. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Grepa Berry":{
+        "embed":"{\"title\":\"Grepa Berry\",\"description\":\"Lowers Special Defense stat by 1 with trainer permission. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Tamato Berry":{
+        "embed":"{\"title\":\"Tamato Berry\",\"description\":\"Lowers Speed stat by 1 with trainer permission. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Occa Berry":{
+        "embed":"{\"title\":\"Occa Berry\",\"description\":\"Weakens foe\\u2019s super effective Fire-type move. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Passho Berry":{
+        "embed":"{\"title\":\"Passho Berry\",\"description\":\"Weakens foe\\u2019s super effective Water-type move. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Wacan Berry":{
+        "embed":"{\"title\":\"Wacan Berry\",\"description\":\"Weakens foe\\u2019s super effective Electric-type move. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Yache Berry":{
+        "embed":"{\"title\":\"Yache Berry\",\"description\":\"Weakens foe\\u2019s super effective Ice-type move. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Chople Berry":{
+        "embed":"{\"title\":\"Chople Berry\",\"description\":\"Weakens foe\\u2019s super effective Fighting-type move. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Kebia Berry":{
+        "embed":"{\"title\":\"Kebia Berry\",\"description\":\"Weakens foe\\u2019s super effective Poison-type move. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Shuca Berry":{
+        "embed":"{\"title\":\"Shuca Berry\",\"description\":\"Weakens foe\\u2019s super effective Ground-type move. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Coba Berry":{
+        "embed":"{\"title\":\"Coba Berry\",\"description\":\"Weakens foe\\u2019s super effective Flying-type move. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Payapa Berry":{
+        "embed":"{\"title\":\"Payapa Berry\",\"description\":\"Weakens foe\\u2019s super effective Psychic-type move. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Charti Berry":{
+        "embed":"{\"title\":\"Charti Berry\",\"description\":\"Weakens foe\\u2019s super effective Rock-type move. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Kasib Berry":{
+        "embed":"{\"title\":\"Kasib Berry\",\"description\":\"Weakens foe\\u2019s super effective Ghost-type move. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Haban Berry":{
+        "embed":"{\"title\":\"Haban Berry\",\"description\":\"Weakens foe\\u2019s super effective Dragon-type move. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Colbur Berry":{
+        "embed":"{\"title\":\"Colbur Berry\",\"description\":\"Weakens foe\\u2019s super effective Dark-type move. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Babiri Berry":{
+        "embed":"{\"title\":\"Babiri Berry\",\"description\":\"Weakens foe\\u2019s super effective Steel-type move. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Chilan Berry":{
+        "embed":"{\"title\":\"Chilan Berry\",\"description\":\"Weakens foe\\u2019s Normal-type move. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Roseli Berry":{
+        "embed":"{\"title\":\"Roseli Berry\",\"description\":\"Weakens foe\\u2019s supereffective Fairy-type move. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Kee Berry":{
+        "embed":"{\"title\":\"Kee Berry\",\"description\":\"+1 Defense CS. Activates as a Free Action when hit by a Physical Move. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Maranga Berry":{
+        "embed":"{\"title\":\"Maranga Berry\",\"description\":\"+1 Special Defense CS. Activates as a Free Action when hit by a Special Move. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Red Apricorn":{
+        "embed":"{\"title\":\"Red Apricorn\",\"description\":\"Used to make Level Balls.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.281\"}}"
+    },
+    "Yellow Apricorn":{
+        "embed":"{\"title\":\"Yellow Apricorn\",\"description\":\"Used to make Moon Balls.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.281\"}}"
+    },
+    "Blue Apricorn":{
+        "embed":"{\"title\":\"Blue Apricorn\",\"description\":\"Used to make Lure Balls.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.281\"}}"
+    },
+    "Green Apricorn":{
+        "embed":"{\"title\":\"Green Apricorn\",\"description\":\"Used to make Friend Balls.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.281\"}}"
+    },
+    "Pink Apricorn":{
+        "embed":"{\"title\":\"Pink Apricorn\",\"description\":\"Used to make Love Balls.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.281\"}}"
+    },
+    "White Apricorn":{
+        "embed":"{\"title\":\"White Apricorn\",\"description\":\"Used to make Fast Balls.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.281\"}}"
+    },
+    "Mental Herb":{
+        "embed":"{\"title\":\"Mental Herb\",\"description\":\"Cures all Volatile Status Effects.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"300\"}],\"footer\":{\"text\":\"Core: p.281\"}}"
+    },
+    "Power Herb":{
+        "embed":"{\"title\":\"Power Herb\",\"description\":\"Eliminates the Set-Up turn of Moves with the Set-Up Keyword.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"300\"}],\"footer\":{\"text\":\"Core: p.281\"}}"
+    },
+    "Pamtre Berry":{
+        "embed":"{\"title\":\"Pamtre Berry\",\"description\":\"Cute or Beauty Poffin Ingredient. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Sweet Confection":{
+        "embed":"{\"title\":\"Sweet Confection\",\"description\":\"The user may trade in this Snack\\u2019s Digestion Buff to gain +4 Evasion until the end of their next turn. If the user prefers Sweet Food, they gain +4 Accuracy as well. If the user dislikes Sweet Food, they become Enraged.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"100\"}],\"footer\":{\"text\":\"Core: p.132\"}}"
+    },
+    "Hearty Meal":{
+        "embed":"{\"title\":\"Hearty Meal\",\"description\":\"When consumed, that Trainer gains +2 to their Max AP until the end of their next extended rest. A Trainer may only be under the effect of one Hearty Meal at a time. Hearty Meals not consumed within 20 minutes of being created lose all flavor and all effect.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.132\"}}"
+    },
+    "White Herb":{
+        "embed":"{\"title\":\"White Herb\",\"description\":\"Any negative Combat Stages are set to 0.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"300\"}],\"footer\":{\"text\":\"Core: p.281\"}}"
+    },
+    "Tiny Mushroom":{
+        "embed":"{\"title\":\"Tiny Mushroom\",\"description\":\"The user loses 5 HP, and gains +1 Combat Stage in a random Stat.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.281\"}}"
+    },
+    "Big Mushroom":{
+        "embed":"{\"title\":\"Big Mushroom\",\"description\":\"The user becomes Poisoned; if they do, they gain +1 Combat Stage in two random Stats.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.281\"}}"
+    },
+    "Big Root":{
+        "embed":"{\"title\":\"Big Root\",\"description\":\"HP stealing moves restore double HP. Cannot be used by Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"Core: p.296\"}}"
+    },
+    "Bright Powder":{
+        "embed":"{\"title\":\"Bright Powder\",\"description\":\"+2 to Speed Evasion. Cannot be used by Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"2000\"}],\"footer\":{\"text\":\"Core: p.296\"}}"
+    },
+    "Choice Items":{
+        "embed":"{\"title\":\"Choice Items\",\"description\":\"Choice Items are tied to a Specific Stat. While worn, the default state of the Stat is +2 Combat Stages instead of 0. However, the user is Suppressed and cannot be cured until the end of Combat, even if the item is removed. Cannot be used by Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.296\"}}"
+    },
+    "Contest Accessory":{
+        "embed":"{\"title\":\"Contest Accessory\",\"description\":\"The user rolls +2d6 during the Introduction Stage of a Contest. Cannot be used by Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1500\"}],\"footer\":{\"text\":\"Core: p.296\"}}"
+    },
+    "Contest Fashion":{
+        "embed":"{\"title\":\"Contest Fashion\",\"description\":\"These Items have a chosen Contest Stat; Beauty, Cool, Cute, Smart, or Tough. When held, once per Contest, the holder may re-roll any 1s made when using a Move of the chosen Type. Cannot be used by Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"Core: p.296\"}}"
+    },
+    "Everstone":{
+        "embed":"{\"title\":\"Everstone\",\"description\":\"Evolution is prevented for the holder. Cannot be used by Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1500\"}],\"footer\":{\"text\":\"Core: p.296\"}}"
+    },
+    "Salty Surprise":{
+        "embed":"{\"title\":\"Salty Surprise\",\"description\":\"The user may trade in this Snack\\u2019s Digestion Buff when being hit by an attack to gain 5 Temporary Hit Points. If the user likes Salty Flavors, they gain 10 Temporary Hit Points Instead. If the user dislikes Salty Food, they become Enraged.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"100\"}],\"footer\":{\"text\":\"Core: p.132\"}}"
+    },
+    "Spicy Wrap":{
+        "embed":"{\"title\":\"Spicy Wrap\",\"description\":\"The user may trade in this Snack\\u2019s Digestion Buff when making a Physical attack to deal +5 additional Damage. If the user prefers Spicy Food, it deals +10 additional Damage instead. If the user dislikes Spicy Food, they become Enraged.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"100\"}],\"footer\":{\"text\":\"Core: p.132\"}}"
+    },
+    "Sour Candy":{
+        "embed":"{\"title\":\"Sour Candy\",\"description\":\"The user may trade in this Snack\\u2019s Digestion Buff when being hit by a Physical Attack to increase their Damage Reduction by +5 against that attack. If the user prefers Sour Food, they gain +10 Damage Reduction instead. If the user dislikes Sour Food, they become Enraged.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"100\"}],\"footer\":{\"text\":\"Core: p.132\"}}"
+    },
+    "Dry Wafer":{
+        "embed":"{\"title\":\"Dry Wafer\",\"description\":\"The user may trade in this Snack\\u2019s Digestion Buff when making a Special attack to deal +5 additional Damage. If the user prefers Dry Food, it deals +10 additional Damage instead. If the user dislikes Dry Food, they become Enraged.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"100\"}],\"footer\":{\"text\":\"Core: p.132\"}}"
+    },
+    "Bitter Treat":{
+        "embed":"{\"title\":\"Bitter Treat\",\"description\":\"The user may trade in this Snack\\u2019s Digestion Buff when being hit by a Special Attack to increase their Damage Reduction by +5 against that attack. If the user prefers Bitter Food, they gain +10 Damage Reduction instead. If the user dislikes Bitter Food, they become Enraged.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"100\"}],\"footer\":{\"text\":\"Core: p.132\"}}"
+    },
+    "Balm Mushroom":{
+        "embed":"{\"title\":\"Balm Mushroom\",\"description\":\"The user is cured of Burn, Paralysis, or Poison. If they are, they lose 1 Combat Stage in a random Stat.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.281\"}}"
+    },
+    "Flame Orb":{
+        "embed":"{\"title\":\"Flame Orb\",\"description\":\"Induces burn on holder. Off-Hand Item for Trainers. Standard Action to drop.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3800\"}],\"footer\":{\"text\":\"Core: p.296\"}}"
+    },
+    "Focus Band":{
+        "embed":"{\"title\":\"Focus Band\",\"description\":\"Whenever the user faints, roll 1d20. Once a Scene on a result of 16+, the holder does not faint, and is left with 1 Hit Point. Accessory Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"4700\"}],\"footer\":{\"text\":\"Core: p.296\"}}"
+    },
+    "Iron Ball":{
+        "embed":"{\"title\":\"Iron Ball\",\"description\":\"The Holder\\u2019s Speed is halved, and any immunity to Ground Type is lost. Hand Item for Trainers. Standard Action to drop.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"900\"}],\"footer\":{\"text\":\"Core: p.296\"}}"
+    },
+    "King's Rock":{
+        "embed":"{\"title\":\"King's Rock\",\"description\":\"Attacks cause Flinch on a roll of 19+. This does not stack with any abilities, moves, or effects that extend flinch rate. Head Item for Trainers. Evolves Poliwhirl, Slowpoke.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"2500\"}],\"footer\":{\"text\":\"Core: p.296\"}}"
+    },
+    "Lagging Items":{
+        "embed":"{\"title\":\"Lagging Items\",\"description\":\"The Lagging Items are tied to a specific Stat. When held, they set that Stat to -4 Combat Stages. Cannot be used by Trainers. Standard Action to drop.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"900\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Lax Incense":{
+        "embed":"{\"title\":\"Lax Incense\",\"description\":\"+1 to all Stat Evasions. Cannot be used by Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"2000\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Life Orb":{
+        "embed":"{\"title\":\"Life Orb\",\"description\":\"Whenever the holder deals direct damage, increase the damage by +5, and then the holder loses Hit Points equal to 1\\\/16th of their Max Hit Points. Off-Hand Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3700\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Luck Incense":{
+        "embed":"{\"title\":\"Luck Incense\",\"description\":\"Grants +1 Bonus to all Accuracy Rolls. A roll of 1 always misses. Cannot be used by Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1800\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Quick Claw":{
+        "embed":"{\"title\":\"Quick Claw\",\"description\":\"The user adds +10 to their Initiative. Accessory Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"4200\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Razor Claw":{
+        "embed":"{\"title\":\"Razor Claw\",\"description\":\"The holder\\u2019s damaging attacks have their Critical Hit Range extended by +1. Evolves Sneasel.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Razor Fang":{
+        "embed":"{\"title\":\"Razor Fang\",\"description\":\"The holder\\u2019s damaging attacks cause an Injury on a roll of 19+. Accessory Item for Trainers. Evolves Gligar.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Safety Goggles":{
+        "embed":"{\"title\":\"Safety Goggles\",\"description\":\"The holder is immune to Moves with the Powder Keyword. Accessory or Head Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1500\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Shell Bell":{
+        "embed":"{\"title\":\"Shell Bell\",\"description\":\"Whenever the user damages a foe, they gain a Tick of Temporary Hit Points. Accessory Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"5200\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Shock Collar":{
+        "embed":"{\"title\":\"Shock Collar\",\"description\":\"Comes with a remote activator, which when pressed, causes the Pok\\u00e9mon or Trainer wearing the shock collar to lose Hit Points equal to 1\\\/6th of their Max Hit Points. This may be used to activate the \\u201cPress\\u201d Feature. Collars that work on Ground Type Pok\\u00e9mon are available for an additional $500.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3500\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Stat Boosters":{
+        "embed":"{\"title\":\"Stat Boosters\",\"description\":\"These items have a chosen Stat, either Attack, Defense, Special Attack, Special Defense, Speed, Evasion, or Accuracy. These items cause the default Stage of their linked Stat to be +1 Combat Stage instead of 0, or simply +1 for Accuracy and Evasion. Accessory Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"4000\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Eviolite":{
+        "embed":"{\"title\":\"Eviolite\",\"description\":\"Only affects not-fully-evolved Pok\\u00e9mon of a single family, decided when the Eviolite is made. Grants a +5 Bonus to two different Stats, after Combat Stages, decided when the Eviolite is made. Prevents Pok\\u00e9mon from evolving when held. Cannot be used by Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"4000\"}],\"footer\":{\"text\":\"Core: p.296\"}}"
+    },
+    "Expert Belt":{
+        "embed":"{\"title\":\"Expert Belt\",\"description\":\"Whenever the holder deals Super Effective Damage, they deal an additional 5 damage (this damage is not multiplied). Accessory Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3500\"}],\"footer\":{\"text\":\"Core: p.296\"}}"
+    },
+    "Focus Sash":{
+        "embed":"{\"title\":\"Focus Sash\",\"description\":\"Once a Scene, if damage from a Move would take Focus Sash\\u2019s holder\\u2019s Hit Points from Max to 0 or less, Focus Sash\\u2019s holder instead has 1 Hit Point remaining. Accessory Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"4700\"}],\"footer\":{\"text\":\"Core: p.296\"}}"
+    },
+    "Full Incense":{
+        "embed":"{\"title\":\"Full Incense\",\"description\":\"The holder gains the Stall ability. Cannot be used by Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"900\"}],\"footer\":{\"text\":\"Core: p.296\"}}"
+    },
+    "Go-Goggles":{
+        "embed":"{\"title\":\"Go-Goggles\",\"description\":\"The user does not take damage from Sandstorm. Head Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1500\"}],\"footer\":{\"text\":\"Core: p.296\"}}"
+    },
+    "Toxic Orb":{
+        "embed":"{\"title\":\"Toxic Orb\",\"description\":\"Induces Poison on holder. Off-Hand Item for Trainers. Standard Action to drop.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"4800\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Type Boosters":{
+        "embed":"{\"title\":\"Type Boosters\",\"description\":\"These items come in a variety of each of the Elemental Types, and grants a +5 Damage Bonus to all direct damage Moves of its Specific Type when performed by the user. Accessory Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1800\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Type Brace":{
+        "embed":"{\"title\":\"Type Brace\",\"description\":\"These items come in a variety of each of the Elemental Types, and grant the holder 15 Damage Reduction against that specific Type. Accessory Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"2000\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Snag Machine":{
+        "embed":"{\"title\":\"Snag Machine\",\"description\":\"Snag Machines are extremely illegal machines that allow trainers to steal another Trainer\\u2019s Pok\\u00e9mon. They come in both large, immovable varieties and smaller portable varieties. The Portable Variety is an Accessory-Slot Item. Inserting a Pok\\u00e9 Ball into a Large Snag Machine turns it into a Snag Ball permanently, but Large Snag Machines may only turn 5 Pok\\u00e9 Balls into Snag Balls per day. Inserting a Pok\\u00e9 Ball into a Portable Snag Machine, which is a Swift Action, turns it into a Snag Ball after one round, but only for that round. Snag Balls have the same properties as the Pok\\u00e9 Ball type they were before being inserted into the machine, but receive a -2 penalty on all Pok\\u00e9 Ball attack rolls, and are capable of capturing owned Pok\\u00e9mon. Snag Machines cannot be bought in stores, but may sell on the black market for prices of $30,000 or more.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"30000\"},{\"name\":\"Slot\",\"value\":\"Accessory\"}],\"footer\":{\"text\":\"Core: p.295\"}}"
+    },
+    "Type Gem":{
+        "embed":"{\"title\":\"Type Gem\",\"description\":\"These items come in a variety of each of the Elemental Types, and are consumed as a Free Action to give a +3 Damage Base bonus to one attack of their Type. Off-hand or Accessory Slot Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Type Plates":{
+        "embed":"{\"title\":\"Type Plates\",\"description\":\"These Rare items come in a variety of each of the Elemental Types, and act as both a Type Booster and a Type Brace. Accessory Slot Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Draco Plate":{
+        "embed":"{\"title\":\"Draco Plate\",\"description\":\"Acts as both a Dragon Booster and a Dragon Brace. Accessory Slot Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Dread Plate":{
+        "embed":"{\"title\":\"Dread Plate\",\"description\":\"Acts as both a Dark Booster and a Dark Brace. Accessory Slot Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Banettite":{
+        "embed":"{\"title\":\"Banettite\",\"description\":\"Mega Evolves Banette when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Rough Fashion":{
+        "embed":"{\"title\":\"Rough Fashion\",\"description\":\"The holder may activate this item once a Scene as a Free Action to cause a foe within 5 meters to take a -2 penalty to all rolls for one full round.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.138\"}}"
+    },
+    "Slick Fashion":{
+        "embed":"{\"title\":\"Slick Fashion\",\"description\":\"The holder may activate this item once a Scene as a Free Action when provoking an Attack of Opportunity to instead not provoke one.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.138\"}}"
+    },
+    "Winter Cloak":{
+        "embed":"{\"title\":\"Winter Cloak\",\"description\":\"The user does not take damage from Hail. Accessory Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1500\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Rare Leek":{
+        "embed":"{\"title\":\"Rare Leek\",\"description\":\"When held by a Farfetch\\u2019d, this rare Leek increase the holder\\u2019s critical range by 2. Rare Leeks are Wielded. Cannot be used by Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Thick Club":{
+        "embed":"{\"title\":\"Thick Club\",\"description\":\"When held by a Cubone or Marowak, this rare, dense bone grants the Pure Power Ability. Thick Clubs are Wielded. Cannot be used by Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Pink Pearl":{
+        "embed":"{\"title\":\"Pink Pearl\",\"description\":\"Acts as a Psychic Type Booster. If held by a Spoink, it also acts as a Special Attack Stat Booster.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Mega Stone":{
+        "embed":"{\"title\":\"Mega Stone\",\"description\":\"An item that allows a Pok\\u00e9mon to Mega Evolve when used in conjunction with a Mega Ring. Each Mega Stone is specific to one species and Mega Evolved form.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Earth Plate":{
+        "embed":"{\"title\":\"Earth Plate\",\"description\":\"Acts as both a Ground Booster and a Ground Brace. Accessory Slot Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Fist Plate":{
+        "embed":"{\"title\":\"Fist Plate\",\"description\":\"Acts as both a Fighting Booster and a Fighting Brace. Accessory Slot Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Flame Plate":{
+        "embed":"{\"title\":\"Flame Plate\",\"description\":\"Acts as both a Fire Booster and a Fire Brace. Accessory Slot Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Icicle Plate":{
+        "embed":"{\"title\":\"Icicle Plate\",\"description\":\"Acts as both an Ice Booster and an Ice Brace. Accessory Slot Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Insect Plate":{
+        "embed":"{\"title\":\"Insect Plate\",\"description\":\"Acts as both a Bug Booster and a Bug Brace. Accessory Slot Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Iron Plate":{
+        "embed":"{\"title\":\"Iron Plate\",\"description\":\"Acts as both a Steel Booster and a Steel Brace. Accessory Slot Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Mind Plate":{
+        "embed":"{\"title\":\"Mind Plate\",\"description\":\"Acts as both a Psychic Booster and a Psychic Brace. Accessory Slot Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Pixie Plate":{
+        "embed":"{\"title\":\"Pixie Plate\",\"description\":\"Acts as both a Fairy Booster and a Fairy Brace. Accessory Slot Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Sky Plate":{
+        "embed":"{\"title\":\"Sky Plate\",\"description\":\"Acts as both a Flying Booster and a Flying Brace. Accessory Slot Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Splash Plate":{
+        "embed":"{\"title\":\"Splash Plate\",\"description\":\"Acts as both a Water Booster and a Water Brace. Accessory Slot Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Spooky Plate":{
+        "embed":"{\"title\":\"Spooky Plate\",\"description\":\"Acts as both a Ghost Booster and a Ghost Brace. Accessory Slot Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Stone Plate":{
+        "embed":"{\"title\":\"Stone Plate\",\"description\":\"Acts as both a Rock Booster and a Rock Brace. Accessory Slot Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Toxic Plate":{
+        "embed":"{\"title\":\"Toxic Plate\",\"description\":\"Acts as both a Poison Booster and a Poison Brace. Accessory Slot Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Normal Plate":{
+        "embed":"{\"title\":\"Normal Plate\",\"description\":\"Acts as both a Normal Booster and a Normal Brace. Accessory Slot Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Abomasite":{
+        "embed":"{\"title\":\"Abomasite\",\"description\":\"Mega Evolves Abomasnow when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Absolite":{
+        "embed":"{\"title\":\"Absolite\",\"description\":\"Mega Evolves Absol when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Aerodactylite":{
+        "embed":"{\"title\":\"Aerodactylite\",\"description\":\"Mega Evolves Aerodactyl when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Aggronite":{
+        "embed":"{\"title\":\"Aggronite\",\"description\":\"Mega Evolves Aggron when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Alakazite":{
+        "embed":"{\"title\":\"Alakazite\",\"description\":\"Mega Evolves Alakazam when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Altarianite":{
+        "embed":"{\"title\":\"Altarianite\",\"description\":\"Mega Evolves Altaria when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Ampharosite":{
+        "embed":"{\"title\":\"Ampharosite\",\"description\":\"Mega Evolves Ampharos when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Audinite":{
+        "embed":"{\"title\":\"Audinite\",\"description\":\"Mega Evolves Audino when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Rad Fashion":{
+        "embed":"{\"title\":\"Rad Fashion\",\"description\":\"The holder may activate this item once a Scene as a Free Action to gain a +4 bonus to a single Save Check.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.138\"}}"
+    },
+    "Thunder Stone":{
+        "embed":"{\"title\":\"Thunder Stone\",\"description\":\"Evolves Pikachu, Eevee, Eelektrik\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Blastoisinite":{
+        "embed":"{\"title\":\"Blastoisinite\",\"description\":\"Mega Evolves Blastoise when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Blazikenite":{
+        "embed":"{\"title\":\"Blazikenite\",\"description\":\"Mega Evolves Blaziken when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Cameruptite":{
+        "embed":"{\"title\":\"Cameruptite\",\"description\":\"Mega Evolves Camerupt when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Charizardite X":{
+        "embed":"{\"title\":\"Charizardite X\",\"description\":\"Mega Evolves Charizard when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Charizardite Y":{
+        "embed":"{\"title\":\"Charizardite Y\",\"description\":\"Mega Evolves Charizard when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Galladite":{
+        "embed":"{\"title\":\"Galladite\",\"description\":\"Mega Evolves Gallade when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Garchompite":{
+        "embed":"{\"title\":\"Garchompite\",\"description\":\"Mega Evolves Garchomp when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Gardevoirite":{
+        "embed":"{\"title\":\"Gardevoirite\",\"description\":\"Mega Evolves Gardevoir when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Gengarite":{
+        "embed":"{\"title\":\"Gengarite\",\"description\":\"Mega Evolves Gengar when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Glalitite":{
+        "embed":"{\"title\":\"Glalitite\",\"description\":\"Mega Evolves Glalie when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Gyaradosite":{
+        "embed":"{\"title\":\"Gyaradosite\",\"description\":\"Mega Evolves Gyarados when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Houndoominite":{
+        "embed":"{\"title\":\"Houndoominite\",\"description\":\"Mega Evolves Houndoom when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Kangaskhanite":{
+        "embed":"{\"title\":\"Kangaskhanite\",\"description\":\"Mega Evolves Kangaskhan when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Latiasite":{
+        "embed":"{\"title\":\"Latiasite\",\"description\":\"Mega Evolves Latias when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Latiosite":{
+        "embed":"{\"title\":\"Latiosite\",\"description\":\"Mega Evolves Latios when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Lopunnite":{
+        "embed":"{\"title\":\"Lopunnite\",\"description\":\"Mega Evolves Lopunny when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Lucarionite":{
+        "embed":"{\"title\":\"Lucarionite\",\"description\":\"Mega Evolves Lucario when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Manectite":{
+        "embed":"{\"title\":\"Manectite\",\"description\":\"Mega Evolves Manectric when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Medichamite":{
+        "embed":"{\"title\":\"Medichamite\",\"description\":\"Mega Evolves Medicham when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Metagrossite":{
+        "embed":"{\"title\":\"Metagrossite\",\"description\":\"Mega Evolves Metagross when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Mewtwonite X":{
+        "embed":"{\"title\":\"Mewtwonite X\",\"description\":\"Mega Evolves Mewtwo when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Mewtwonite Y":{
+        "embed":"{\"title\":\"Mewtwonite Y\",\"description\":\"Mega Evolves Mewtwo when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Pidgeotite":{
+        "embed":"{\"title\":\"Pidgeotite\",\"description\":\"Mega Evolves Pidgeotto when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Pinsirite":{
+        "embed":"{\"title\":\"Pinsirite\",\"description\":\"Mega Evolves Pinsir when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Salamencite":{
+        "embed":"{\"title\":\"Salamencite\",\"description\":\"Mega Evolves Salamence when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Sceptilite":{
+        "embed":"{\"title\":\"Sceptilite\",\"description\":\"Mega Evolves Sceptile when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Scizorite":{
+        "embed":"{\"title\":\"Scizorite\",\"description\":\"Mega Evolves Scizor when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Sharpedonite":{
+        "embed":"{\"title\":\"Sharpedonite\",\"description\":\"Mega Evolves Sharpedo when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Slowbronite":{
+        "embed":"{\"title\":\"Slowbronite\",\"description\":\"Mega Evolves Slowbro when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Steelixite":{
+        "embed":"{\"title\":\"Steelixite\",\"description\":\"Mega Evolves Steelix when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Swampertite":{
+        "embed":"{\"title\":\"Swampertite\",\"description\":\"Mega Evolves Swampert when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Venusaurite":{
+        "embed":"{\"title\":\"Venusaurite\",\"description\":\"Mega Evolves Venusaur when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Water Stone":{
+        "embed":"{\"title\":\"Water Stone\",\"description\":\"Evolves Poliwhirl, Shellder, Staryu, Eevee, Lombre, Panpour\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Sun Stone":{
+        "embed":"{\"title\":\"Sun Stone\",\"description\":\"Evolves Gloom, Sunkern, Cottonee, Petilil, Helioptile\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Shiny Stone":{
+        "embed":"{\"title\":\"Shiny Stone\",\"description\":\"Evolves Eevee, Togetic, Roselia, Minccino, Floette\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Dusk Stone":{
+        "embed":"{\"title\":\"Dusk Stone\",\"description\":\"Evolves Eevee, Murkrow, Misdreavus, Lampent, Doublade\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Deepseascale":{
+        "embed":"{\"title\":\"Deepseascale\",\"description\":\"Evolves Clamperl\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Deepseatooth":{
+        "embed":"{\"title\":\"Deepseatooth\",\"description\":\"Evolves Clamperl\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Dragon Scale":{
+        "embed":"{\"title\":\"Dragon Scale\",\"description\":\"Evolves Seadra\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Dubious Disk":{
+        "embed":"{\"title\":\"Dubious Disk\",\"description\":\"Evolves Porygon2\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Electirizer":{
+        "embed":"{\"title\":\"Electirizer\",\"description\":\"Evolves Electabuzz\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Oval Stone":{
+        "embed":"{\"title\":\"Oval Stone\",\"description\":\"Evolves Happiny\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Magmarizer":{
+        "embed":"{\"title\":\"Magmarizer\",\"description\":\"Evolves Magmar\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Protector":{
+        "embed":"{\"title\":\"Protector\",\"description\":\"Evolves Rhydon\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Reaper Cloth":{
+        "embed":"{\"title\":\"Reaper Cloth\",\"description\":\"Evolves Dusclops\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Sachet":{
+        "embed":"{\"title\":\"Sachet\",\"description\":\"Evolves Spritzee\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Up-Grade":{
+        "embed":"{\"title\":\"Up-Grade\",\"description\":\"Evolves Porygon\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Whipped Dream":{
+        "embed":"{\"title\":\"Whipped Dream\",\"description\":\"Evolves Swirlix\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Great Ball":{
+        "embed":"{\"title\":\"Great Ball\",\"description\":\"A better Pok\\u00e9 Ball with no special effects.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"400\"},{\"name\":\"Modifier\",\"value\":\"-10\"}],\"footer\":{\"text\":\"Core: p.272\"}}"
+    },
+    "Ultra Ball":{
+        "embed":"{\"title\":\"Ultra Ball\",\"description\":\"The best generic Pok\\u00e9 Ball.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Modifier\",\"value\":\"-15\"}],\"footer\":{\"text\":\"Core: p.272\"}}"
+    },
+    "Master Ball":{
+        "embed":"{\"title\":\"Master Ball\",\"description\":\"Incredibly Rare. Worth at least $300,000. Sold nowhere.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"},{\"name\":\"Modifier\",\"value\":\"-100\"}],\"footer\":{\"text\":\"Core: p.272\"}}"
+    },
+    "Safari Ball":{
+        "embed":"{\"title\":\"Safari Ball\",\"description\":\"Used during Safari hunts.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"Core: p.272\"}}"
+    },
+    "Level Ball":{
+        "embed":"{\"title\":\"Level Ball\",\"description\":\"-20 Modifier if the target is under half the level your active Pok\\u00e9mon is.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"Core: p.272\"}}"
+    },
+    "Lure Ball":{
+        "embed":"{\"title\":\"Lure Ball\",\"description\":\"-20 Modifier if the target was baited into the encounter with food.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"Core: p.272\"}}"
+    },
+    "Moon Ball":{
+        "embed":"{\"title\":\"Moon Ball\",\"description\":\"-20 Modifier if the target evolves with an Evolution Stone.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"Core: p.272\"}}"
+    },
+    "Love Ball":{
+        "embed":"{\"title\":\"Love Ball\",\"description\":\"-30 Modifier if the user has an active Pok\\u00e9mon that is of the same evolutionary line as the target, and the opposite gender. Does not work with genderless Pok\\u00e9mon.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"Core: p.272\"}}"
+    },
+    "Heavy Ball":{
+        "embed":"{\"title\":\"Heavy Ball\",\"description\":\"-5 Modifier for each Weight Class the target is above 1.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"Core: p.272\"}}"
+    },
+    "Fast Ball":{
+        "embed":"{\"title\":\"Fast Ball\",\"description\":\"-20 Modifier if the target has a Movement Capability above 7.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"Core: p.272\"}}"
+    },
+    "Sport Ball":{
+        "embed":"{\"title\":\"Sport Ball\",\"description\":\"Used during Safari hunts.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"Core: p.272\"}}"
+    },
+    "Premier Ball":{
+        "embed":"{\"title\":\"Premier Ball\",\"description\":\"Given as promotional balls during sales.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"Core: p.272\"}}"
+    },
+    "Repeat Ball":{
+        "embed":"{\"title\":\"Repeat Ball\",\"description\":\"-20 Modifier if you already own a Pok\\u00e9mon of the target\\u2019s species.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"Core: p.272\"}}"
+    },
+    "Timer Ball":{
+        "embed":"{\"title\":\"Timer Ball\",\"description\":\"-5 to the Modifier after every round since the beginning of the encounter, until the Modifier is -20.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Modifier\",\"value\":\"+5\"}],\"footer\":{\"text\":\"Core: p.272\"}}"
+    },
+    "Nest Ball":{
+        "embed":"{\"title\":\"Nest Ball\",\"description\":\"-20 Modifier if the target is under level 10.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"Core: p.272\"}}"
+    },
+    "Net Ball":{
+        "embed":"{\"title\":\"Net Ball\",\"description\":\"-20 Modifier if the target is Water or Bug type.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"Core: p.272\"}}"
+    },
+    "Luxury Ball":{
+        "embed":"{\"title\":\"Luxury Ball\",\"description\":\"A caught Pok\\u00e9mon is easily pleased and starts with a raised happiness.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Modifier\",\"value\":\"-5\"}],\"footer\":{\"text\":\"Core: p.272\"}}"
+    },
+    "Heal Ball":{
+        "embed":"{\"title\":\"Heal Ball\",\"description\":\"A caught Pok\\u00e9mon will heal to Max HP immediately upon capture.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Modifier\",\"value\":\"-5\"}],\"footer\":{\"text\":\"Core: p.273\"}}"
+    },
+    "Moon Stone":{
+        "embed":"{\"title\":\"Moon Stone\",\"description\":\"Evolves Nidorina, Nidorino, Clefairy, Jigglypuff, Eevee, Skitty, Munna\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Cherish Ball":{
+        "embed":"{\"title\":\"Cherish Ball\",\"description\":\"A decorative Pok\\u00e9 Ball often given out during special events.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Modifier\",\"value\":\"-5\"}],\"footer\":{\"text\":\"Core: p.273\"}}"
+    },
+    "Medicine Case":{
+        "embed":"{\"title\":\"Medicine Case\",\"description\":\"A Medicine Case may be filled with an Antidote, Paralyze Heal, Burn Heal, Ice Heal, or Full Heal. This consumes the used item. When a Pok\\u00e9mon is recalled into a Pok\\u00e9 Ball with a filled Medicine Case, the item is automatically used on the Pok\\u00e9mon. Filling a Medicine Case is an Standard Action. Medicine Cases may be refilled multiple times but may only have one sort of consumable in them at a time.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"400\"}],\"footer\":{\"text\":\"DPDoM: p.44\"}}"
+    },
+    "Lock Case":{
+        "embed":"{\"title\":\"Lock Case\",\"description\":\"A Lock Case grants a -10 Capture modifier to any Pok\\u00e9 Ball. It also stops Pok\\u00e9mon from exiting Pok\\u00e9 Balls unless explicitly released by their owners.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"400\"},{\"name\":\"Modifier\",\"value\":\"-10\"}],\"footer\":{\"text\":\"DPDoM: p.44\"}}"
+    },
+    "Flash Case":{
+        "embed":"{\"title\":\"Flash Case\",\"description\":\"When a Pok\\u00e9 Ball with a Flash Case is thrown, it uses the Move Flash originating from the spot where it landed.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"}],\"footer\":{\"text\":\"DPDoM: p.44\"}}"
+    },
+    "Contest Case":{
+        "embed":"{\"title\":\"Contest Case\",\"description\":\"Whenever a Pok\\u00e9mon is released from a Contest Case into a Contest, they gain 1 Appeal Point during the introduction stage.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"400\"}],\"footer\":{\"text\":\"DPDoM: p.44\"}}"
+    },
+    "Camera Kit":{
+        "embed":"{\"title\":\"Camera Kit\",\"description\":\"A small camera, microphone, and speaker set affixed to the outside of a Pok\\u00e9 Ball or Case. These allow a Trainer to remotely release and command their Pok\\u00e9mon or attempt to capture a Pok\\u00e9mon.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1200\"}],\"footer\":{\"text\":\"DPDoM: p.45\"}}"
+    },
+    "Bait Attachment":{
+        "embed":"{\"title\":\"Bait Attachment\",\"description\":\"These attachments afix a piece of bait to the triggering device of a Pok\\u00e9 Ball. When the bait is taken, the attachment automatically triggers a capture attempt along with any effect that would be caused by a Pok\\u00e9 Ball Cases.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"300\"}],\"footer\":{\"text\":\"DPDoM: p.45\"}}"
+    },
+    "Zap Case":{
+        "embed":"{\"title\":\"Zap Case\",\"description\":\"Whenever a Pok\\u00e9 Ball with a Zap Case hits a target it deals damage as if using a Struggle Attack. This Damage is Electric-Typed. If the Ball is already used as a Struggle Attack (such as with Curve Ball), then the Zap Case changes the damage to Electric-Type and adds bonus damage equal to twice the user\\u2019s Technology Education skill. When attempting to catch Pok\\u00e9mon, damage is resolved before the capture roll. This can also be used when releasing a Pok\\u00e9mon (damage is resolved before the Pok\\u00e9mon is released).\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1500\"}],\"footer\":{\"text\":\"DPDoM: p.45\"}}"
+    },
+    "Devil Case":{
+        "embed":"{\"title\":\"Devil Case\",\"description\":\"These dangerous and often illegal cases remove the failsafe on Pok\\u00e9 Balls that prevents them from catching Pok\\u00e9mon that are at 0 Hit Points or less. It allows Pok\\u00e9 Balls to catch Fainted Pok\\u00e9mon as normal, but automatically inflicts 2 Injuries when hitting a Pok\\u00e9mon - whether the Capture is successful or not.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"DPDoM: p.45\"}}"
+    },
+    "Pok\u00e9 Ball Tracking Chip":{
+        "embed":"{\"title\":\"Pok\\u00e9 Ball Tracking Chip\",\"description\":\"A chip embedded in the inner workings of the Pok\\u00e9 Ball that emits a signal allowing the Ball\\u2019s owner to remotely track the location of the Ball. Depending on the setting, these may be built in by default.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"200\"}],\"footer\":{\"text\":\"DPDoM: p.46\"}}"
+    },
+    "Pok\u00e9 Ball Alarm":{
+        "embed":"{\"title\":\"Pok\\u00e9 Ball Alarm\",\"description\":\"A belt with six slots for Pok\\u00e9 Balls. Pok\\u00e9 Balls affixed to the belt are locked in place with a number pad password to unlock them. Tampering with the belt triggers the password prompt, and failure to input the correct password within a minute triggers a loud alarm system.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"DPDoM: p.46\"}}"
+    },
+    "Heat Ball":{
+        "embed":"{\"title\":\"Heat Ball\",\"description\":\"-20 Modifier if the target is Electric or Fire type.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"DPDoM: p.83\"}}"
+    },
+    "Haunt Ball":{
+        "embed":"{\"title\":\"Haunt Ball\",\"description\":\"-20 Modifier if the target is Dark or Ghost type.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"DPDoM: p.83\"}}"
+    },
+    "Earth Ball":{
+        "embed":"{\"title\":\"Earth Ball\",\"description\":\"-20 Modifier if the target is Grass or Ground type.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"DPDoM: p.83\"}}"
+    },
+    "Solid Ball":{
+        "embed":"{\"title\":\"Solid Ball\",\"description\":\"-20 Modifier if the target is Rock or Steel type.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"DPDoM: p.83\"}}"
+    },
+    "Power Ball":{
+        "embed":"{\"title\":\"Power Ball\",\"description\":\"-20 Modifier if the target is under level 10.  Target gains 1d4 levels upon capture.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"DPDoM: p.83\"}}"
+    },
+    "Dusk Ball":{
+        "embed":"{\"title\":\"Dusk Ball\",\"description\":\"-20 Modifier if it is dark, or if there is very little light out, when used.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"Core: p.273\"}}"
+    },
+    "Park Ball":{
+        "embed":"{\"title\":\"Park Ball\",\"description\":\"Used during Safari hunts.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Modifier\",\"value\":\"-15\"}],\"footer\":{\"text\":\"Core: p.273\"}}"
+    },
+    "Bounce Case":{
+        "embed":"{\"title\":\"Bounce Case\",\"description\":\"A Pok\\u00e9 Ball in a Bounce Case may bounce once when thrown or launched, up to a distance of 3 meters. This can be used to extend the effective range of a Pok\\u00e9 Ball, hit around obstacles, or trigger effects such as the Capture Specialist\\u2019s Curve Ball on an additional target.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"}],\"footer\":{\"text\":\"DPDoM: p.44\"}}"
+    },
+    "Dark Vision Goggles":{
+        "embed":"{\"title\":\"Dark Vision Goggles\",\"description\":\"These Goggles simply grant the Darkvision Capability while worn.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"},{\"name\":\"Slot\",\"value\":\"Head\"}],\"footer\":{\"text\":\"Core: p.293\"}}"
+    },
+    "Gas Mask":{
+        "embed":"{\"title\":\"Gas Mask\",\"description\":\"Gas Masks are invaluable equipment when trying to breathe in toxic environments or heavy smoke. They not only let you breathe through environmental toxins or smoke, but you become immune to the Moves Rage Powder, Poison Gas, Poisonpowder, Sleep Powder, Smog, Smokescreen, Spore, Stun Spore, and Sweet Scent.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1500\"},{\"name\":\"Slot\",\"value\":\"Head\"}],\"footer\":{\"text\":\"Core: p.293\"}}"
+    },
+    "Helmet":{
+        "embed":"{\"title\":\"Helmet\",\"description\":\"The user gains 15 Damage Reduction against Critical Hits. The user resists the Moves Headbutt and Zen Headbutt and can\\u2019t be flinched by these Moves.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"2250\"},{\"name\":\"Slot\",\"value\":\"Head\"}],\"footer\":{\"text\":\"Core: p.293\"}}"
+    },
+    "Air Ball":{
+        "embed":"{\"title\":\"Air Ball\",\"description\":\"-20 Modifier if the target is Flying or Ice type.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"DPDoM: p.83\"}}"
+    },
+    "Re-Breather":{
+        "embed":"{\"title\":\"Re-Breather\",\"description\":\"This small partial face mask allows Trainers and Pok\\u00e9mon to breathe underwater as if they had the Gilled Capability for up to an hour. The Re-Breather is refilled automatically in 5 minutes while in open air.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"4000\"},{\"name\":\"Slot\",\"value\":\"Head\"}],\"footer\":{\"text\":\"Core: p.293\"}}"
+    },
+    "Sunglasses":{
+        "embed":"{\"title\":\"Sunglasses\",\"description\":\"+1 to Charm, Guile, and Intimidate Checks, to a maximum total modifier of +3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"2000\"},{\"name\":\"Slot\",\"value\":\"Head\"}],\"footer\":{\"text\":\"Core: p.293\"}}"
+    },
+    "Snow Boots":{
+        "embed":"{\"title\":\"Snow Boots\",\"description\":\"Snow Boots grant you the Naturewalk (Tundra) capability, but lower your Overland Speed by -1 while on ice or deep snow.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1500\"},{\"name\":\"Slot\",\"value\":\"Feet\"}],\"footer\":{\"text\":\"Core: p.293\"}}"
+    },
+    "Running Shoes":{
+        "embed":"{\"title\":\"Running Shoes\",\"description\":\"Running Shoes grant a +2 bonus to Athletics Checks, to a maximum total modifier of +3, and increase your Overland Speed by +1.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"2000\"},{\"name\":\"Slot\",\"value\":\"Feet\"}],\"footer\":{\"text\":\"Core: p.293\"}}"
+    },
+    "Flippers":{
+        "embed":"{\"title\":\"Flippers\",\"description\":\"Flippers grant a +2 bonus to your Swim speed when fully submerged, and decrease your Overland speed by the same amount.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"2000\"},{\"name\":\"Slot\",\"value\":\"Feet\"}],\"footer\":{\"text\":\"Core: p.293\"}}"
+    },
+    "Jungle Boots":{
+        "embed":"{\"title\":\"Jungle Boots\",\"description\":\"Jungle Boots grant you the Naturewalk (Forest) capability\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1500\"},{\"name\":\"Slot\",\"value\":\"Feet\"}],\"footer\":{\"text\":\"Core: p.293\"}}"
+    },
+    "Fishing Rod":{
+        "embed":"{\"title\":\"Fishing Rod\",\"description\":\"Fishing Rods are used to Fish. They are two-handed items. They come in three varieties; Old Rods, Good Rods, and Super Rods.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"Varies\"},{\"name\":\"Slot\",\"value\":\"Hands\"}],\"footer\":{\"text\":\"Core: p.294\"}}"
+    },
+    "Old Rod":{
+        "embed":"{\"title\":\"Old Rod\",\"description\":\"A basic fishing rod.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"},{\"name\":\"Slot\",\"value\":\"Hands\"}],\"footer\":{\"text\":\"Core: p.294\"}}"
+    },
+    "Good Rod":{
+        "embed":"{\"title\":\"Good Rod\",\"description\":\"A better fishing rod.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"5000\"},{\"name\":\"Slot\",\"value\":\"Hands\"}],\"footer\":{\"text\":\"Core: p.294\"}}"
+    },
+    "Super Rod":{
+        "embed":"{\"title\":\"Super Rod\",\"description\":\"The best fishing rod.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"15000\"},{\"name\":\"Slot\",\"value\":\"Hands\"}],\"footer\":{\"text\":\"Core: p.294\"}}"
+    },
+    "Heavy Armor":{
+        "embed":"{\"title\":\"Heavy Armor\",\"description\":\"Heavy Armor grants +5 Damage Reduction. Heavy Armor causes the wearer\\u2019s Speed\\u2019s Default Combat Stage to be -1.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"12000\"},{\"name\":\"Slot\",\"value\":\"Body\"}],\"footer\":{\"text\":\"Sept: p.4\"}}"
+    },
+    "Sand Ball":{
+        "embed":"{\"title\":\"Sand Ball\",\"description\":\"-20 Modifier if the weather is a sandstorm when used.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"DPDoM: p.83\"}}"
+    },
+    "Mold Ball":{
+        "embed":"{\"title\":\"Mold Ball\",\"description\":\"-20 Modifier if the target is Poison or Fighting type.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"DPDoM: p.83\"}}"
+    },
+    "Hail Ball":{
+        "embed":"{\"title\":\"Hail Ball\",\"description\":\"-20 Modifier if the weather is hailing when used.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"DPDoM: p.83\"}}"
+    },
+    "Mystic Ball":{
+        "embed":"{\"title\":\"Mystic Ball\",\"description\":\"-20 Modifier if the target is Dragon or Psychic type.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"DPDoM: p.83\"}}"
+    },
+    "Gossamer Ball":{
+        "embed":"{\"title\":\"Gossamer Ball\",\"description\":\"-20 Modifier if the target is Normal or Fairy type.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"DPDoM: p.83\"}}"
+    },
+    "Sun Ball":{
+        "embed":"{\"title\":\"Sun Ball\",\"description\":\"-20 Modifier if the weather is sunny when used.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"DPDoM: p.83\"}}"
+    },
+    "Rain Ball":{
+        "embed":"{\"title\":\"Rain Ball\",\"description\":\"-20 Modifier if the weather is rainy when used.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"DPDoM: p.83\"}}"
+    },
+    "Learning Ball":{
+        "embed":"{\"title\":\"Learning Ball\",\"description\":\"The captured Pok\\u00e9mon immediately learns their next level-up Move, as long as it is within 8 levels of their current level.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"},{\"name\":\"Modifier\",\"value\":\"-5\"}],\"footer\":{\"text\":\"DPDoM: p.83\"}}"
+    },
+    "Dream Mist (Item)":{
+        "embed":"{\"title\":\"Dream Mist\",\"description\":\"Dream Mist may be used as an AC 6 Melee Status Attack, performed as a Standard Action. If it hits, the target falls Asleep. Dream Mist is collected from Pok\\u00e9mon with the eponymous Capability using a Collection Jar.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"},{\"name\":\"Slot\",\"value\":\"Consumable\"}],\"footer\":{\"text\":\"Core: p.302\"}}"
+    },
+    "Stealth Clothes":{
+        "embed":"{\"title\":\"Stealth Clothes\",\"description\":\"Whether it\\u2019s a dark cloak and hood, a ninja suit, or spy gear, these clothes help you blend in. This body-slot equipment raises your modifier to Stealth Checks made to remain unseen by +4, to a maximum total modifier of +4.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"2000\"},{\"name\":\"Slot\",\"value\":\"Body\"}],\"footer\":{\"text\":\"Core: p.293\"}}"
+    },
+    "Capture Styler":{
+        "embed":"{\"title\":\"Capture Styler\",\"description\":\"A Capture Styler is a Main-Hand specialized piece of equipment used by some certified Pok\\u00e9mon Rangers in a region. It emits a string of energy that is used in a similar fashion to a lasso but is too weak to physically restrain a target. Instead, the energy has a calming effect on Pok\\u00e9mon. Trainers using a Capture Styler may use Survival in place of Charm when raising the Disposition of Pok\\u00e9mon.\\nAcquiring a Capture Styler is easy for those who become certified Pok\\u00e9mon Rangers; most qualified Rangers receive one as part of the job. They are not for sale to the general public, and it\\u2019s easy to assume that someone who has a Capture Styler is a Ranger.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"7500\"},{\"name\":\"Slot\",\"value\":\"Hands\"}],\"footer\":{\"text\":\"Core: p.294\"}}"
+    },
+    "Caltrops":{
+        "embed":"{\"title\":\"Caltrops\",\"description\":\"Lets the user use the move Spikes as a Standard Action.  The item is then consumed.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"},{\"name\":\"Slot\",\"value\":\"Consumable\"}],\"footer\":{\"text\":\"Core: p.302\"}}"
+    },
+    "Toxic Caltrops":{
+        "embed":"{\"title\":\"Toxic Caltrops\",\"description\":\"Lets the user use the move Toxic Spikes as a Standard Action.  The item is then consumed.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"},{\"name\":\"Slot\",\"value\":\"Consumable\"}],\"footer\":{\"text\":\"Core: p.302\"}}"
+    },
+    "Shield (Item)":{
+        "embed":"{\"title\":\"Shield\",\"description\":\"A Shield is an Off-Hand defensive item held in one hand or braced to an arm. They grant grant +1 Evasion. They may be readied as a Standard Action to instead grant +4 Evasion and 10 Damage Reduction until the end of your next turn, but also cause you to become Slowed for that duration. If used Two-Handed, Shields can also function as a Small Melee Weapon.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"},{\"name\":\"Slot\",\"value\":\"Off-Hand\"}],\"footer\":{\"text\":\"Sept: p.4\"}}"
+    },
+    "Focus (Item)":{
+        "embed":"{\"title\":\"Focus\",\"description\":\"A Focus grants +5 Bonus to a Stat, chosen when crafted. This Bonus is applied AFTER Combat Stages. Focuses are often Accessory-Slot Items, but may be crafted as Head-Slot, Hand or Off-Hand Slot Items as well; a Trainer may only benefit from one Focus at a time, regardless of the Equipment Slot. Focuses are not usually found in stores, but may sometimes be found for $6000 at your GM\\u2019s discretion.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"6000\"},{\"name\":\"Slot\",\"value\":\"Accessory\"}],\"footer\":{\"text\":\"Core: p.295\"}}"
+    },
+    "Wonder Launcher":{
+        "embed":"{\"title\":\"Wonder Launcher\",\"description\":\"This strange and complicated two-handed machine can only be used by those that have an Expert-Level Medicine or Technology Education Skill. The wielder can spend 1 AP to activate it, and apply an X-Item at a Pok\\u00e9mon within 8 meters. X Items applied through the Wonder Launcher do not cause the target to forfeit any actions. Items combined by a Researcher may be used in the Wonder Launcher, and do not cause the target to forfeit any actions even if they are also a Restorative.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"10000\"},{\"name\":\"Slot\",\"value\":\"Hands\"}],\"footer\":{\"text\":\"Core: p.295\"}}"
+    },
+    "Hand Net":{
+        "embed":"{\"title\":\"Hand Net\",\"description\":\"A long net, usually on the end of a long stick, these pieces of two-handed Equipment are usually used for bug catching or fishing. As an AC6 Status Attack, you may attempt to net a Small Pok\\u00e9mon using this item. If you hit, you manage to scoop up the Pok\\u00e9mon, trapping them. You may move with the Pok\\u00e9mon, dragging them with you. Pok\\u00e9mon may still attack from the Hand Net using long-range attacks, or try to attack the net itself, potentially breaking it and freeing themselves. Capture Rolls against Pok\\u00e9mon in a net receive a -20 bonus.\\nHand Nets with 50 Hit Points cost $100; 100 Hit Points cost $600; and 200 Hit Points cost $1500. Nets aren\\u2019t broken until all of their Hit Points are depleted.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"Varies\"},{\"name\":\"Slot\",\"value\":\"Hands\"}],\"footer\":{\"text\":\"Core: p.294\"}}"
+    },
+    "Mega Ring":{
+        "embed":"{\"title\":\"Mega Ring\",\"description\":\"Mega Rings are extraordinarily rare accessories that allow a Trainer\\u2019s Pok\\u00e9mon to Mega Evolve when used in conjunction with a Mega Stone. They cannot be bought in stores anywhere and must usually be earned through a trial of sorts, governed by a Gym Leader or other influential Pok\\u00e9mon Trainer. They can take the form of a bracelet, a necklace, or an actual ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"},{\"name\":\"Slot\",\"value\":\"Accessory\"}],\"footer\":{\"text\":\"Core: p.295\"}}"
+    },
+    "Pester Ball: Rage":{
+        "embed":"{\"title\":\"Pester Ball: Rage\",\"description\":\"Inflicts Rage on the target. After being hit by any Pester Ball, a target becomes immune to the effects of further Pester Balls for 1 hour. Throwing and hitting with Pester Balls is the same as with Pok\\u00e9 Balls.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"350\"},{\"name\":\"Slot\",\"value\":\"Consumable\"}],\"footer\":{\"text\":\"Core: p.302\"}}"
+    },
+    "Pester Ball: Poison":{
+        "embed":"{\"title\":\"Pester Ball: Poison\",\"description\":\"Inflicts Poison on the target. After being hit by any Pester Ball, a target becomes immune to the effects of further Pester Balls for 1 hour. Throwing and hitting with Pester Balls is the same as with Pok\\u00e9 Balls.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"350\"},{\"name\":\"Slot\",\"value\":\"Consumable\"}],\"footer\":{\"text\":\"Core: p.302\"}}"
+    },
+    "Pester Ball: Paralysis":{
+        "embed":"{\"title\":\"Pester Ball: Paralysis\",\"description\":\"Inflicts Paralysis on the target. After being hit by any Pester Ball, a target becomes immune to the effects of further Pester Balls for 1 hour. Throwing and hitting with Pester Balls is the same as with Pok\\u00e9 Balls.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"350\"},{\"name\":\"Slot\",\"value\":\"Consumable\"}],\"footer\":{\"text\":\"Core: p.302\"}}"
+    },
+    "Pester Ball: Sleep":{
+        "embed":"{\"title\":\"Pester Ball: Sleep\",\"description\":\"Causes the target to fall asleep. After being hit by any Pester Ball, a target becomes immune to the effects of further Pester Balls for 1 hour. Throwing and hitting with Pester Balls is the same as with Pok\\u00e9 Balls.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"350\"},{\"name\":\"Slot\",\"value\":\"Consumable\"}],\"footer\":{\"text\":\"Core: p.302\"}}"
+    },
+    "Pok\u00e9 Ball Cannon":{
+        "embed":"{\"title\":\"Pok\\u00e9 Ball Cannon\",\"description\":\"Increases Pok\\u00e9 Ball and Pester Ball accuracy by +1 and range to 15 meters. Balls deal 2d6 unreducible damage upon hitting a target. Balls take a Shift Action to ready in the Pok\\u00e9 Ball Cannon.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"4500\"},{\"name\":\"Slot\",\"value\":\"Main + Off Hand\"}],\"footer\":{\"text\":\"DPDoM: p.41\"}}"
+    },
+    "Extendable Grabby Arm":{
+        "embed":"{\"title\":\"Extendable Grabby Arm\",\"description\":\"A dexterous and flexible arm with a hand at the end. Can be used to grab and manipulate objects from 3 meters away.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"750\"},{\"name\":\"Slot\",\"value\":\"Main Hand\"}],\"footer\":{\"text\":\"DPDoM: p.42\"}}"
+    },
+    "Lifting Frame":{
+        "embed":"{\"title\":\"Lifting Frame\",\"description\":\"A mechanized frame worn over each arm with motorized muscles. Grants +2 to Power Capability. The frames are too unwieldy to use other equipment such as weapons while wearing them.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"},{\"name\":\"Slot\",\"value\":\"Main + Off Hand\"}],\"footer\":{\"text\":\"DPDoM: p.42\"}}"
+    },
+    "Spacesuit":{
+        "embed":"{\"title\":\"Spacesuit\",\"description\":\"Grants Vacuum Immunity and Free Floating 4. Weighs 200 pounds and is thus difficult for most Trainers to use in normal gravity. A Robotic Age upgraded version costing an extra $2000 confers Hazard Immunity too and weighs only 100 pounds instead.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"8000\"},{\"name\":\"Slot\",\"value\":\"Body + Head\"}],\"footer\":{\"text\":\"DPDoM: p.42\"}}"
+    },
+    "Hazmat Suit":{
+        "embed":"{\"title\":\"Hazmat Suit\",\"description\":\"Acts as a Gas Mask but also grants the Hazard Immunity capability and immunity to non-damaging Poison Type Moves.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3500\"},{\"name\":\"Slot\",\"value\":\"Body + Head\"}],\"footer\":{\"text\":\"DPDoM: p.42\"}}"
+    },
+    "Pester Balls":{
+        "embed":"{\"title\":\"Pester Balls\",\"description\":\"Pester Balls are small balls full of chemicals that come in six varieties, each of which inflicts a different Status Affliction when they hit a target. The Status Afflictions they can cause are: Rage, Confusion, Burn, Poison, Paralysis, and Sleep.\\nAfter being hit by any Pester Ball, a target becomes immune to the effects of further Pester Balls for 1 hour. Throwing and hitting with Pester Balls is the same as with Pok\\u00e9 Balls.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"350\"},{\"name\":\"Slot\",\"value\":\"Consumable\"}],\"footer\":{\"text\":\"Core: p.302\"}}"
+    },
+    "Pester Ball: Confusion":{
+        "embed":"{\"title\":\"Pester Ball: Confusion\",\"description\":\"Inflicts Confusion on the target. After being hit by any Pester Ball, a target becomes immune to the effects of further Pester Balls for 1 hour. Throwing and hitting with Pester Balls is the same as with Pok\\u00e9 Balls.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"350\"},{\"name\":\"Slot\",\"value\":\"Consumable\"}],\"footer\":{\"text\":\"Core: p.302\"}}"
+    },
+    "Pester Ball: Burn":{
+        "embed":"{\"title\":\"Pester Ball: Burn\",\"description\":\"Inflicts Burn on the target. After being hit by any Pester Ball, a target becomes immune to the effects of further Pester Balls for 1 hour. Throwing and hitting with Pester Balls is the same as with Pok\\u00e9 Balls.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"350\"},{\"name\":\"Slot\",\"value\":\"Consumable\"}],\"footer\":{\"text\":\"Core: p.302\"}}"
+    },
+    "Treecko Gear":{
+        "embed":"{\"title\":\"Treecko Gear\",\"description\":\"Grants the Wallclimber capability.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3500\"},{\"name\":\"Slot\",\"value\":\"Main + Off Hand, Feet\"}],\"footer\":{\"text\":\"DPDoM: p.42\"}}"
+    },
+    "Thermal Dampening Suit":{
+        "embed":"{\"title\":\"Thermal Dampening Suit\",\"description\":\"The user is invisible to thermal imaging gear.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"2000\"},{\"name\":\"Slot\",\"value\":\"Body\"}],\"footer\":{\"text\":\"DPDoM: p.42\"}}"
+    },
+    "Thermal Goggles":{
+        "embed":"{\"title\":\"Thermal Goggles\",\"description\":\"Allows you to see in the IR spectrum, enabling you to easily pick out a person or Pok\\u00e9mon in camouflage or to identify sources of heat.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"},{\"name\":\"Slot\",\"value\":\"Head\"}],\"footer\":{\"text\":\"DPDoM: p.42\"}}"
+    },
+    "Smoke Ball":{
+        "embed":"{\"title\":\"Smoke Ball\",\"description\":\"When used, a Smoke Ball creates a 3 meter blast that fills the area with smoke, as if the move Smokescreen had been used. Smoke Balls can only be found in specialty shops.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"},{\"name\":\"Slot\",\"value\":\"Consumable\"}],\"footer\":{\"text\":\"DPDoM: p.83\"}}"
+    },
+    "Pheromone Cartridge":{
+        "embed":"{\"title\":\"Pheromone Cartridge\",\"description\":\"A cartridge for the Pheromone Emitter.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"},{\"name\":\"Slot\",\"value\":\"Consumable\"}],\"footer\":{\"text\":\"DPDoM: p.42\"}}"
+    },
+    "Pheromone Emitter":{
+        "embed":"{\"title\":\"Pheromone Emitter\",\"description\":\"Emits pheromones as a Swift Action that give a +4 bonus to a Charm or Intimidate check against wild Pok\\u00e9mon. Requires a Pheromone Cartridge to use. Comes with 1 Cartridge. More can be bought for 250 apiece.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"2000\"},{\"name\":\"Slot\",\"value\":\"Accessory\"}],\"footer\":{\"text\":\"DPDoM: p.42\"}}"
+    },
+    "Glitch Detection Crystal":{
+        "embed":"{\"title\":\"Glitch Detection Crystal\",\"description\":\"A crystal necklace which begins to display pixelated effects and static when near Glitch phenomena. Pixellation and static effects intensify proportionally to proximity to the phenomena.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Slot\",\"value\":\"Accessory\"}],\"footer\":{\"text\":\"DPDoM: p.43\"}}"
+    },
+    "Anomaly Detector":{
+        "embed":"{\"title\":\"Anomaly Detector\",\"description\":\"When pointed at a person, Pok\\u00e9mon, or object, this handheld device can determine whether or not it belongs to this timeline or parallel universe. It gives no indication to the nature of the home universe, however.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"2150\"},{\"name\":\"Slot\",\"value\":\"Item\"}],\"footer\":{\"text\":\"DPDoM: p.43\"}}"
+    },
+    "Dimensional Field Analyzer":{
+        "embed":"{\"title\":\"Dimensional Field Analyzer\",\"description\":\"A handheld device the size of a Geiger counter for campaigns featuring time travel or interdimensional travel of some other sort. This device can be calibrated to recognize a \\u2018home\\u2019 universe or timeline and can measure the amount of difference between a parallel universe and that home universe.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"5000\"},{\"name\":\"Slot\",\"value\":\"Item\"}],\"footer\":{\"text\":\"DPDoM: p.43\"}}"
+    },
+    "X-Ray Goggles":{
+        "embed":"{\"title\":\"X-Ray Goggles\",\"description\":\"Grants the user the X-Ray Vision Capability.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"8000\"},{\"name\":\"Slot\",\"value\":\"Head\"}],\"footer\":{\"text\":\"DPDoM: p.43\"}}"
+    },
+    "Pok\u00e9radar":{
+        "embed":"{\"title\":\"Pok\\u00e9radar\",\"description\":\"Contrary to its name, this handheld device actually detects both human and Pok\\u00e9mon lifesigns in a 20 meter radius and can display their relative location to you on a screen. No information is given about specific species.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"5000\"},{\"name\":\"Slot\",\"value\":\"Off-Hand\"}],\"footer\":{\"text\":\"DPDoM: p.43\"}}"
+    },
+    "Gravity Modulation Suit":{
+        "embed":"{\"title\":\"Gravity Modulation Suit\",\"description\":\"You may treat the local gravity as if it were 1 lower or 1 higher. Changing the setting on the suit is an At-Will Extended Action requiring time for the suit to adjust to the new settings.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"4000\"},{\"name\":\"Slot\",\"value\":\"Body\"}],\"footer\":{\"text\":\"DPDoM: p.43\"}}"
+    },
+    "Universal Translator":{
+        "embed":"{\"title\":\"Universal Translator\",\"description\":\"You understand any spoken language recognized by the Universal Translator and can speak into it and have your words translated immediately. Usually programmed with all of the major human languages. Can be used to speak with Pok\\u00e9mon.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"10000\"},{\"name\":\"Slot\",\"value\":\"Head\"}],\"footer\":{\"text\":\"DPDoM: p.43\"}}"
+    },
+    "Scrub Cartridge":{
+        "embed":"{\"title\":\"Scrub Cartridge\",\"description\":\"A cartridge for Scrubbing Spray.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"300\"},{\"name\":\"Slot\",\"value\":\"Consumable\"}],\"footer\":{\"text\":\"DPDoM: p.43\"}}"
+    },
+    "Scrubbing Spray":{
+        "embed":"{\"title\":\"Scrubbing Spray\",\"description\":\"Sprays a chemical agent over an area that destroys most forensic evidence, such as trace biomatter. Perception checks to track someone or to search for forensic evidence take a -6 penalty. Requires a Scrub Cartridge to use. Comes with 1 Cartridge. More can be bought for 300 apiece.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3500\"},{\"name\":\"Slot\",\"value\":\"Off-Hand\"}],\"footer\":{\"text\":\"DPDoM: p.43\"}}"
+    },
+    "Inferno Cannon":{
+        "embed":"{\"title\":\"Inferno Cannon\",\"description\":\"Uses the Move Inferno once.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"},{\"name\":\"Slot\",\"value\":\"Hands\"}],\"footer\":{\"text\":\"DPDoM: p.50\"}}"
+    },
+    "Zap Blaster":{
+        "embed":"{\"title\":\"Zap Blaster\",\"description\":\"Uses the Move Zap Cannon once.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"},{\"name\":\"Slot\",\"value\":\"Hands\"}],\"footer\":{\"text\":\"DPDoM: p.50\"}}"
+    },
+    "Flashbang":{
+        "embed":"{\"title\":\"Flashbang\",\"description\":\"Throwing a Flashbang uses the Move Flash originating from the point where you threw the Flashbang, up to your maximum Pok\\u00e9 Ball throwing range. When used in this way, Flash flinches all legal targets on 19-20 on Accuracy Check.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"},{\"name\":\"Slot\",\"value\":\"Consumable\"}],\"footer\":{\"text\":\"DPDoM: p.50\"}}"
+    },
+    "EMP Grenade":{
+        "embed":"{\"title\":\"EMP Grenade\",\"description\":\"Throwing an EMP Grenade is an AC 5 Ranged Blast 3 attack that can be made at a target within your Pok\\u00e9 Ball throwing range. All legal targets with Augmentations immediately suffer the effects of Augmentation Shock. EMP Grenades flinch targets with Augmentations on a roll of 18+ on Accuracy Check. EMP Grenades disable Pok\\u00e9bots for 1d2 turns.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Slot\",\"value\":\"Consumable\"}],\"footer\":{\"text\":\"DPDoM: p.50\"}}"
+    },
+    "Mesh Shielding":{
+        "embed":"{\"title\":\"Mesh Shielding\",\"description\":\"An advanced anti-conductive fabric woven into a stiff jacket designed to shield sensitive electronics from damage and electrical shock. You gain 5 Damage Reduction against Electric Type damage. Whenever you would suffer Augmentation Shock, roll 1d2. On a 1, you suffer no ill effects.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"8000\"},{\"name\":\"Slot\",\"value\":\"Body\"}],\"footer\":{\"text\":\"DPDoM: p.51\"}}"
+    },
+    "Flame Retardant Armor":{
+        "embed":"{\"title\":\"Flame Retardant Armor\",\"description\":\"You gain 10 Damage Reduction against Fire Type damage.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"5000\"},{\"name\":\"Slot\",\"value\":\"Body\"}],\"footer\":{\"text\":\"DPDoM: p.51\"}}"
+    },
+    "Ablative Heavy Armor":{
+        "embed":"{\"title\":\"Ablative Heavy Armor\",\"description\":\"A weighty but brittle armor that is self-repairing. Grants 20 Damage Reduction, but each damaging attack removes 5 Damage Reduction from the armor. Every five minutes, the armor repairs 5 Damage Reduction. The user\\u2019s Speed Combat Stage defaults to -1.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"14500\"},{\"name\":\"Slot\",\"value\":\"Body\"}],\"footer\":{\"text\":\"DPDoM: p.51\"}}"
+    },
+    "Beedrillite":{
+        "embed":"{\"title\":\"Beedrillite\",\"description\":\"Mega Evolves Beedrill when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Slipstream Armor":{
+        "embed":"{\"title\":\"Slipstream Armor\",\"description\":\"A flexible and smooth light armor that can momentarily become nearly frictionless. Grants 5 Damage Reduction. Once a battle, the wearer may use a Swift Action to escape from being Stuck.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"10000\"},{\"name\":\"Slot\",\"value\":\"Body\"}],\"footer\":{\"text\":\"DPDoM: p.51\"}}"
+    },
+    "Sensor Disruption Vest":{
+        "embed":"{\"title\":\"Sensor Disruption Vest\",\"description\":\"The specially designed material of this vest wreaks havoc with the sensors used on most Pok\\u00e9bot models and Eye Augmentations. Pok\\u00e9bots and any Trainers or Pok\\u00e9mon with an Eye Augmentation suffer a -2 penalty to their single target Accuracy Checks made against the wearer.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"2000\"},{\"name\":\"Slot\",\"value\":\"Body\"}],\"footer\":{\"text\":\"DPDoM: p.51\"}}"
+    },
+    "Reinforced Trenchcoat":{
+        "embed":"{\"title\":\"Reinforced Trenchcoat\",\"description\":\"A stylish utility version of Light Armor. Grants 5 Damage Reduction and provides a +4 bonus to Stealth checks to conceal weapons and prevents their detection by metal detectors.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"10000\"},{\"name\":\"Slot\",\"value\":\"Body\"}],\"footer\":{\"text\":\"DPDoM: p.51\"}}"
+    },
+    "Study Manual":{
+        "embed":"{\"title\":\"Study Manual\",\"description\":\"A Study Manual is always assigned to a single Skill and covers a specific narrow field that can be taken as a Skill Stunt.\\nRank 1 - Novice General Education: You gain a Skill Stunt in the associated Skill of the Study Manual covering the narrow field specified by the Study Manual.\\nRank 2 - Expert General Education: You gain a general +2 Bonus to the associated Skill. This Bonus does not stack with other bonuses from Books or Equipment to the same Skill.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"May: p.7\"}}"
+    },
+    "Bean Cap":{
+        "embed":"{\"title\":\"Bean Cap\",\"description\":\"\\nAC: (6 minus Tech Edu Rank, Min 2)\\nRange: 10 meters\\nEffect: The target takes 20 Physical, Normal-Type Damage. On 18+, the target is Tripped and loses a Tick of Hit Points.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"50\"},{\"name\":\"Slot\",\"value\":\"Consumable\"}],\"footer\":{\"text\":\"May: p.6\"}}"
+    },
+    "Glue Cap":{
+        "embed":"{\"title\":\"Glue Cap\",\"description\":\"\\nAC: (8 minus Tech Edu Rank, Min 2)\\nRange: 8 meters\\nEffect: Cause the target to become Slowed, and their Initiative is lowered by 5. On 18+, the target is also Stuck and Trapped.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"100\"},{\"name\":\"Slot\",\"value\":\"Consumable\"}],\"footer\":{\"text\":\"May: p.6\"}}"
+    },
+    "Net Cap":{
+        "embed":"{\"title\":\"Net Cap\",\"description\":\"\\nAC: (10 minus Tech Edu Rank)\\nRange: 6 Meters\\nEffect: Targets hit by a Net Cap gain all the effects below while the net remains on them. Targets may attempt to remove the Net as a Standard Action; if they do, they make a Save Check with a DC of 15, adding their Power Capability as a bonus to their Roll. Targets may automatically remove the Net as an Extended Action.\\n\\u00bb If the target is a Wild Pok\\u00e9mon, Capture Rate is increased by +20\\n\\u00bb If the target is Large Size or smaller, they take a -3 penalty to Accuracy Rolls\\n\\u00bb If the target is Medium Size or smaller, they are Slowed and Vulnerable\\n\\u00bb Sky and Levitate Speeds cannot be used; the target is forced to lower themselves to the ground (without taking fall damage).\",\"fields\":[{\"name\":\"Cost\",\"value\":\"200\"},{\"name\":\"Slot\",\"value\":\"Consumable\"}],\"footer\":{\"text\":\"May: p.6\"}}"
+    },
+    "How Berries??":{
+        "embed":"{\"title\":\"How Berries??\",\"description\":\"A beginner\\u2019s guide to the proper care of berry plants.\\nRank 1 - Adept General Education: Once per day when making a Yield Roll, add +1 to the result.\\nRank 2 - Expert General Education: You may create Mulch from Food Scrap.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"May: p.8\"}}"
+    },
+    "Traditional Medicine Reference":{
+        "embed":"{\"title\":\"Traditional Medicine Reference\",\"description\":\"A volume dedicated to properly preparing herbal medications. See PTU May 2015 Playtest Packet - Miscellaneous Errata for Herbal Restorative errata.\\nRank 1 - Adept Medicine Education: Targets you administer Herbal Restoratives to do not lose Combat Stages no matter how many Herbal Restoratives they\\u2019ve had in the same day.\\nRank 2 - Expert Medicine Education: Whenever you administer an Herbal Restorative to a target, they may choose to gain the Food Buff associated with Herbal Restoratives, regardless of how many Herbal Restoratives they\\u2019ve used this day.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"May: p.8\"}}"
+    },
+    "The Anarchist Cookbook":{
+        "embed":"{\"title\":\"The Anarchist Cookbook\",\"description\":\"The simple act of owning this book isn\\u2019t illegal, but carrying out its suggestions might be.\\nRank 1 - Novice Technology Education: Whenever you apply a Repel to a target, they become Blinded until the end of their next turn. This may only affect a target once per Scene.\\nRank 2 - Expert Technology Education: Whenever you hit a target with a Repel or Pester Ball, they lose Hit Points equal to your Technology Education Rank.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"May: p.9\"}}"
+    },
+    "Special Armor":{
+        "embed":"{\"title\":\"Light Armor\",\"description\":\"Grants 5 Damage Reduction against Special Moves.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"8000\"},{\"name\":\"Slot\",\"value\":\"Body\"}],\"footer\":{\"text\":\"Sept: p.4\"}}"
+    },
+    "Light Armor":{
+        "embed":"{\"title\":\"Light Armor\",\"description\":\"Grants 5 Damage Reduction against Physical Moves.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"8000\"},{\"name\":\"Slot\",\"value\":\"Body\"}],\"footer\":{\"text\":\"Sept: p.4\"}}"
+    },
+    "Diancite":{
+        "embed":"{\"title\":\"Diancite\",\"description\":\"Mega Evolves Diancie when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Heracronite":{
+        "embed":"{\"title\":\"Heracronite\",\"description\":\"Mega Evolves Heracross when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Mawilite":{
+        "embed":"{\"title\":\"Mawilite\",\"description\":\"Mega Evolves Mawile when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Guard Spec":{
+        "embed":"{\"title\":\"Guard Spec\",\"description\":\"Prevents reduction of Combat Stages or Accuracy on the Pok\\u00e9mon for 5 Turns\",\"fields\":[{\"name\":\"Cost\",\"value\":\"700\"}],\"footer\":{\"text\":\"Core: p.276\"}}"
+    },
+    "Leftovers":{
+        "embed":"{\"title\":\"Leftovers\",\"description\":\"Snack. When their Digestion Buff is traded in, the user recovers 1\\\/16th of their max Hit Points at the beginning of each turn for the rest of the encounter.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"350\"}],\"footer\":{\"text\":\"Core: p.132\"}}"
+    },
+    "Zap Plate":{
+        "embed":"{\"title\":\"Zap Plate\",\"description\":\"Acts as both an Electric Booster and an Electric Brace. Accessory Slot Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Cap Cannon":{
+        "embed":"{\"title\":\"Cap Cannon\",\"description\":\"Capsule Cannons - or Cap Cannons for short - are two-handed pieces of Equipment which can be loaded with different types of Capsules (Caps) and fired. They can be fired as a Standard Action, and the range and effect of the Cannon depends on the Cap used. A Cap Cannon may have up to five Caps loaded in it at once, and they do not have to be fired in any particular order. You may load up to two Caps into a Cannon as a Standard Action. There are three types of Caps: Bean Caps, Glue Caps, and Net Caps. In addition to Caps, Capsule Cannons can also be loaded with Smoke Bombs, Pester Balls, and Poke Balls. When fired this way, these items behave normally but have a Range of 10 meters.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"5000\"},{\"name\":\"Slot\",\"value\":\"Hands\"}],\"footer\":{\"text\":\"May: p.6\"}}"
+    },
+    "Caretaker's Manual":{
+        "embed":"{\"title\":\"Caretaker's Manual\",\"description\":\"An invaluable guide to patient care with wide appeal and praised by both nurses and rangers.\\nRank 1 - Adept Medicine Education: Once per Scene, you may assist an adjacent ally in Taking a Breather as a Standard Action, and they do not Shift or become Tripped as part of this action. If the target is Confused or Enraged, you may roll Medicine Education instead of Command to assist them.\\nRank 2 - Master Medicine Education: This effect can only be bound while taking an Extended Rest and Drains AP for the next day. During this Extended Rest, Pok\\u00e9mon and Trainers in your care heal twice as many Hit Points while resting, heal Injuries twice as quickly, and may heal an additional Injury per day. This stacks with use of Bandages.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"1000\"}],\"footer\":{\"text\":\"May: p.8\"}}"
+    },
+    "Adorable Fashion":{
+        "embed":"{\"title\":\"Adorable Fashion\",\"description\":\"The holder may activate this item once a Scene as a Free Action to gain +2 Evasion for one full round.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.138\"}}"
+    },
+    "Pok\u00e9dex":{
+        "embed":"{\"title\":\"Pok\\u00e9dex\",\"description\":\"A hand-held computer with an advanced camera and image recognition software given to trainers at the start of their journey.  A trainer can use a Standard Action to identify a Pok\\u00e9mon within 10m using the Pok\\u00e9dex's scanner.  Doing so reveals the average height\\\/weight of the species, height\\\/weight of the target, moves that the Species learns through Level Up, and some brief facts about the species' behavior.\\nPok\\u00e9dexes may also function as smartphones, and in most circumstances they should be made available for free to starting characters.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"12000\"}],\"footer\":{\"text\":\"Core: p.271\"}}"
+    },
+    "Bait":{
+        "embed":"{\"title\":\"Bait\",\"description\":\"Bait is a tasty, strong-smelling morsel of food designed to attract Pok\\u00e9mon. It may be used in two ways; to lure Pok\\u00e9mon, or to distract Pok\\u00e9mon.\\nTo lure Pok\\u00e9mon, set the bait on a route. Every 15 minutes thereafter, roll 1d20 until you roll 15 or higher. If you roll 3 times without success, the bait loses its potency and fails. If you succeed however, a random Pok\\u00e9mon will appear. Bait is often used for Fishing in this way.\\nTo distract Pok\\u00e9mon, throw it at a Wild Pok\\u00e9mon as a Standard Action. The target must then make a Focus Roll with a DC of 12. If they fail, the Pok\\u00e9mon gives up its next Standard Action to eat the food.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.274\"}}"
+    },
+    "Handheld Propeller":{
+        "embed":"{\"title\":\"Handheld Propellor\",\"description\":\"Increases Swim speed by +3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3500\"},{\"name\":\"Slot\",\"value\":\"Off-Hand\"}],\"footer\":{\"text\":\"DPDoM: p.42\"}}"
+    },
+    "Volatile Machine":{
+        "embed":"{\"title\":\"Volatile Machine\",\"fields\":[{\"name\":\"Cost\",\"value\":\"10x the cost of the equivalent TM\"}],\"description\":\"An experimental variant of the technology used in creating TMs and HMs, Volatile Machines, or VMs for short, teach a specific Move like their counterparts but can be used by any Poke\\u0301mon regardless of normal Move compatibility.\\n\\nVMs usually take the form of highly advanced drugs for gene therapy and often require a Poke\\u0301mon stay under monitoring in a medical facility for the duration of application, during which time they receive several different drug formulas. Applying a VM can take anywhere from a day to a week to even longer, by GM discretion. VMs are very powerful items and not appropriate for all campaigns.\\n\\nMoves taught via VM take up two Move slots and a Vitamin slot, and as a result Poke\\u0301mon who use a VM may only ever learn a maximum of 5 moves by default, of which only one other may be a TM or Tutor Move. Poke\\u0301mon can only have one VM Move at a time, even if Features or other effects would normally allow them to have more.\",\"footer\":{\"text\":\"DPDoM: p.48\"}}"
+    },
+    "Jaboca Berry":{
+        "embed":"{\"title\":\"Jaboca Berry\",\"description\":\"Foe dealing Physical Damage to the user loses 1\\\/8 of their Maximum HP. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Nomel Berry":{
+        "embed":"{\"title\":\"Nomel Berry\",\"description\":\"Cures Infatuated condition. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Tanga Berry":{
+        "embed":"{\"title\":\"Tanga Berry\",\"description\":\"Weakens foe\\u2019s super effective Bug-type move. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Custap Berry":{
+        "embed":"{\"title\":\"Custap Berry\",\"description\":\"Grants the Priority keyword to any Move. May only be used at 25% HP or lower. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Black Apricorn":{
+        "embed":"{\"title\":\"Black Apricorn\",\"description\":\"Used to make Heavy Balls.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.281\"}}"
+    },
+    "Metal Powder":{
+        "embed":"{\"title\":\"Metal Powder\",\"description\":\"When held by an untransformed Ditto, increases both Defense and Special Defense by +2 Combat Stages. Cannot be used by Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Leaf Stone":{
+        "embed":"{\"title\":\"Leaf Stone\",\"description\":\"Evolves Gloom, Weepinbell, Exeggcute, Eevee, Nuzleaf, Pansage\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Dawn Stone":{
+        "embed":"{\"title\":\"Dawn Stone\",\"description\":\"Evolves Eevee, Male Kirlia, Female Snorunt\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Metal Coat":{
+        "embed":"{\"title\":\"Metal Coat\",\"description\":\"Evolves Onix, Scyther\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Basic Ball":{
+        "embed":"{\"title\":\"Basic Ball\",\"description\":\"Basic Pok\\u00e9 Ball; often called just a \\u201cPok\\u00e9 Ball\\u201d.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"Core: p.272\"}}"
+    },
+    "Friend Ball":{
+        "embed":"{\"title\":\"Friend Ball\",\"description\":\"A caught Pok\\u00e9mon will start with +1 Loyalty.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Modifier\",\"value\":\"-5\"}],\"footer\":{\"text\":\"Core: p.272\"}}"
+    },
+    "Dive Ball":{
+        "embed":"{\"title\":\"Dive Ball\",\"description\":\"-20 Modifier if the target was found underwater or underground.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Modifier\",\"value\":\"+0\"}],\"footer\":{\"text\":\"Core: p.272\"}}"
+    },
+    "Quick Ball":{
+        "embed":"{\"title\":\"Quick Ball\",\"description\":\"+5 to Modifier after 1 round of the encounter, +10 to Modifier after round 2, +20 to modifier after round 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"},{\"name\":\"Modifier\",\"value\":\"-20\"}],\"footer\":{\"text\":\"Core: p.273\"}}"
+    },
+    "Fancy Clothes":{
+        "embed":"{\"title\":\"Fancy Clothes\",\"description\":\"Each set of Fancy Clothes is assigned a Contest Stat \\u2013 either Beauty, Cool, Cute, Smart, or Tough. Trainers wearing these clothes may roll 2d6 during the Introduction Stage of a Contest to try to generate Contest Stat Dice for the assigned Stat.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"5000\"},{\"name\":\"Slot\",\"value\":\"Body\"}],\"footer\":{\"text\":\"Core: p.293\"}}"
+    },
+    "Magic Flute":{
+        "embed":"{\"title\":\"Magic Flute\",\"description\":\"Magic Flutes are rare artifacts made only by skilled crafters with occult knowledge. They are not usually found in stores. When a Flute is crafted, it is tied to a particular Status Condition. Once per day, the Flute may be played as a Standard Action. All Pok\\u00e9mon and Trainers within 20 meters of the Flute are cured of that Status. These rare artifacts cannot be found in most ordinary stores but may cost upwards of $4000 from an appropriate occult vendor.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"4000\"},{\"name\":\"Slot\",\"value\":\"Item\"}],\"footer\":{\"text\":\"Core: p.302\"}}"
+    },
+    "Meadow Plate":{
+        "embed":"{\"title\":\"Meadow Plate\",\"description\":\"Acts as both a Grass Booster and a Grass Brace. Accessory Slot Item for Trainers.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Baby Food":{
+        "embed":"{\"title\":\"Baby Food\",\"description\":\"A nutritious food that causes young Pok\\u00e9mon to grow quickly. When consumed, increases Experience Gain of Pok\\u00e9mon at level 15 or lower by 20% for the rest of the day.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.279\"}}"
+    },
+    "Pinap Berry":{
+        "embed":"{\"title\":\"Pinap Berry\",\"description\":\"Tough Poffin Ingredient. Tier 1.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"150\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Aguav Berry":{
+        "embed":"{\"title\":\"Aguav Berry\",\"description\":\"Bitter Treat, Smart Poffin Ingredient. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Apicot Berry":{
+        "embed":"{\"title\":\"Apicot Berry\",\"description\":\"+1 Special Defense CS. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Spelon Berry":{
+        "embed":"{\"title\":\"Spelon Berry\",\"description\":\"Cool or Beauty Poffin Ingredient. Tier 2.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"}],\"footer\":{\"text\":\"Core: p.282\"}}"
+    },
+    "Kelpsy Berry":{
+        "embed":"{\"title\":\"Kelpsy Berry\",\"description\":\"Lowers Attack stat by 1 with trainer permission. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Rindo Berry":{
+        "embed":"{\"title\":\"Rindo Berry\",\"description\":\"Weakens foe\\u2019s super effective Grass-type move. Tier 3.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.283\"}}"
+    },
+    "Fire Stone":{
+        "embed":"{\"title\":\"Fire Stone\",\"description\":\"Evolves Vulpix, Growlithe, Eevee, Pansear\",\"fields\":[{\"name\":\"Cost\",\"value\":\"3000\"}],\"footer\":{\"text\":\"Core: p.298\"}}"
+    },
+    "Sting Grenade":{
+        "embed":"{\"title\":\"Sting Grenade\",\"description\":\"Throwing a Sting Grenade is an AC 4 Ranged Blast 3 attack that can be made at a target within your Pok\\u00e9 Ball throwing range. Upon connecting, the Sting Grenade releases dozens of hard rubber balls around it, causing pain to the targets but no damage. Those targets take a -3 penalty to all rolls and to their evasion until the start of your next turn.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"250\"},{\"name\":\"Slot\",\"value\":\"Consumable\"}],\"footer\":{\"text\":\"DPDoM: p.50\"}}"
+    },
+    "Fabulous Ball":{
+        "embed":"{\"title\":\"Fabulous Ball\",\"description\":\"The captured Pok\\u00e9mon gains +2 dice in the Contest Stat that corresponds to the Stat boosted by their Nature. If the Stat boosted is HP, choose any two Contest Stats except the one corresponding to the lowered Stat and raise them by 1 die each. As a reminder, Beauty=SpAtk, Cool=Attack, Cute=Speed, Smart=SpDef, Tough=Def.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"},{\"name\":\"Modifier\",\"value\":\"-5\"}],\"footer\":{\"text\":\"DPDoM: p.83\"}}"
+    },
+    "Elegant Fashion":{
+        "embed":"{\"title\":\"Elegant Fashion\",\"description\":\"The holder may activate this item once a Scene as a Free Action when losing Combat Stages from a foe\\u2019s effect to instead not lose those Combat Stages.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.138\"}}"
+    },
+    "Bandages":{
+        "embed":"{\"title\":\"Bandages\",\"description\":\"Bandages are applied as Extended Actions on Pok\\u00e9mon or Trainers. Bandages last for 6 hours; while applied, they double the Natural Healing Rate of Pok\\u00e9mon or Trainers, meaning a Pok\\u00e9mon or Trainer will heal 1\\\/8th of their Hit Points per half hour. Bandages also immediately heal one Injury if they remain in place for their full duration.\\nIf a Pok\\u00e9mon is damaged or loses Hit Points in any way, the Bandages immediately stop working.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"300\"}],\"footer\":{\"text\":\"Core: p.277\"}}"
+    },
+    "Black Sludge":{
+        "embed":"{\"title\":\"Black Sludge\",\"description\":\"Poison-Type Pok\\u00e9mon may consume the Black Sludge as a Snack Item; when the Digestion Buff is traded in, they recover 1\\\/8th of their Max Hit Points at the beginning of each turn for the rest of the encounter.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"}],\"footer\":{\"text\":\"Core: p.278\"}}"
+    },
+    "Cleanse Tag":{
+        "embed":"{\"title\":\"Cleanse Tag\",\"description\":\"Small strips of paper with a prayer\\\/incantation written on them. When created, the creator makes an Occult Ed Roll; this is the Cleanse Tag\\u2019s Power Value. When glued, taped, or nailed to a surface, they stop Pok\\u00e9mon or Trainers within 30m of the tag from Phasing through that surface unless they make a Focus check with a result exceeding the Tag\\u2019s Power Value. On a success, the tag is destroyed; on failure, the tag holds, and the encroacher cannot try again for at least an hour.\\nTags may be stuck onto a weapon or appendage to let a Normal or Fighting-Type Attack hit a Ghost-Type Pok\\u00e9mon for neutral Damage; Tag is destroyed once damage is dealt.\\nNovice Occult Ed: Can burn tag as a Standard Action to remove Cursed, Suppressed, or Disabled condition from a single target within 5m.\\nExpert Occult Ed: Can burn tag to cause all with Invisibility and Phasing capabilities to make a Focus check; if result does not exceed tag's power value, capabilities lost for 5 min\",\"fields\":[{\"name\":\"Cost\",\"value\":\"500\"},{\"name\":\"Slot\",\"value\":\"Consumable\"}],\"footer\":{\"text\":\"Core: p.302\"}}"
+    },
+    "Sablenite":{
+        "embed":"{\"title\":\"Sablenite\",\"description\":\"Mega Evolves Sableye when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Tyranitarite":{
+        "embed":"{\"title\":\"Tyranitarite\",\"description\":\"Mega Evolves Tyranitar when used in conjuction with a Mega Ring.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"N\\\/A\"}],\"footer\":{\"text\":\"Core: p.297\"}}"
+    },
+    "Mind Aegis":{
+        "embed":"{\"title\":\"Mind Aegis\",\"description\":\"Grants a +6 bonus to Focus checks to resist Telepathy. If the wearer has the Iron Mind Edge, Mind Aegis grants the Mindlock capability instead.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"4000\"},{\"name\":\"Slot\",\"value\":\"Head\"}],\"footer\":{\"text\":\"DPDoM: p.42\"}}"
+    },
+    "Sonic Filter":{
+        "embed":"{\"title\":\"Sonic Filter\",\"description\":\"Creates a portable field of directed white noise with a 2 meter radius when activated. Anyone within can hold a conversation normally, but anyone outside the field just hears static coming from the direction of the wearer. Moves with the Sonic Keyword aimed at a target within the field require 2 more on Accuracy Roll to hit.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"2500\"},{\"name\":\"Slot\",\"value\":\"Accessory\"}],\"footer\":{\"text\":\"DPDoM: p.42\"}}"
+    },
+    "Spray Case":{
+        "embed":"{\"title\":\"Spray Case\",\"description\":\"A Spray Case may be filled with a Pester Ball or Repel of any variety. This consumes the used item. Upon hitting a target, the Spray Case is emptied, spraying the item it was filled with onto its target, automatically hitting. This can occur when attempting to catch Pok\\u00e9mon (the effect is resolved before the capture roll), or when releasing a Pok\\u00e9mon from its Pok\\u00e9 Ball (the effect is resolved before the Pok\\u00e9mon within is released). Spray Cases may be refilled numerous times, but may only have one sort of consumable in them at a time.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"800\"}],\"footer\":{\"text\":\"DPDoM: p.44\"}}"
+    },
+    "Storage Case":{
+        "embed":"{\"title\":\"Storage Case\",\"description\":\"These extremely useful cases are capable of \\u201cCapturing\\u201d non-living matter. Once applied to a Pok\\u00e9 Ball, Storage Cases cannot be removed. The object or objects in question must be smaller than 2 meters in any dimension. A single Storage Case can capture several discrete objects, but they must all be supported by a single surface; a 2x2 meter rug or mat is often used for this purpose. Capture Rolls against inanimate objects automatically succeed. Pok\\u00e9 Balls with Storage Cases count towards the total number of Pok\\u00e9mon that the trainer can carry. Storage Cases are often illegal due to their uses in smuggling and theft.\",\"fields\":[{\"name\":\"Cost\",\"value\":\"15000\"}],\"footer\":{\"text\":\"DPDoM: p.45\"}}"
+    }
+}

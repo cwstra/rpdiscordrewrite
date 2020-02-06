@@ -1,0 +1,113 @@
+{
+    "Spirit Surge":{
+        "embed":"{\"title\":\"Spirit Surge\",\"description\":\"A Move with the Spirit Surge keyword will have its Effect activate even if the Move does not hit a target. If the Move requires a certain Accuracy Roll, the roll must still be met.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.341\"}}"
+    },
+    "Hazard":{
+        "embed":"{\"title\":\"Hazard\",\"description\":\"If a Move has the Hazard keyword, the effect covers a portion of the field of battle. A Hazard only affects the foes under certain circumstances. You may put extra Layers of the Move with Hazard if the Move allows, but only one per usage of the Move.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.340\"}}"
+    },
+    "Recoil":{
+        "embed":"{\"title\":\"Recoil\",\"description\":\"When a Move says to Recoil, total the amount of damage the target took from your attack, then multiply by the fraction paired with the Keyword Recoil. The Move\\u2019s user loses Hit Points equal to that result.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.341\"}}"
+    },
+    "Groundsource":{
+        "embed":"{\"title\":\"Groundsource\",\"description\":\"Moves with the Groundsource keyword do not have their Accuracy modified by targeting into Rough Terrain and ignore Blocking Terrain.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.340\"}}"
+    },
+    "Coat":{
+        "embed":"{\"title\":\"Coat\",\"description\":\"Moves with the Coat keyword give the targets a certain effect while the Coat persists. Coats may be passed on by Baton Pass.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.339\"}}"
+    },
+    "Weight Class":{
+        "embed":"{\"title\":\"Weight Class\",\"description\":\"Weight Class 7: Any Poke\\u0301mon heavier than 450 lbs with the Heavy Metal Ability\",\"fields\":[],\"footer\":{\"text\":\"Core: p.342\"}}"
+    },
+    "Push (Keyword)":{
+        "embed":"{\"title\":\"Push (Keyword)\",\"description\":\"The target of the attack is Pushed a specified amount of meters. Unless specified, the Push direction should be away from the user.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.341\"}}"
+    },
+    "Double Strike":{
+        "embed":"{\"title\":\"Double Strike\",\"description\":\"Whenever a Move with Double Strike is used, make two Attack Rolls. If one Attack Roll hits, the Move does damage as indicated by its Damage Base value; if both Attack Rolls hit however, the Damage Base value is doubled. Each hit may Critically Hit separately; when adding damage from Critical Hit, add the Damage Base before it\\u2019s doubled. For example, if one Double Kick attack is a Critical Hit, add +1d8+5 to the damage roll. If both are Critical Hits, add +2d8+10.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.339\"}}"
+    },
+    "Sonic":{
+        "embed":"{\"title\":\"Sonic\",\"description\":\"Moves with the Sonic Keyword are based on sound. They ignore the effects of Substitute.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.341\"}}"
+    },
+    "Illusion (Keyword)":{
+        "embed":"{\"title\":\"Illusion (Keyword)\",\"description\":\"These Moves are Illusions, and may be ignored by Trainers with the Clairsentient Feature.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.340\"}}"
+    },
+    "Aura":{
+        "embed":"{\"title\":\"Aura\",\"description\":\"Moves with this Keyword manipulate Aura and may be affected by certain Abilities or effects.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.339\"}}"
+    },
+    "Social":{
+        "embed":"{\"title\":\"Social\",\"description\":\"Moves with the Social Keyword are based on social manipulation. They cannot be Intercepted and ignore the effects of Substitute. Some Features and other effects also take advantage of this Keyword.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.341\"}}"
+    },
+    "Environ":{
+        "embed":"{\"title\":\"Environ\",\"description\":\"A Move with the Environ keyword has varying effects based on Terrain.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.339\"}, \"image\":\"https:\\\/\\\/imgur.com\\\/PckgKZI.png\"}"
+    },
+    "Shield (Keyword)":{
+        "embed":"{\"title\":\"Shield\",\"description\":\"Moves with this Keyword are Interrupts that are triggered by foes\\u2019 attacks. They usually prevent the effect of attacks in some manner.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.341\"}}"
+    },
+    "Execute":{
+        "embed":"{\"title\":\"Execute\",\"description\":\"These Moves automatically KO the target if they hit. The 1d100 roll may not be modified in any way or re-rolled through any means.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.339\"}}"
+    },
+    "Trigger":{
+        "embed":"{\"title\":\"Trigger\",\"description\":\"Moves with the Trigger keyword are ONLY able to be used whenever the condition in their Effect line is met.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.341\"}}"
+    },
+    "Friendly":{
+        "embed":"{\"title\":\"Friendly\",\"description\":\"Moves with the Friendly Keyword do not hit allies.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.340\"}}"
+    },
+    "Exhaust":{
+        "embed":"{\"title\":\"Exhaust\",\"description\":\"If a Move has the Exhaust keyword, the user forfeits their Standard and Shift actions on their next turn, and forfeits their trainer\\u2019s Command. If any of these actions has already been used up, the move Fails and does not activate.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.339\"}}"
+    },
+    "Blessing":{
+        "embed":"{\"title\":\"Blessing\",\"description\":\"Safeguard, Lucky Chant, Reflect, and Light Screen provide a Blessing shared by the entire team. All Poke\\u0301mon and Trainers allied to the user may benefit from the Blessing. The Blessing persists until it\\u2019s used up, even if the original user is KO\\u2019d or switched out.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.339\"}}"
+    },
+    "Interrupt":{
+        "embed":"{\"title\":\"Interrupt\",\"description\":\"Interrupt Moves may be declared in the middle of another combatant\\u2019s turn to allow the user to take an action. They work similarly to Priority (Advanced, Limited) effects in that they only allow you to take the action that has Interrupt and not a full turn.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.340\"}}"
+    },
+    "Reaction":{
+        "embed":"{\"title\":\"Reaction\",\"description\":\"Reactions work exactly like Interrupts, except that they happen after the triggering condition is fully resolved, instead of before. Thus, the user must survive the trigger condition to be able to perform the reaction.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.341\"}}"
+    },
+    "Vortex":{
+        "embed":"{\"title\":\"Vortex\",\"description\":\"While in a Vortex, the target is Slowed, Trapped, and loses a Tick of Hit Points at the beginning of each turn. At the end of each turn, the user may roll 1d20 to end all of these effects; during the first turn, they must roll a 20 or higher to dispel the vortex. The DC is lowered by 6 each following turn, automatically wearing off on the fifth turn (20, 14, 8, 2, Dispel)\",\"fields\":[],\"footer\":{\"text\":\"Core: p.341\"}}"
+    },
+    "Berry":{
+        "embed":"{\"title\":\"Berry\",\"description\":\"Natural Gift has a different Damage Base and Elemental Type based on the Berry the user has stored a Digestion Buff from.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.339\"}, \"image\":\"https:\/\/imgur.com\/GTp2YZW.png\"}"
+    },
+    "Smite":{
+        "embed":"{\"title\":\"Smite\",\"description\":\"When Moves with the Smite keyword Miss, instead of doing no damage, they deal damage as if the attack were resisted one step further. Targets dealt damage this way do not suffer any secondary effects of the Move.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.341\"}}"
+    },
+    "Priority":{
+        "embed":"{\"title\":\"Priority\",\"description\":\"If the user has not already acted this turn, a Move with the Priority keyword may be declared to act immediately; the user takes their full turn, ignoring initiative. This counts as their turn for the round. A priority Move may not be declared during someone else\\u2019s turn; it must be declared between turns. Priority also comes in Priority (Limited) and Priority (Advanced) varieties. The Priority (Limited) keyword is like Priority except the user may not take their full turn; they may only take the action that itself has Priority and take the rest of their turn on their own Initiative Count. For example, Orders are Priority (Limited), meaning the user only uses their Standard Action and does not take a full turn. Priority (Advanced) Moves don\\u2019t require that the user hasn\\u2019t acted that turn; if they have, they simply give up their turn on the following round.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.341\"}}"
+    },
+    "Set-Up":{
+        "embed":"{\"title\":\"Set-Up\",\"description\":\"These are two-turn Moves which require the user to prepare in some way. On the first turn, the Set-Up Effect is used; then on the following turn the Resolution Effect occurs.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.341\"}}"
+    },
+    "Pledge":{
+        "embed":"{\"title\":\"Pledge\",\"description\":\"Pledge Moves can generate a number of special effects. A Rainbow lasts for 5 rounds and increases the Effect Range of all allies\\u2019 attacks by +3. A Fire Hazard is a special type of Hazard. Any targets that begin or end their turn on a Fire Hazard are Burned. Anyone that passes through a Fire Hazard takes damage equal to 1\\\/8th of their Max Hit Points. If a Ground, Rock, or Water-Type Move targets a square (or a target in a square) with Fire Hazard in them, the Fire Hazards are destroyed. All effects that destroy Hazards extinguish Fire Hazards.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.341\"}}"
+    },
+    "Powder (Keyword)":{
+        "embed":"{\"title\":\"Powder (Keyword)\",\"description\":\"Moves with the Powder keyword have no effect on Grass Type Poke\\u0301mon.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.341\"}}"
+    },
+    "Dash":{
+        "embed":"{\"title\":\"Dash\",\"description\":\"A Dash Move cannot be used if the user is Stuck.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.339\"}}"
+    },
+    "Weather":{
+        "embed":"{\"title\":\"Weather\",\"description\":\"Users with Forecast and the move Weather Ball change their Type based on the Weather. Fire-Type if Sunny, Water-Type if Rainy, Ice- Type if Hailing, and Rock-Type if in a Sandstorm.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.341\"}}"
+    },
+    "Hail (Weather)":{
+        "embed":"{\"title\":\"Hail (Weather)\",\"description\":\"While it is Hailing, all non-Ice Type Poke\\u0301mon lose a Tick of Hit Points at the beginning of their turn.\\n\\u00bb Blizzard cannot miss in Hail.\\n\\u00bb Users with Ice Body recover a Tick of Hit Points at the beginning of each turn.\\n\\u00bb Users with Snow Cloak have their Evasion increased by +2 and adjacent allies are not damaged.\\n\\u00bb Users with Thermosensitive have Movement Capabilities reduced by half.\",\"fields\":{},\"footer\":{\"text\":\"Core: p.342\"}}"
+    },
+    "Rainy":{
+        "embed":"{\"title\":\"Rainy\",\"description\":\"While Rainy, Water-Type Attacks gain a +5 bonus to Damage Rolls, and Fire-Type Attacks suffer a -5 Damage penalty.\\n\\u00bb Thunder and Hurricane cannot miss in Rain.\\n\\u00bb Users with Hydration are cured of one Status Affliction at the end of each turn.\\n\\u00bb Users with Rain Dish recover a Tick of Hit Points at the beginning of each turn.\\n\\u00bb Users with Swift Swim have their Speed Combat Stages increased by +4.\\n\\u00bb Users with Desert Weather gain 1\\\/16th of their Max Hit Points at the end of each turn.\\n\\u00bb Users wth Dry Skin gain a Tick of Hit Points at the end of each turn.\",\"fields\":{},\"footer\":{\"text\":\"Core: p.342\"}}"
+    },
+    "Sandstorm (Weather)":{
+        "embed":"{\"title\":\"Sandstorm (Weather)\",\"description\":\"While it is Sandstorming, all non-Ground, Rock, or Steel Type Poke\\u0301mon lose a Tick of Hit Points at the beginning of their turn.\\n\\u00bb Users with Sand Force gain a +5 Damage Bonus to Ground, Rock, and Steel-Type Moves.\\n\\u00bb Users with Sand Rush have their Speed Combat Stages increased by +4.\\n\\u00bb Users with Desert Weather are immune to Sandstorm.\",\"fields\":{},\"footer\":{\"text\":\"Core: p.342\"}}"
+    },
+    "Pass":{
+        "embed":"{\"title\":\"Pass\",\"description\":\"At any point during a Shift, the user may declare a move with the Pass keyword. Once the Move is declared, the user may move forward only in a straight line, for up to 4 meters, treating foes as Regular Terrain and moving through any enemies in its path. The user must end in an empty square. The Pass Move attacks all targets in each square it dashes through, but each target may be hit only once. The user must end their Shift at the end of the dash. Shifting as a result of the Pass keyword does not provoke Attacks of Opportunity.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.340\"}}"
+    },
+    "Five Strike":{
+        "embed":"{\"title\":\"Five Strike\",\"description\":\"Whenever a Move with Five Strike is used, roll 1d8. On a result of 1, the attack hits one time. On a result of 2 or 3, the attack hits two times. On a result of 4, 5, or 6, the attack hits three times. On a result of 7, the attack hits four times. On a roll of 8, the attack hits five times. Multiply the Move\\u2019s Damage Base by the number of times hit; that becomes its new Damage Base. You may always apply Technician to Moves with Five Strike. Apply STAB and all other effects that raise Damage Base only after the Move\\u2019s final Damage Base has been calculated.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.340\"}}"
+    },
+    "Sunny":{
+        "embed":"{\"title\":\"Sunny\",\"description\":\"While Sunny, Fire-Type Attacks gain a +5 bonus to Damage Rolls, and Water-Type Attacks suffer a -5 Damage penalty.\\n\\u00bb Thunder and Hurricane are AC 11 in Sun.\\n\\u00bb Users with Dry Skin lose a Tick of Hit Points at the end of each turn.\\n\\u00bb Users with Thermosensitive have their Attack and Special Attack Combat Stages increased by +2.\\n\\u00bb Users with Desert Weather resist Fire-Type Moves one step further.\\n\\u00bb Users with Sun Blanket gain 1\\\/16th of their Max Hit Points at the beginning of each turn.\\n\\u00bb Users with Leaf Guard are cured of one Status Affliction at the end of each turn.\\n\\u00bb Users with Harvest automatically retain uses of Digestion Buffs.\\n\\u00bb Users with Chlorophyll have their Speed Combat Stages increased by +4.\\n\\u00bb Users with Flower Gift can create a Burst 4 that increases the Stats of allies and the user by two 2 Combat Stages, distributed as they wish.\",\"fields\":{},\"footer\":{\"text\":\"Core: p.342\"}}"
+    },
+    "Last Chance (Keyword)":{
+        "embed":"{\"title\":\"Last Chance (Keyword)\",\"fields\":[],\"description\":\"Last Chance Abilities are always associated with an Elemental Type. The user gains a +5 bonus to Damage Rolls when using attacks of that Type. This bonus increases to +10 when the user is under 1\/3rd of their Maximum Hit Points.\",\"footer\":{\"text\":\"Core: p.310\"}}"
+    }
+}

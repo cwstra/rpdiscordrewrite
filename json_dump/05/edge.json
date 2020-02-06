@@ -1,0 +1,326 @@
+{
+    "Basic Skills":{
+        "embed":"{\"title\":\"Basic Skills\",\"description\":\"You Rank Up a Skill from Pathetic to Untrained, or Untrained to Novice. You may take this Edge multiple times.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.52\"}}"
+    },
+    "Categoric Inclination":{
+        "embed":"{\"title\":\"Categoric Inclination\",\"description\":\"Choose Body, Mind, or Spirit. You gain a +1 Bonus to all Skill Checks of that Category.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.52\"}}"
+    },
+    "Adept Skills":{
+        "embed":"{\"title\":\"Adept Skills\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Level 2\"}],\"description\":\"You Rank Up a Skill from Novice to Adept. You may take this Edge multiple times.\",\"footer\":{\"text\":\"Core: p.52\"}}"
+    },
+    "Expert Skills":{
+        "embed":"{\"title\":\"Expert Skills\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Level 6\"}],\"description\":\"You Rank Up a Skill from Adept to Expert. You may take this Edge multiple times.\",\"footer\":{\"text\":\"Core: p.52\"}}"
+    },
+    "Apricorn Balls":{
+        "embed":"{\"title\":\"Apricorn Balls\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Survival or Adept Technology Education\"}],\"description\":\"As an Extended Action, you may craft Apricorns into their corresponding Pok\\u00e9 Ball. Use of this Feature requires access to a Pok\\u00e9 Ball Tool Box.\",\"footer\":{\"text\":\"Core: p.53\"}}"
+    },
+    "Basic Balls":{
+        "embed":"{\"title\":\"Basic Balls\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Technology Education\"}],\"description\":\"You may craft Basic Balls for $100 and Great Balls for $175. Requires access to a Pok\\u00e9 Ball Tool Box.\",\"footer\":{\"text\":\"Core: p.53\"}}"
+    },
+    "Basic Cooking":{
+        "embed":"{\"title\":\"Basic Cooking\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Intuition\"}],\"description\":\"You may create \\u201cCandy Bars\\u201d or \\u201cBaby Food\\u201d with cooking ingredients costing $50. You may fluff the food in any reasonable manner you like.\",\"footer\":{\"text\":\"Core: p.53\"}}"
+    },
+    "Gem Lore":{
+        "embed":"{\"title\":\"Gem Lore\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Occult Education\"}],\"description\":\"As an Extended Action, you may turn a Shard into a Gem of one of its associated Types. Additionally, you can turn 4 Red Shards into a Fire Stone; 4 Blue Shards into a Water Stone; 4 Yellow Shards into a Thunder Stone; 4 Orange Shards into a Shiny Stone; 4 Green Shards into a Leaf Stone; or 4 Violet Shards into a Dusk Stone. You can also destroy any of these six Stones to gain 4 Shards of the corresponding color.\",\"footer\":{\"text\":\"Core: p.53\"}}"
+    },
+    "Green Thumb":{
+        "embed":"{\"title\":\"Green Thumb\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice General Education or Novice Survival\"}],\"description\":\"You know how to grow Apricorns and Tier 1 Berries using a Portable Grower or Fertilized Soil.\",\"footer\":{\"text\":\"Core: p.53\"}}"
+    },
+    "Pok\u00e9 Ball Repair":{
+        "embed":"{\"title\":\"Pok\\u00e9 Ball Repair\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Basic Balls or Apricorn Balls\"}],\"description\":\"You may attempt to fix any Pok\\u00e9 Ball that has failed to capture a Pok\\u00e9mon and broke. Make a Technology Check with a DC of 15. If you succeed, the Pok\\u00e9 Ball is fixed and is treated as if it had not broken. If you fail, the ball is permanently broken. Requires access to a Pok\\u00e9 Ball Tool Box.\",\"footer\":{\"text\":\"Core: p.53\"}}"
+    },
+    "Repel Crafter":{
+        "embed":"{\"title\":\"Repel Crafter\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Medicine or Technology Education\"}],\"description\":\"Create a Repel for $100 or a Super Repel for $150. Requires access to a Chemistry Set.\",\"footer\":{\"text\":\"Core: p.53\"}}"
+    },
+    "Grace":{
+        "embed":"{\"title\":\"Grace\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Charm, Command, Guile, Intimidate, or Intuition\"}],\"description\":\"Your Pok\\u00e9mon may consume and benefit from 2 more Poffins each. If this Pok\\u00e9mon is traded to a Trainer without the Grace feature, these extra dice from additional Poffins are not lost, but a Trainer without Grace may not benefit from more than 6 Dice gained from Poffins. You may always use any of the Skills that are prerequisites for Grace in the Introduction Stage of a Contest to roll for Contest Stat Dice of any kind.\",\"footer\":{\"text\":\"Core: p.53\"}}"
+    },
+    "Paleontologist":{
+        "embed":"{\"title\":\"Paleontologist\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Pok\\u00e9mon Education or Novice Survival\"}],\"description\":\"You can identify fossils with a DC 10 Pok\\u00e9mon Education or Survival Check. You know how to operate Reanimation Machines and can use them to revive Fossils. See the \\u201cPok\\u00e9mon Fossils\\u201d section (page 216) for more information.\",\"footer\":{\"text\":\"Core: p.54\"}}"
+    },
+    "Master Skills":{
+        "embed":"{\"title\":\"Master Skills\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Level 12\"}],\"description\":\"You Rank Up a Skill from Expert to Master. You may take this Edge multiple times.\",\"footer\":{\"text\":\"Core: p.52\"}}"
+    },
+    "Virtuoso":{
+        "embed":"{\"title\":\"Virtuoso\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"A skill at Master rank, Level 20\"}],\"description\":\"Choose a Skill at Master Rank. Consider that Skill to be effectively \\u201cRank 8\\u201d for any Features or effects that depend on Skill Rank. Virtuoso may be taken multiple times, but you must choose a different Skill each time.\",\"footer\":{\"text\":\"Core: p.52\"}}"
+    },
+    "Tag Scribe":{
+        "embed":"{\"title\":\"Tag Scribe\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Occult Education\"}],\"description\":\"You create a Cleanse Tag. This may be used a number of times each day equal to half your Occult Education Rank.\",\"footer\":{\"text\":\"Core: p.53\"}}"
+    },
+    "Beast Master":{
+        "embed":"{\"title\":\"Beast Master\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Intimidate\"}],\"description\":\"You may use Intimidate instead of Command to make Pokemon at 0 or 1 Loyalty obey your commands.  You may also use Intimidate instead of Command to determine the limits and Bonus Experience from Training.\",\"footer\":{\"text\":\"Core: p.53\"}}"
+    },
+    "Breeder":{
+        "embed":"{\"title\":\"Breeder\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Pok\\u00e9mon Education\"}],\"description\":\"If you are able to give two Pok\\u00e9mon that are compatible for breeding at least 4 hours of time alone, you may make a Pok\\u00e9mon Education Check with a DC of 12. If you succeed, the Pok\\u00e9mon are guaranteed to produce an egg if you give them an additional 4 hours.\",\"footer\":{\"text\":\"Core: p.53\"}}"
+    },
+    "Skill Enhancement":{
+        "embed":"{\"title\":\"Skill Enhancement\",\"description\":\"Choose two different Skills. You gain a +2 bonus to each of those skills. Skill Enhancement may be taken multiple times, but the bonus may be applied only once to a particular skill.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.52\"}}"
+    },
+    "Flustering Charisma":{
+        "embed":"{\"title\":\"Flustering Charisma\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Adept Charm or Guile\"}],\"description\":\"When you hit with a Move with the Social keyword, the target takes a -2 penalty to Save Checks against Volatile Status Afflictions for 1 full round.\",\"footer\":{\"text\":\"Core: p.55\"}}"
+    },
+    "Intimidating Presence":{
+        "embed":"{\"title\":\"Intimidating Presence\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Intimidate\"}],\"description\":\"You learn the move Leer.\",\"footer\":{\"text\":\"Core: p.55\"}}"
+    },
+    "Kip Up":{
+        "embed":"{\"title\":\"Kip Up\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Expert Acrobatics\"}],\"description\":\"You may stand up from being Tripped as a Swift Action.\",\"footer\":{\"text\":\"Core: p.55\"}}"
+    },
+    "Leader":{
+        "embed":"{\"title\":\"Leader\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Adept Command\"}],\"description\":\"You learn the move After You.\",\"footer\":{\"text\":\"Core: p.55\"}}"
+    },
+    "Nimble Movement":{
+        "embed":"{\"title\":\"Nimble Movement\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Adept Acrobatics or Stealth\"}],\"description\":\"Whenever you Disengage, you Shift 2 meters instead of 1.\",\"footer\":{\"text\":\"Core: p.55\"}}"
+    },
+    "Slippery":{
+        "embed":"{\"title\":\"Slippery\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Stealth\"}],\"description\":\"You may use your Stealth Skill when defending in Opposed Grapple, Push, or Trip checks. When Grappling, if you win an Opposed Check when using Stealth, you must choose to end the Grapple (you cannot choose to gain Dominance).\",\"footer\":{\"text\":\"Core: p.55\"}}"
+    },
+    "Smooth":{
+        "embed":"{\"title\":\"Smooth\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Expert Charm or Focus\"}],\"description\":\"You gain +4 Evasion against Moves with the Social keyword, and gain a +2 Bonus on Save Checks against Rage and Infatuation.\",\"footer\":{\"text\":\"Core: p.55\"}}"
+    },
+    "Sneak's Tricks":{
+        "embed":"{\"title\":\"Sneak's Tricks\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Adept Stealth\"}],\"description\":\"You learn the move Astonish.\",\"footer\":{\"text\":\"Core: p.55\"}}"
+    },
+    "Survival Drive":{
+        "embed":"{\"title\":\"Survival Drive\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Adept Survival\"}],\"description\":\"You learn the move Bulk Up.\",\"footer\":{\"text\":\"Core: p.55\"}}"
+    },
+    "Throwing Masteries":{
+        "embed":"{\"title\":\"Throwing Masteries\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Adept Acrobatics\"}],\"description\":\"Increase the Throwing Range of your Pok\\u00e9 Balls, Ranged Weapons, and other small items by +2.\",\"footer\":{\"text\":\"Core: p.55\"}}"
+    },
+    "Weapon of Choice":{
+        "embed":"{\"title\":\"Weapon of Choice\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"A feature with the [Weapon] tag\"}],\"description\":\"Choose a specific weapon type. You gain a +2 Bonus on Opposed Rolls to prevent being disarmed while wielding weapons of your chosen type. If you would be disarmed anyway, you may pay 1 AP to prevent yourself from being Disarmed.\",\"footer\":{\"text\":\"Core: p.55\"}}"
+    },
+    "Acrobat":{
+        "embed":"{\"title\":\"Acrobat\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Acrobatics\"}],\"description\":\"Increase your Jump and Long Jump Capabilities by +1 each.\",\"footer\":{\"text\":\"Core: p.56\"}}"
+    },
+    "Art of Stealth":{
+        "embed":"{\"title\":\"Art of Stealth\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Expert Stealth\"}],\"description\":\"You gain the Stealth Capability.\",\"footer\":{\"text\":\"Core: p.56\"}}"
+    },
+    "Work Up (Edge)":{
+        "embed":"{\"title\":\"Work Up\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Adept Focus\"}],\"description\":\"You learn the move Work Up.\",\"footer\":{\"text\":\"Core: p.55\"}}"
+    },
+    "Instinctive Aptitude":{
+        "embed":"{\"title\":\"Instinctive Aptitude\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Adept Intuition\"}],\"description\":\"Whenever you spend AP to raise your roll on an Accuracy Roll or Skill Check, you get a +2 bonus instead of +1. This cannot be used on Rolls made by your Pok\\u00e9mon.\",\"footer\":{\"text\":\"Core: p.56\"}}"
+    },
+    "Instruction":{
+        "embed":"{\"title\":\"Instruction\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice General Education\"}],\"description\":\"Whenever you aid an ally in an Assisted Skill Check using an Education Skill you have at Novice Rank or higher, add your full Rank value as a bonus to their roll instead of half.\",\"footer\":{\"text\":\"Core: p.56\"}}"
+    },
+    "Expert Trickster":{
+        "embed":"{\"title\":\"Expert Trickster\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Adept Stealth\"}],\"description\":\"You gain a +2 Opposed Checks with all Dirty Trick Maneuvers. The \\u201cOnce per Scene per Foe\\u201d Limitation of each Dirty Trick Maneuver is expended only upon successfully affecting a foe with that Dirty Trick Maneuver.\",\"footer\":{\"text\":\"Core: p.55\"}}"
+    },
+    "Trainer of Champions":{
+        "embed":"{\"title\":\"Trainer of Champions\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Expert Command\"}],\"description\":\"Whenever you apply Experience Training to a Pokemon, they gain an additional +5 Experience.\",\"footer\":{\"text\":\"Core: p.54\"}}"
+    },
+    "Athletic Initiative":{
+        "embed":"{\"title\":\"Athletic Initiative\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Adept Athletics\"}],\"description\":\"You learn the move Agility.\",\"footer\":{\"text\":\"Core: p.54\"}}"
+    },
+    "Basic Martial Arts":{
+        "embed":"{\"title\":\"Basic Martial Arts\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Combat\"}],\"description\":\"You learn the move Rock Smash.\",\"footer\":{\"text\":\"Core: p.54\"}}"
+    },
+    "Basic Psionics":{
+        "embed":"{\"title\":\"Basic Psionics\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Elemental Connection (Psychic)\"}],\"description\":\"You learn the move Confusion.\",\"footer\":{\"text\":\"Core: p.54\"}}"
+    },
+    "Charmer":{
+        "embed":"{\"title\":\"Charmer\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Charm\"}],\"description\":\"You learn the move Baby-Doll Eyes.\",\"footer\":{\"text\":\"Core: p.54\"}}"
+    },
+    "Confidence Artist":{
+        "embed":"{\"title\":\"Confidence Artist\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Guile\"}],\"description\":\"You learn the move Confide.\",\"footer\":{\"text\":\"Core: p.54\"}}"
+    },
+    "Demoralize":{
+        "embed":"{\"title\":\"Demoralize\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Adept Intimidate\"}],\"description\":\"Whenever you land a Critical Hit on a foe, that foe becomes Vulnerable. Status-Class Moves with an Accuracy Roll can \\u201cCrit\\u201d for the purposes of activating this effect on a natural roll of 19 or higher, and any effects that expand your Critical-Hit Range also expand this range.\",\"footer\":{\"text\":\"Core: p.54\"}}"
+    },
+    "Dynamism":{
+        "embed":"{\"title\":\"Dynamism\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Guile\"}],\"description\":\"Your initiative is increased by your Guile Rank.\",\"footer\":{\"text\":\"Core: p.54\"}}"
+    },
+    "Expert Manipulator":{
+        "embed":"{\"title\":\"Expert Manipulator\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Adept Guile\"}],\"description\":\"You gain a +2 Opposed Checks with all Manipulate Maneuvers. The \\u201cOnce per Scene per Foe\\u201d Limitation of each Manipulate Maneuver is expended only upon succesfully affecting a foe with that Manipulate Maneuver.\",\"footer\":{\"text\":\"Core: p.54\"}}"
+    },
+    "Medic Training":{
+        "embed":"{\"title\":\"Medic Training\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Medicine Education\"}],\"description\":\"When you use Restorative Items on others, they do not forfeit their next turn.\",\"footer\":{\"text\":\"Core: p.56\"}}"
+    },
+    "Mounted Prowess":{
+        "embed":"{\"title\":\"Mounted Prowess\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Acrobatics or Athletics\"}],\"description\":\"You automatically succeed at Acrobatics and Athletics Checks made to mount a Pok\\u00e9mon, and you gain a +3 Bonus to all Acrobatics and Athletics Checks made to remain Mounted.\",\"footer\":{\"text\":\"Core: p.56\"}}"
+    },
+    "Mystic Senses":{
+        "embed":"{\"title\":\"Mystic Senses\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Intuition\"}],\"description\":\"You may use Intuition instead of Charm to improve the disposition of Wild Pok\\u00e9mon. You may not take Mystic Senses if you have the Elemental Connection Edge, and you may not take Elemental Connection if you have Mystic Senses.\",\"footer\":{\"text\":\"Core: p.56\"}}"
+    },
+    "Pok\u00e9Psychologist":{
+        "embed":"{\"title\":\"Pok\\u00e9Psychologist\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Pok\\u00e9mon Education\"}],\"description\":\"You may use your Pok\\u00e9mon Education Skill instead of Charm, Guile, Intimidate, or Intuition when making general Skill checks to interact with Pok\\u00e9mon or to raise or lower disposition.\",\"footer\":{\"text\":\"Core: p.56\"}}"
+    },
+    "Minor Gift - Watchful Sleep":{
+        "embed":"{\"title\":\"Minor Gift - Watchful Sleep\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You may make Perception Checks to detect imminent dangers while sleeping.\",\"footer\":{\"text\":\"BntD: p.59\"}}"
+    },
+    "Minor Gift - Loyal Heart":{
+        "embed":"{\"title\":\"Minor Gift - Loyal Heart\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You are immune to Infatuation.\",\"footer\":{\"text\":\"BntD: p.59\"}}"
+    },
+    "Minor Gift - Force of Will":{
+        "embed":"{\"title\":\"Minor Gift - Force of Will\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"Reroll all dice that result in a roll of 1 when making Focus and Command Checks.\",\"footer\":{\"text\":\"BntD: p.59\"}}"
+    },
+    "Minor Gift - Fount of Knowledge":{
+        "embed":"{\"title\":\"Minor Gift - Fount of Knowledge\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"Choose two Education Skills. Reroll all dice that result in a roll of 1 when making Checks with those Skills.\",\"footer\":{\"text\":\"BntD: p.60\"}}"
+    },
+    "Minor Gift - Emotion's Heart":{
+        "embed":"{\"title\":\"Minor Gift - Emotion's Heart\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"Reroll all dice that result in a roll of 1 when making Charm and Intuition Checks.\",\"footer\":{\"text\":\"BntD: p.60\"}}"
+    },
+    "Minor Gift - Sailor's Guardian":{
+        "embed":"{\"title\":\"Minor Gift - Sailor's Guardian\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"Wild Pok\\u00e9mon up to a level of twice your Trainer Level will not attack or disrupt a water-borne vessel you are traveling on.\",\"footer\":{\"text\":\"BntD: p.60\"}}"
+    },
+    "Minor Gift - Plant Intuition":{
+        "embed":"{\"title\":\"Minor Gift - Plant Intuition\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You reroll all dice that result in a roll of 1 when making Survival Checks related to plants. You automatically identify all berries and apricorns on sight.\",\"footer\":{\"text\":\"BntD: p.60\"}}"
+    },
+    "Minor Gift - Spirit of Justice":{
+        "embed":"{\"title\":\"Minor Gift - Spirit of Justice\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You may add your Spirit Modifier instead of your Body Modifier when making Combat Skill Checks. You get a +2 bonus to Disarming or resisting Disarming.\",\"footer\":{\"text\":\"BntD: p.61\"}}"
+    },
+    "Minor Gift - Cloud Reading":{
+        "embed":"{\"title\":\"Minor Gift - Cloud Reading\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You get a +3 bonus to Survival Checks to discern upcoming weather from observing clouds in the sky.\",\"footer\":{\"text\":\"BntD: p.61\"}}"
+    },
+    "Scholar":{
+        "embed":"{\"title\":\"Scholar\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Expert General Education\"}],\"description\":\"You gain a +1 Bonus to Skill Checks with General Education, Medicine Education, Occult Education, Pok\\u00e9mon Education, Technology Education, and Survival.\",\"footer\":{\"text\":\"Core: p.56\"}}"
+    },
+    "Swimmer":{
+        "embed":"{\"title\":\"Swimmer\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Athletics or Survival\"}],\"description\":\"You gain a +2 bonus to your Swim Speed. You may spend X minutes underwater before you begin to suffocate, where X is the higher of your Athletics or Survival Ranks.\",\"footer\":{\"text\":\"Core: p.56\"}}"
+    },
+    "Traveler":{
+        "embed":"{\"title\":\"Traveler\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Survival\"}],\"description\":\"You may use Survival instead of Athletics and Acrobatics to determine your Power Capability, High Jump, and Long Jump values. Determine your Overland Movement by substituting your Survival Rank for the lower of your Athletics or Acrobatics Rank.\",\"footer\":{\"text\":\"Core: p.56\"}}"
+    },
+    "Wallrunner":{
+        "embed":"{\"title\":\"Wallrunner\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Expert Acrobatics\"}],\"description\":\"You may run on vertical surfaces both vertically and horizontally for up to your Acrobatics Rank in meters before jumping off.\",\"footer\":{\"text\":\"Core: p.56\"}}"
+    },
+    "Power Boost":{
+        "embed":"{\"title\":\"Power Boost\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Expert Athletics\"}],\"description\":\"Increase your Power Capability by +2.\",\"footer\":{\"text\":\"Core: p.56\"}}"
+    },
+    "Touched":{
+        "embed":"{\"title\":\"Touched\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You have been blessed by a Legendary and gain their Minor Gift. This Legendary is considered one of your Patrons. You may take Touched multiple times, each time for a different Patron.\",\"footer\":{\"text\":\"BntD: p.69\"}}"
+    },
+    "Soulbound":{
+        "embed":"{\"title\":\"Soulbound\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Touched\"}],\"description\":\"Whenever your Patron feels strong emotions (positive or negative) or pain, those sensations will be shared with you, no matter the distance between you. You may take Soulbound multiple times, each time for a different instance of Touched.\",\"footer\":{\"text\":\"BntD: p.69\"}}"
+    },
+    "Minor Gift - Catastrophe Sense":{
+        "embed":"{\"title\":\"Minor Gift - Catastrophe Sense\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You have an intuitive sense of when natural disasters or other catastrophes are likely to occur near you.\",\"footer\":{\"text\":\"BntD: p.59\"}}"
+    },
+    "Minor Gift - Stoic Stature":{
+        "embed":"{\"title\":\"Minor Gift - Stoic Stature\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You subtract half of your Athletics or Focus Ranks from the number of meters Push effects move you.\",\"footer\":{\"text\":\"BntD: p.59\"}}"
+    },
+    "Minor Gift - Hands of the Creator":{
+        "embed":"{\"title\":\"Minor Gift - Hands of the Creator\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You get a +3 bonus to all Edu: Occult and Edu: General rolls to identify materials that would be used in crafting or the purpose of a crafted object.\",\"footer\":{\"text\":\"BntD: p.65\"}}"
+    },
+    "Minor Gift - Chosen of Victory":{
+        "embed":"{\"title\":\"Minor Gift - Chosen of Victory\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"Whenever you spend AP to raise your roll on an Accuracy Check, you get +3 bonus instead of +1.\",\"footer\":{\"text\":\"BntD: p.66\"}}"
+    },
+    "Minor Gift - Hero of Truth":{
+        "embed":"{\"title\":\"Minor Gift - Hero of Truth\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You get a +3 bonus on Intuition Checks to discern when someone is lying.\",\"footer\":{\"text\":\"BntD: p.66\"}}"
+    },
+    "Minor Gift - Hero of Ideals":{
+        "embed":"{\"title\":\"Minor Gift - Hero of Ideals\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You get a +3 bonus on Intuition Checks to discern someone\\u2019s beliefs and ideals.\",\"footer\":{\"text\":\"BntD: p.67\"}}"
+    },
+    "Minor Gift - Hero of Balance":{
+        "embed":"{\"title\":\"Minor Gift - Hero of Balance\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"Others get a -3 penalty to Intuition Checks to detect your lies or discern your beliefs.\",\"footer\":{\"text\":\"BntD: p.67\"}}"
+    },
+    "Minor Gift - Rejuvenating Aura":{
+        "embed":"{\"title\":\"Minor Gift - Rejuvenating Aura\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"When taking an Extended Rest, you and all Trainers and Pok\\u00e9mon in the vicinity are treated as if you spent the night at Poke Center, regardless of where you are.\",\"footer\":{\"text\":\"BntD: p.68\"}}"
+    },
+    "Minor Gift - Death Dealer":{
+        "embed":"{\"title\":\"Minor Gift - Death Dealer\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"Injuries you inflict will not heal at the normal rate and require extensive medical treatment, such as staying at a Poke Center, to heal. Instead of recovering at the normal rate of three Injuries per day while at such a facility, they heal at a rate of one injury a day.\",\"footer\":{\"text\":\"BntD: p.68\"}}"
+    },
+    "Minor Gift - World Serpent's Embrace":{
+        "embed":"{\"title\":\"Minor Gift \\u2013 World Serpent\\u2019s Embrace\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You enter a trance and discern if any Legendary Pok\\u00e9mon are in the vicinity of the Scene, and gain a general idea of their location. For example, if one is in a cave way underneath you, you learn it is under you, but not exactly how to reach it.\",\"footer\":{\"text\":\"BntD: p.68\"}}"
+    },
+    "Minor Gift - Alien Countenance":{
+        "embed":"{\"title\":\"Minor Gift - Alien Countenance\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You may add your Mind Modifier instead of your Body Modifier to your Intimidate Checks. You get a +2 bonus to Intimidate Checks against Pok\\u00e9mon.\",\"footer\":{\"text\":\"BntD: p.69\"}}"
+    },
+    "Minor Gift - Intuitive Sabotage":{
+        "embed":"{\"title\":\"Minor Gift - Intuitive Sabotage\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"Whenever you make an Edu: Technology Check to destroy, sabotage, or otherwise disrupt modern electronics, you get a +3 bonus to your roll.\",\"footer\":{\"text\":\"BntD: p.70\"}}"
+    },
+    "Minor Gift - Twin Souls":{
+        "embed":"{\"title\":\"Minor Gift \\u2013 Twin Souls\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You and the Mewtwo you are bound to may communicate telepathically, no matter the distance between you. You are also gifted the Soulbound Edge.\",\"footer\":{\"text\":\"BntD: p.69\"}}"
+    },
+    "Minor Gift - Vulcan's Intuition":{
+        "embed":"{\"title\":\"Minor Gift - Vulcan's Intuition\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You get a +3 bonus to Perception and Survival Checks made in mountainous and volcanic areas.\",\"footer\":{\"text\":\"BntD: p.65\"}}"
+    },
+    "Minor Gift - Tower\u2019s Rejuvenation":{
+        "embed":"{\"title\":\"Minor Gift - Tower\\u2019s Rejuvenation\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"Resting now allows you to recover 1\\\/10th of your maximum HP (a Tick) per half hour instead of 1\\\/16th.\",\"footer\":{\"text\":\"BntD: p.62\"}}"
+    },
+    "Minor Gift - Landmaster":{
+        "embed":"{\"title\":\"Minor Gift - Landmaster\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You treat Rough Terrain that is rocky or sandy or that is created by Groundshaper as Regular Terrain.\",\"footer\":{\"text\":\"BntD: p.63\"}}"
+    },
+    "Minor Gift - Dream Mastery":{
+        "embed":"{\"title\":\"Minor Gift - Dream Mastery\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You are immune to Hypnosis, Nightmare, and Dream Eater.\",\"footer\":{\"text\":\"BntD: p.65\"}}"
+    },
+    "Minor Gift - Death Sense":{
+        "embed":"{\"title\":\"Minor Gift - Death Sense\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"When encountering a corpse, you can always tell how many hours ago the Pok\\u00e9mon or Trainer has died, for up to a week after their death.\",\"footer\":{\"text\":\"BntD: p.64\"}}"
+    },
+    "Minor Gift - Clear Skies":{
+        "embed":"{\"title\":\"Minor Gift - Clear Skies\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You learn the Move Defog.\",\"footer\":{\"text\":\"BntD: p.63\"}}"
+    },
+    "Minor Gift - Perfect Timing":{
+        "embed":"{\"title\":\"Minor Gift - Perfect Timing\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You always intuitively know what time it is and can accurately act as a human stopwatch.\",\"footer\":{\"text\":\"BntD: p.64\"}}"
+    },
+    "Defensive Hacking":{
+        "embed":"{\"title\":\"Defensive Hacking\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Adept Technology Education, Novice Focus, Datajack Augmentation\"}],\"description\":\"You may add your Focus Ranks as additional Damage Reduction while in digital battles. You may apply this Damage Reduction to Technology Education attacks.\",\"footer\":{\"text\":\"DPDoM: p.76\"}}"
+    },
+    "Minor Gift - Spatial Awareness":{
+        "embed":"{\"title\":\"Minor Gift - Spatial Awareness\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You intuitively know the size of an object or the distance between objects by sight down to the nearest centimeter for distances and lengths up to 10 meters.\",\"footer\":{\"text\":\"BntD: p.64\"}}"
+    },
+    "Minor Gift - Motherly Compassion":{
+        "embed":"{\"title\":\"Minor Gift - Motherly Compassion\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You get a +3 Bonus to all Intuition and Charm checks for the purpose of discerning emotions and comforting someone.\",\"footer\":{\"text\":\"BntD: p.62\"}}"
+    },
+    "Minor Gift - Seamaster":{
+        "embed":"{\"title\":\"Minor Gift - Seamaster\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You treat deep water that you aren\\u2019t fully submerged in as Regular Terrain.\",\"footer\":{\"text\":\"BntD: p.63\"}}"
+    },
+    "Shock Resistance":{
+        "embed":"{\"title\":\"Shock Resistance\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Technology Education\"}],\"description\":\"You don\\u2019t suffer Augmentation Shock from Electric Type damage unless it is Massive Damage.\",\"footer\":{\"text\":\"DPDoM: p.76\"}}"
+    },
+    "Minor Gift - Dazzling the Stage":{
+        "embed":"{\"title\":\"Minor Gift - Dazzling the Stage\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"Whenever you use song or dance for Intimidate, Guile, or Charm, you may add half of the highest Skill Rank you have among these Skills to your Skill Check.\",\"footer\":{\"text\":\"BntD: p.61\"}}"
+    },
+    "Minor Gift - Royal Privilege":{
+        "embed":"{\"title\":\"Minor Gift - Royal Privilege\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You may wear Shards as a Trainer Accessory; when you do, you gain a +2 bonus to Skill Checks for the Skill linked to the shard\\u2019s color. Red is linked to Intimidate, Orange to Command, Yellow to Charm, Green to Intuition, Blue to Guile, and Violet to Focus.\",\"footer\":{\"text\":\"BntD: p.61\"}}"
+    },
+    "Minor Gift - Detect Heretic":{
+        "embed":"{\"title\":\"Minor Gift - Detect Heretic\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You intuitively sense the presence of those with non-MissingNo Gifts around you, though you have no way of telling who they might be. The more Gifts someone has, the further away you can sense them, though you generally cannot sense even the strongest of Gift holders at a distance of more than 15 meters away from you.\",\"footer\":{\"text\":\"BntD: p.70\"}}"
+    },
+    "Quick Case":{
+        "embed":"{\"title\":\"Quick Case\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Technology Education\"}],\"description\":\"You may remove a Case from a Pok\\u00e9 Ball as a Swift Action. You may apply a Case to a Pok\\u00e9 Ball as a Shift Action. (Normally these would be Shift and Standard Actions respectively.)\",\"footer\":{\"text\":\"DPDoM: p.76\"}}"
+    },
+    "Psychic Navigator":{
+        "embed":"{\"title\":\"Psychic Navigator\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Elemental Connection (Psychic)\"}],\"description\":\"You gain the Psychic Navigator Capability.\",\"footer\":{\"text\":\"DPDoM: p.76\"}}"
+    },
+    "Emergency Repairs":{
+        "embed":"{\"title\":\"Emergency Repairs\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Technology Education\"}],\"description\":\"You may repair vehicles as a standard action by making a Technology Education roll. You pay the amount of your roll and repair that much Hit Point damage to the vehicle. If the vehicle has any Breaches you may Patch one of them. Patched Breaches no longer count towards Breach Security but still count toward Breach Capacity.\",\"footer\":{\"text\":\"DPDoM: p.76\"}}"
+    },
+    "Glitched Existence":{
+        "embed":"{\"title\":\"Glitched Existence\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Exposure to Glitch Phenomena, GM Permission\"}],\"description\":\"You gain +2 to all Skill rolls to deal with Glitch phenomena.\",\"footer\":{\"text\":\"DPDoM: p.76\"}}"
+    },
+    "Dream Architect":{
+        "embed":"{\"title\":\"Dream Architect\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Adept Intuition, Pok\\u00e9mon Education, or Technology Education\"}],\"description\":\"You know how to operate Dream Machines and can use them to study and influence a Pok\\u00e9mon\\u2019s dreams.\",\"footer\":{\"text\":\"DPDoM: p.76\"}}"
+    },
+    "Gravity Training":{
+        "embed":"{\"title\":\"Gravity Training\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Athletics or Focus\"}],\"description\":\"You gain the Gravitic Tolerance capability at a value of 1-3 or 2-4.\",\"footer\":{\"text\":\"DPDoM: p.76\"}}"
+    },
+    "Train the Reserves":{
+        "embed":"{\"title\":\"Train the Reserves\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Command\"}],\"description\":\"You may apply Experience Training to a number of Pokemon equal to twice your Command Rank, instead of equal to your Command Rank.\\nNote: Beast Master or Groomer do not change the Skill that this Edge uses.\",\"footer\":{\"text\":\"Core: p.54\"}}"
+    },
+    "Iron Mind":{
+        "embed":"{\"title\":\"Iron Mind\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Focus\"}],\"description\":\"You become aware of all attempts to read your mind with Telepathy, whether the attempt is successful or not.\",\"footer\":{\"text\":\"Core: p.56\"}}"
+    },
+    "Skill Stunt":{
+        "embed":"{\"title\":\"Skill Stunt\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"A skill at Novice rank or higher\"}],\"description\":\"Choose a Skill you have at Novice Rank or higher. Choose a specific use of that Skill; when rolling that skill under those circumstances, you may choose to roll one less dice, and instead add +6 to the result. You may take this Edge multiple times, choosing a different circumstance each time.\",\"footer\":{\"text\":\"Core: p.52\"}}"
+    },
+    "Minor Gift - Elemental Soul":{
+        "embed":"{\"title\":\"Minor Gift - Elemental Soul\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"GM Permission\"}],\"description\":\"You can sense the presence of Pok\\u00e9mon of a given Type within 10 meters of you based on which Legendary Bird or Beast granted you this Edge. Articuno grants Ice, Moltres and Entei grant Fire, Zapdos and Raikou grant Electric, and Suicune grants Water.\",\"footer\":{\"text\":\"BntD: p.58\"}}"
+    },
+    "Pok\u00e9bot Training":{
+        "embed":"{\"title\":\"Pok\\u00e9bot Training\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Technology Education\"}],\"description\":\"You may control a Pok\\u00e9bot with Complexity up to your Technology Rank by using a Pok\\u00e9mon turn.\",\"footer\":{\"text\":\"DPDoM: p.76\"}}"
+    },
+    "Elemental Connection":{
+        "embed":"{\"title\":\"Elemental Connection\",\"description\":\"Choose an Elemental Type. You gain a +2 bonus to Charm, Command, Guile, Intimidate, and Intuition Checks targeting Pok\\u00e9mon of that Type. You may not take Elemental Connection if you have the Mystic Senses Edge, and you may not take Mystic Senses if you have Elemental Connection.\",\"fields\":[],\"footer\":{\"text\":\"Core: p.56\"}}"
+    },
+    "Bad Mood":{
+        "embed":"{\"title\":\"Bad Mood\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Expert Intimidate\"}],\"description\":\"Your Critical Hit Range is increased by +1 if you are suffering from a Persistent Status Affliction. Your Critical Hit Range is increased by +1 if you are suffering from a Volatile Status Affliction. These stack with each other, giving a total of +2 to Critical Hit Range if you are suffering from both a Persistant and a Volatile Status Affliction.\",\"footer\":{\"text\":\"Core: p.54\"}}"
+    },
+    "Stamina":{
+        "embed":"{\"title\":\"Stamina\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Expert Athletics or Combat\"}],\"description\":\"Whenever you Take a Breather or take Massive Damage or a Critical Hit, you gain Temporary Hit Points equal to your Athletics or Combat Rank after the triggering action has resolved.\",\"footer\":{\"text\":\"Core: p.55\"}}"
+    },
+    "Groomer":{
+        "embed":"{\"title\":\"Groomer\",\"fields\":[{\"name\":\"Prerequisites\",\"value\":\"Novice Pok\\u00e9mon Education\"}],\"description\":\"You know how to effectively groom your Pok\\u00e9mon with access to a Groomer\\u2019s Kit. You may groom up to 6 Pok\\u00e9mon in one hour. Grooming Pok\\u00e9mon may count as an hour of Training, and you may apply Experience Training, teach Poke-Edges, and apply any Features that could be applied during Training. If you apply Experience Training from Grooming, use your General Education or Pok\\u00e9mon Education Rank to determine Bonus Experience gained during Training. A Pok\\u00e9mon that has been Groomed also gains a +1d6 Bonus to the Introduction Roll of a Contest for the rest of the day.\",\"footer\":{\"text\":\"Core: p.54\"}}"
+    }
+}

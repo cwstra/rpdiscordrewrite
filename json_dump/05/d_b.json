@@ -1,0 +1,86 @@
+{
+    "DB 28":{
+        "embed":"{\"title\":\"DB 28\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"8d12+80\"},{\"name\":\"Set Damage\",\"value\":\"130\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 1":{
+        "embed":"{\"title\":\"DB 1\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"1d6+1\"},{\"name\":\"Set Damage\",\"value\":\"5\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 24":{
+        "embed":"{\"title\":\"DB 24\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"6d12+55\"},{\"name\":\"Set Damage\",\"value\":\"95\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 25":{
+        "embed":"{\"title\":\"DB 25\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"6d12+60\"},{\"name\":\"Set Damage\",\"value\":\"100\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 3":{
+        "embed":"{\"title\":\"DB 3\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"1d6+5\"},{\"name\":\"Set Damage\",\"value\":\"9\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 2":{
+        "embed":"{\"title\":\"DB 2\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"1d6+3\"},{\"name\":\"Set Damage\",\"value\":\"7\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 5":{
+        "embed":"{\"title\":\"DB 5\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"1d8+8\"},{\"name\":\"Set Damage\",\"value\":\"13\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 4":{
+        "embed":"{\"title\":\"DB 4\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"1d8+6\"},{\"name\":\"Set Damage\",\"value\":\"11\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 7":{
+        "embed":"{\"title\":\"DB 7\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"2d6+10\"},{\"name\":\"Set Damage\",\"value\":\"17\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 26":{
+        "embed":"{\"title\":\"DB 26\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"7d12+65\"},{\"name\":\"Set Damage\",\"value\":\"110\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 27":{
+        "embed":"{\"title\":\"DB 27\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"8d12+70\"},{\"name\":\"Set Damage\",\"value\":\"120\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 12":{
+        "embed":"{\"title\":\"DB 12\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"3d12+10\"},{\"name\":\"Set Damage\",\"value\":\"30\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 15":{
+        "embed":"{\"title\":\"DB 15\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"4d10+20\"},{\"name\":\"Set Damage\",\"value\":\"45\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 14":{
+        "embed":"{\"title\":\"DB 14\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"4d10+15\"},{\"name\":\"Set Damage\",\"value\":\"40\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 17":{
+        "embed":"{\"title\":\"DB 17\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"5d12+25\"},{\"name\":\"Set Damage\",\"value\":\"60\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 16":{
+        "embed":"{\"title\":\"DB 16\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"5d10+20\"},{\"name\":\"Set Damage\",\"value\":\"50\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 19":{
+        "embed":"{\"title\":\"DB 19\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"6d12+30\"},{\"name\":\"Set Damage\",\"value\":\"70\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 18":{
+        "embed":"{\"title\":\"DB 18\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"6d12+25\"},{\"name\":\"Set Damage\",\"value\":\"65\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 20":{
+        "embed":"{\"title\":\"DB 20\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"6d12+35\"},{\"name\":\"Set Damage\",\"value\":\"75\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 21":{
+        "embed":"{\"title\":\"DB 21\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"6d12+40\"},{\"name\":\"Set Damage\",\"value\":\"80\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 6":{
+        "embed":"{\"title\":\"DB 6\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"2d6+8\"},{\"name\":\"Set Damage\",\"value\":\"15\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 9":{
+        "embed":"{\"title\":\"DB 9\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"2d10+10\"},{\"name\":\"Set Damage\",\"value\":\"21\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 8":{
+        "embed":"{\"title\":\"DB 8\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"2d8+10\"},{\"name\":\"Set Damage\",\"value\":\"19\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 11":{
+        "embed":"{\"title\":\"DB 11\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"3d10+10\"},{\"name\":\"Set Damage\",\"value\":\"27\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 22":{
+        "embed":"{\"title\":\"DB 22\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"6d12+45\"},{\"name\":\"Set Damage\",\"value\":\"85\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 23":{
+        "embed":"{\"title\":\"DB 23\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"6d12+50\"},{\"name\":\"Set Damage\",\"value\":\"90\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 10":{
+        "embed":"{\"title\":\"DB 10\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"3d8+10\"},{\"name\":\"Set Damage\",\"value\":\"24\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    },
+    "DB 13":{
+        "embed":"{\"title\":\"DB 13\",\"fields\":[{\"name\":\"Rolled Damage\",\"value\":\"4d10+10\"},{\"name\":\"Set Damage\",\"value\":\"35\"}],\"footer\":{\"text\":\"Core: p.237\"}}"
+    }
+}
