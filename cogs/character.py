@@ -127,7 +127,7 @@ class Character(commands.Cog):
             res = await self.bot.charserver.listInfo(ctx)
             msg = []
             for i in res:
-                charname, authorname = i[0], ctx.guild.get_member(i[1])
+                charname, authorname = i[0], (await ctx.guild.fetch_member(i[1]))
                 authorname = authorname.display_name if authorname else 'a former member of the server'
                 msg.append(f'`{charname}`, created by {authorname}')
             freeze = await self.bot.serverdata(ctx, 'freeze_pages')
@@ -142,7 +142,7 @@ class Character(commands.Cog):
             if attrs:
                 await self.bot.smartSend(ctx, '"'+ character + '"'+"'s requested attributes are:", '\n'.join([i+': '+j for i,j in res.items()]))
             else:
-                creator = discord.utils.get(ctx.guild.members, id=res[0]).display_name
+                creator = (await ctx.guild.fetch_member(res[0])).display_name
                 if res[1]:
                     await self.bot.smartSend(ctx, 'The character "'+ character + '", created by '+creator+', has attributes:\n', ', '.join(res[1]))
                 else:
@@ -194,7 +194,7 @@ class Character(commands.Cog):
         except db.CharDoesNotExistException:
             msg = 'The character "'+ character + '" does not exist.'
         except db.EditNotAllowedException as e:
-            msg = 'That character was made by someone else, namely '+ discord.utils.get(ctx.guild.members, id=e.args[1]).display_name +'. Only the original creator, an admin, or a server member with a bot permissions role can edit it.'
+            msg = 'That character was made by someone else, namely '+ (await ctx.guild.fetch_member(e.args[1])).display_name +'. Only the original creator, an admin, or a server member with a bot permissions role can edit it.'
         await ctx.send(msg)
 
     @commands.command()
@@ -224,7 +224,7 @@ class Character(commands.Cog):
                     await self.bot.charserver.delInfo(ctx, character)
                     if test[1]:
                         if ctx.author.id != test[0]:
-                            creator = discord.utils.get(ctx.guild.members, id=test[0]).display_name
+                            creator = (await ctx.guild.fetch_member(test[0])).display_name
                             await ctx.send(creator+"'s"+' character "'+ character + '" has been deleted.')
                         else:
                             await ctx.send('Your character "'+ character + '" has been deleted.')
