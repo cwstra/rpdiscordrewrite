@@ -196,9 +196,18 @@ class Settings(commands.Cog):
     async def codex_root(self, usechannel, ctx):
         serv_or_chan = 'channel' if usechannel else 'server'
         if await self.is_allowed(ctx):
-            currentInfo = await self.bot.serverdata(ctx, 'codex')
+            currentInfo, location = await self.bot.serverdata(ctx,
+                                                              'codex',
+                                                              force_server = (not useChannel),
+                                                              return_location = True)
             initial = "{author}: "
-            initial += "The current codex for this "+serv_or_chan+" is {current}.\nYou can change it to any of the following:" if currentInfo else f"This {serv_or_chan} does not currently have a codex. \nIf you would like to change that, you have the following options:"
+            if currentInfo:
+                if useChannel and location == "server":
+                    initial += "This channel does not have a codex at present, but the server does use {current}.\nIf you want to give the channel its own codx, you have the following options:"
+                else:
+                    initial += "The current codex for this "+serv_or_chan+" is {current}.\nYou can change it to any of the following:"
+            else:
+                initial += f"This {serv_or_chan} does not currently have a codex. \nIf you would like to change that, you have the following options:"
             systems = await self.bot.systemlist()
             systemsdict = {}
             for i in systems:
@@ -221,10 +230,23 @@ class Settings(commands.Cog):
     @commands.command()
     async def codex(self,ctx, *,arg=''):
         """Forking command for codex selection"""
-        if ctx.prefix.startswith('<@') and ctx.prefix.find('>')>-1:
-            await ctx.send(f"Please use {ctx.prefix}`channel_codex` or {ctx.prefix}`server_codex` to specify the context of your codex.")
-        else:
-            await ctx.send(f"Please use `{ctx.prefix}channel_codex` or `{ctx.prefix}server_codex` to specify the context of your codex.")
+        currentInfo, location = await self.bot.serverdata(ctx,
+                                                          'codex',
+                                                          return_location = True)
+        msg_parts = []
+        if (currentInfo):
+            systems = await self.bot.systemlist()
+            for i in systems:
+                if i['id'] == currentInfo:
+                    currentInfo = i['display_name']
+                    break
+            msg_parts.append(f"This {location} currently uses the {currentInfo} codex.")
+        if self.is_allowed(ctx):
+            if ctx.prefix.startswith('<@') and ctx.prefix.find('>')>-1:
+                msg_parts.append(f"Please use {ctx.prefix}`channel_codex` or {ctx.prefix}`server_codex` to specify the context of your codex.")
+            else:
+                msg_parts.append(f"Please use `{ctx.prefix}channel_codex` or `{ctx.prefix}server_codex` to specify the context of your codex.")
+        await ctx.send("\n".join(msg_parts))
 
     @commands.command()
     async def server_codex(self,ctx):

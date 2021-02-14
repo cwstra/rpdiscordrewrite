@@ -37,10 +37,10 @@ class ServerFetcher:
             if guild_id:
                 res = await conn.fetchrow(self.commands['channels']['get_specific_entry'](entry), guild_id, channel_id)
                 if res and res[entry]!=None:
-                    return res[entry] 
+                    return res[entry]
             return False
 
-    async def serverdata(self, ctx=None, entry=None):
+    async def serverdata(self, ctx=None, entry=None, force_server=False, return_location=False):
         """Get data from the serverSettings server"""
         guild_id = None
         #If we have a context and that context has a guild
@@ -52,20 +52,27 @@ class ServerFetcher:
         async with self.pool.acquire() as conn:
             #Set res to None initially
             res = None
+            location = None
             if guild_id and entry:
-                if channel_id and entry != 'permissionroles':
+                if channel_id and not force_server and entry != 'permissionroles':
                     #Get data from the channel's entry, if it exists
                     res = await conn.fetchrow(self.commands['channels']['get_specific_entry'](entry), guild_id, channel_id)
+                    location = "channel"
+
                 #If there isn't a channel or the channel doesn't have an entry
                 if res == None or res[entry] == None:
                     #Get data from the server's entry, if it exists
                     res = await conn.fetchrow(self.commands['servers']['get_specific_entry'](entry), guild_id)
+                    location = "server"
+
                 #If we found something
                 if res:
                     #Unwrap it
                     res = res[entry]
+                if not(res):
+                    location = None
             #Return what we found
-            return res
+            return [res, location] if return_location else res
 
     async def systemlist(self, name = None):
         """Gets a list of all codexes currently available"""
