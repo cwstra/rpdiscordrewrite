@@ -193,8 +193,8 @@ class Settings(commands.Cog):
         """Deletes a channel's independent charsep list, if it exists. Only available to admins or allowed roles. Will prompt for confirmation before deleting the prefix list."""
         await self.remove_entry(ctx, 'charsep list', 'charseps')
 
-    async def codex_root(self, usechannel, ctx):
-        serv_or_chan = 'channel' if usechannel else 'server'
+    async def codex_root(self, useChannel, ctx):
+        serv_or_chan = 'channel' if useChannel else 'server'
         if await self.is_allowed(ctx):
             currentInfo, location = await self.bot.serverdata(ctx,
                                                               'codex',
@@ -217,7 +217,7 @@ class Settings(commands.Cog):
                 systemsdict[i['display_name']] = i['id']
             async def setcodex(name):
                 if name:
-                    await self.bot.upsert_entry(ctx, {'codex':systemsdict[name]}, usechannel)
+                    await self.bot.upsert_entry(ctx, {'codex':systemsdict[name]}, useChannel)
                     await ctx.send('Codex changed to '+name+'!')
                 else:
                     await ctx.send('Codex change cancelled.')
