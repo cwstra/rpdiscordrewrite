@@ -70,7 +70,8 @@ async def charList(ctx, title, lines, freeze):
         for i in fields:
             em.add_field(**i)
         return em
-    embeds = [toembed({'title':title, 'description':i}) for i in splitlist(lines)]
+    embeds = [toembed({'title':title, 'description':i})
+              for i in splitlist(lines)]
     await SimplePaginator(extras=embeds, freeze=freeze).paginate(ctx)
 
 class Character(commands.Cog):
@@ -105,12 +106,12 @@ class Character(commands.Cog):
         attrdict = parseAttrArgs(ctx, args)
         try:
             await self.bot.charserver.newInfo(ctx, character, attrdict)
-            msg = 'Character "'+ character + '" successfully created'
+            msg = f'Character "{character}" successfully created'
             if attrdict:
                 msg += ', with attribute'+(' ' if len(attrdict)==1 else 's ')+smartPlural(list(attrdict.keys()))
             msg += '!'
         except db.CharExistsException:
-            msg = 'That character ("'+ character + '") already exists.'
+            msg = f'That character ("{character}") already exists.'
         await ctx.send(msg)
 
     @commands.command()
@@ -133,25 +134,34 @@ class Character(commands.Cog):
             freeze = await self.bot.serverdata(ctx, 'freeze_pages')
             await charList(ctx, 'Character Paginator', msg, freeze)
             return
-        elif len(args) == 1:
-            character, attrs = args[0], []
-        else:
-            character, attrs = args[0], args[1:]
+        character, attrs = args[0], args[1:]
         try:
             res = await self.bot.charserver.getInfo(ctx, character, attrs)
             if attrs:
-                await self.bot.smartSend(ctx, '"'+ character + '"'+"'s requested attributes are:", '\n'.join([i+': '+j for i,j in res.items()]))
+                await self.bot.smartSend(ctx,
+                                         f'"{character}"\'s requested attributes are:',
+                                         '\n'.join([i+': '+j for i,j in res.items()]))
             else:
                 creator = (await ctx.guild.fetch_member(res[0])).display_name
                 if res[1]:
-                    await self.bot.smartSend(ctx, 'The character "'+ character + '", created by '+creator+', has attributes:\n', ', '.join(res[1]))
+                    await self.bot.smartSend(ctx,
+                                             (f'The character "{character}", '
+                                              f'created by {creator}, '
+                                              'has attributes:\n',
+                                              ', '.join(res[1])))
                 else:
-                    await ctx.send('The character "'+ character + '", created by '+creator+', has no attributes.')
+                    await ctx.send(f'The character "{character}", '
+                                   f'created by {creator}, '
+                                   'has no attributes.')
             return
         except db.CharDoesNotExistException:
-            msg = 'The character "'+ character + '" does not exist.'
+            msg = f'The character "{character}" does not exist.'
         except db.AttrDoesNotExistException as e:
-            await self.bot.smartSend(ctx, 'The character "'+ character + '" has none of those attributes. The character'+"'s existing attributes are:", '\n'.join(e.args[2])+'\nUse editchar to change this.')
+            await self.bot.smartSend(ctx,
+                                     (f'The character "{character}" has none '
+                                      'of those attributes. The character\'s '
+                                      'existing attributes are:'),
+                                     '\n'.join(e.args[2])+'\nUse editchar to change this.')
             return
         await ctx.send(msg)
 
@@ -172,10 +182,7 @@ class Character(commands.Cog):
         if len(args) == 0:
             await ctx.send("You'll need to give me the name of the character you want to edit.")
             return
-        elif len(args) == 1:
-            character, args = args[0], []
-        else:
-            character, args = args[0], args[1:]
+        character, args = args[0], args[1:]
         attrdict = parseAttrArgs(ctx, args)
         if not(attrdict) and argdict['name'] == None:
             await ctx.send("You'll need to give me some attributes to change.")
@@ -183,18 +190,19 @@ class Character(commands.Cog):
         try: #(ctx, charactername, predicate, newattrdict, newname=None)
             if argdict['name'] == None:
                 await self.bot.charserver.editInfo(ctx, character, self.authOr, attrdict)
-                msg = 'Character '+character+' edited!'
+                msg = f'Character {character} edited!'
             else:
                 newcharacter = argdict.pop('name')
                 await self.bot.charserver.editInfo(ctx, character, self.authOr, attrdict, newname = newcharacter)
                 if attrdict:
-                    msg = 'Character '+character+' edited and renamed to '+newcharacter+'!'
+                    msg = f'Character {character} edited and renamed to {newcharacter}!'
                 else:
-                    msg = 'Character '+character+' renamed to '+newcharacter+'!'
+                    msg = f'Character {character} renamed to {newcharacter}!'
         except db.CharDoesNotExistException:
-            msg = 'The character "'+ character + '" does not exist.'
+            msg = f'The character "{character}" does not exist.'
         except db.EditNotAllowedException as e:
-            msg = 'That character was made by someone else, namely '+ (await ctx.guild.fetch_member(e.args[1])).display_name +'. Only the original creator, an admin, or a server member with a bot permissions role can edit it.'
+            member = await ctx.guild.fetch_member(e.args[1])
+            msg = f'That character was made by someone else, namely {member.display_name}. Only the original creator, an admin, or a server member with a bot permissions role can edit it.'
         await ctx.send(msg)
 
     @commands.command()

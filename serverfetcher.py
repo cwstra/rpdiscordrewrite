@@ -5,28 +5,36 @@ class ServerFetcher:
     def __init__(self):
         #Initialize _all_ our commands
         self.commands = {}
-        self.commands['channels'] = {}
-        self.commands['channels']['get_specific_entry'] = lambda x: "SELECT "+x+" FROM channels WHERE server_id = $1 AND channel_id = $2;"
-        self.commands['channels']['get_specific_row'] = "SELECT * FROM channels WHERE server_id = $1 AND channel_id = $2;"
-        self.commands['channels']['get_all_of_entry_and_id'] = lambda x: 'SELECT (server_id, channel_id, '+x+') FROM channels;'
-        self.commands['channels']['get_all'] = 'SELECT * FROM channels;'
-        self.commands['channels']['delete_one_row'] = 'DELETE FROM channels WHERE server_id = $1 AND channel_id = $2;'
-        self.commands['channels']['upsert'] = lambda x: 'INSERT INTO channels (server_id, channel_id, '+x+') VALUES ($1, $2, $3) ON CONFLICT (server_id, channel_id) DO UPDATE SET '+x+'= $3;'
-        self.commands['channels']['clear_empty_rows'] = "DELETE FROM channels WHERE ((codex IS NULL or codex = '') and (charsigns IS NULL OR charsigns = '{}') and (prefixes IS NULL or prefixes = '{}') and (inline IS NULL or NOT inline));"
-        self.commands['servers'] = {}
-        self.commands['servers']['get_specific_entry'] = lambda x: "SELECT "+x+" FROM servers WHERE id = $1;"
-        self.commands['servers']['get_specific_row'] = "SELECT * FROM servers WHERE id = $1;"
-        self.commands['servers']['get_all_of_entry_and_id'] = lambda x: 'SELECT (id,'+x+') FROM servers;'
-        self.commands['servers']['get_all'] = 'SELECT * FROM servers;'
-        self.commands['servers']['upsert'] = lambda x: 'INSERT INTO servers (id, '+x+') VALUES ($1, $2) ON CONFLICT (id) DO UPDATE SET '+x+'=$2;'
-        self.commands['servers']['clear_empty_rows'] = "DELETE FROM servers WHERE ((codex IS NULL or codex = '') and (permissionroles IS NULL or permissionroles = '{}') and (charsigns IS NULL or charsigns = '{}') and (prefixes IS NULL or prefixes = '{}') and (inline IS NULL or NOT inline));"
-        self.commands['codex_list'] = {}
-        self.commands['codex_list']['get_name'] = 'SELECT display_name FROM codex_list WHERE id = $1;'
-        self.commands['codex_list']['get_all'] = 'SELECT * FROM codex_list;'
+        self.commands['channels'] = {
+            'get_specific_entry': lambda x: f"SELECT {x} FROM channels WHERE server_id = $1 AND channel_id = $2;",
+            "get_specific_row": "SELECT * FROM channels WHERE server_id = $1 AND channel_id = $2;",
+            "get_all_of_entry_and_id": lambda x: f'SELECT (server_id, channel_id, {x}) FROM channels;',
+            "get_all": 'SELECT * FROM channels;',
+            'delete_one_row': 'DELETE FROM channels WHERE server_id = $1 AND channel_id = $2;',
+            'upsert': lambda x: f'INSERT INTO channels (server_id, channel_id, {x}) VALUES ($1, $2, $3) ON CONFLICT (server_id, channel_id) DO UPDATE SET {x}= $3;',
+            'clear_empty_rows': "DELETE FROM channels WHERE ((codex IS NULL or codex = '') and (charsigns IS NULL OR charsigns = '{}') and (prefixes IS NULL or prefixes = '{}') and (inline IS NULL or NOT inline));",
+        }
+        self.commands['servers'] = {
+            'get_specific_entry': lambda x: f"SELECT {x} FROM servers WHERE id = $1;",
+            'get_specific_row': "SELECT * FROM servers WHERE id = $1;",
+            'get_all_of_entry_and_id': lambda x: f'SELECT (id,{x}) FROM servers;',
+            'get_all': 'SELECT * FROM servers;',
+            'upsert': lambda x: f'INSERT INTO servers (id, {x}) VALUES ($1, $2) ON CONFLICT (id) DO UPDATE SET {x}=$2;',
+            'clear_empty_rows': "DELETE FROM servers WHERE ((codex IS NULL or codex = '') and (permissionroles IS NULL or permissionroles = '{}') and (charsigns IS NULL or charsigns = '{}') and (prefixes IS NULL or prefixes = '{}') and (inline IS NULL or NOT inline));"
+        }
+        self.commands['codex_list'] = {
+            'get_name': 'SELECT display_name FROM codex_list WHERE id = $1;',
+            'get_all': 'SELECT * FROM codex_list;'
+        }
 
     async def init_pool(self, settings):
         """Pool initialization function"""
-        self.credentials = {"user": settings['sql'][0], "password": settings['sql'][2], "database": settings['serverSettingsDB'], "host": settings['sql'][1]}
+        self.credentials = {
+            "user": settings['sql'][0],
+            "password": settings['sql'][2],
+            "database": settings['serverSettingsDB'],
+            "host": settings['sql'][1]
+        }
         self.pool = await asyncpg.create_pool(**self.credentials)
 
     async def checkchannel(self, ctx, entry):
@@ -118,9 +126,4 @@ class ServerFetcher:
         """Returns the server's prefixes"""
         #Get the prefix entry for the server
         res = await self.serverdata(ctx, 'prefixes')
-        #If there's no entry
-        if res == None:
-            #Return the default
-            return ['<@'+str(bot_id)+'> ', '<@'+str(bot_id)+'>']
-        #Otherwise return the entry
-        return res
+        return res or [f'<@{bot_id}> ', f'<@{bot_id}>']

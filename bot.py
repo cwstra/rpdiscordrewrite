@@ -1,6 +1,7 @@
 #Set up file logging
 import datetime
 import sys
+import itertools
 args = sys.argv
 #If we're to print the output
 if 'print' in args:
@@ -84,10 +85,7 @@ def titlemake(tup):
 def splitbigfields(l):
     newlist = [(i, splittext(j, k)) for i, j, k in l]
     newlist = [titlemake(i) for i in newlist]
-    outlist = []
-    for i in newlist:
-        outlist += i
-    return outlist
+    return list(itertools.chain(*newlist))
 
 def toembed(d, printFun):
     fields = d.pop('fields', [])
@@ -118,11 +116,18 @@ class RPBot(commands.Bot):
         self.logger = logfun
 
         #Set up the bot stat logging server
-        self.botdataserver = {}
-        self.botdataserver['credentials'] = {"user": self.settings['sql'][0], "password": self.settings['sql'][2], "database": self.settings['botDataServer'], "host": self.settings['sql'][1]}
-        self.botdataserver['commands'] = {}
-        self.botdataserver['commands']['increment_command'] = 'INSERT INTO command_usage (name, uses) VALUES ($1, 1) ON CONFLICT (name) DO UPDATE SET uses = command_usage.uses + 1;'
-        self.botdataserver['commands']['upsert'] = lambda x: 'INSERT INTO '+x+ '(id) VALUES ($1) ON CONFLICT DO NOTHING;'  #unique_guilds, unique_users
+        self.botdataserver = {
+            'credentials': {
+                "user": self.settings['sql'][0],
+                "password": self.settings['sql'][2],
+                "database": self.settings['botDataServer'],
+                "host": self.settings['sql'][1]
+            },
+            'commands': {
+                'increment_command': 'INSERT INTO command_usage (name, uses) VALUES ($1, 1) ON CONFLICT (name) DO UPDATE SET uses = command_usage.uses + 1;',
+                'upsert': lambda x: 'INSERT INTO '+x+ '(id) VALUES ($1) ON CONFLICT DO NOTHING;'
+            }
+        }
 
         #Initializing some objects to prevent errors should their cogs fail to load:
         self.inline_roller = lambda x: None
@@ -150,7 +155,10 @@ class RPBot(commands.Bot):
         #Get pool for the bot stat server
         self.botdataserver['pool'] = await asyncpg.create_pool(**self.botdataserver['credentials'])
         #Set the current activity
-        activity = discord.Activity(name='"<@bot_ping> init" to help newcomers.', type = discord.ActivityType.listening)
+        activity = discord.Activity(
+            name='"<@bot_ping> init" to help newcomers.',
+            type = discord.ActivityType.listening
+        )
         await self.change_presence(activity=activity)
 
     async def on_command_error(self, ctx, e):
@@ -199,14 +207,15 @@ class RPBot(commands.Bot):
     async def on_command_completion(self, ctx):
         #Get a connection from the stat server
         async with self.botdataserver['pool'].acquire() as conn:
+            upsert = self.botdataserver['commands']['upsert']
             #If the message isn't a PM
             if ctx.guild:
                 #Log the guild
-                await conn.execute(self.botdataserver['commands']['upsert']('unique_guilds'), ctx.guild.id)
+                await conn.execute(upsert('unique_guilds'), ctx.guild.id)
             #Log the user
-            await conn.execute(self.botdataserver['commands']['upsert']('unique_users') , ctx.author.id)
+            await conn.execute(upsert('unique_users') , ctx.author.id)
             #Log the command
-            await conn.execute(self.botdataserver['commands']['increment_command']      , ctx.command.name)
+            await conn.execute(self.botdataserver['commands']['increment_command'], ctx.command.name)
 
     @staticmethod
     async def smartSend(ctx,initial,message,begin='', end=''):
@@ -219,10 +228,7 @@ class RPBot(commands.Bot):
             end: An ending prefix to the same. If non-existent while begin exists, it's set to begin"""
         #Send the initial message
         await ctx.send(initial)
-        #If end is empty and begin is not
-        if begin and not(end):
-            #Set end to begin
-            end = begin
+        end = end or begin
         #The longest we can allow a message to be is 2000 - the combined length of the bookends
         maxlength = 2000-(len(begin)+len(end))
         #While message is longer than allowed
@@ -250,8 +256,12 @@ class RPBot(commands.Bot):
                 return {key:l[n]}
             else:
                 return {}
-        counts = {'description':info['description'].count('\n')+1 if 'description' in info else None, 'fields':[str(i['value']).count('\n')+1 for i in info['fields']], 'image':len(info['image']) if 'image' in info else 0}
-        maxlines = max([counts['description'] if counts['description'] else 1]+[i for i in counts['fields']])
+        counts = {
+            'description': info['description'].count('\n')+1 if 'description' in info else None,
+            'fields':[str(i['value']).count('\n')+1 for i in info['fields']],
+            'image':len(info['image']) if 'image' in info else 0
+        }
+        maxlines = max([counts['description'] or 1]+[i for i in counts['fields']])
         baseembed = {'title':info['title']} ; iterables = {}
         if 'footer' in info:
             baseembed['footer'] = info['footer']
@@ -262,25 +272,28 @@ class RPBot(commands.Bot):
                     baseembed['description'] = desc
                 else:
                     iterables['description'] = desc
-            littlefields = splitbigfields([(i['name'], counts['fields'][ind], str(i['value'])) for ind, i in enumerate(info['fields'])])  
+            littlefields = splitbigfields([(i['name'], counts['fields'][ind], str(i['value']))
+                                           for ind, i in enumerate(info['fields'])])
             if len(littlefields)>3:
                 iterables['fields'] = list(evensplit(littlefields, 3))
             else:
                 baseembed['fields'] = littlefields
-            if 'image' in info and type(info['image']) == str:
-                printFun('baseImage')
-                baseembed['image'] = info['image']
-            elif 'image' in info and len(info['image']) == 1:
-                printFun('baseImage')
-                baseembed['image'] = info['image'][0]
-            elif 'image' in info and len(info['image']) > 1:
-                printFun('iterImage')
-                iterables['image'] = info['image']
+            if 'image' in info:
+                if type(info['image']) == str:
+                    printFun('baseImage')
+                    baseembed['image'] = info['image']
+                elif len(info['image']) == 1:
+                    printFun('baseImage')
+                    baseembed['image'] = info['image'][0]
+                elif len(info['image']) > 1:
+                    printFun('iterImage')
+                    iterables['image'] = info['image']
             repfields =  ('description', 'fields', 'image')
             embeds = [baseembed]
             for i in repfields:
                 if i in iterables:
-                    embeds = [{**(embeds[j] if j<len(embeds) else baseembed), **maybeover(i, iterables[i], j)} for j in range(max(len(embeds), len(iterables[i])))]
+                    embeds = [{**(embeds[j] if j<len(embeds) else baseembed), **maybeover(i, iterables[i], j)}
+                              for j in range(max(len(embeds), len(iterables[i])))]
             embeds = [toembed(i, printFun) for i in embeds]
             if len(embeds) == 1:
                 await ctx.send(None, embed = embeds[0])
