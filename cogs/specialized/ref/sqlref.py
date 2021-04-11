@@ -1,7 +1,7 @@
 import ujson as json
 import asyncpg
 from fuzzywuzzy import process
-from collections import deque
+from collections import deque, OrderedDict
 import random
 
 class Server:
@@ -83,23 +83,26 @@ class Server:
                 data = json.loads(data)
             elif i.startswith('{') and i.endswith('}'):
                 j = json.loads(i)
-                keys = list(data['extra_fields'].keys())+list(j.keys())
+                extra_fields = data['extra_fields']
+                if isinstance(extra_fields, list):
+                    extra_fields = {k:v for item in extra_fields for k,v in item.items()}
+                keys = list(extra_fields.keys())+list(j.keys())
                 searches = [k.strip() for m in message.split(',') for k in m.split()]
                 test = {k for k in [process.extractOne(k, keys) for k in searches] if k[1]>80}
-                extra = [] 
+                extra = []
                 for k in test:
-                    if k[0] in data['extra_fields']:
-                        extra.append(data['extra_fields'][k[0]])
+                    if k[0] in extra_fields:
+                        extra.append(extra_fields[k[0]])
                     elif type(j[k[0]]) != str:
                         for l in j[k[0]]:
-                            extra.append(data['extra_fields'][l])
+                            extra.append(extra_fields[l])
                 d = data['init']
                 if len(extra) > 0:
                     d['fields'] = list(extra)
                 else:
                     d['fields'] = []
-                    for k in data['extra_fields']:
-                        d['fields'].append(data['extra_fields'][k])
+                    for k in extra_fields:
+                        d['fields'].append(extra_fields[k])
                 return d
             else:
                 raise Exception('Not sure how I got here.')

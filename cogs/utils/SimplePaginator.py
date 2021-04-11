@@ -69,27 +69,31 @@ class SimplePaginator:
                 except discord.HTTPException:
                     return
 
-        def check(r, u):
-            if str(r) not in self.controls.keys():
+        def check(raw):
+            if str(raw.emoji) not in self.controls.keys():
                 return False
-            elif u.id == bot.user.id or r.message.id != self.base.id:
+            elif raw.user_id == bot.user.id or raw.message_id != self.base.id:
                 return False
-            elif u.id != author.id:
+            elif raw.user_id != author.id:
                 return False
             return True
 
         while True:
+            done, pending = await asyncio.wait([
+                bot.wait_for('raw_reaction_add',check=check,timeout=self.timeout),
+                bot.wait_for('raw_reaction_remove',check=check,timeout=self.timeout)
+            ], return_when=asyncio.FIRST_COMPLETED)
             try:
-                react, user = await bot.wait_for('reaction_add', check=check, timeout=self.timeout)
+                raw_action = done.pop().result()
             except asyncio.TimeoutError:
                 return ctx.bot.loop.create_task(self.stop_controller(ctx, self.base, self.freeze))
+            for future in done:
+                future.exception()
+            for future in pending:
+                future.cancel()
 
-            control = self.controls.get(str(react))
 
-            try:
-                await self.base.remove_reaction(react, user)
-            except discord.HTTPException:
-                pass
+            control = self.controls.get(str(raw_action.emoji))
 
             self.previous = self.current
             await self.indexer(ctx, control)
