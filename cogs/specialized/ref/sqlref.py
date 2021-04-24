@@ -39,8 +39,12 @@ class Server:
         if schema[name] == 'flat':
             return process.extractOne(message,keys)
         else:
+            def process_words(test, singlekey, minikeys, wordLength):
+                res = process.extractOne(singlekey, minikeys)
+                if res is not None:
+                    test.append(res)
             return Server.limited_words(int(json.loads(schema[name])[0]), message, keys,
-                lambda test, singlekey, minikeys, wordLength: test.append(process.extractOne(singlekey, minikeys)),
+                process_words,
                 lambda test: max(test, key=lambda y:y[1]))
 
     @staticmethod
@@ -220,8 +224,8 @@ class Server:
                             res += '\t\tCheck individual entries for a list of relevant subfields.'
                     return res
                 if category in collections:
-                    keys = await conn.fetch(self.commands['get_all_of_entry'].format('id',names[category]))
-                    entryKey = self.indTest(keys, schema, i, message)
+                    keys = map(lambda x: x['id'], await conn.fetch(self.commands['get_all_of_entry'].format('id',names[category])))
+                    entryKey = self.indTest(keys, schema, category, rest)
                 else:
                     testRes = []
                     for i in collections:
@@ -275,7 +279,10 @@ class Server:
                             res += '\tSubfields:\n'
                             res += '\t\tSimple Subfields:\n'
                             entry = json.loads(table)
-                            for j in entry['extra_fields']:
+                            extra_fields = entry['extra_fields']
+                            if isinstance(extra_fields, list):
+                                extra_fields = {k:v for item in extra_fields for k,v in item.items()}
+                            for j in extra_fields:
                                 res += '\t\t\t'+j+'\n'
                             res += '\t\tGroup Subfields:\n'
                             for j in s:
@@ -307,7 +314,7 @@ class Server:
                             res += '\t\tCheck individual entries for a list of relevant subfields.\n'
             return res
 
-    async def top(self, codex, number, message, logger):
+    async def top(self, codex, number, message):
         def test(keys, schema_entry, mess, num):
             if schema_entry == 'flat':
                 return process.extract(mess, keys, limit=num)
@@ -346,7 +353,6 @@ class Server:
                 res = ''
                 mode = 0
                 for i in results:
-                    logger(i[0][1])
                     if mode == 0 and i[0][1] > 80:
                         res += "Strong Matches:\n"
                         mode = 1

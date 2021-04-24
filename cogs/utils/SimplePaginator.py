@@ -1,5 +1,6 @@
 import discord
 import asyncio
+import concurrent.futures
 
 async def pager(entries, chunk: int):
     for x in range(0, len(entries), chunk):
@@ -45,14 +46,17 @@ class SimplePaginator:
     async def indexer(self, ctx, ctrl):
         if ctrl == 'stop':
             ctx.bot.loop.create_task(self.stop_controller(ctx, self.base))
-        elif ctrl == 'freeze':
+            return False
+        if ctrl == 'freeze':
             ctx.bot.loop.create_task(self.stop_controller(ctx, self.base, True))
-        elif isinstance(ctrl, int):
+            return False
+        if isinstance(ctrl, int):
             self.current += ctrl
             if self.current > self.eof or self.current < 0:
                 self.current -= ctrl
-        else:
-            self.current = int(ctrl)
+            return True
+        self.current = int(ctrl)
+        return True
 
     async def reaction_controller(self, ctx):
         bot = ctx.bot
@@ -86,17 +90,22 @@ class SimplePaginator:
             for future in pending:
                 future.cancel()
             try:
+                bot.logger('try')
                 raw_action = done.pop().result()
-            except asyncio.TimeoutError:
+            except (asyncio.TimeoutError, concurrent.futures.TimeoutError):
+                bot.logger('except')
+                for future in done:
+                    future.exception()
                 return ctx.bot.loop.create_task(self.stop_controller(ctx, self.base, self.freeze))
-            for future in done:
-                future.exception()
 
 
             control = self.controls.get(str(raw_action.emoji))
 
             self.previous = self.current
-            await self.indexer(ctx, control)
+            continue_loop = await self.indexer(ctx, control)
+
+            if not(continue_loop):
+                break
 
             if self.previous == self.current:
                 continue

@@ -2,6 +2,7 @@
 import datetime
 import sys
 import itertools
+import traceback
 args = sys.argv
 #If we're to print the output
 if 'print' in args:
@@ -14,7 +15,7 @@ if 'print' in args:
 else:
     import logging
     #Log to logs/bot <time>.log
-    logging.basicConfig(filename='logs/bot/bot '+str(datetime.datetime.now())+'.log', format='%(asctime)s %(message)s')
+    logging.basicConfig(filename='logs/bot/bot '+str(datetime.datetime.now())+'.log', format='%(asctime)s(%(pathname)s:%(lineno)d)  %(message)s')
     #Get a logger
     logger = logging.getLogger('Logger')
     #Get the level from the first argument, if it exists. (args[0] is always the filename)
@@ -23,7 +24,7 @@ else:
     else:
         logger.setLevel('INFO')
     #Set the general logging functions
-    logexe = logger.exception
+    logexe = lambda e: logger.exception(traceback.format_exception(type(e), e, e.__traceback__))
     logfun = logger.info
 #Start the imports
 logfun('------------------------------------------------------------------------------------')
@@ -87,11 +88,10 @@ def splitbigfields(l):
     newlist = [titlemake(i) for i in newlist]
     return list(itertools.chain(*newlist))
 
-def toembed(d, printFun):
+def toembed(d):
     fields = d.pop('fields', [])
     image = d.pop('image', None)
     footer = d.pop('footer', None)
-    printFun(image)
     em = discord.Embed(**d)
     for i in fields:
         em.add_field(**i)
@@ -280,13 +280,10 @@ class RPBot(commands.Bot):
                 baseembed['fields'] = littlefields
             if 'image' in info:
                 if type(info['image']) == str:
-                    printFun('baseImage')
                     baseembed['image'] = info['image']
                 elif len(info['image']) == 1:
-                    printFun('baseImage')
                     baseembed['image'] = info['image'][0]
                 elif len(info['image']) > 1:
-                    printFun('iterImage')
                     iterables['image'] = info['image']
             repfields =  ('description', 'fields', 'image')
             embeds = [baseembed]
@@ -294,7 +291,7 @@ class RPBot(commands.Bot):
                 if i in iterables:
                     embeds = [{**(embeds[j] if j<len(embeds) else baseembed), **maybeover(i, iterables[i], j)}
                               for j in range(max(len(embeds), len(iterables[i])))]
-            embeds = [toembed(i, printFun) for i in embeds]
+            embeds = [toembed(i) for i in embeds]
             if len(embeds) == 1:
                 await ctx.send(None, embed = embeds[0])
             else:
@@ -302,7 +299,7 @@ class RPBot(commands.Bot):
         else:
             if 'image' in info and len(info['image']) == 1:
                 info['image'] = info['image'][0]
-            await ctx.send(None, embed = toembed(info, printFun))
+            await ctx.send(None, embed = toembed(info))
 
     #Overwriting the default ger_prefix coroutine to allow for blank prefixes in DM Channels
     @asyncio.coroutine

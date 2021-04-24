@@ -104,7 +104,7 @@ class Ref(commands.Cog):
             else:
                 n = 5
                 mess = args
-            (info, coll) = await self.bot.refserver.top(codex, n, mess, self.bot.logger)
+            (info, coll) = await self.bot.refserver.top(codex, n, mess)
             if n > 5:
                 await self.bot.smartSend(ctx.author, header(n, mess, coll), info,'```\n', '```')
                 await ctx.send("Results sent via PM.")
