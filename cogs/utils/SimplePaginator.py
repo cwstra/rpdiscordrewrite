@@ -83,14 +83,14 @@ class SimplePaginator:
                 bot.wait_for('raw_reaction_add',check=check,timeout=self.timeout),
                 bot.wait_for('raw_reaction_remove',check=check,timeout=self.timeout)
             ], return_when=asyncio.FIRST_COMPLETED)
+            for future in pending:
+                future.cancel()
             try:
                 raw_action = done.pop().result()
             except asyncio.TimeoutError:
                 return ctx.bot.loop.create_task(self.stop_controller(ctx, self.base, self.freeze))
             for future in done:
                 future.exception()
-            for future in pending:
-                future.cancel()
 
 
             control = self.controls.get(str(raw_action.emoji))
