@@ -6,6 +6,7 @@ import json
 import cogs.specialized.ref as db
 from cogs.utils.SimplePaginator import SimplePaginator
 
+
 def test_int(i):
     try:
         int(i)

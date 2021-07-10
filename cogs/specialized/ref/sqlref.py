@@ -27,6 +27,8 @@ class Server:
         for i in range(0, min(limit, messlength)):
             #Make a list of all keys with that word length.
             minikeys = [j for j in keys if j.count(' ')==i]
+            if len(minikeys) == 0:
+                continue;
             #Peel off that number of words from the message
             testkey = ' '.join(message.split(' ', i+1)[:i+1])
             #Put the results into test
@@ -78,7 +80,11 @@ class Server:
                         k, rest = message.split(' ', 1)
                     else:
                         k, rest = message, ''
-                    test = process.extractOne(k, mapping.keys())
+                    mapkeys = mapping.keys()
+                    test = self.limited_words(max(len(k.split(' ')) for k in mapkeys),
+                                       message,
+                                       mapkeys,
+                                       lambda test, singlekey, keylist, wordLength: test.append((process.extractOne(singlekey, keylist), wordLength)),lambda x: max(x, key=lambda y:(y[0][1],y[1])))[0]
                     if test[1] > 80:
                         data = await conn.fetchval(self.commands['get_specific_row'](codex+'_'+newTable,'id'), mapping[test[0]], column=1)
                         message = rest
@@ -367,5 +373,4 @@ if __name__ == "__main__":
     import sys
     async def run():
         s = await Server.create()
-        print(await s.lookup(sys.argv[1],sys.argv[2]))
     asyncio.get_event_loop().run_until_complete(run())

@@ -90,10 +90,8 @@ class SimplePaginator:
             for future in pending:
                 future.cancel()
             try:
-                bot.logger('try')
                 raw_action = done.pop().result()
             except (asyncio.TimeoutError, concurrent.futures.TimeoutError):
-                bot.logger('except')
                 for future in done:
                     future.exception()
                 return ctx.bot.loop.create_task(self.stop_controller(ctx, self.base, self.freeze))
