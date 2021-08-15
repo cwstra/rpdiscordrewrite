@@ -4,6 +4,7 @@ from fuzzywuzzy import process
 from collections import deque, OrderedDict
 import random
 
+
 class Server:
     @classmethod
     async def create(cls, settings):

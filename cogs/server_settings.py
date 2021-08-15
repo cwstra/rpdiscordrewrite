@@ -59,7 +59,7 @@ class Settings(commands.Cog):
             await ctx.send(initial.format(author=ctx.author.display_name))
             return
         elif arg in currentInfo:
-            initial += f"Would you like to remove {smartSurround(arg)} from your {singtype} list? Type {smartSurround(f'{ctx.prefix}Yes')} or {smartSurround(f'ctx.prefixNo')} to confirm."
+            initial += f"Would you like to remove {smartSurround(arg)} from your {singtype} list? Type {smartSurround(f'{ctx.prefix}Yes')} or {smartSurround(f'{ctx.prefix}No')} to confirm."
             for i, v in enumerate(currentInfo):
                 if v == arg:
                     posslist.pop(i)
